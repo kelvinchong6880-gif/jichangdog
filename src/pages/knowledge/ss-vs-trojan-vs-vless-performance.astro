@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "机场协议大比拼：SS、Trojan、VLESS 哪个更省电、更快速？";
+const description = "手机翻墙耗电快怎么办？本文深度横向评测 SS、Trojan、VLESS 三大主流翻墙协议的性能、耗电量与连接延迟，帮你挑选最适合自己线路的科学上网协议。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：在翻墙协议的较量中，没有绝对的王者，只有最适合的场景。<br>论省电与绝对速度：SS（Shadowsocks）是永远的神。因为它没有复杂的 TLS 握手和多重加密，对手机 CPU 压力极小，最适合搭配不过墙的 IPLC 专线使用。<br>论全能与抗封锁：VLESS（配合 XTLS）是当前的版本答案。它去除了自带加密，性能损耗极低，既能完美伪装，又比 VMess 省电得多，适合公网直连与中转。<br>Trojan 表现中规中矩：它的伪装极佳，但由于完全依赖标准 HTTPS 的 TLS 加密，握手时间稍长，在手机上的耗电量相比 SS 会略高一点。</strong><br>搞懂这三者的底层逻辑，你就能在面对琳琅满目的机场节点时，精准挑出最省电、最适合打游戏或者看视频的线路。</p>
+
+      <h2 id="core-comparison">1. 核心硬评测：四大主流翻墙协议性能对比表</h2>
+      <p>小白在买机场时最头疼的问题就是：<strong>SS、Trojan、VLESS 哪个好？翻墙协议怎么选？</strong> 为了让大家一目了然，我们在同等服务器环境下，对目前市面上的四大主流协议进行了极限跑分和耗电测试，得出了以下 <strong>主流机场协议优缺点</strong> 对比表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>协议名称</th>
+              <th>连接延迟 (握手速度)</th>
+              <th>手机耗电量 (CPU 占用)</th>
+              <th>抗 GFW 封锁能力</th>
+              <th>最佳适用网络线路</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Shadowsocks (SS)</strong></td>
+              <td><strong>极低（最快，即点即开）</strong></td>
+              <td><strong>极低（毫无多余发热，最省电）</strong></td>
+              <td>极弱（公网特征明显，极易被封杀）</td>
+              <td><strong>纯 IPLC/IEPL 内网专线</strong></td>
+            </tr>
+            <tr>
+              <td><strong>VLESS (+XTLS)</strong></td>
+              <td><strong>极低（消除 TLS 套娃）</strong></td>
+              <td><strong>极低（轻量化，性能极佳）</strong></td>
+              <td><strong>极强（结合 Reality 抗主动探测）</strong></td>
+              <td>高端公网直连、个人自建 VPS</td>
+            </tr>
+            <tr>
+              <td><strong>Trojan</strong></td>
+              <td>偏高（标准 TLS 握手耗时）</td>
+              <td>中等（标准 HTTPS 加密解密损耗）</td>
+              <td>强（伪装成正常 HTTPS 网页）</td>
+              <td>优质公网中转、便宜直连线路</td>
+            </tr>
+            <tr>
+              <td><strong>VMess (作陪衬)</strong></td>
+              <td>高（双重加密套娃严重）</td>
+              <td><strong>最高（长时间看视频严重发热掉电）</strong></td>
+              <td>较弱（早期特征逐渐被掌握）</td>
+              <td>已被时代逐渐淘汰的老旧系统</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="battery-drain">2. 耗电元凶：为什么开着小火箭手机掉电特别快？</h2>
+      <p>很多人都会抱怨：<strong>为什么开着小火箭 (Shadowrocket) 或者 Clash，手机掉电特别快？</strong> 尤其是苹果手机，挂着梯子在外面用大半天，电量就见底了。这其实很大程度上取决于你选了什么 <strong>翻墙协议</strong>。</p>
+      
+      <p><strong>手机翻墙耗电原因</strong> 的核心在于 <strong>CPU 的加密解密负荷</strong>。你的手机每次发出一条微信、请求一张图片，梯子软件都要在后台对这些数据进行实时加密（把明文变成密文骗过 GFW），收到数据后再解密。这种庞大的数学运算是非常吃 CPU 性能的。<br>
+      如果你使用的是 <strong>VMess 协议</strong>（特别是在外面套了 WebSocket + TLS 的情况下），你的手机等于在做 <strong>双重加密（TLS 套娃）</strong>，CPU 满负荷运转，手机必然发烫、电量狂掉。<br>
+      相比之下，<strong>苹果手机用哪个协议翻墙最省电？</strong> 毫无疑问是 <strong>SS（搭配 chacha20-ietf-poly1305 加密）</strong> 或者 <strong>VLESS (XTLS-Vision)</strong>。前者没有繁重的 TLS 握手，后者极其聪明地剥离了多余的加密，只做最基础的搬运工。它们挂在后台几乎等同于微信的耗电量。</p>
+
+      <h2 id="latency-truth">3. 延迟真相：Trojan 为什么连通延迟比 SS 高？</h2>
+      <p>经常有游戏玩家问：<strong>Trojan 节点为什么连通延迟比 SS 高？玩外服游戏（低延迟）选 SS 还是 VLESS？</strong></p>
+      
+      <p>我们要明白一个概念：Ping 值（物理距离） ≠ 真实网页打开速度。<br>
+      当你点击一个网页时，底层协议需要先和服务器“握手确认身份”，才能开始传数据。<br>
+      <strong>Trojan 协议 CPU 占用</strong> 虽然不高，但它为了把你的流量完美伪装成 HTTPS，必须完全遵守标准的 TLS 握手流程。这意味着在传输真实数据前，它要在你的手机和国外服务器之间来回交互好几次。这不可避免地带来了额外的 <strong>TLS 握手延迟损耗</strong>（也就是你点开网页时那一瞬间的滞后感）。<br>
+      而 <strong>SS 加密解密性能</strong> 之所以被奉为神明，是因为它是 <strong>AEAD 极简加密</strong>，没有任何啰嗦的伪装过程。你一点开，数据瞬间就发出去了。这就是为什么 <strong>专线机场为什么只用 SS 协议</strong>。在绝对安全（不过墙）的内网环境里，丢掉伪装的 SS 能跑出极限的电竞级超低延迟。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：关于翻墙耗电与速度的硬核排障</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 晚高峰看 4K 视频哪个协议速度最稳定？</h3>
+        <p><strong>答：这取决于你的线路质量，而不是协议。</strong> 协议只决定了“握手快慢和耗电量”。如果你的机场走的是物理内网专线（IPLC），哪怕用最简陋的 SS 也能秒开 4K；如果你的机场是垃圾直连线路，那么你用 VLESS 还是 Trojan 在晚高峰都会卡顿。对于烂线路，我们建议尝试使用基于 UDP 暴力发包的 <strong>Hysteria 2 协议</strong> 来强行抢占带宽。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 路由器翻墙哪个协议对 CPU 压力最小？</h3>
+        <p><strong>答：SS 和 VLESS。</strong> 便宜的软路由（如 J1900 或 ARM 架构芯片）算力有限。如果在上面跑套娃加密的 VMess，一旦宽带跑到 300M 以上，CPU 就会直接 100% 满载，导致网络卡死。此时换成极其轻量化的 SS 或 VLESS（无加密），能轻松跑满千兆宽带且不发热。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 弱网环境（地铁/电梯）哪个协议断线重连最快？</h3>
+        <p><strong>答：SS 最快，基于 QUIC 的 TUIC 协议最猛。</strong> 地铁里网络经常在 4G/5G 之间切换导致 IP 变动。SS 因为没有状态记录，只要有网就能瞬间继续发包。而现代化的 TUIC 协议甚至支持 0-RTT（零延迟连接），在弱网环境下的恢复速度远超传统且需要冗长握手的 Trojan。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极选购指南：如何根据你的需求挑选合适的机场套餐？</h2>
+      <p>看到这里，你一定明白了 <strong>翻墙协议哪个最省电、哪个速度最快</strong>，也懂得了“没有废物的协议，只有选错的场景”这个道理。</p>
+      
+      <p>👉 <strong>如果你是追求极限体验的高净值用户、重度游戏玩家，或是极度在意手机续航的人：</strong><br>
+      请毫不犹豫地购买 <strong>纯 SS 协议的顶级 IPLC/IEPL 专线机场</strong>。花最贵的钱，享受剥离一切伪装后，那极致的低延迟与冰凉的手机手感。</p>
+      
+      <p>👉 <strong>如果你是追求性价比、想花少量的钱享受稳定防封锁体验的用户：</strong><br>
+      请购买 <strong>全面支持 VLESS Reality 或 Trojan 的优质中转/直连机场</strong>。它们用稍稍牺牲一点点握手速度的代价，换来了在敏感时期极度坚挺的抗封锁能力。</p>
+      
+      <p>为了免去大家选择困难，我们团队测试了市面上上百家梯子，为您分别挑选了代表这两大极限流派的优质服务商：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 极致速度与省电！全面支持 SS 专线与 VLESS Reality 的顶级机场推荐榜单</a></strong></p>
+      
+      <p>告别手机发烫尿崩，告别游戏跳 Ping 断流，选对属于你的最佳协议与机场组合吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #fff7ed; border-left: 4px solid #f97316; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
