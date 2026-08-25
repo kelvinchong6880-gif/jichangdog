@@ -50,10 +50,13 @@ const allAirports = [...top7, ...others];
   description="全网独家36家主力机场横向对比表。按价格、专线类型、优惠码全面呈现，帮您最快锁定高性价比翻墙节点。"
 >
   <section class="page-shell compare-section" style="padding-top: 100px; padding-bottom: 80px;">
-    <div class="section-heading" style="text-align: center; margin-bottom: 56px;">
-      <p class="eyebrow" style="margin-bottom: 12px;">Premium Compare</p>
-      <h1 style="font-size: 2.75rem; margin: 0; background: linear-gradient(135deg, var(--ink) 0%, var(--blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; font-weight: 800; letter-spacing: -1px;">36 家机场综合对比表</h1>
-      <p style="margin-top: 20px; color: var(--muted); font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto;">按性价比与线路质量进行综合排列。全景展现最低价格、节点类型及独家优惠福利，助您快速锁定心仪品牌。</p>
+    <div class="section-heading" style="margin-bottom: 56px; justify-content: center; text-align: center;">
+      <div style="width: 100%; text-align: center;">
+        <p class="eyebrow" style="margin-bottom: 12px; display: inline-block;">Premium Compare</p>
+        <br/>
+        <h1 style="font-size: 2.75rem; margin: 0; background: linear-gradient(135deg, var(--ink) 0%, var(--blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; font-weight: 800; letter-spacing: -1px;">36 家机场综合对比表</h1>
+        <p style="margin-top: 20px; color: var(--muted); font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto;">按性价比与线路质量进行综合排列。全景展现最低价格、节点类型及独家优惠福利，助您快速锁定心仪品牌。</p>
+      </div>
     </div>
     
     <div class="table-container">
@@ -83,6 +86,9 @@ const allAirports = [...top7, ...others];
                     src={`/images/brands/${airport.logo}?v=2`} 
                     alt={`${airport.name} logo`} 
                     loading="lazy"
+                    width="44"
+                    height="44"
+                    style="width: 44px; height: 44px; min-width: 44px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.06);"
                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2U0ZTlmMiIvPjwvc3ZnPg=='"
                   />
                   <strong>{airport.name}</strong>
