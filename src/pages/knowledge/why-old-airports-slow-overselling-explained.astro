@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "为什么有些老牌机场反而速度慢？解析“超售”对节点的影响";
+const description = "老牌机场晚高峰为什么越来越卡？深度揭秘机场超卖（Overselling）背后的带宽复用率潜规则，教你如何避开大厂杀熟与万人骑节点。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：为什么很多名气大、经营时间长的老牌机场反而速度奇慢？罪魁祸首就是整个行业的毒瘤——“超售（Overselling）”。机场的节点带宽就像一条双车道的高速公路（比如 1Gbps 的国际带宽）。合理的做法是卖给 100 个人，大家都能跑得很通畅；但老牌机场为了追求利润最大化，往往会利用自己常年积累的名气和用户惯性，把这条宽带强行卖给 1000 甚至 5000 个人。这就叫“节点超卖”或“极高的带宽复用率”。在工作日的白天没人用时，你觉得速度很快；但一到晚上 8 点至 11 点的晚高峰，所有被“超售”的用户同时上线看视频，这条高速公路瞬间堵死。你的实际体验就是：明明买的是大厂专线，看个视频却疯狂转圈缓冲。</strong> 买机场绝对不能迷信“名气大”，拒绝超售才是保障晚高峰体验的唯一真理。</p>
+
+      <h2 id="core-comparison">1. 行业内幕对比表：严重超售大厂 vs 小众精品机场</h2>
+      <p>当你抱怨 <strong>老牌机场速度慢、翻墙晚高峰拥堵</strong> 时，大厂的客服往往会用“最近 GFW 严打”或“海底光缆故障”来敷衍你。为了让你看清大厂杀熟的真面目，我们整理了这张极具揭露性的对比表格：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>严重超售的“名牌大厂机场”</th>
+              <th>限制注册人数的“小众精品机场”</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>带宽分配逻辑 (复用率)</strong></td>
+              <td><strong>极高复用率（把 1G 宽带卖给上千人，赚取暴利）</strong></td>
+              <td><strong>低复用率（按实际服务器冗余严格控制售卖账号数量）</strong></td>
+            </tr>
+            <tr>
+              <td><strong>晚高峰体验 (8PM-11PM)</strong></td>
+              <td><strong>灾难级拥堵，丢包率飙升，看 1080P 都频繁卡顿</strong></td>
+              <td><strong>稳如泰山，晚高峰依然能够丝滑秒开 4K/8K 视频</strong></td>
+            </tr>
+            <tr>
+              <td><strong>测速图与跑分表现</strong></td>
+              <td><strong>有专门的“测速优化”，白天跑分极高，晚高峰实际拉胯</strong></td>
+              <td>跑分和实际体验一致，不搞虚假数据，主打全天候稳定</td>
+            </tr>
+            <tr>
+              <td><strong>售后服务与态度</strong></td>
+              <td><strong>店大欺客，客服形同虚设，根本不在乎你一个用户的流失</strong></td>
+              <td>极其珍惜口碑，网络波动通常会有详细说明甚至流量补偿</td>
+            </tr>
+            <tr>
+              <td><strong>最终购买建议</strong></td>
+              <td><strong>坚决避坑，不要为过去的情怀和虚假的名气买单</strong></td>
+              <td><strong>重度流媒体与游戏用户的首选，贵一点但绝对省心</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="overselling-explained">2. 揭开遮羞布：宽带复用率 (Contention Ratio) 与晚高峰的灾难</h2>
+      <p>很多刚入坑的小白不懂：<strong>机场超售是什么意思？跟健身房卖卡一样吗？</strong></p>
+      
+      <p>完全一样。假设一个健身房只有 10 台跑步机（机场的总出口带宽），老板却卖出去了 2000 张年卡。老板赌的是“这 2000 个人不可能在同一时间来跑步”。这就是所谓的 <strong>宽带复用率 (Contention Ratio)</strong>。<br>
+      如果你恰好在早上 10 点去翻墙，你会发现 10 台跑步机空无一人，你觉得这家机场速度飞快；但对于绝大多数打工人来说，翻墙的唯一时间就是晚上下班后的 <strong>晚高峰 (晚上 8 点到 11 点)</strong>。此时，成百上千的人同时涌入这家老牌机场，要求看 YouTube、刷推特。10 台跑步机瞬间挤满了人，机场的软路由只能强制启动 <strong>晚高峰 QoS 抢带宽（端口限速）</strong>。结果就是，原本能跑 500Mbps 的专线，分摊到你头上只剩下了可怜的 2Mbps，连看个 720P 画质都费劲。<br>
+      这就是为什么你明明买的是昂贵的高端套餐，却在使用着 <strong>万人骑节点</strong>，体验着 <strong>翻墙越来越卡</strong> 的痛苦。</p>
+
+      <h2 id="fake-speedtest">3. 大厂杀熟与测速造假：跑满 1000M 为什么看 YouTube 还是转圈？</h2>
+      <p>最让人愤怒的是，当你拿着卡顿的截图去质问老牌机场的客服时，他们会甩给你一张全绿的测速图：“你看我们的节点能跑满 1000M，是你自己本地的网络有问题！”</p>
+      
+      <p><strong>为什么机场测速能跑满，实际看 YouTube 却很慢？</strong> 这就是大厂超售最典型的症状——<strong>测速造假与动态负载均衡假象</strong>。<br>
+      当你使用测速软件时，软件会发起几十上百个多线程请求。大厂的路由器检测到你在“测速”，会立刻把最高优先级的带宽分配给你（这叫测速优化），所以数字极其漂亮。但你看视频时是单线程或者少量线程，此时你被重新打回了拥挤的“超售池”，和其他几千名老用户一起抢夺剩下的残羹冷炙。<br>
+      大厂吃准了老用户存在“沉没成本”（比如刚续费了年费），他们把最优质的资源全部倾斜给测速频道和新用户用来拉新，而老用户则沦为被牺牲的韭菜。这就是赤裸裸的 <strong>大厂杀熟</strong>。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：买机场到底该选大厂还是小众精品？</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 怎么判断我的翻墙节点是不是被严重超售了？</h3>
+        <p><strong>答：最简单的标准就是“白天和晚上的反差”。</strong> 如果一个节点在中午 12 点能流畅看 4K，但一到晚上 9 点连网页都打不开，或者频繁断流（Ping 值剧烈抖动），不用怀疑，它绝对被严重超售了。真正不超售的机场，全天 24 小时的速度体验应该是几乎无差别的。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 发现老牌机场严重超售限速，还能要求退款吗？</h3>
+        <p><strong>答：基本不可能。</strong> 老牌机场的《服务条款》里通常有免责声明。而且他们店大欺客，根本不缺你这几十块钱。面对超售，最好的办法就是“及时止损”，把剩下的时间当沉没成本，立刻寻找新的备用机场，并且以后 <strong>永远坚持月付保平安</strong>。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 买机场是选名气大的老牌还是选新出的精品？</h3>
+        <p><strong>答：避开两极，选择“严格限制注册人数的中生代精品”。</strong> 名气过大的老牌几乎 100% 超售；刚开业两三个月的新厂有随时跑路的风险。最完美的选择是那些开业 1-2 年、拥有稳定 IPLC 资源、且实行“高定价、邀请制或经常关闭注册”来限制用户总数的小众精品机场。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极选购建议：抛弃情怀，拥抱不超售的硬核低复用率机场</h2>
+      <p>看完了这篇残酷的行业揭秘，你一定明白了：<strong>大厂的名气不是你翻墙速度的保障，低超售率才是。</strong></p>
+      
+      <p>👉 <strong>我们给所有重度翻墙用户的终极建议是：</strong><br>
+      抛弃对所谓“老牌大厂”的盲目迷信。不要再去吃他们画的“万兆专线”的大饼。一条 1Gbps 的专线如果有 1 万人在用，它的体验绝对不如一条只有 100 人在用的 200Mbps 小众专线。</p>
+      
+      <p>为了让大家彻底告别晚高峰的拥堵与卡顿，我们团队经过长期暗访与晚高峰实测，为您挖掘了目前市面上 <strong>坚决不超售、严格限制注册人数、晚高峰绝对丝滑秒开 4K 的小众高端精品机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 拒绝拥堵杀熟！承诺不超售、晚高峰依然丝滑的精品高端专线机场排行</a></strong></p>
+      
+      <p>网络体验无价，把钱花在刀刃上，去享受真正不受限的自由网络吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #fffbeb; border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
