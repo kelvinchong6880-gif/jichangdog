@@ -145,7 +145,7 @@ const allAirports = [...top7, ...others];
       min-width: 900px;
     }
     
-    /* 吸顶式玻璃质感表头 */
+    /* 普通表头，取消吸附 */
     .compare-table th {
       padding: 16px 20px;
       font-weight: 700;
@@ -154,12 +154,7 @@ const allAirports = [...top7, ...others];
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      position: sticky;
-      top: 70px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 10;
+      background: #f8fafc;
       border-bottom: 2px solid #e2e8f0;
     }
     
