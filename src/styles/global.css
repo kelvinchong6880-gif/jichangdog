@@ -120,16 +120,15 @@ body {
 }
 
 .tech-stats-card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(228, 233, 242, 0.8);
+  background: linear-gradient(135deg, var(--blue) 0%, #6366f1 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 24px;
   width: 100%;
   max-width: 360px;
-  box-shadow: 0 12px 32px rgba(36, 87, 230, 0.05);
+  box-shadow: 0 20px 40px rgba(36, 87, 230, 0.25);
   transform: translate(32px, -70px);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .stats-header {
@@ -138,7 +137,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px dashed var(--line);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
 .stats-number {
@@ -150,23 +149,22 @@ body {
 .stats-number strong {
   font-size: 2.5rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
   line-height: 1;
 }
 
 .stats-number span {
   font-size: 0.875rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 600;
 }
 
 .pulse-badge {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--blue);
-  background: #eff4ff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
   padding: 4px 10px;
   border-radius: 20px;
   display: flex;
@@ -178,15 +176,15 @@ body {
   display: block;
   width: 6px;
   height: 6px;
-  background: var(--blue);
+  background: #fff;
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(36, 87, 230, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(36, 87, 230, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(36, 87, 230, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
 
 .stats-list {
@@ -203,12 +201,12 @@ body {
   gap: 10px;
   align-items: flex-start;
   font-size: 0.875rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
 }
 
 .stats-list li i {
-  color: var(--blue);
+  color: #a5b4fc;
   font-weight: 900;
   font-style: normal;
   font-size: 1.25rem;
@@ -216,7 +214,7 @@ body {
 }
 
 .stats-list li b {
-  color: var(--ink);
+  color: #fff;
   font-weight: 700;
 }
 
