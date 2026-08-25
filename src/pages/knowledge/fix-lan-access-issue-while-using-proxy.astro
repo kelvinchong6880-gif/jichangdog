@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "翻墙后无法访问本地局域网设备 (如打印机、NAS) 怎么解决？";
+const description = "为什么开了梯子就找不到公司打印机和家里NAS了？深度图解代理绕过局域网 (Bypass LAN) 的核心机制，手把手教你配置 Clash / TUN 模式局域网直连。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：为什么开了代理后，你的 NAS 和网络打印机就“失踪”了？这是因为代理软件（尤其是开启了“全局模式”或“TUN 虚拟网卡模式”后）非常“敬业”。它会拦截你电脑发出的所有网络请求，并将它们打包发送到了海外的代理节点。你的 NAS、打印机明明就在你家路由器下面（比如内网 IP 是 192.168.1.10），但你的电脑却跑去美国的服务器上寻找这个地址，自然死活连不上。<br>解决这个问题的唯一核心机制叫做：“绕过局域网 (Bypass LAN)”。你只需要在客户端设置或分流规则中声明：让所有发往“局域网私有 IP 段”的请求直接通过本地物理网卡发出，绝不走代理。这就完美解决了翻墙与本地办公冲突的痛点。</strong></p>
+
+      <h2 id="core-comparison">1. 秒懂排障：各客户端“绕过局域网”一键修复指南表</h2>
+      <p>当你遇到 <strong>翻墙后局域网连不上</strong> 的窘境时，别慌着重装打印机驱动。根据你使用的软件模式，对照下方这张 <strong>代理绕过局域网 (Bypass LAN)</strong> 修复排障表，基本上 10 秒钟就能解决问题：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>客户端类型 / 模式</th>
+              <th>导致局域网断联的真实原因</th>
+              <th>一键排障解决办法 (如何直连)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Clash / v2rayN (系统代理模式)</strong></td>
+              <td>误开了“全局代理 (Global)”，导致不管什么流量都被强行发往国外。</td>
+              <td><strong>切换回“规则 (Rule)”模式。</strong> 优质机场的默认规则库已包含局域网直连配置。</td>
+            </tr>
+            <tr>
+              <td><strong>Windows 系统自带代理</strong></td>
+              <td>Windows 系统的代理设置里，没有勾选排除本地地址。</td>
+              <td>在系统代理设置中勾选 <strong>“请勿对本地(内网)地址使用代理服务器”</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>所有客户端 (TUN 模式)</strong></td>
+              <td><strong>TUN 虚拟网卡在底层强行截获了所有网络请求</strong>，包括内网 192.168 网段。</td>
+              <td>在软件的 TUN 设置中找到并强制开启 <strong>“绕过局域网 (Bypass LAN)”</strong> 开关。</td>
+            </tr>
+            <tr>
+              <td><strong>自行编写的自定义 YAML 规则</strong></td>
+              <td>你自己的配置文件顶部缺少了针对“私有 IP 段”的 DIRECT (直连) 声明。</td>
+              <td>在规则最顶部添加一行核心代码：<br><code>IP-CIDR,192.168.0.0/16,DIRECT</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tun-mode-conflict">2. 极客硬核解析：TUN 模式与私有 IP 段 (192.168.x.x) 的冲突</h2>
+      <p>很多重度玩家会问：<strong>为什么我开系统代理时 NAS 是好好的，一开启 Clash TUN 模式，Plex/Emby 本地视频库就打不开了？</strong></p>
+      
+      <p>答案在于 <strong>TUN 模式严格路由 (Strict Route)</strong> 的底层接管机制。<br>
+      系统代理（System Proxy）就像是交警在路面上指挥交通，它管不住走地下通道的流量；而 <strong>TUN 虚拟网卡 (Virtual Network Interface)</strong> 则是直接在源头把下水道都给封死了。当你的电脑向 <code>192.168.1.100</code>（你家 NAS 的地址）发送请求时，TUN 虚拟网卡二话不说，直接把这个包抓起来扔给了机场远在香港的代理服务器。<br>
+      香港的代理服务器一看包的目的地是 <code>192.168.x.x</code>（这是一个国际标准的 <strong>私有 IP 地址段</strong>，只能在局域网内部使用，无法在公网互联网上路由），服务器只能无奈地把包丢弃。于是，你的连接就超时了。<br>
+      要解决 <strong>TUN 模式局域网冲突</strong>，就必须在 TUN 的设置面板（或者底层 <code>bypass</code> 列表中），明确告诉虚拟网卡：“遇到 <code>192.168.x.x</code> 和 <code>10.x.x.x</code> 的包裹，你别碰，直接放行交给我真实的物理网卡去处理。”</p>
+
+      <h2 id="client-config">3. 客户端实操：Clash / v2rayN / Windows 代理的高阶代码配置</h2>
+      <p>如果你不想依赖开关，想自己动手丰衣足食，下面是具体实操。<strong>Clash Verge 怎么添加 192.168 局域网直连规则？</strong></p>
+      
+      <p><strong>方法一：在 Clash 配置文件中写入 IP-CIDR 直连规则</strong><br>
+      在 Clash 的配置文件（YAML）中，找到 <code>rules:</code> 模块。请务必将以下这几行 <strong>IP-CIDR / IP-CIDR6 规则语法</strong> 放在所有规则的最上方（因为它必须被最优先匹配和放行）：</p>
+<pre><code>rules:
+  # 优先放行本地局域网 IPv4 段
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  # 优先放行本地局域网 IPv6 段
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+</code></pre>
+      <p><em>注：<code>no-resolve</code> 参数非常重要，它告诉 Clash 直接看 IP 即可，不用去解析域名，极大地提高了内网访问速度。</em></p>
+
+      <p><strong>方法二：v2rayN 路由设置 (绕过局域网及大陆)</strong><br>
+      对于 v2rayN 用户，完全不需要写代码。直接在系统右下角托盘图标上右键 -> 点击 <strong>“路由 (Routing)”</strong> -> 勾选 <strong>“绕过局域网及大陆 (Bypass LAN and Mainland China)”</strong> 即可完美解决。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：AirDrop 变慢与局域网域名 (mDNS) 解析</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 为什么苹果 Mac 开启代理后，隔空投送 (AirDrop) 变慢甚至找不到人了？</h3>
+        <p><strong>答：AWDL 局域网协议被代理劫持。</strong> AirDrop 依赖于苹果底层的局域网多播和 mDNS 协议。如果你的 Mac 开启了“增强型 TUN 模式”，极有可能把内网的组播流量也给代理出去了。解决办法是在客户端中强制勾选“Bypass LAN (绕过局域网)”，确保 Mac 的局域网探测包不走代理节点。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 我在浏览器里输入 http://mynas.local (内网域名)，为什么开启代理后就打不开了？</h3>
+        <p><strong>答：这是经典的“内网 DNS 劫持”问题。</strong> 当你输入 <code>mynas.local</code> 时，代理软件的 Fake-IP DNS 会试图去公网上解析这个内网专属域名，结果当然是查无此站。你必须在代理软件的 DNS 配置中，将 <code>.local</code> 或者你家路由器的管理域名（如 <code>router.asus.com</code>）加入到 <code>fake-ip-filter</code>（不进行假 IP 劫持的名单）中，强制让本地 DNS 处理这些请求。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 路由器翻墙会影响家里的米家智能家居掉线吗？</h3>
+        <p><strong>答：大概率会，除非配置了分流。</strong> 路由器（如 OpenWrt 软路由）作为全家的总网关，如果翻墙插件配置不当，会把智能家居连接国内服务器的微量数据也发往国外，导致极高的延迟甚至掉线。建议在软路由插件中，给智能家居设备的内网 IP 强制设定为“不走代理（全局直连）”。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极选购建议：告别手写代码，拥抱自带完美路由规则的高端机场</h2>
+      <p>看完了以上极其复杂的局域网直连代码与内网域名劫持原理，很多非程序员用户肯定觉得头大如斗。<strong>“我只是想上个外网顺便用一下公司的打印机，为什么非要折磨自己去改 YAML 代码？”</strong></p>
+      
+      <p>👉 <strong>小白玩家的终极答案：购买订阅自带完美规则库的高端机场！</strong><br>
+      那些几十块钱的廉价劣质机场，下发的订阅规则极其简陋，根本没有顾及内网用户的死活。而真正专业的顶级大厂机场，其专属的运维团队会在订阅配置中，为你完美预置好：<strong>本地 IP 绕过、Fake-IP 过滤器、mDNS 白名单。</strong><br>
+      你只需要把订阅链接导进软件，选择“规则模式”，所有内外网的冲突瞬间灰飞烟灭。办公打印、NAS 观影、外网冲浪，三管齐下，互不干扰。</p>
+      
+      <p>为了让大家能拥有最省心、完全不影响本地办公体验的翻墙生活，我们团队为您精选了目前市面上 <strong>后台自带极其完善的“绕过局域网规则”、完美兼容 NAS 与智能家居的高端稳定专线机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 办公局域网无忧！自带完美直连规则、开箱即用的高端低延迟专线梯子推荐</a></strong></p>
+      
+      <p>翻墙是为了更好地连接世界，而不是切断你与身边的联系。选对机场，享受丝滑无感的内外网穿梭体验！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #faf5ff; border-left: 4px solid #a855f7; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 4px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    .prose pre { background: #1f2937; color: #f8f8f2; padding: 16px; border-radius: 8px; overflow-x: auto; margin-bottom: 24px; font-size: 0.9em; line-height: 1.5; }
+    .prose pre code { background: none; color: inherit; padding: 0; }
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
