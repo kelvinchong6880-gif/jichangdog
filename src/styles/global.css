@@ -494,3 +494,91 @@ body {
   background: var(--blue);
   color: #fff;
 }
+
+/* =========================================
+   Global TOC Sidebar Styles (Overrides scoped)
+   ========================================= */
+.knowledge-layout .toc-sidebar {
+  width: 300px !important;
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  top: 100px !important;
+  z-index: 10 !important;
+}
+
+.knowledge-layout .toc-container {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255,255,255,0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  transition: box-shadow 0.3s ease !important;
+}
+
+.knowledge-layout .toc-container:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255,255,255,0.8) !important;
+}
+
+.knowledge-layout .toc-title {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: var(--ink) !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 2px solid #f1f5f9 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.knowledge-layout .toc-title::before {
+  content: '📑';
+  font-size: 1.25rem !important;
+}
+
+.knowledge-layout .toc-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  position: relative !important;
+}
+
+.knowledge-layout .toc-link {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  font-size: 0.925rem !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: block !important;
+  line-height: 1.5 !important;
+  border-left: 3px solid transparent !important;
+  padding: 8px 12px !important;
+  border-radius: 0 8px 8px 0 !important;
+  position: relative !important;
+}
+
+.knowledge-layout .toc-link:hover {
+  color: var(--blue) !important;
+  background: #eff4ff !important;
+  border-left-color: #a5b4fc !important;
+  transform: translateX(4px) !important;
+}
+
+.knowledge-layout .toc-link.active {
+  color: var(--blue) !important;
+  font-weight: 700 !important;
+  border-left-color: var(--blue) !important;
+  background: linear-gradient(90deg, #eff4ff 0%, transparent 100%) !important;
+}
+
+@media (max-width: 992px) {
+  .knowledge-layout .toc-sidebar {
+    display: none !important;
+  }
+}
+
