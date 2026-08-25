@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "DNS 泄露是什么？如何配置客户端防止运营商知道你在翻墙";
+const description = "翻墙为什么会被运营商监控记录？深度解析 DNS 泄露原理、运营商 DNS 污染危害，手把手教你配置 Clash Fake-IP 与远程解析防泄露。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：什么是 DNS 泄露？假设你想去一个名为“YouTube”的秘密大厦，你雇了一个保镖（翻墙代理软件）全程加密护送你。但你不知道大厦的具体坐标，于是你在出发前，大声向路边的警察（国内宽带运营商，如电信/联通）询问：“YouTube 的门牌号（IP 地址）是多少？”虽然你接下来的行程被保镖严格加密了，但警察已经在日志上清楚地记录了你想要去哪。这就是 DNS 泄露 (DNS Leak)。由于配置不当，你的代理软件依然在使用国内运营商的默认 DNS 服务器来解析境外域名。这不仅会导致你的访问隐私彻底暴露（被记录访问痕迹），还会因为运营商返回错误的假 IP（DNS 污染）而导致你根本连不上网。</strong> 想要真正实现隐私保护，必须彻底切断与国内 DNS 的纠缠，开启“远程 DNS 解析”或更高级的 Fake-IP 模式。</p>
+
+      <h2 id="core-comparison">1. 深度拆解：防泄露机制与 DNS 解析模式对比表</h2>
+      <p>当你向小白解释 <strong>翻墙防监控</strong> 时，底层的 DNS 解析逻辑是最难懂的一环。为了让你一眼看懂 <strong>翻墙 DNS 泄露</strong> 的危害，我们整理了下方这张核心防御机制对比表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>DNS 解析模式</th>
+              <th>运作原理与表现</th>
+              <th>隐私安全性 (防泄露)</th>
+              <th>适用客户端与场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>本地直连 DNS (泄露元凶)</strong></td>
+              <td>代理软件没有接管 DNS 请求，直接向国内运营商（如 114.114.114.114 或 223.5.5.5）查询目标域名。</td>
+              <td><strong>极度危险</strong>（运营商完全掌握你的浏览记录，且极易遭遇 DNS 污染导致断网）。</td>
+              <td>配置错误的传统 VPN、劣质小白一键翻墙软件。</td>
+            </tr>
+            <tr>
+              <td><strong>远程解析 (Remote DNS)</strong></td>
+              <td>代理软件将网址原封不动打包发送给海外代理节点，由海外服务器代为查询真实的 IP。</td>
+              <td><strong>极其安全</strong>（国内运营商完全不知道你要干嘛，因为 DNS 请求和数据一起被加密了）。</td>
+              <td>v2rayN (开启域名的远程解析)、标准代理客户端的常规安全模式。</td>
+            </tr>
+            <tr>
+              <td><strong>Fake-IP 模式 (当前最优解)</strong></td>
+              <td>客户端直接返回一个“假 IP”（如 198.18.0.x）给本地浏览器骗它立刻发包，然后将真实网址丢给海外代理节点去解析。</td>
+              <td><strong>极其安全，且速度最快</strong>（省去了在本地等待 DNS 握手的时间，网页丝滑秒开）。</td>
+              <td><strong>Clash / Clash Verge Rev / Surge / 小火箭</strong> 等现代代理工具的高级玩法。</td>
+            </tr>
+            <tr>
+              <td><strong>DoH (DNS over HTTPS)</strong></td>
+              <td>将 DNS 查询请求通过 HTTPS 加密隧道发送给安全的 DNS 提供商（如 8.8.8.8）。</td>
+              <td><strong>安全</strong>（防止中间人嗅探，但查询速度可能略微受限于物理距离）。</td>
+              <td>浏览器内置安全 DNS、路由器旁路由防劫持配置。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="dns-poisoning">2. 致命的双刃剑：运营商 DNS 污染与断网的真相</h2>
+      <p>很多网友抱怨：<strong>“什么是 DNS 污染，为什么会导致翻墙断网？”</strong></p>
+      
+      <p>实际上，DNS 泄露不仅仅是“运营商知道了你要去哪”的隐私问题，它更是一个严重的“可用性”问题。<br>
+      当你向国内的运营商 DNS 查询 <code>youtube.com</code> 的 IP 地址时，GFW（防火长城）会立刻侦测到这个被封锁的敏感词。随后，它会执行著名的 <strong>运营商 DNS 劫持 (DNS Cache Poisoning)</strong> 操作——抢在真正的 DNS 服务器回应之前，强行塞给你一个虚假的、根本不存在的 IP 地址（或者指向一个黑洞服务器）。<br>
+      于是，你的代理软件拿着这个“假门牌号”去敲门，自然什么都加载不出来，你的浏览器就会报错 <code>ERR_CONNECTION_TIMED_OUT</code>。<br>
+      因此，<strong>防止 DNS 泄露</strong> 不仅仅是为了防查水表，更是为了确保你的节点能够拿到真实的海外 IP，从而正常翻墙访问外网。</p>
+
+      <h2 id="fake-ip-guide">3. 客户端实操：Clash Verge Rev 开启 Fake-IP 模式教程</h2>
+      <p>在所有防泄露方案中，<strong>Fake-IP 模式</strong> 是目前公认的速度最快、最无脑的终极防御手段。<strong>Clash Verge 怎么开启 Fake-IP 防泄露？</strong></p>
+      
+      <p>主流的高级机场提供的订阅配置，通常已经默认帮你写好了。但如果你想要确认或强制开启，请按照以下步骤检查你的 <strong>Clash DNS 设置</strong>：</p>
+      <ol>
+        <li>打开 Clash Verge Rev，进入左侧的 <strong>“设置 (Settings)”</strong> 菜单。</li>
+        <li>找到 <strong>“系统代理 (System Proxy)”</strong> 旁边的 <strong>“TUN 模式 (Tun Mode)”</strong>，强烈建议开启 TUN 模式，它能在网卡底层接管所有流量，彻底防止哪怕是极其顽固的客户端发生 DNS 泄露。</li>
+        <li>在高级配置或机场的 YAML 配置文件中，找到 <code>dns:</code> 模块，确认以下参数：
+<pre><code>dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5 # 用于解析国内域名的国内 DNS
+  fallback:
+    - 8.8.8.8 # 用于解析海外域名的干净 DNS
+</code></pre>
+        </li>
+      </ol>
+      <p><strong>Clash 配置文件里的 fallback 是什么意思？</strong><br>
+      这是防泄露的第二道防线。当 <code>nameserver</code>（国内 DNS）返回的结果被怀疑遭到了污染，或者目标域名在黑名单上时，Clash 会强制采用 <code>fallback</code> 中配置的海外安全 DNS（如 8.8.8.8）的解析结果，从而完美避开国内运营商的黑手。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：DNS Leak Test 与隐私焦虑排查</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 怎么测试我的代理节点有没有 DNS 泄露？</h3>
+        <p><strong>答：使用专业的 DNS Leak Test 网站。</strong> 开启全局代理后，访问 <code>dnsleaktest.com</code>，点击“Extended test”。如果在结果列表里，出现了任何“中国大陆”的 IP 地址，或者出现了你的宽带运营商名字（如 China Telecom），那就说明发生了严重的 DNS 泄露。如果全是国外的 IP，恭喜你，你很安全。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 为什么我开了翻墙软件，运营商还能知道我访问了哪些网站？</h3>
+        <p><strong>答：除了 DNS 泄露，还有 SNI 嗅探。</strong> 虽然你修补了 DNS 泄露，但如果你访问的是普通的 HTTP（未加密）网站，或者目标域名的 SNI 信息（明文包含在 HTTPS 握手包中）被识别，运营商的 DPI（深度包检测）设备依然能猜出你在干嘛。这也是为什么你必须使用强加密代理协议（如 VLESS/Trojan）将流量彻底打包的原因。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 手机小火箭 (Shadowrocket) 怎么修改加密 DNS 防止泄露？</h3>
+        <p><strong>答：在通用设置里修改。</strong> 打开小火箭，点击底部的“设置” -> “通用” -> 开启“TUN 模式” -> 找到“DNS”选项。将默认的 DNS 修改为安全的 DoH 地址（例如 <code>https://dns.cloudflare.com/dns-query</code>），这样就能强制手机通过加密隧道进行解析，杜绝泄露。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极安全指南：认准内置防泄漏规则的无日志高端机场</h2>
+      <p>看完了这篇极其深度的排雷文章，你应该意识到：<strong>网络世界的隐私不是免费的，它需要严密的规则和底层技术去支撑。</strong></p>
+      
+      <p>👉 <strong>小白用户的终极避坑法则：</strong><br>
+      自己去手写复杂的 <code>fallback</code> 和 <code>nameserver</code> 路由规则极其痛苦，且一旦写错就会导致国内网站打不开、国外网站连不上的“断网”惨案。<br>
+      事实上，你完全不需要自己折腾！真正专业的顶级机场，其下发的订阅链接中，早就由顶级的安全运维团队为你写好了天衣无缝的防 DNS 泄露规则（内置 Fake-IP 模式配置）。你只需要一键导入，就能立刻享受军工级的隐私保护。</p>
+      
+      <p>为了让大家能安心冲浪，不用再担心被运营商“查水表”，我们团队为您精选了目前市面上 <strong>承诺绝对无日志、内置完美防 DNS 泄露规则、采用顶级安全加密协议的高端安全机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 安全至上！内置防 DNS 泄露规则、抗运营商嗅探的高端隐私梯子推荐</a></strong></p>
+      
+      <p>在这个数据裸奔的时代，为自己穿上最坚固的铠甲，放心地去探索世界的每一个角落吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 4px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    .prose pre { background: #1f2937; color: #f8f8f2; padding: 16px; border-radius: 8px; overflow-x: auto; margin-bottom: 24px; font-size: 0.9em; line-height: 1.5; }
+    .prose pre code { background: none; color: inherit; padding: 0; }
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
