@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "什么是“全局模式”与“规则模式”？何时应该使用哪一个？";
+const description = "翻墙后淘宝变卡怎么办？深度图解 Clash/小火箭全局模式和规则模式区别，教你正确设置智能分流，告别耗费流量与国内网站打不开。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：对于 99% 的普通用户，日常翻墙请永远保持在“规则模式”！<br><br>规则模式（Rule / PAC / 绕过局域网和大陆）：这是一个自带“智能导航”的模式。它会根据内置的名单自动判断：如果你访问的是 Google、YouTube，它就走代理节点；如果你访问的是淘宝、微信、百度，它就直接用你的本地宽带直连。这保证了国内上网不卡，还能极大节省机场套餐流量。<br><br>全局模式（Global）：这是一刀切的“强行出国”模式。无论你访问什么网站，所有的流量都会被强制发往海外代理节点。这就导致你访问国内网站时，数据要先绕地球一圈再回来，不仅速度奇慢无比，还会飞速耗尽你的机场流量。仅在极其特殊的情况（如排查某冷门外国网站在规则模式下打不开时）才短暂切换使用。</strong></p>
+
+      <h2 id="core-comparison">1. 秒懂排障：三大代理模式对比与流量消耗一览表</h2>
+      <p>想要彻底搞懂 <strong>全局模式和规则模式区别</strong>，并解决“怎么翻墙后网速变慢了”的世纪难题，请仔细查看下方这张 <strong>科学上网模式选择</strong> 排障表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>🌟 规则模式 (Rule / PAC)</th>
+              <th>⚠️ 全局模式 (Global)</th>
+              <th>❌ 直连模式 (Direct)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>流量去向与分流</strong></td>
+              <td><strong>智能分流</strong>（国外走代理，国内走本地直连）</td>
+              <td><strong>强制 100% 流量去海外兜一圈</strong></td>
+              <td>全部不走代理（相当于关闭了翻墙）</td>
+            </tr>
+            <tr>
+              <td><strong>机场套餐流量消耗</strong></td>
+              <td><strong>极低</strong>（只消耗你真实看外网视频的流量）</td>
+              <td><strong>极大</strong>（看个国内 B 站都在狂烧昂贵的机场流量）</td>
+              <td>零消耗</td>
+            </tr>
+            <tr>
+              <td><strong>国内 App 体验</strong></td>
+              <td>丝滑流畅，和平时没开代理一样快</td>
+              <td><strong>灾难级卡顿，部分 App 甚至会提示“异地登录”封号</strong></td>
+              <td>正常</td>
+            </tr>
+            <tr>
+              <td><strong>海外翻墙体验</strong></td>
+              <td>极佳（内置规则自动解锁主流外网，如 ChatGPT/Netflix）</td>
+              <td>极佳（可以强行打开某些未被内置规则收录的冷门外网）</td>
+              <td>无法打开任何被墙网站</td>
+            </tr>
+            <tr>
+              <td><strong>正确使用场景</strong></td>
+              <td><strong>99% 的日常挂机、刷剧、科研、工作</strong></td>
+              <td><strong>仅用于测试节点连通性、或遇到打不开的冷门外网时临时切换</strong></td>
+              <td>暂时不想翻墙、或者玩国服游戏防封号时</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="global-mode-risks">2. 痛点解析：为什么开了全局模式，国内网站卡得打不开？</h2>
+      <p>这是每一个小白都会踩的坑：<strong>为什么开了翻墙软件以后，淘宝/微信/百度变得特别卡？翻墙后国内网站打不开/加载慢怎么办？</strong></p>
+      
+      <p>罪魁祸首就是你误开了 <strong>全局模式 (Global)</strong>。<br>
+      假设你人在北京，你想打开杭州淘宝的网页。在 <strong>规则模式</strong> 下，你的电脑直接通过本地电信/联通宽带连接杭州服务器，延迟大概 30 毫秒，瞬间秒开。<br>
+      但是，如果你手贱点开了 <strong>全局模式</strong> 并且连接了一个美国节点。你的请求会先从北京通过海底光缆发往美国加利福尼亚，然后美国服务器再帮你去访问杭州的淘宝。淘宝的服务器一看是个美国 IP，还会把你当成海外用户甚至机器人，进行限速和弹验证码。最后数据再从美国长途跋涉发回北京。<br>
+      这也就是经典的“流量出口转内销”。这种操作不仅让原本 30 毫秒的延迟飙升到了 300 毫秒以上，还会让你的 <strong>机场流量消耗速度翻十倍</strong>（因为你连刷个朋友圈都在用机场的高昂国际带宽）。</p>
+
+      <h2 id="client-setup">3. 客户端实操：Clash / 小火箭 / v2rayN 怎么切换模式？</h2>
+      <p>不同的客户端对这几个模式的叫法可能略有不同，但底层逻辑完全一致。下面教你 <strong>手机和电脑翻墙怎么设置只代理国外网站</strong>：</p>
+      
+      <ul>
+        <li><strong>Clash Verge (Windows / Mac)：</strong><br>
+        在软件左侧菜单找到“代理 (Proxies)”或“设置 (Settings)”，你会看到顶部的三个按钮：<code>全局 (Global)</code>、<code>规则 (Rule)</code>、<code>直连 (Direct)</code>。<strong>请死死锁定在 <code>Rule (规则)</code> 上。</strong></li>
+        
+        <li><strong>Shadowrocket / 小火箭 (iOS)：</strong><br>
+        在首页的“全局路由”选项中，你会看到四个选项：配置、代理、直连、场景。<strong>这里的“配置”就等于规则模式，这里的“代理”就等于全局模式。</strong> 绝大多数情况下，请选择 <strong>配置 (Config)</strong>。</li>
+        
+        <li><strong>v2rayN (Windows)：</strong><br>
+        在系统托盘右键点击 v2rayN 图标，找到“路由 (Routing)”，选择 <strong>“绕过局域网和大陆 (Bypass LAN and Mainland China)”</strong>。这就是最经典的 PAC 规则分流模式。</li>
+      </ul>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：遇到打不开的外国网站怎么办？</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 为什么有些冷门外国网站在“规则模式”下打不开，切到“全局模式”就能打开了？</h3>
+        <p><strong>答：因为分流规则名单不全。</strong> 规则模式依赖于客户端内部的一份“分流名单（ACL/Rule-Set）”。如果某个外国网站太冷门，没被写进名单里，客户端就会以为它是国内网站，从而使用国内宽带直连（结果当然是被墙拦截）。遇到这种情况，你可以临时切换到“全局模式”访问，或者在 Clash 里手动添加一条针对该域名的 <code>DOMAIN-SUFFIX</code> 分流规则。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 为什么看 Netflix 或者用 ChatGPT 时，必须开规则模式？</h3>
+        <p><strong>答：为了触发“智能策略组”。</strong> 很多高级机场提供了“流媒体解锁专用节点”和“ChatGPT 原生节点”。在规则模式下，当你访问 Netflix 时，软件会自动把流量切给流媒体节点；访问 ChatGPT 时，自动切给原生节点。如果开全局模式，你就只能被死死绑定在一个节点上，极易触发风控和封号。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 玩外服游戏应该用全局模式还是规则模式？</h3>
+        <p><strong>答：绝大多数代理软件都不适合打游戏。</strong> Clash / 小火箭 主要处理的是 TCP 流量（网页/视频），而游戏大多是 UDP 流量。如果你非要用机场打外服游戏，请在 Clash Verge 中开启 <code>TUN 模式</code> 并配合 <code>全局模式</code>（或针对游戏服务器 IP 写规则）。但最稳妥的方法，依然是购买专用的网游加速器（如 UU 加速器）。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极选购建议：告别折腾，选择自带完美分流规则的傻瓜式机场</h2>
+      <p>看完了这篇文章，你应该明白了：<strong>“规则模式”好不好用，完全取决于那份内置的“分流规则名单”写得够不够完善。</strong></p>
+      
+      <p>👉 <strong>我们对小白用户的终极建议：</strong><br>
+      如果你用的是几十块钱的廉价劣质机场，他们下发的订阅文件里往往分流规则极其简陋。导致你用“规则模式”时很多外网打不开，被迫只能用“全局模式”，然后眼睁睁看着国内网站卡死、流量耗尽。<br>
+      而真正高端的大型机场，拥有专业的运维团队，每天都在更新 <strong>自带的完美分流规则（ACL4SSR 规则集）</strong>。你导入订阅后，无需任何修改，默认的“规则模式”就能完美实现：国内直连秒开、外网极速加载、冷门网站自动走漏网之鱼策略兜底。</p>
+      
+      <p>为了让大家能体验到“开了翻墙软件就跟没开一样，但所有网站都能秒进”的无感冲浪体验，我们为您精选了目前市面上 <strong>后台分流规则配置最完美、完全不需要小白操心的傻瓜式开箱即用高端机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 懒人福音！内置完美智能分流规则、开箱即用的高端稳定专线机场推荐</a></strong></p>
+      
+      <p>别让复杂的设置毁了你的上网体验。选对机场，让智能分流帮你把一切安排得明明白白！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #eef2ff; border-left: 4px solid #6366f1; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
