@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "Sing-box 新手配置指南：如何导入订阅并开启 TUN 模式";
+const description = "Sing-box怎么用？深度解析系统代理与TUN模式的区别，手把手教你导入机场订阅、开启虚拟网卡实现电脑全局翻墙与游戏加速。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：为什么要开启 TUN 模式？很多新手在用 Sing-box 翻墙时，发现浏览器能看 YouTube，但 Telegram 一直转圈、游戏大厅（Steam/Epic）进不去，或者程序员的命令行（CMD）死活连不上网。这是因为默认的“系统代理（System Proxy）”只能管得住浏览器等听话的软件。而 TUN 模式（虚拟网卡模式），相当于在你的电脑底层装了一个物理级别的“强行导流管”。一旦开启并授予管理员权限，电脑上所有软件的流量，都会被强制拦截并发送到机场节点。这就是实现真正意义上“全局翻墙”与“代理打游戏”的终极方案。</strong> 如果你想用 Sing-box 替代传统的 Clash，学会开启 TUN 模式是你的第一门必修课。</p>
+
+      <h2 id="core-comparison">1. 秒懂排障：系统代理 (System Proxy) 与 TUN 模式的终极对比</h2>
+      <p>当你疑惑 <strong>什么是虚拟网卡代理</strong> 以及 <strong>电脑翻墙 TUN 模式</strong> 有什么用时，请仔细对比下方这张排障表格。它能解答你 90% 的“连不上网”的问题：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>系统代理 (System Proxy)</th>
+              <th>TUN 模式 (虚拟网卡接管)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>工作原理</strong></td>
+              <td>告诉电脑：“请尽量把网络流量发给代理软件处理”。</td>
+              <td><strong>在系统底层创建一张假网卡，强行物理拦截所有网络流量。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>生效范围</strong></td>
+              <td>仅对浏览器和部分支持代理配置的标准 App 生效。</td>
+              <td><strong>100% 接管所有软件</strong>（包括游戏、CMD、终端、UWP、隐藏进程）。</td>
+            </tr>
+            <tr>
+              <td><strong>权限要求</strong></td>
+              <td>普通用户权限即可随时开启和关闭。</td>
+              <td><strong>必须以“管理员身份 (Run as Administrator)”运行客户端才能开启。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>常见痛点解决</strong></td>
+              <td>适合日常轻度网页浏览，不折腾。</td>
+              <td><strong>彻底解决 Telegram 转圈、外服游戏连不上、微软商店打不开等痛点。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>流量消耗与风控</strong></td>
+              <td>较低，因为只代理了浏览器的流量，相对省流量。</td>
+              <td>极高（强烈建议配合完美的分流规则使用，防止后台流氓软件偷跑流量）。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="import-subscription">2. 新手实操：如何将机场订阅链接导入 GUI.for.SingBox</h2>
+      <p>Sing-box 本身是一个极其强大的内核程序，对于没有编程基础的用户来说，我们推荐使用目前最火的图形化客户端：<strong>GUI.for.SingBox (适用于 Windows / Mac)</strong>。</p>
+      
+      <p><strong>第一步：获取并转换订阅链接</strong><br>
+      由于 Sing-box 使用的是极其严格的 <strong>Sing-box JSON 配置文件</strong> 格式，很多老机场默认不提供这种格式。如果你遇到了 <strong>Sing-box 怎么把 V2Ray/Clash 订阅链接转成 JSON 格式</strong> 的问题，你需要：</p>
+      <ol>
+        <li>登录机场后台，复制通用的“订阅链接 (Subscribe URL)”。</li>
+        <li>使用第三方的 <strong>订阅链接转换 (Subconverter)</strong> 网站（在谷歌搜索“Sing-box 订阅转换”）。</li>
+        <li>将生成的专属 Sing-box 格式链接复制下来。</li>
+      </ol>
+      
+      <p><strong>第二步：在客户端中导入</strong></p>
+      <ol>
+        <li>打开 GUI.for.SingBox 客户端，点击左侧的 <strong>“配置 (Profiles)”</strong>。</li>
+        <li>点击新建，选择“远程导入 (Remote)”，将刚才转换好的订阅链接粘贴进 URL 栏。</li>
+        <li>点击“保存 (Save)”并“更新 (Update)”，此时你应该能看到一排排的节点列表出现。</li>
+      </ol>
+
+      <h2 id="troubleshooting">3. 痛点排查：开启 TUN 模式失败或电脑没网怎么办？</h2>
+      <p>在享受 TUN 模式的强大之前，你需要跨过几个常见的技术门槛：</p>
+      
+      <p><strong>痛点 1：提示“TUN 模式初始化失败”怎么解决？</strong><br>
+      这 100% 是权限问题。<strong>Sing-box 的 TUN 模式需要管理员权限吗？</strong> 必须需要。在 Windows 上创建虚拟网卡是极高权限的操作。解决办法：完全退出 Sing-box 客户端，然后在桌面快捷方式上 <strong>右键 -> 以管理员身份运行 (Run as Administrator)</strong>，再次点击开启 TUN 模式即可成功。</p>
+
+      <p><strong>痛点 2：为什么 Sing-box 开启 TUN 模式后电脑就彻底没网了？</strong><br>
+      最常见的原因是你忘记配置 <strong>严格路由 (Strict Route)</strong> 和 <strong>代理绕过局域网 (Bypass LAN)</strong>。当 TUN 模式接管了所有流量，如果它把连向你家路由器的流量（比如 192.168.1.1）也代理到了美国节点，你的电脑自然就断网了。请在软件设置中确保勾选了“绕过局域网”，或者在分流规则的顶部添加 <code>IP-CIDR,192.168.0.0/16,DIRECT</code> 直连规则。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：游戏加速与 UWP 应用连网</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 怎么用 Sing-box 开启 TUN 模式打外服游戏 (如 Valorant)？</h3>
+        <p><strong>答：配合全局模式或专门的游戏分流规则。</strong> 开启 TUN 模式（并以管理员运行）后，游戏的 UDP 流量会被自动接管。你只需要将代理策略切换到“全局模式”并选择一个低延迟的节点（如香港 IPLC），或者在规则中针对游戏的 IP 段指定走特定节点即可。记住，打游戏一定要选专线节点防抖动。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 微软商店 (Microsoft Store) 打不开，怎么用 TUN 模式解决？</h3>
+        <p><strong>答：勾选开启 UWP 应用绕过 (UWP Loopback)。</strong> 微软出于安全考虑，禁止 UWP 商店应用访问本地代理（127.0.0.1）。但在 Sing-box 开启 TUN 模式后，所有的流量在底层被截获，从而完美绕过了这个限制。开启 TUN 后，你会发现此前死活打不开的微软商店瞬间满速加载了。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 微信、钉钉怎么设置不走 Sing-box 的 TUN 虚拟网卡？</h3>
+        <p><strong>答：使用 PROCESS-NAME（进程名）分流规则直连。</strong> 既然 TUN 接管了所有流量，为了防止浪费机场流量，你必须在 Sing-box 的 <code>route</code> 配置模块中，添加针对国内软件的直连规则：<code>"process_name": ["WeChat.exe", "DingTalk.exe"], "outbound": "direct"</code>。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极选购建议：原生支持 Sing-box 订阅的高端机场推荐</h2>
+      <p>看完了这篇极其深度的配置指南，你应该发现了一个核心痛点：<strong>自己去搞订阅转换和配置 JSON 规则，真的非常容易出错导致断网。</strong></p>
+      
+      <p>👉 <strong>小白与懒人玩家的终极避坑法则：</strong><br>
+      随着 Sing-box 因为其极低的资源占用和对新协议（如 Reality / Hysteria 2）的完美支持而爆火，真正有技术实力的高端机场，早就已经在后台为你准备好了 <strong>一键导入 Sing-box 的原生订阅链接</strong>。<br>
+      你完全不需要去第三方网站转换，更不需要自己写复杂的 Bypass LAN 规则。导入即可使用，开启 TUN 模式直接畅玩外服游戏，极其省心。</p>
+      
+      <p>为了让大家能体验到 Sing-box 最极致的丝滑翻墙体验，我们团队为您精选了目前市面上 <strong>完美兼容 Sing-box 格式、内置完美分流规则、极度适合开启 TUN 模式打游戏的高端低延迟专线机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 游戏党首选！原生支持 Sing-box、提供超低延迟专线的顶级机场排行</a></strong></p>
+      
+      <p>告别繁琐的折腾，拥抱现代代理内核的极致性能。选对服务商，让你的每一次跨国冲浪与对战都畅通无阻！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #f0fdf4; border-left: 4px solid #22c55e; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
