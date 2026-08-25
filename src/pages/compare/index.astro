@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const top7 = [
+  { name: '微风', price: '¥27', type: 'IPLC专线', code: 'hM8APccJ', link: 'https://edp01.breezenetaff.com/#/?code=hM8APccJ' },
+  { name: '飞猫云', price: '¥25', type: 'IPLC专线', code: 'w5lO9fqB', link: 'https://flycat1.flycatvipaff.cc/#/?code=w5lO9fqB' },
+  { name: 'firefly', price: '¥25', type: 'IPLC专线', code: '8nDg6OEY', link: 'https://vip02.fireflyaff.com/#/?code=8nDg6OEY' },
+  { name: '无忧', price: '¥19', type: 'IPLC专线', code: 's1kH64A8', link: 'https://wep01.worryfreeaff.com/#/?code=s1kH64A8' },
+  { name: '跨界', price: '¥20', type: 'IPLC专线', code: 'hh3QezsW', link: 'https://vip02.kuajieaff.com/#/?code=hh3QezsW' },
+  { name: '灵猫', price: '¥25', type: 'IPLC专线', code: 'CYg7QSJo', link: 'https://edp01.civetaff.com/#/?code=CYg7QSJo' },
+  { name: '闪跃', price: '¥24', type: 'IPLC专线', code: 'cs0ekCMG', link: 'https://wep01.flashleapaff.com/#/?code=cs0ekCMG' }
+];
+
+const others = [
+  { name: '光速云', price: '¥23', type: 'IPLC专线', code: '5PLKd4WN', link: 'https://mdlky.gsyaff.com/#/?code=5PLKd4WN' },
+  { name: '极连云', price: '¥18', type: 'IPLC专线', code: '3d87WSjS', link: 'https://kdjhao.jlyvipaff.com/#/?code=3d87WSjS' },
+  { name: '大哥云', price: '¥19.9', type: 'IPLC专线', code: 'wojBN2a4', link: 'https://a03.dgy02.com/#/register?code=wojBN2a4' },
+  { name: '二猫云', price: '¥20', type: 'IPLC专线', code: 'bvsFDmSt', link: 'https://wzjc.2maoyunaff.cc/#/?code=bvsFDmSt' },
+  { name: 'sogo 云', price: '¥25', type: 'IPLC专线', code: 'BC2BL855', link: 'https://wzjc.sogoyunaff.cc/#/?code=BC2BL855' },
+  { name: '飞V', price: '¥25', type: 'IPLC专线', code: 'XsiIuDgj', link: 'https://varnexa.flyvaff.com/#/?code=XsiIuDgj' },
+  { name: '光年梯', price: '¥18', type: 'IPLC专线', code: 'hTN6UF4T', link: 'https://ggmq.gntaff.com/#/?code=hTN6UF4T' },
+  { name: '可信云', price: '¥15', type: 'IPLC专线', code: 'k7T1sOyG', link: 'https://work.kosingaff.com/#/?code=k7T1sOyG' },
+  { name: '快狸', price: '¥15', type: 'IPLC专线', code: 'azB6yNBW', link: 'https://work.kuailicloud.cc/#/?code=azB6yNBW' },
+  { name: '浪网', price: '¥30', type: 'IPLC专线', code: '9U2hOtDu', link: 'https://varnexa.wavenetaff.com/#/?code=9U2hOtDu' },
+  { name: '老猫云', price: '¥40', type: 'IPLC专线', code: 'jcPU1grl', link: 'https://222.22laomao.com/#/register?code=jcPU1grl' },
+  { name: '灵动', price: '¥20', type: 'IPLC专线', code: 'HDiWuF7L', link: 'https://varnexa.lingdongaff.com/#/?code=HDiWuF7L' },
+  { name: '暮光', price: '¥20', type: 'IPLC专线', code: '2ILQOoYB', link: 'https://varnexa.twilightaff.com/#/?code=2ILQOoYB' },
+  { name: '气泡云', price: '¥9.9', type: 'IPLC专线', code: 'UtKCpyVa', link: 'https://x1.qipaoyun.xyz/#/register?code=UtKCpyVa' },
+  { name: '全球云', price: '¥20', type: 'IPLC专线', code: 'SHjBKSgm', link: 'https://sswdh.gcvipaff.com/#/?code=SHjBKSgm' },
+  { name: '山水云', price: '¥15', type: 'IPLC专线', code: 'Rh44jFWe', link: 'https://ss2.byvvcsx.com/#/register?code=Rh44jFWe' },
+  { name: '速界', price: '¥15', type: 'IPLC专线', code: 'wZYGdnTC', link: 'https://work.speedworldaff.cc/#/?code=wZYGdnTC' },
+  { name: '梯子云', price: '¥25', type: 'IPLC专线', code: 'zUCoDtv6', link: 'https://varnexa.ladderaff.com/#/?code=zUCoDtv6' },
+  { name: '网际快车', price: '¥--', type: 'IPLC专线', code: '快车', link: 'https://NGYHGO.快车.com' },
+  { name: '唯兔云', price: '¥19.9', type: 'IPLC专线', code: 'nbBJVFQP', link: 'https://fast.v2yunvipaff.com/#/?code=nbBJVFQP' },
+  { name: '星岛梦', price: '¥25', type: 'IPLC专线', code: '0YcwWgSw', link: 'https://kfccbb.xingdaomeng.com/#/?code=0YcwWgSw' },
+  { name: '一翻云', price: '¥20', type: 'IPLC专线', code: '0tH3Mmch', link: 'https://wzjc.1flyunaff.cc/#/?code=0tH3Mmch' },
+  { name: '隐形人', price: '¥24', type: 'IPLC专线', code: 'BtPRayAl', link: 'https://varnexa.invisibleaff.com/#/?code=BtPRayAl' },
+  { name: '宇宙云', price: '¥25', type: 'IPLC专线', code: 'IWowgER5', link: 'https://wzjc.yuzoucloud.cc/#/?code=IWowgER5' },
+  { name: 'edgenova', price: '¥15', type: 'IPLC专线', code: 'k7VCKPvN', link: 'https://work.edgenovaaff.cc/#/?code=k7VCKPvN' },
+  { name: 'flybit', price: '¥15', type: 'IPLC专线', code: 'Aga7bd1s', link: 'https://1.flybit.network/#/register?code=Aga7bd1s' },
+  { name: 'u1s1', price: '¥20', type: 'IPLC专线', code: 'YUCKdFlR', link: 'https://pkdj7.vipaff.cc/#/?code=YUCKdFlR' },
+  { name: 'xsus', price: '¥12', type: 'IPLC专线', code: 'QQh1M1i9', link: 'https://xsus.cloud/register?code=QQh1M1i9' },
+  { name: 'xxyun', price: '¥9.99', type: 'IPLC专线', code: 'pi9fB906', link: 'https://www.xx-yun.com/?code=pi9fB906' }
+];
+
+const allAirports = [...top7, ...others];
+---
+<BaseLayout 
+  title="36家主力机场横向对比表 - 价格与线路全景图｜机场狗" 
+  description="全网独家36家主力机场横向对比表。按价格、专线类型、优惠码全面呈现，帮您最快锁定高性价比翻墙节点。"
+>
+  <section class="page-shell home-section" style="padding-top: 120px;">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Data Compare</p>
+        <h1 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">36 家机场综合对比表</h1>
+        <p style="margin-top: 16px; color: var(--muted); font-size: 1.1rem;">按性价比与线路质量进行综合排列，帮助您快速决策。</p>
+      </div>
+    </div>
+    
+    <div class="table-container">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>品牌名称</th>
+            <th>最低月付</th>
+            <th>线路类型</th>
+            <th>专属优惠码</th>
+            <th>直达链接</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allAirports.map((airport, index) => (
+            <tr class={index < 7 ? 'top-tier' : ''}>
+              <td class="rank-col">
+                {index === 0 ? <span class="medal medal-1">🥇 1</span> : 
+                 index === 1 ? <span class="medal medal-2">🥈 2</span> : 
+                 index === 2 ? <span class="medal medal-3">🥉 3</span> : 
+                 <span class="rank-num">{index + 1}</span>}
+              </td>
+              <td class="brand-name"><strong>{airport.name}</strong></td>
+              <td class="price-col">{airport.price}</td>
+              <td class="type-col"><span class="badge badge-iplc">{airport.type}</span></td>
+              <td class="code-col">
+                <div class="promo-code-group" style="margin: 0 auto; display: inline-flex;">
+                  <code>{airport.code}</code>
+                  <button class="copy-code-btn" data-code={airport.code} title="点击复制">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  </button>
+                </div>
+              </td>
+              <td class="action-col">
+                <a href={airport.link} target="_blank" rel="noopener" class="button button-small" style="font-weight: 600;">官网直达 <span>↗</span></a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  
+  <style>
+    .table-container {
+      margin-top: 48px;
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+    }
+    
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      min-width: 800px;
+    }
+    
+    .compare-table th {
+      background: #f8fafc;
+      padding: 18px 20px;
+      font-weight: 700;
+      color: var(--ink);
+      border-bottom: 2px solid var(--line);
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+    
+    .compare-table td {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+      transition: background-color 0.2s;
+    }
+    
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .compare-table tr:hover td {
+      background: #f8fafc;
+    }
+    
+    .top-tier td {
+      background: #f0f9ff;
+    }
+    .compare-table tr.top-tier:hover td {
+      background: #e0f2fe;
+    }
+    
+    .rank-col { font-weight: 700; }
+    .medal { padding: 4px 10px; border-radius: 20px; font-size: 0.9rem; }
+    .medal-1 { background: #fef08a; color: #854d0e; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .medal-2 { background: #e2e8f0; color: #475569; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .medal-3 { background: #fed7aa; color: #9a3412; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .rank-num { color: #64748b; font-size: 1.1rem; }
+    
+    .brand-name strong { font-size: 1.1rem; color: var(--ink); }
+    .price-col { color: #0369a1; font-weight: 800; font-size: 1.1rem; }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-iplc {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .promo-code-group {
+      display: inline-flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .promo-code-group code {
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      color: #0f172a;
+      border-right: 1px solid var(--line);
+      font-weight: 600;
+    }
+    .promo-code-group button {
+      background: #f8fafc;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .promo-code-group button:hover {
+      background: #e2e8f0;
+      color: var(--blue);
+    }
+    .promo-code-group button.copied {
+      color: #10b981;
+    }
+  </style>
+</BaseLayout>
