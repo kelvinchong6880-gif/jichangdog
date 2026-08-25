@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "录日志 (Logging)：你的机场会出卖你的浏览记录吗？";
+const description = "机场主能看到我的浏览记录和密码吗？深度解析翻墙背后的节点审计、HTTPS 加密与无日志政策，教你如何防止机场隐私泄露。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：你的机场主到底能看到什么？结论是：他知道你去了“哪栋大楼”（访问了哪个网站域名），但绝对不知道你在大楼里“干了什么”（具体的网页内容与账号密码）。只要你访问的是 HTTPS 开头的安全网站（目前全球 95% 以上的网站都是），你的具体聊天记录、搜索记录和银行密码都会被严密加密。普通的机场主没有技术、也没有庞大的服务器硬盘去解密和存储海量的用户浏览内容。但请千万注意，你的“真实宽带 IP 地址”和访问的“网站域名（SNI）”，他们是完全有能力记录在服务器日志里的。</strong> 因此，选择一家信誉良好、承诺“无日志政策 (No-Log Policy)”的海外机场，才是保护隐私的最后一道防线。</p>
+
+      <h2 id="privacy-table">1. 透视底牌：机场隐私数据泄露风险对照表</h2>
+      <p>很多小白一连上梯子就极度恐慌，担心自己所有的隐私都在“裸奔”。为了打消你的疑虑，清楚地了解 <strong>机场主能看到什么</strong>，我们整理了这张极其直观的数据对照表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>数据类型</th>
+              <th>机场主能否看到？</th>
+              <th>原理解析（为什么）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>访问的网站域名</strong> (如 youtube.com)</td>
+              <td><strong>能看到 (极大概率)</strong></td>
+              <td>代理服务器必须读取 SNI（服务器名称指示）信息才能帮你转发流量，这些信息通常会保存在 <strong>机场节点审计</strong> 日志中。</td>
+            </tr>
+            <tr>
+              <td><strong>具体的网页内容</strong> / 看的什么视频</td>
+              <td><strong>看不到</strong></td>
+              <td>被目标网站的 <strong>HTTPS 流量加密</strong> 协议强制保护，中间人（机场主）截获的数据只是一堆乱码。</td>
+            </tr>
+            <tr>
+              <td><strong>微信/TG 聊天记录 / 账号密码</strong></td>
+              <td><strong>看不到</strong></td>
+              <td>绝大多数社交软件采用极高强度的“端到端加密”，代理节点根本无法解密中间流量。</td>
+            </tr>
+            <tr>
+              <td><strong>你的真实宽带 IP 地址</strong></td>
+              <td><strong>能看到 (绝对)</strong></td>
+              <td>你必须用你家里的真实 IP 连接机场的国内入口。如果机场跑路并泄露数据库，你的真实身份可能暴露。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="https-encryption">2. HTTPS 与端到端加密：为什么你的密码和聊天记录是安全的？</h2>
+      <p>最让人焦虑的问题之一就是：<strong>机场能看到我的微信聊天记录和密码吗？翻墙看黄会被机场主知道吗？</strong></p>
+      
+      <p>答案是绝对安全的。现代互联网的基石是 <strong>HTTPS 加密协议</strong>。当你通过浏览器访问任何正规网站（网址旁边有一把小锁图标），或者使用微信、Telegram 等通讯软件时，你的设备在把数据发给机场节点之前，就已经将数据进行了极高强度的加密。<br>
+      这就好比你写了一封信，放进了一个极其坚固的钛合金保险箱里，上了密码，然后交给了快递员（机场节点）。快递员只知道要把这个箱子送到哪个地址（这就是 SNI 嗅探能看到的网站域名），但他绝对打不开箱子，也不知道里面写的是什么，更看不到你输入的密码。<br>
+      所以，只要你不去下载那些来历不明的“破解版证书”或者安装恶意的免费 VPN 软件（防止中间人攻击），你的密码和聊天内容就是绝对安全的。</p>
+
+      <h2 id="real-name-risk">3. 最大的隐患：实名制与机场跑路导致的用户数据泄露</h2>
+      <p>既然密码看不到，那是不是就可以高枕无忧了？并不是。</p>
+      
+      <p><strong>机场隐私泄露</strong> 真正的风险，不在于你的浏览记录，而在于你的 <strong>支付信息与真实 IP</strong>。<br>
+      很多国内胆大妄为的“小作坊”机场，竟然敢要求用户使用支付宝甚至微信实名认证付款。这就是极其危险的 <strong>国内实名制机场</strong>。一旦这个机场主被网警查水表，警方直接没收服务器，你的真实 IP、注册邮箱以及实名付款记录将被一览无余。<br>
+      这也就是为什么老玩家经常警告：<strong>机场跑路会把用户注册数据交给网警吗？</strong> 如果是国内的实名机场，答案是肯定的；但如果是肉身在海外的顶级机场主，他们不仅承诺 <strong>无日志政策 (No Logs)</strong>，还会定期销毁服务器连接记录，即使遭遇不可抗力，也没有任何用户数据可以泄露。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：关于翻墙隐私的极度恐慌</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 我买了机场，还需要在电脑里额外开启无痕浏览（隐身模式）吗？</h3>
+        <p><strong>答：完全取决于你想防谁。</strong> 机场的节点只负责转发网络流量。如果你想防机场主，开无痕模式没用，因为你的数据依然要经过他的服务器（但有 HTTPS 保护，不用担心）；如果你是想防“借用你电脑的室友或同事”看到你的浏览历史记录，那开启无痕浏览是非常有必要的。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 听说有“DNS 泄露”，这是什么意思？会有危险吗？</h3>
+        <p><strong>答：有一定隐患，但可以防范。</strong> DNS 泄露是指虽然你的流量走了代理，但你“解析域名”的请求却不小心发给了国内的运营商（如电信、联通）。这会让运营商知道你试图访问外网。现在的优质客户端（如 Clash Verge、v2rayN）默认都配置了安全的防 DNS 泄露规则，只要你不去乱改设置，基本不用担心。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 如果我极度看重隐私，应该怎么买机场？</h3>
+        <p><strong>答：做到“三不”原则。</strong> 第一，不使用国内常用的 QQ/网易邮箱注册，改用 ProtonMail 等 <strong>虚拟邮箱注册机场</strong>；第二，尽量使用加密货币（USDT）进行 <strong>加密货币支付翻墙</strong> 费用，切断资金流向；第三，绝对不买任何需要国内手机号注册的实名制梯子。</p>
+      </div>
+
+      <h2 id="recommendation">5. 终极自保指南：如何匿名购买真正“无日志”的海外高端机场</h2>
+      <p>看完了这篇深度的隐私揭秘，你应该明白：<strong>在灰色地带游走，保护好自己的“真实身份”比担心“密码被盗”更重要。</strong></p>
+      
+      <p>👉 <strong>我们给所有读者的终极建议是：</strong><br>
+      永远不要贪图便宜去买国内小作坊搭建的“一元实名机场”。你应该去寻找那些老板肉身在海外、采用 VLESS 等极强加密协议、并且在《隐私条款》中明确写明“绝不记录用户访问日志（No-Log Policy）”的国际化大型机场。</p>
+      
+      <p>为了保障大家的网络安全，我们排查了市面上的海量梯子，为您筛选出了目前 <strong>支持 USDT 匿名付款、无需实名认证、且坚决执行无日志政策的高端安全机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 极致隐私保护！支持匿名购买、无日志记录的海外高端专线机场推荐</a></strong></p>
+      
+      <p>网络世界里，没有人能保护你，除了你自己。选对机场，让你的每一次冲浪都了无痕迹！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #eef2ff; border-left: 4px solid #6366f1; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
