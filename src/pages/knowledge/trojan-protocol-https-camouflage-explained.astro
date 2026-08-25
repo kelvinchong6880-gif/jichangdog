@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "Trojan 协议原理解析：为什么它能完美伪装成正常 HTTPS？";
+const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议是如何通过 TLS 加密和防主动探测机制完美伪装成正常 HTTPS 网站的，彻底骗过 GFW 实现稳定翻墙。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：Trojan（特洛伊木马）协议之所以能完美伪装成正常 HTTPS，是因为它“顺应规则，不造特征”。传统的翻墙协议（如早期 SS）是给流量穿上奇装异服（自定义加密），这在 GFW 看来极其可疑；而 Trojan 则完全按照互联网标准，将代理流量伪装成合法的 HTTPS 网页访问（443 端口 + 真实 TLS 证书）。当 GFW 主动探测或普通用户试图访问时，Trojan 服务端会展现一个真实合法的普通网站；只有当输入正确密码时，它才会作为代理通道运作。</strong> 搞懂了 Trojan 的伪装哲学，你就掌握了在这场猫鼠游戏中立于不败之地的核心机密。</p>
+
+      <h2 id="what-is-trojan">1. 一分钟读懂：什么是 Trojan 翻墙？它为什么叫“特洛伊木马”？</h2>
+      <p>如果你经常购买翻墙机场，或者喜欢自己折腾 VPS 自建节点，你绝对见过 <strong>Trojan 协议</strong> 这个词。<strong>为什么科学上网协议叫 Trojan（特洛伊木马）？</strong></p>
+      
+      <p>在古希腊神话里，希腊联军把士兵藏在一只巨大的木马肚子里，特洛伊人以为这是神圣的战利品，毫无防备地将它拉进了城，最终导致城池失守。<br>
+      这正是 <strong>Trojan 伪装 HTTPS</strong> 的核心隐喻：它把你的翻墙数据（士兵）藏在了一段极其标准的 HTTPS 网页加密流量（木马）里。GFW（防火长城）作为守城卫兵，看到这段数据时，检查了它的证书、它的端口、它的握手协议，发现“咦，这就是一个人在正常访问境外的某个加密网站”，于是直接放行。GFW 根本不知道，这层看似无害的外壳之下，隐藏着正在疯狂穿梭的 YouTube 4K 视频数据。</p>
+
+      <h2 id="core-mechanism">2. 核心揭秘：Trojan 是怎么骗过 GFW 防火墙的？（三大绝招）</h2>
+      <p>那么，<strong>Trojan 协议是怎么骗过 GFW 防火墙的？</strong> 它的 <strong>Trojan 原理</strong> 究竟有何神奇之处？主要归功于以下三大绝招：</p>
+      
+      <ul>
+        <li><strong>真实的 TLS 证书与 443 端口：</strong> Trojan 不发明任何新的加密协议，它直接借用全球互联网公认的最安全标准——<strong>TLS / SSL 证书加密</strong>。<strong>Trojan 流量和正常浏览网页有什么区别？</strong> 答案是：在 GFW 眼里，<strong>毫无区别！</strong> 数据包从握手到传输，与你访问招商银行或苹果官网一模一样，GFW 无法通过任何特征库进行识别阻断。</li>
+        <li><strong>防主动探测（Active Probing Defense）与回落机制：</strong> 当 GFW 怀疑你这是一个翻墙节点时，它会假装成一个普通的访客，主动发包探测你的服务器。此时，Trojan 展现了极其聪明的 <strong>Trojan 回落机制（Fallback）</strong>。Trojan 发现来者并没有携带正确的翻墙密码，它不会断开连接（那样就暴露了自己是代理），而是悄悄把请求转发给后端的 Nginx/Caddy，返回一个真实的个人博客或网页（Fake Website）。GFW 探测完得出结论：“这确实只是个合法的个人博客”，于是将你加入白名单。</li>
+        <li><strong>极简轻量、拒绝双重加密：</strong> 与 VMess 等老一代协议不同，Trojan 不在 TLS 内部再套一层复杂的自有加密。它把所有的加密工作都交给外层的 TLS 负责。这使得 <strong>Trojan 协议玩游戏延迟高不高</strong> 这个问题的答案非常明确：极低！因为它性能损耗极小，速度极快，同时大大减轻了手机的耗电量。</li>
+      </ul>
+
+      <h2 id="protocol-comparison">3. 降维打击对比表：Trojan vs Shadowsocks vs VLESS-Reality</h2>
+      <p>为了让极客玩家清晰地了解 <strong>Trojan 和 Shadowsocks 哪个防封锁能力更强</strong>，以及 <strong>VLESS Reality 和 Trojan 相比谁更好</strong>，我们制作了以下对比表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>Shadowsocks (传统代理)</th>
+              <th>Trojan (标准伪装)</th>
+              <th>VLESS-Reality (最新伪装)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>伪装手段</strong></td>
+              <td>无伪装 (纯自定义密文，特征明显)</td>
+              <td><strong>伪装成标准 HTTPS 网站</strong></td>
+              <td>借用别人的大厂证书伪装 (如微软)</td>
+            </tr>
+            <tr>
+              <td><strong>域名与证书</strong></td>
+              <td>不需要</td>
+              <td><strong>必须自备真实域名与 SSL 证书</strong></td>
+              <td>不需要自备域名与证书</td>
+            </tr>
+            <tr>
+              <td><strong>防封锁能力</strong></td>
+              <td>极弱 (在公网直连极易被秒封 IP)</td>
+              <td><strong>极强 (几乎天然免疫流量识别)</strong></td>
+              <td>极强 (免证书且无畏证书阻断)</td>
+            </tr>
+            <tr>
+              <td><strong>手机耗电量</strong></td>
+              <td>极低</td>
+              <td><strong>较低 (仅 TLS 正常消耗)</strong></td>
+              <td>较低 (仅 TLS 正常消耗)</td>
+            </tr>
+            <tr>
+              <td><strong>最佳使用场景</strong></td>
+              <td>IPLC 专线内网传输 (无墙环境)</td>
+              <td><strong>公网直连、个人自建防封锁、抗敏感期</strong></td>
+              <td>极客折腾自建、新一代防封机场</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="domain-ssl">4. 痛点解析：为什么搭建 Trojan 节点必须买真实域名？</h2>
+      <p>很多自建节点的新手会抱怨：“以前搭 SS 一键搞定，<strong>为什么搭建 Trojan 节点必须买真实域名？还要申请 SSL 证书？太麻烦了吧！</strong>”</p>
+      
+      <p>请记住：<strong>Trojan 协议安全吗</strong>？它的安全性完全建立在“逼真的伪装”之上。如果你没有一个真实的域名，你就无法向国际权威机构申请合法的 SSL/TLS 证书。没有合法证书，你的连接在 GFW 看来就是非法的、自签名的“三无流量”，这就违背了 Trojan “伪装成合法 HTTPS” 的初衷，必然难逃被封杀的命运。<br>
+      你买的不仅仅是一个域名，而是给你的翻墙服务器买了一张 <strong>免死金牌（合法身份证明）</strong>。这是让 GFW 相信你是一个普通网站的先决条件。</p>
+
+      <h2 id="faq">5. 常见问题解答 (FAQ)：关于 Trojan 协议的自建与排障</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 为什么说 Trojan 是“顺应规则”而不是对抗规则？</h3>
+        <p><strong>答：对抗规则（如 SS/VMess）</strong> 的思路是发明越来越复杂的加密算法，跟 GFW 硬碰硬，最终导致流量特征越来越怪异，被一抓一个准；而 <strong>顺应规则（Trojan）</strong> 的思路是打不过就加入。GFW 允许正常的 HTTPS（如网银、电商）通过，Trojan 就把自己 100% 变成 HTTPS。这也是为什么 Trojan 能在一次次敏感时期存活下来的原因。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 客户端导入 Trojan 订阅后节点全红排查，Trojan 节点证书过期导致连不上怎么解决？</h3>
+        <p><strong>答：这是自建 Trojan 最大的痛点。</strong> 免费的 SSL 证书通常只有 3 个月有效期。如果你自建的节点突然连不上了，90% 的概率是因为证书过期了。你需要登录你的服务器，使用 <code>acme.sh</code> 或 <code>certbot</code> 等工具强制续签证书并重启 Trojan 服务进程。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: Trojan-Go 与原版 Trojan 区别是什么？</h3>
+        <p><strong>答：Trojan-Go 是原版 Trojan 的强化升级版。</strong> 原版是用 C++ 写的，而 Trojan-Go 是用 Go 语言重写的，并且它加入了对 <strong>WebSocket (WS)</strong> 协议的支持。这意味着如果你用 Trojan-Go，你不仅可以伪装成网站，甚至还可以把节点接入 Cloudflare CDN 来拯救那些已经被墙掉 IP 的垃圾线路。</p>
+      </div>
+
+      <h2 id="recommendation">6. 终极选购建议：敏感时期最稳的 Trojan 翻墙机场推荐</h2>
+      <p>看到这里，你一定明白了 Trojan 协议在“抗封锁”上的恐怖实力。<strong>Trojan 节点为什么不容易被 GFW 封 IP</strong>？因为它彻底融入了互联网的汪洋大海。</p>
+      
+      <p>👉 <strong>如果你是极客：</strong> 我们强烈推荐您购买一台国外 VPS，自己申请域名，利用 Trojan 或 VLESS 搭建自己的专属防封锁节点，享受折腾的乐趣。</p>
+      
+      <p>👉 <strong>如果你是普通用户：</strong> 维护域名和证书过期是非常痛苦的事情。市面上有很多优质机场，不仅提供极致低延迟的 <strong>专线 (SS)</strong>，为了防止意外，还会提供大量 <strong>全节点支持 Trojan 协议的备用防封节点</strong>，以确保在敏感时期万无一失。</p>
+      
+      <p>为了让您在每年的敏感时期依然保持网络通畅，我们为您精选了目前市面上 <strong>技术实力最强、敏感时期最稳的 Trojan 翻墙机场</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026年敏感时期最稳的高端机场推荐 (全面支持 Trojan / VLESS 防封锁)</a></strong></p>
+      
+      <p>专业的事交给专业的人，选对机场，彻底告别证书过期和断网红节点的焦虑吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #fefce8; border-left: 4px solid #eab308; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
