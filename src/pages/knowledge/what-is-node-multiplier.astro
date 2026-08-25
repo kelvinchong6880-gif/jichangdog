@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "机场节点“倍率”是什么意思？为什么你的流量用得这么快？【附省流技巧】";
+const description = "机场的 0.2倍率和 x3 倍率到底代表什么？一文带你读懂节点倍率的流量计算公式，揭秘流量跑得快的真相，并教你在 Clash 中过滤高倍率节点的省流技巧。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>在翻墙机场中，节点倍率（Multiplier）是机场主用来计算流量消耗比例的规则。简单的计算公式是：实际扣除流量 = 你真实使用的流量 × 节点倍率。</strong> 比如，节点名称上写着 <code>x0.2</code> 或 <code>0.2倍率</code>，意味着你下载 1GB 的电影，机场后台只会扣除你 0.2GB 的套餐流量；如果写着 <code>x3</code>（通常是昂贵的 IPLC 专线），你看 1GB 的视频则会扣除高达 3GB 的流量。读懂倍率，是每个翻墙用户不花冤枉钱的第一步。</p>
+
+      <h2 id="what-is-multiplier">1. 翻墙机场说的节点倍率是什么意思？</h2>
+      <p>当你打开 Clash、Shadowrocket 或 v2rayN 等科学上网软件时，仔细观察你的节点列表，绝大多数节点的名称后缀都会带有类似于 <strong>x1.0</strong>、<strong>x0.5</strong> 或者 <strong>x3</strong> 的字样。</p>
+      <p>很多新手会问：<strong>机场节点倍率是什么？</strong> 简单来说，这就像是出租车的“计价器费率”。普通的公路按标准费率收费，而走高速公路（专线）不仅要付标准费用，还要额外加收过路费。机场的线路成本截然不同，为了平衡成本并防止滥用，机场主就发明了“流量倍率”系统。</p>
+      <p>如果你买了一个每月 100GB 流量的套餐：</p>
+      <ul>
+        <li>全程使用 <strong>1x 节点</strong>：你能实打实地用满 100GB。</li>
+        <li>全程使用 <strong>0.1x 节点</strong>：你能疯狂使用 1000GB (100 ÷ 0.1) 的真实流量！</li>
+        <li>全程使用 <strong>5x 节点</strong>：你真实只用了 20GB (100 ÷ 5) 的流量，套餐就会直接耗尽。</li>
+      </ul>
+
+      <h2 id="why-different">2. 为什么会有 x0.1、1.0 和 x3 等不同的倍率？</h2>
+      <p>要解答 <strong>为什么机场专线节点倍率那么高</strong> 或者 <strong>机场的 1x 节点和 2x 节点有什么区别</strong>，我们需要深入了解节点的物理成本：</p>
+      
+      <h3>低倍率节点（如 0.1倍率节点 / 0.5倍率）</h3>
+      <p><strong>节点 x0.1 是什么意思？</strong> 这通常是机场主购买的“廉价大带宽机器”。比如一些欧洲（德国、英国）或者美国普通的 BGP 机房，因为国际出口带宽极度便宜，即使你疯狂跑流量，机场主的成本也很低。为了鼓励大家多用这些线路分摊服务器压力，机场会设置 0.1 到 0.5 的低倍率来吸引“下载党”。</p>
+
+      <h3>标准倍率节点（x1.0）</h3>
+      <p>这是最常规的节点，通常是亚洲近距离节点（香港、日本、新加坡）的直连或普通中转线路。成本适中，带宽适中，适合 90% 用户的日常科学上网需求。</p>
+      
+      <h3>高倍率节点（如 1.5倍率 / x3 / x5）</h3>
+      <p>当你看到 <strong>高倍率节点</strong>，这几乎一定是 <strong>IPLC/IEPL 国际专线</strong> 或者是极度昂贵的“家宽原生 IP”。IPLC 专线是直接租用跨国光缆（如深港专线），它的特点是不经过 GFW（防火长城），延迟极低，玩游戏完全不掉包，但<strong>专线流量的价格是普通公网宽带的十倍甚至几十倍</strong>。因此，机场主必须设置 x3 或 x5 的 <strong>IPLC 专线倍率</strong>，否则根本无法回本。</p>
+
+      <h2 id="table-comparison">3. 常见节点倍率与使用场景建议（小白必看）</h2>
+      <p>不同的节点应该在不同的场景下使用。为了回答 <strong>怎么用低倍率节点省流量</strong> 和 <strong>看 4K 奈飞用几倍率的节点最划算</strong>，我们整理了下表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>节点倍率</th>
+              <th>常见线路类型</th>
+              <th>机场主成本</th>
+              <th>最佳使用场景建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>x0.1 ~ x0.5</strong></td>
+              <td>欧美普通 BGP 机房、冷门国家节点</td>
+              <td>极低</td>
+              <td><strong>大体积下载、P2P挂机、系统更新。</strong>（速度可能稍慢，但流量等于白嫖）</td>
+            </tr>
+            <tr>
+              <td><strong>x1.0</strong></td>
+              <td>亚洲普通中转（港日新韩）</td>
+              <td>中等</td>
+              <td><strong>日常冲浪、刷 YouTube/Instagram、看 4K 奈飞。</strong>（性价比最高，网速快且计费真实）</td>
+            </tr>
+            <tr>
+              <td><strong>x1.5 ~ x2.0</strong></td>
+              <td>优质 BGP 中转、原生 IP 节点</td>
+              <td>较高</td>
+              <td><strong>解锁流媒体、ChatGPT 对 IP 苛刻的应用。</strong>（为了看剧不报错，稍微多花点流量也值得）</td>
+            </tr>
+            <tr>
+              <td><strong>x3.0 ~ x5.0</strong></td>
+              <td>IPLC / IEPL 深港、沪日物理专线</td>
+              <td>极高</td>
+              <td><strong>打外服游戏（APEX/CS2）、高频金融量化交易、敏感时期防失联。</strong>（千万不要用它看视频！）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="stolen-traffic">4. 辟谣：流量用得快是机场在“偷跑流量”吗？</h2>
+      <p>在各大测速群里，每天都有人抱怨：<strong>“为什么买的机场流量消耗特别快？”</strong> 或 <strong>“没看视频为什么机场流量用完了，机场是不是在偷跑流量？”</strong></p>
+      
+      <p>我们先给出结论：绝大多数知名机场（哪怕是稍微正规一点的面板站），是<strong>绝对不屑于、也没有必要去修改后台逻辑来偷跑你流量的</strong>。99% 的“偷跑”冤案，都是因为你不懂倍率导致的！</p>
+      
+      <h3>导致流量瞬间清空的“元凶”：Clash 的自动测速机制</h3>
+      <p>很多小白用户导入节点后，直接在代理工具（如 Clash、V2rayN）里选择了 <strong>“自动选择 (UrlTest / Fallback)”</strong> 策略组。
+      <br>这个策略的逻辑是：<strong>每隔几百秒，工具就会去测试所有节点的延迟，然后强行帮你连上延迟最低（速度最快）的那个节点！</strong>
+      <br>而物理学决定了，<strong>延迟最低的节点永远是 IPLC 专线（通常是 x3 到 x5 倍率）！</strong>
+      <br>于是，悲剧发生了：你开着“自动选择”，以为自己在看 B 站或刷抖音，但你的后台应用偷偷下载了一个 5GB 的 iOS 系统更新，或者你看了一个 5GB 的 YouTube 4K 视频。由于你连着的是 x5 倍率的节点，<strong>5GB × 5 = 25GB 的流量瞬间蒸发！</strong>这就是 <strong>选错高倍率节点导致流量清空</strong> 的真实原因。</p>
+
+      <h2 id="save-data-tips">5. 实用防坑：怎么在客户端中避免误用高倍率节点？</h2>
+      <p>既然知道了 <strong>节点倍率是怎么计算流量的</strong>，那我们就必须学会 <strong>怎么看自己用了多少倍率的流量</strong> 并加以限制。</p>
+
+      <div class="faq-item">
+        <h3>技巧一：永远不要用“自动选择”看视频</h3>
+        <p><strong>机场刷视频/下载用什么节点？</strong> 永远手动指定一个名称带 <code>x1.0</code> 或 <code>x0.5</code> 的节点！特别是看 Netflix 这种极其消耗流量的平台。如果你非要用自动测速，请确保你的自动策略组中排除了高倍率节点。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>技巧二：利用 Clash 规则隐藏高倍率节点</h3>
+        <p>如果你使用 Clash Verge，可以利用强大的“订阅转换”或“脚本”功能，直接过滤掉名称里包含 <code>x3</code>、<code>x5</code> 的节点，或者把这些高倍率节点专门丢到一个叫“游戏专用”的代理组里，严禁平时看视频使用。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>技巧三：购买前看清机场的定价套路</h3>
+        <p>有些“黑心机场”打着“9块钱 1000GB”的幌子骗小白上车，但你导入后发现，全场<strong>只有 2 个速度极慢的 x0.1 节点，其他能正常用的节点全都是 x10 倍率！</strong>这就是利用 <strong>扣流倍率</strong> 玩数字游戏的骗局。所以，买机场一定不要只看表面的流量，而是要看它 1x 节点的数量和质量。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>技巧四：如何寻找不限流/低倍率机场？</h3>
+        <p>如果你是个重度下载狂魔，经常要搬运几十上百 GB 的素材，请放弃那些按流量计费的专线机场。你可以寻找 <strong>不限流量/无倍率限制的机场</strong>，或者专门寻找 <strong>提供 0.1 低倍率节点的机场推荐</strong>。</p>
+      </div>
+      
+      <p>总而言之，倍率系统是机场行业为了分配带宽资源而存在的合理商业规则。了解了 <strong>机场流量怎么算</strong>，你就能做到游刃有余。如果你在寻找童叟无欺、全站 1x 真实倍率且没有隐藏套路的优质服务商，可以去看看我们的 <a href="/recommend/">靠谱机场排行榜</a>，里面评测的商家均有透明的节点倍率清单，拒绝虚假宣传。</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #f0fdf4; border-left: 4px solid #10b981; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
