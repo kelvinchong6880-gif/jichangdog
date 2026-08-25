@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "Clash/Clash Verge 分流规则怎么写？实现国内外流量精准分流";
+const description = "Clash分流规则怎么写？为什么开了代理淘宝变慢？深度解析Clash Verge Rev国内外精准分流教程与语法大全，教你让ChatGPT单独走美国节点。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：无论是 Clash 还是 Clash Verge Rev，分流规则的核心执行机制永远遵循“自上而下匹配，一旦命中立即终止”的铁律。如果你想实现完美的“国内外精准分流”，最科学的规则编写顺序应为：<br>1. 最优先（Direct）：私有局域网 IP (如 192.168.x.x) 与常用国内直连服务。<br>2. 精准定向（Proxy/Special）：针对特殊平台（如让 ChatGPT 单独走美国节点，Netflix 走香港节点）指定专门的策略组。<br>3. 通用海外代理（Proxy）：包含 GFW 常见被封锁的网站大列表。<br>4. 国内 IP 兜底直连（GEOIP,CN,DIRECT）：确保所有中国大陆 IP 绝不消耗宝贵的代理流量。<br>5. 终极大兜底（MATCH）：最后一行必须使用 MATCH (漏网之鱼) 处理未被前面任何规则匹配的流量。</strong> 掌握了这个逻辑，你就能彻底解决“代理开启后国内网站变慢、耗费节点流量”的世纪难题。</p>
+
+      <h2 id="syntax-guide">1. 语法扫盲：核心分流规则语法与应用场景对照表</h2>
+      <p>想要玩转 <strong>Clash 自定义分流</strong>，你必须先搞懂它的核心语言。很多人面对 <strong>DOMAIN-KEYWORD 和 DOMAIN-SUFFIX 有什么区别</strong> 感到一头雾水。别急，我们为你整理了这张 <strong>Clash 常用分流规则代码大全</strong> 对照表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>规则语法 (Syntax)</th>
+              <th>含义与工作机制</th>
+              <th>典型应用场景与代码示例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DOMAIN-SUFFIX</strong></td>
+              <td>匹配指定域名的所有子域名（最常用）</td>
+              <td><code>DOMAIN-SUFFIX,openai.com,ChatGPT</code>（指定 AI 节点）</td>
+            </tr>
+            <tr>
+              <td><strong>DOMAIN-KEYWORD</strong></td>
+              <td>只要域名中包含该关键字即立刻命中</td>
+              <td><code>DOMAIN-KEYWORD,google,Proxy</code>（匹配 Google 全家桶）</td>
+            </tr>
+            <tr>
+              <td><strong>DOMAIN</strong></td>
+              <td>严格精准匹配唯一的完整域名</td>
+              <td><code>DOMAIN,www.apple.com,DIRECT</code>（仅限官网直连）</td>
+            </tr>
+            <tr>
+              <td><strong>IP-CIDR</strong></td>
+              <td>匹配特定的 IP 地址网段</td>
+              <td><code>IP-CIDR,192.168.0.0/16,DIRECT</code>（局域网直连，不走代理）</td>
+            </tr>
+            <tr>
+              <td><strong>GEOIP</strong></td>
+              <td>根据内置数据库自动识别 IP 物理归属地</td>
+              <td><code>GEOIP,CN,DIRECT</code>（所有中国大陆服务器一律直连，极其省流）</td>
+            </tr>
+            <tr>
+              <td><strong>MATCH</strong></td>
+              <td>兜底规则（捕获未命中前面任何规则的流量）</td>
+              <td><code>MATCH,Final</code> 或 <code>MATCH,PROXIES</code>（防止冷门外网无法访问）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="troubleshooting">2. 痛点排查：为什么开了代理后，淘宝微信变卡？B站提示地区受限？</h2>
+      <p>很多人刚学会用 Clash，最痛苦的经历就是：<strong>为什么开了代理后，淘宝/微信/百度变得特别慢？</strong> 甚至打开国内流媒体（Bilibili/爱奇艺）会提示“版权地区受限”？</p>
+      
+      <p>答案很简单：<strong>你的 Clash 分流规则写错了，或者开启了“全局代理 (Global)”。</strong><br>
+      如果你开启了全局代理，或者在 <code>Rule</code> 模式下没有正确配置 <code>GEOIP,CN,DIRECT</code>，你的淘宝购物流量会先飞到美国的节点服务器，然后再从美国绕回杭州的淘宝机房。这就叫“流量出口转内销”。这种极度愚蠢的路由方式不仅让网页加载慢如蜗牛，还会疯狂消耗你机场套餐里的宝贵流量。更糟糕的是，B站检测到你用的是美国 IP 访问，自然会因为版权限制不给你看国内的番剧。<br>
+      <strong>怎么防止访问国内网站浪费机场套餐流量？</strong> 必须在 Clash Verge 中选择 <code>Rule（规则）</code> 模式，并确保你的配置文件底层包含了基于 <code>ACL4SSR 规则转换</code> 生成的强大国内直连规则集。</p>
+
+      <h2 id="custom-rules">3. 高阶实操：怎么在 Clash Verge Rev 中追加自定义规则？（以 ChatGPT 为例）</h2>
+      <p>当你买了一个机场，默认规则通常无法满足 <strong>怎么让 ChatGPT 单独走美国节点，其他走香港</strong> 这种精细化需求。这时候就需要利用 <strong>Clash Verge Rev 扩展配置 (Merge/Script)</strong> 来追加规则。</p>
+      
+      <p><strong>实操步骤（Merge 脚本写法）：</strong><br>
+      在 Clash Verge Rev 中，右键你的机场订阅配置，选择“新建扩展 (Merge)”，输入以下 YAML 格式的代码。注意 <code>prepend-rules</code> 的核心思想是把自定义规则插在机场默认规则的最上方优先执行：</p>
+
+<pre><code>prepend-rules:
+  # 让 OpenAI 的所有服务强制走你新建的策略组或特定节点
+  - DOMAIN-SUFFIX,openai.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,chatgpt.com,🇺🇸 美国节点
+  - DOMAIN-KEYWORD,openai,🇺🇸 美国节点
+  
+  # 让某个特定软件绕过 Clash 代理 (直连)
+  - PROCESS-NAME,WeChat.exe,DIRECT
+</code></pre>
+      
+      <p>写完后保存并启用该扩展配置，重启内核。你的 ChatGPT 流量从此就会被牢牢死锁在“美国节点”上，彻底告别因为节点 IP 乱跳（如切到香港）导致的封号风险。</p>
+
+      <h2 id="faq">4. 常见问题解答 (FAQ)：关于 Rule-Set 远程规则集与 Fake-IP</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: Clash 分流规则的匹配顺序是从上往下吗？如果冲突了听谁的？</h3>
+        <p><strong>答：绝对是从上往下，一旦命中，立刻停止匹配。</strong> 如果你第一行写了 <code>DOMAIN-KEYWORD,google,DIRECT</code>，哪怕你第十行写了 <code>DOMAIN-SUFFIX,google.com,PROXY</code>，你依然打不开谷歌。因为流量在第一行就被“直连”吃掉了。这也是为什么 <code>MATCH</code> 兜底规则必须永远写在最后一行。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: TUN 模式下的 Fake-IP 防 DNS 污染是怎么回事？</h3>
+        <p><strong>答：这是为了极大加快网页首屏打开速度的技术。</strong> 开启 Fake-IP 后，Clash 会直接返回一个虚假的局域网 IP 给你的浏览器（比如 198.18.x.x），省去了向国内运营商进行真实的 DNS 查询时间，彻底防止了 DNS 劫持污染。非常建议极客玩家在 Clash Verge 中开启此功能。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q3: 怎样让特定电脑软件/游戏彻底绕过 Clash 代理？</h3>
+        <p><strong>答：使用 PROCESS-NAME 规则。</strong> 例如 <code>PROCESS-NAME,League of Legends.exe,DIRECT</code>。这样就可以确保你在打国服英雄联盟时，流量绝对不会跑到代理节点上去导致 400ms 的高延迟。</p>
+      </div>
+
+      <h2 id="recommendation">5. 懒人福音：告别手写规则，自带完美分流的开箱即用机场推荐</h2>
+      <p>看完了长篇大论的 <strong>Clash 国内外分流</strong> 教程，如果你觉得：“我只是想上个网，手写 YAML 代码也太折磨人了！”</p>
+      
+      <p>👉 <strong>完全没问题！事实上，99% 的普通用户根本不需要自己写分流规则。</strong><br>
+      真正顶级的机场服务商，他们的订阅链接里早就内置了极其完善、由专业运维团队每天维护的 <strong>ACL4SSR 分流规则集</strong>。这些机场的配置导入 Clash 后：微信/淘宝自动直连、Netflix 自动走流媒体策略组、ChatGPT 自动锁定美国原生节点。这就是所谓的 <strong>懒人开箱即用、自带完美分流规则</strong>。</p>
+      
+      <p>为了让大家省去改代码的痛苦，我们团队为您精选了目前市面上 <strong>后台规则配置最完美、支持自动策略组切换的顶级专线翻墙服务商</strong>：</p>
+      
+      <p>👉 <strong><a href="/recommend/">2026 懒人福音！内置完美国内外分流规则、开箱即用的高端稳定专线机场推荐</a></strong></p>
+      
+      <p>专业的事情交给专业的人去做。选对机场，让智能分流为你节省每一兆宝贵的流量与时间！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #e0f2fe; border-left: 4px solid #0ea5e9; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 4px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    .prose pre { background: #1f2937; color: #f8f8f2; padding: 16px; border-radius: 8px; overflow-x: auto; margin-bottom: 24px; font-size: 0.9em; line-height: 1.5; }
+    .prose pre code { background: none; color: inherit; padding: 0; }
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
