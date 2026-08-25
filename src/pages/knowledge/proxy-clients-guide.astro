@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "2026 翻墙客户端推荐：Clash、v2rayN、小火箭 (Shadowrocket) 怎么选？【附下载与图文教程】";
+const description = "科学上网软件下载不知道怎么选？本文深度评测 Windows、Mac、iOS 和安卓平台的翻墙客户端，为你对比 Clash、v2rayN 和小火箭的优缺点，并提供详细的常见报错解决方案。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>买好了机场节点，第一步应该怎么做？答案是：根据你的设备下载对应的代理软件。</strong> 为了节省大家的时间，这里直接给出结论：<strong>Windows 新手推荐 v2rayN，进阶选 Clash Verge；Mac 推荐 Clash；苹果手机无脑选 Shadowrocket (小火箭)；安卓推荐 v2rayNG。</strong></p>
+
+      <h2 id="what-are-clients">1. 一分钟读懂：翻墙客户端到底有什么用？</h2>
+      <p>很多人刚买完机场套餐后一头雾水：“我钱付了，为什么还是打不开谷歌？”<br>
+      如果你把“科学上网”看作是一次长途旅行，那么<strong>机场节点（订阅链接）就是你的目的地和路线图，而“翻墙客户端”就是你乘坐的交通工具（汽车/飞机）</strong>。光有地图是不行的，你必须下载一个合适的交通工具，把地图（订阅链接）输入进去，它才能载着你成功越过 GFW（防火长城）。</p>
+
+      <h2 id="comparison">2. 核心翻墙客户端特性对比（小白必看）</h2>
+      <p>为了让大家直观了解 <strong>Clash vs v2rayN</strong> 等主流工具的区别，我们整理了以下对比表格：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>客户端名称</th>
+              <th>适用平台</th>
+              <th>上手难度</th>
+              <th>核心优势</th>
+              <th>适合人群</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>v2rayN</strong></td>
+              <td>Windows</td>
+              <td>低</td>
+              <td>轻量极简、纯粹的代理工具、内存占用极小</td>
+              <td>小白用户、电脑配置较低、仅需浏览器翻墙者</td>
+            </tr>
+            <tr>
+              <td><strong>Clash (Verge Rev)</strong></td>
+              <td>Win / Mac</td>
+              <td>中等</td>
+              <td>强大的分流规则（国内外流量按需智能路由）、UI 极度美观</td>
+              <td>进阶用户、重度流媒体依赖者、跨国远程工作者</td>
+            </tr>
+            <tr>
+              <td><strong>Shadowrocket (小火箭)</strong></td>
+              <td>iOS (iPhone/iPad)</td>
+              <td>低</td>
+              <td>苹果端性价比之王（仅2.99美金）、支持所有主流协议、扫码即用</td>
+              <td>几乎所有 iPhone 翻墙用户（需使用外区 Apple ID 下载）</td>
+            </tr>
+            <tr>
+              <td><strong>v2rayNG</strong></td>
+              <td>Android</td>
+              <td>低</td>
+              <td>免费开源、耗电量低、极简的订阅导入</td>
+              <td>所有安卓系统用户首选</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="windows-guide">3. Windows 平台：v2rayN 和 Clash Verge 哪个好用？</h2>
+      <p>在 Windows 平台上，<strong>Win 翻墙软件推荐</strong> 绕不开两大阵营：v2ray 核心系与 Clash 核心系。</p>
+      
+      <h3>v2rayN：轻量级的“老黄牛”</h3>
+      <p>如果你只是想简单地上个网查查资料，不希望后台有个软件疯狂占用内存，那么 v2rayN 是最好的选择。它的界面非常传统（甚至有些简陋），但极其稳定。导入机场订阅后，右键点击右下角的图标，选择“自动配置系统代理”即可起飞。</p>
+
+      <h3>Clash Verge Rev：现代化的分流神器</h3>
+      <p>随着原版 Clash for Windows 删库，目前最主流的替代品是 <strong>Clash Verge Rev</strong>。它的最大魅力在于<strong>“规则分流”</strong>。它可以做到：当你访问国内的淘宝、微信时，流量直连，不消耗机场流量且速度极快；当你访问 Netflix 时，自动走延迟最低的新加坡节点；当你访问 ChatGPT 时，自动切换到美国原生 IP 节点。这种无缝衔接的体验，是进阶用户无法割舍的。</p>
+
+      <h2 id="ios-guide">4. iOS 苹果专属：Shadowrocket 小火箭怎么下载？</h2>
+      <p>苹果手机因为生态封闭，国内的 App Store 是绝对搜不到任何有效翻墙工具的。这就是为什么无数人在问 <strong>苹果小火箭怎么下载</strong> 的原因。</p>
+      <p><strong>第一步：获取美区 Apple ID</strong><br>
+      你必须拥有一个非中国大陆地区（如美区、港区）的 Apple ID。你可以通过官网自己 <strong>美区 Apple ID 注册</strong>，或者在淘宝或某些发卡网购买现成的账号。<br>
+      <strong>第二步：登录并购买</strong><br>
+      在 App Store 中退出你的国区账号，登录美区账号。搜索 <code>Shadowrocket</code>。请认准蓝色的火箭图标，售价为 $2.99 美金（约 20 多人民币）。切勿下载任何名称雷同的免费盗版软件，它们往往夹带私货且无法翻墙。如果你不想花钱，可以寻找机场官方群里提供的 <strong>Shadowrocket 共享 ID 获取</strong>。</p>
+
+      <h2 id="mac-android">5. Mac 与安卓专属：科学上网工具推荐</h2>
+      
+      <h3>Mac 平台：Clash Verge</h3>
+      <p>对于苹果电脑用户，<strong>Mac 科学上网工具推荐</strong> 首选同样是 Clash Verge。它的界面在 macOS 视网膜屏幕上非常优雅，且完美适配了 Apple Silicon (M1/M2/M3) 芯片，性能极佳。</p>
+
+      <h3>安卓平台：v2rayNG 或 Clash for Android</h3>
+      <p><strong>安卓 v2rayNG 配置教程</strong> 极其简单：去 Github 下载开源的 apk 安装包，安装后点击左上角的菜单，选择“订阅设置”，把机场给你的链接粘贴进去，然后回到首页点击“更新订阅”，最后点右下角的“V”字图标即可连接。<br>
+      如果你喜欢分流，也可以寻找 <strong>Clash for Android 替代品</strong>（如 Surfboard 等），它们能提供类似电脑端 Clash 的高级规则体验。</p>
+
+      <h2 id="troubleshooting">6. 翻墙软件常见报错求助 (Q&A)</h2>
+      <p>有了趁手的工具，难免还会遇到一些小故障，以下是新手最容易踩坑的报错及解决办法：</p>
+
+      <div class="faq-item">
+        <h3>Q1: Clash 导入订阅失败怎么办？</h3>
+        <p><strong>答：</strong> 导入订阅失败通常有两个原因：一是你复制的订阅链接本身不完整或者机场服务器暂时宕机；二是你当前的本地网络（比如公司的严格防火墙、校园网）屏蔽了该机场的订阅服务器。<strong>解决办法：</strong>尝试用手机开热点给电脑连一下，然后再次点击“更新订阅”，通常就能成功抓取到节点信息了。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 为什么导入成功了，但 v2rayN 或 Clash 节点全部超时 (Timeout)？</h3>
+        <p><strong>答：</strong> 如果你的节点名称和信息都出来了，但测速全部显示红色的“超时”或者 -1ms，这往往不是机场跑路，而是<strong>你的电脑系统时间不准！</strong> 所有的加密代理协议都依赖时间戳来防止重放攻击。如果你的电脑时间比标准北京时间快或慢了超过 2 分钟，服务器就会直接拒绝你的连接。<strong>解决办法：</strong>打开 Windows 系统的“日期和时间”设置，点击“立即同步”即可。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 小火箭开启了连接，但依然无法上网？</h3>
+        <p><strong>答：</strong> 如果你是在 iOS 上第一次使用 Shadowrocket，系统会弹出一个提示：“Shadowrocket 想要添加 VPN 配置”。你必须点击<strong>“允许 (Allow)”</strong>，并输入手机的解锁密码。如果没有这一步，VPN 隧道根本无法建立。此外，请检查底部栏的“全局路由”设置，确保将其设置为<strong>“配置 (Config)”</strong>而不是“直连 (Direct)”。</p>
+      </div>
+
+      <h2 id="airport-recommendation">7. 客户端配好后节点怎么选？（高性价比机场推荐）</h2>
+      <p>万事俱备，只欠东风。你的客户端已经安装完毕，现在最需要的就是一个<strong>高速、稳定且不会随时跑路</strong>的优质机场节点源了。</p>
+      
+      <p>如果你不想在眼花缭乱的广告中试错，这里强烈推荐经过我们团队长期实测的主力机场——<strong><a href="https://weifeng.net" target="_blank" rel="nofollow">微风机场 (Weifeng)</a></strong>。</p>
+      
+      <p><strong>为什么推荐微风机场？</strong><br>
+      ✅ <strong>极度适合新手：</strong> 后台提供傻瓜式的“一键导入”功能，无论你用的是 Clash、v2rayN 还是小火箭，点击一下即可自动完成所有配置，彻底告别繁琐的复制粘贴。<br>
+      ✅ <strong>全线 BGP 中转+专线加持：</strong> 告别“一元机场”晚高峰卡的要死的噩梦，微风机场提供真实可靠的高速中转节点，晚高峰实测 YouTube 4K 视频秒开无卡顿。<br>
+      ✅ <strong>原生 IP 解锁：</strong> 提供多地区干净的流媒体解锁节点，从此告别 ChatGPT 的 <code>Access Denied</code> 和 Netflix 只能看自制剧的烦恼。</p>
+
+      <p>现在就点击前往 <strong><a href="https://weifeng.net" target="_blank" rel="nofollow">微风机场官网注册体验</a></strong>，搭配您刚学会的客户端配置技巧，开启真正畅快无阻的科学上网之旅吧！如果您想对比更多高端商家的评测数据，也可以访问我们的 <a href="/recommend/">2026 年最新机场推荐榜单</a>。</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #f0fdf4; border-left: 4px solid #10b981; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 24px; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; line-height: 1.6; color: #4b5563; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .prose th, .prose td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+    .prose th { background: #f9fafb; color: var(--ink); font-weight: 600; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
