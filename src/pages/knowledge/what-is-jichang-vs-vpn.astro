@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "什么是翻墙机场？机场与传统VPN（如ExpressVPN）有什么区别？【小白深度科普】";
+const description = "简单来说，传统 VPN 是为全局加密通信设计的通用隐私工具，而“机场”是专门针对 GFW 深度包检测、基于代理协议和专线优化的中国特色科学上网工具。了解它们的本质区别，选择最适合你的翻墙方案。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>简单来说，传统 VPN 是为全局加密通信设计的通用隐私工具，而“机场”是专门针对 GFW（防火长城）深度包检测、基于代理协议和专线优化的中国特色科学上网工具。</strong> 当你第一次接触“科学上网”时，最常听到的两个词就是“VPN”和“机场”。这篇文章将为你深度剖析这两者的底层原理，告诉你为什么以前流行的 ExpressVPN 在国内越来越难用，而“翻墙机场”却成为了目前最主流的翻墙方式。</p>
+
+      <h2 id="what-is-jichang">1. 翻墙说的“机场”是什么意思？</h2>
+      <p>很多新手都会疑惑：<strong>为什么科学上网叫机场？</strong> 其实，“机场”这个词起源于早期的代理软件 <strong>Shadowsocks</strong>。它的客户端图标是一个小纸飞机，因此提供这种代理节点的服务商就被网友们形象地称为“机场”。</p>
+      <p>如今，“机场”已经成为了一个统称，泛指那些提供 Shadowsocks (SS)、V2Ray (VMess/VLESS)、Trojan 等代理协议节点的商业服务商。通过机场，你可以获取一长串服务器节点订阅链接，导入到特定的客户端（如 Clash、Shadowrocket、v2rayN）中，从而实现突破网络封锁的目的。</p>
+      <p><strong>机场节点是什么原理？</strong> 与全局代理不同，机场节点通常基于 SOCKS5 代理协议。它的设计初衷并不是为了完全匿名，而是为了<strong>伪装流量</strong>。比如，将你的翻墙流量伪装成普通的 HTTPS 网页访问流量，从而骗过 GFW 的审查系统。</p>
+
+      <h2 id="vpn-vs-jichang-core-diff">2. 翻墙机场和传统VPN区别在哪里？</h2>
+      <p>要弄懂 <strong>机场和VPN区别</strong>，我们需要从底层技术和设计目标来看。</p>
+      <h3>设计目标不同</h3>
+      <p><strong>传统 VPN（如 ExpressVPN、NordVPN）：</strong> 原本是企业用来让员工远程安全访问公司内网的技术，后来被用于保护公共 Wi-Fi 下的个人隐私。它的核心是<strong>加密</strong>（如 OpenVPN、WireGuard 协议）。它并不擅长“伪装”，在 GFW 眼里，VPN 流量的特征非常明显，很容易被识别和阻断。这就是为什么经常有人问 <strong>ExpressVPN在中国还能用吗？</strong> 答案是：在敏感时期极不稳定，因为它的协议特征太容易被 GFW 精准打击了。</p>
+      <p><strong>翻墙机场：</strong> 完全是为了应对网络封锁而诞生的。它使用的协议（如 Trojan、VLESS）核心在于<strong>伪装和混淆</strong>，使得翻墙流量看起来和普通的网页浏览、视频播放一模一样，从而极大地降低了被封锁的概率。</p>
+
+      <h3>网络路由与分流能力</h3>
+      <p><strong>机场分流规则是什么？</strong> 机场配合 Clash 等客户端，可以实现精准的“分流”（PAC 路由规则）。即：访问百度、微信等国内网站时不经过代理服务器（直连），而访问 Google、YouTube 时才走代理。这不仅极大提升了国内网站的访问速度，还节省了代理流量。</p>
+      <p>而传统 VPN 大多是“全局代理”，开启后所有流量都会绕道海外服务器，导致国内应用加载缓慢，甚至被国内各大 App 识别为“海外异地登录”而触发风控。</p>
+
+      <h2 id="comparison-table">3. 核心对比：机场 vs VPN（对比表格）</h2>
+      <p>下面这张表清晰地展示了 <strong>机场节点和VPN服务器区别</strong>：</p>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>翻墙机场 (代理订阅)</th>
+              <th>传统 VPN (如 ExpressVPN)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>底层核心技术</strong></td>
+              <td>Shadowsocks, V2Ray, Trojan 等代理协议</td>
+              <td>OpenVPN, WireGuard, IKEv2 等隧道协议</td>
+            </tr>
+            <tr>
+              <td><strong>设计主要目的</strong></td>
+              <td>突破网络封锁 (绕过 GFW)，伪装流量</td>
+              <td>数据高度加密，隐藏真实 IP 保护隐私</td>
+            </tr>
+            <tr>
+              <td><strong>防封锁能力</strong></td>
+              <td>极高（流量伪装极难被 GFW 识别）</td>
+              <td>较低（协议特征明显，易被封锁 IP 端口）</td>
+            </tr>
+            <tr>
+              <td><strong>网络速度与延迟</strong></td>
+              <td>极快（支持 IPLC/IEPL 专线不过墙）</td>
+              <td>较慢（全程高强度加密解密消耗性能）</td>
+            </tr>
+            <tr>
+              <td><strong>流量分流功能</strong></td>
+              <td>完美支持（国内外流量智能分流，不影响国内速度）</td>
+              <td>大多不支持（全局代理，导致国内 App 加载极慢）</td>
+            </tr>
+            <tr>
+              <td><strong>价格与性价比</strong></td>
+              <td>较高（每月 10~50 元不等，选择极多）</td>
+              <td>较低（每月通常 $6~$12 美元，价格昂贵）</td>
+            </tr>
+            <tr>
+              <td><strong>隐私安全性</strong></td>
+              <td>中等（服务商理论上能看到访问记录）</td>
+              <td>极高（通常有严格的无日志政策）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="why-jichang">4. 为什么国内都用机场不用VPN？</h2>
+      <p>除了上述提到的防封锁能力和智能分流外，另一个关键原因是 <strong>IPLC 专线</strong> 的普及。<strong>IPLC 专线和普通 VPN 区别</strong> 在于：IPLC 属于合法的跨境企业内网专线。<strong>为什么机场不过墙直接走专线？</strong> 因为这些物理光缆数据传输是不经过国家防火墙 (GFW) 审查的！</p>
+      <p>这就意味着，无论在什么敏感时期（如开会、特殊纪念日），使用 IPLC 专线的高端机场都能保持极低的延迟和 100% 的连通率。比如你在玩外服游戏时，只有 IPLC 专线的机场能提供媲美原生网络的游戏体验。这是普通 VPN 无论如何也做不到的。</p>
+
+      <h2 id="buyer-guide">5. 新手翻墙选机场还是买VPN？</h2>
+      <p>如果你还在犹豫 <strong>机场好还是VPN好</strong>，请根据你的核心使用场景来做决定：</p>
+      <ul>
+        <li><strong>选择翻墙机场如果：</strong> 你身处中国大陆，核心诉求是流畅看 YouTube、上 Google 查资料、刷 Instagram、或者是看 4K 奈飞（Netflix）。机场速度更快，且不会影响你日常使用微信、淘宝。</li>
+        <li><strong>选择传统VPN如果：</strong> 你身处网络自由的国家，或者是外企员工出差，极度注重网络隐私，经常使用公共 Wi-Fi 担心被黑客窃取数据，并不在乎它是否能稳定绕过 GFW。</li>
+      </ul>
+      <p><strong>翻墙用机场安全吗会不会被抓？</strong> 只要你使用的是正规的机场服务，并且不参与任何违法、涉政的活动，仅仅是看看视频、查阅学习资料，通常是非常安全的。但也建议不要在来路不明的机场上进行敏感的账号密码登录操作。</p>
+
+      <h2 id="summary">总结与推荐</h2>
+      <p>理解了 <strong>梯子和VPN有什么区别</strong> 后，对于绝大多数国内用户来说，“机场”绝对是目前性价比最高、体验最好的科学上网方案。如果你想知道 <strong>便宜好用的翻墙机场推荐</strong> 或者想寻找 <strong>敏感时期哪个翻墙工具最稳定</strong>，欢迎访问我们的 <a href="/recommend/">机场推荐页面</a>，我们为你整理了全网最详尽的测速与购买指南。</p>
+
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0; /* prevent overflow */
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #f0fdf4;
+      border-left: 4px solid #10b981;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 32px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .toc-container {
+      position: sticky;
+      top: 100px;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; /* Hide TOC on mobile for better reading experience, or move it to top */
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      // Intersection Observer for highlighting active TOC link
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
