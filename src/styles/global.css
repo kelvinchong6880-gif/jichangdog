@@ -496,7 +496,7 @@ body {
 }
 
 /* =========================================
-   Global TOC Sidebar Styles (Overrides scoped)
+   Global TOC Sidebar Styles (Premium Colored Block)
    ========================================= */
 .knowledge-layout .toc-sidebar {
   width: 300px !important;
@@ -507,36 +507,36 @@ body {
 }
 
 .knowledge-layout .toc-container {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  padding: 24px !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255,255,255,0.5) !important;
-  border: 1px solid rgba(0, 0, 0, 0.04) !important;
-  transition: box-shadow 0.3s ease !important;
+  background: linear-gradient(145deg, #0b1736 0%, #17103a 100%) !important;
+  padding: 28px 24px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 15px 35px rgba(11, 23, 54, 0.15), inset 0 1px 1px rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .knowledge-layout .toc-container:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255,255,255,0.8) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 20px 40px rgba(11, 23, 54, 0.2), inset 0 1px 1px rgba(255,255,255,0.15) !important;
 }
 
 .knowledge-layout .toc-title {
   font-size: 1.15rem !important;
   font-weight: 800 !important;
-  color: var(--ink) !important;
-  margin-bottom: 16px !important;
-  padding-bottom: 12px !important;
-  border-bottom: 2px solid #f1f5f9 !important;
+  color: #ffffff !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 14px !important;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 1px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 10px !important;
 }
 .knowledge-layout .toc-title::before {
-  content: '📑';
-  font-size: 1.25rem !important;
+  content: '⚡';
+  font-size: 1.3rem !important;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.6)) !important;
 }
 
 .knowledge-layout .toc-list {
@@ -545,12 +545,12 @@ body {
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 8px !important;
   position: relative !important;
 }
 
 .knowledge-layout .toc-link {
-  color: var(--muted) !important;
+  color: #94a3b8 !important;
   text-decoration: none !important;
   font-size: 0.925rem !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -563,17 +563,17 @@ body {
 }
 
 .knowledge-layout .toc-link:hover {
-  color: var(--blue) !important;
-  background: #eff4ff !important;
-  border-left-color: #a5b4fc !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-left-color: #818cf8 !important;
   transform: translateX(4px) !important;
 }
 
 .knowledge-layout .toc-link.active {
-  color: var(--blue) !important;
+  color: #60a5fa !important;
   font-weight: 700 !important;
-  border-left-color: var(--blue) !important;
-  background: linear-gradient(90deg, #eff4ff 0%, transparent 100%) !important;
+  border-left-color: #3b82f6 !important;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%) !important;
 }
 
 @media (max-width: 992px) {
