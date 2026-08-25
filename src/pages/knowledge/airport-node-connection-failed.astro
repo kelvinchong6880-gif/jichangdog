@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "买了机场节点连不上？【新手必看】常见错误与 5 步排查指南";
+const description = "买了机场节点连不上怎么办？Clash节点全部超时、v2rayN测试延迟-1怎么解决？本文教你用5个步骤快速排查翻墙断网原因，彻底解决梯子连不上的问题。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>刚买的机场节点连不上，或者昨天还能用的梯子今天突然连不上了，先别慌，90% 的情况并不是机场跑路了。</strong> 新手最常踩的三个坑是：1. 电脑或手机系统时间未校准；2. 没有点击“更新订阅”获取最新节点 IP；3. 代理路由模式（全局/规则）选错了。请对照以下 5 步排查指南逐一检查，包你药到病除。</p>
+
+      <h2 id="step-1-time-sync">1. 第一步：检查系统时间（节点全部超时的“元凶”）</h2>
+      
+      <div class="troubleshoot-box">
+        <h4>🚨 症状表现</h4>
+        <p>在 Clash 中点击测速，所有节点都显示 <code>Timeout</code>；或者在 v2rayN 中测试延迟，全部显示 <code>-1</code>。甚至网页完全打不开，但机场官网能正常登录。</p>
+        
+        <h4>🔍 故障原因</h4>
+        <p>所有主流的代理协议（如 VMess, Trojan, VLESS）都极其依赖时间戳来防止“重放攻击”。如果你的电脑或手机系统时间，与标准的服务器时间相差超过 <strong>90 秒（1.5 分钟）</strong>，服务器就会直接拒绝你的连接请求。</p>
+        
+        <h4>✅ 解决办法</h4>
+        <p><strong>Windows 电脑：</strong>右键点击右下角的时间 -> 调整日期/时间 -> 找到“自动设置时间”并重新打开，或者点击“立即同步”。<br>
+        <strong>Mac 电脑：</strong>系统设置 -> 通用 -> 日期与时间 -> 开启“自动设置日期和时间”。<br>
+        校准完毕后，重启你的翻墙软件即可恢复正常。</p>
+      </div>
+
+      <h2 id="step-2-update-subscription">2. 第二步：订阅链接未更新（机场换了 IP 你不知道）</h2>
+
+      <div class="troubleshoot-box">
+        <h4>🚨 症状表现</h4>
+        <p>节点全红怎么解决？或者提示 <strong>订阅链接更新失败 / 无法获取订阅</strong>，导致“昨天还能用，今天连不上”。</p>
+        
+        <h4>🔍 故障原因</h4>
+        <p>很多由于国内 GFW（防火长城）的封锁，机场主为了保证大家能上网，会经常更换被墙封锁的节点 IP。如果你在软件里一直用的是一个月前的旧列表，那你连的自然是早就失效的“死节点”。此外，某些地区的校园网或公司内网会屏蔽机场的订阅服务器，导致你拉取不了新节点。</p>
+        
+        <h4>✅ 解决办法</h4>
+        <p>1. 在 Clash、v2rayN 或小火箭中，找到你的机场配置，点击 <strong>“更新订阅 (Update)”</strong>。<br>
+        2. 如果更新失败，请<strong>先关闭代理软件</strong>，将电脑连接到手机分享的 4G/5G 个人热点，然后再点击更新。一旦新节点刷出来，再切回原本的 Wi-Fi 即可正常使用。</p>
+      </div>
+
+      <h2 id="step-3-routing-mode">3. 第三步：代理路由模式错误（为什么连上却打不开网页）</h2>
+
+      <div class="troubleshoot-box">
+        <h4>🚨 症状表现</h4>
+        <p>测速明明有延迟（绿色数字），但 <strong>手机连上了节点但是没有网络</strong>，或者 <strong>电脑开着翻墙软件国内网站也打不开</strong>，微信也发不出去消息。</p>
+        
+        <h4>🔍 故障原因</h4>
+        <p>这是 <strong>代理规则设置错误</strong> 导致的。翻墙软件通常有“全局 (Global)”、“规则/配置 (Rule/Config)”和“直连 (Direct)”三种模式。如果你不小心选了“直连”，那等于没翻墙；如果你选了“全局”，所有的国内流量也会绕道国外，导致你上淘宝极慢甚至打不开。</p>
+        
+        <h4>✅ 解决办法</h4>
+        <p><strong>在 Clash 中：</strong>点击左侧的 Proxies (代理)，在最顶部的模式选择栏中，一定要选中 <strong>Rule (规则)</strong> 模式。<br>
+        <strong>在 Shadowrocket (小火箭) 中：</strong>点击底部栏的首页，在“全局路由”选项中，选择 <strong>配置 (Config)</strong>，千万别选直连或全局。<br>
+        这样设置后，国内网站直连，国外网站走代理，互不干扰。</p>
+      </div>
+
+      <h2 id="step-4-account-status">4. 第四步：检查机场套餐状态与流量是否耗尽</h2>
+
+      <div class="troubleshoot-box">
+        <h4>🚨 症状表现</h4>
+        <p>无论怎么更新订阅，节点名称前面都多了一个前缀，比如提示“账户已欠费”或“流量已用尽”。或者直接 <strong>买的机场怎么用不了</strong>。</p>
+        
+        <h4>🔍 故障原因</h4>
+        <p>很多新手对流量消耗没有概念，看了一整天 4K 的 Netflix 或者在后台让 Steam 自动下载了几十个 G 的游戏，导致当月流量提前耗尽。也有可能是因为记错了购买日期，套餐已经自然过期。</p>
+        
+        <h4>✅ 解决办法</h4>
+        <p>断开翻墙软件，直接用手机浏览器（不要挂代理）登录你的机场官网，进入“用户中心/仪表盘”，查看<strong>可用流量</strong>和<strong>套餐到期时间</strong>。如果流量没了，请购买流量叠加包或提前续费下一个月的套餐，然后再回到软件里点击“更新订阅”。</p>
+      </div>
+
+      <h2 id="step-5-software-conflict">5. 第五步：防病毒软件或浏览器插件拦截</h2>
+
+      <div class="troubleshoot-box">
+        <h4>🚨 症状表现</h4>
+        <p>翻墙软件一切正常，但就是只有浏览器（如 Chrome/Edge）打不开任何国外网页，报 <code>ERR_PROXY_CONNECTION_FAILED</code> 错误。</p>
+        
+        <h4>🔍 故障原因</h4>
+        <p>极有可能是因为你安装了 360 安全卫士、火绒等杀毒软件，拦截了代理软件的系统级劫持。或者你的浏览器里安装了类似 SwitchyOmega 的代理插件，它与 Clash 的“系统代理 (System Proxy)”功能产生了严重冲突。</p>
+        
+        <h4>✅ 解决办法</h4>
+        <p>1. 如果有浏览器代理插件（如 SwitchyOmega），请将其设为“系统代理”模式，或者直接<strong>将其停用</strong>。<br>
+        2. 检查 360 或火绒等软件的安全日志，看看是否把 Clash 核心或 v2ray-core 误杀了，如果有，请将其加入白名单。<br>
+        3. 重启浏览器，在 Clash 开启“系统代理”。</p>
+      </div>
+
+      <h2 id="runaway-or-backup">6. 终极判断：是自己连不上，还是机场跑路了？</h2>
+      <p>如果你已经极其耐心地走完了上面 5 个步骤，但节点依然全部 <code>Timeout</code> 连不上，那么你就要怀疑是不是遭遇了不可抗力了。</p>
+      
+      <div class="faq-item">
+        <h3>Q: 怎么判断机场跑路了？节点连不上是机场主跑路了吗？</h3>
+        <p><strong>答：判断的标准极其简单——看“官网”和“官方群”。</strong> 如果你不用代理根本打不开该机场的官网，且翻阅 Telegram 官方通知群，发现群主已经好几天没说话，甚至全员禁言，客服发消息也不回。那么很抱歉，这就是经典的<strong>机场跑路</strong>（卷款潜逃或者被抓了）。如果是大面积断网但机场主还在积极发公告修机器，那只是遭遇了严打，等几天就好。</p>
+      </div>
+
+      <h3>稳定不掉线的备用翻墙梯子推荐</h3>
+      <p>鸡蛋永远不能放在同一个篮子里。无论你现在用的机场多好，遇到敏感时期（如每年重大会议期间）都有可能出现大规模断流。<strong>为了避免关键时刻失联，我们强烈建议您随时准备一个便宜且稳定靠谱的“备用梯子”。</strong></p>
+      
+      <p>如果您正在寻找 <strong>稳定不掉线的翻墙机场推荐</strong> 或需要临时应急买一个月付套餐，我们为您测试并筛选了业内极其稳固的老牌商家：<br>
+      👉 <a href="https://weifeng.net" target="_blank" rel="nofollow">微风机场官网 (高性价比，永不跑路)</a><br>
+      或者访问我们整理的详细榜单：<a href="/recommend/">2026年最新优质备用/主力翻墙梯子推荐</a>。<br>
+      这些机场提供 BGP 隧道与 IPLC 专线，即使在网络封锁最严重的时候，依然能保证节点的存活率，帮您在互联网的世界里畅通无阻。</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    .prose h1 { font-size: 2rem; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #f0fdf4; border-left: 4px solid #10b981; padding: 16px 20px; margin-bottom: 32px; border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
+    .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
+    .prose h4 { font-size: 1.05rem; color: #374151; margin-top: 20px; margin-bottom: 8px; font-weight: 700; }
+    .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .troubleshoot-box { background: #fdfdfd; border-left: 4px solid #f59e0b; padding: 24px 32px; margin-bottom: 32px; border-radius: 0 12px 12px 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+    .troubleshoot-box p { margin-bottom: 12px; }
+    .troubleshoot-box p:last-child { margin-bottom: 0; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: block; line-height: 1.4; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; }
+      .troubleshoot-box { padding: 16px 20px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
