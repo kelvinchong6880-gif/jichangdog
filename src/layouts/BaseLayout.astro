@@ -97,33 +97,47 @@ const siteUrl = Astro.site ? Astro.site.toString() : Astro.url.origin;
     <footer class="site-footer">
       <div class="footer-shell">
         <div class="footer-intro">
-          <a href="/">
-            <span class="brand-logo" aria-label="机场狗">
-              <span class="brand-mark" aria-hidden="true"><i></i><b></b><em></em></span>
-              <span class="brand-word">机场狗</span>
-            </span>
+          <a href="/" class="footer-brand">
+            <img src="/images/logo.png" alt="机场狗 Logo" width="48" height="48" style="border-radius: 12px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
+            <span class="brand-word">机场狗</span>
           </a>
-          <p>把复杂的机场信息，整理成容易看懂的选择依据。</p>
+          <p class="footer-slogan">致力于将极其复杂的翻墙网络与机场节点信息，整理成真正能让小白看懂、极客也能获益的硬核评测基准。</p>
         </div>
-        <nav aria-label="页脚导航">
-          <a href="/about/">关于机场狗</a>
-          <a href="/author/">作者与编辑团队</a>
-          <a href="/contact/">联系我们</a>
-          <a href="/methodology/">评测与测速资料方法</a>
-          <a href="/corrections/">更正机制</a>
-          <a href="/affiliate-disclosure/">推广关系与链接说明</a>
-          <a href="/privacy/">隐私政策</a>
-          <a href="/terms/">使用条款</a>
-          <a href="/disclaimer/">免责声明</a>
-        </nav>
-        <div class="disclosure">
-          <strong>用户提示</strong>
-          <p>本站部分链接包含推荐返利（Affiliate），购买可能会为本站带来少量佣金以维持服务器运营，但这不会影响我们的客观评测标准。</p>
+        
+        <div class="footer-links-group">
+          <div class="footer-links-col">
+            <h4>关于本站</h4>
+            <nav aria-label="关于本站">
+              <a href="/about/">关于机场狗</a>
+              <a href="/author/">作者与编辑</a>
+              <a href="/contact/">联系我们</a>
+              <a href="/methodology/">评测方法论</a>
+              <a href="/corrections/">更正机制</a>
+            </nav>
+          </div>
+          <div class="footer-links-col">
+            <h4>法律说明</h4>
+            <nav aria-label="法律条款">
+              <a href="/affiliate-disclosure/">推广与返利</a>
+              <a href="/privacy/">隐私政策</a>
+              <a href="/terms/">使用条款</a>
+              <a href="/disclaimer/">免责声明</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="footer-disclosure">
+          <div class="disclosure-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <strong>透明度声明</strong>
+          </div>
+          <p>本站部分链接包含推荐返利（Affiliate），您的购买可能会为本站带来少量佣金，用于维持昂贵的服务器与评测线路开销，但这<strong>绝不会影响</strong>我们的客观评测与排名标准。</p>
         </div>
       </div>
+      
       <div class="footer-bottom">
-        <span>© 2026 机场狗</span>
-        <span>资料用于选择参考，不构成服务保证</span>
+        <div class="copyright">© 2026 机场狗 (JiChangDog). All rights reserved.</div>
+        <div class="footer-disclaimer">信息与数据仅供选择参考，不构成任何服务可用性保证。</div>
       </div>
     </footer>
   </div>
