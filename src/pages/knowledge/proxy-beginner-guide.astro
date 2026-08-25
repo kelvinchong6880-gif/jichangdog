@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "科学上网新手必看：节点、订阅链接与客户端有什么用？【附通俗比喻】";
+const description = "如果你把科学上网看作一次出国旅行：节点是目的地，客户端是交通工具，而订阅链接是车票和导航。帮你彻底搞懂翻墙基础知识，快速上手。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>如果你把科学上网看作一次出国旅行：节点（Node）是你的目的地服务器，客户端（Client）是你乘坐的交通工具（如飞机、高铁），而订阅链接（Subscription Link）就是你的车票和导航地图。三者缺一不可。</strong> 对于刚接触翻墙的新手来说，最让人头疼的就是这三个概念。这篇文章将通过通俗易懂的比喻和真实的配置步骤，带你快速掌握<strong>科学上网基础知识</strong>，彻底弄懂买了机场之后到底该怎么用。</p>
+
+      <h2 id="what-is-node">1. 翻墙节点是什么？（你的目的地）</h2>
+      <p>首先解答：<strong>机场节点是什么？</strong> 在科学上网的语境下，所谓“节点”，就是部署在海外（如香港、日本、美国）的一台真实服务器。当你想访问 Google 时，你的数据并不是直接发给 Google，而是先发送给这台“节点服务器”，再由它代你访问，最后把结果传回给你。</p>
+      <p><strong>翻墙节点原理</strong>其实就是代理（Proxy）。你买机场，本质上就是花钱租用服务商在世界各地搭建的这一堆代理服务器。</p>
+      
+      <h3>翻墙节点和 VPN 服务器有什么区别？</h3>
+      <p>虽然它们都是海外服务器，但机场节点运行的是 Shadowsocks、V2Ray、Trojan 等现代轻量级代理协议，专门用于伪装流量、绕过 GFW（防火长城）的审查；而传统的 VPN 服务器运行的是 OpenVPN 等强加密协议，特征明显，极易被封锁。这也就是为什么目前国内主要依赖机场节点来科学上网。</p>
+
+      <h3>怎么选择节点？节点超时是什么意思？</h3>
+      <p>在你的客户端列表中，你会看到一长串节点，比如“香港 01 | IPLC”、“日本 02 | BGP”。
+      <br>• <strong>怎么选择节点：</strong> 追求极速体验（如打外服游戏、看高清直播），请首选 <strong>香港或日本的 IPLC/IEPL 专线节点</strong>，延迟最低。如果只是日常查资料，普通的 BGP 节点也完全够用。
+      <br>• <strong>节点超时是什么意思：</strong> 如果软件提示“节点超时 (Timeout)”，意味着你的电脑无法和这台海外服务器建立联系。这可能是因为你的网络环境波动，或者是该服务器的 IP 被封锁，也可能是机场的服务器正在维护。遇到这种情况，直接切换到下一个节点即可。</p>
+
+      <h2 id="what-is-sub-link">2. 机场订阅链接怎么用？（你的车票与地图）</h2>
+      <p>你买完机场后，服务商不会给你几百个服务器的 IP 和密码让你挨个手动输入，而是会给你一串网址，这就是 <strong>什么是订阅地址</strong>。</p>
+      <p><strong>机场订阅链接</strong>（Subscription Link）里打包了你买的所有节点的信息（IP、端口、密码、协议类型）。只要你把这串网址复制并输入到客户端里，客户端就会自动把所有的节点下载下来。</p>
+      
+      <h3>订阅链接会泄露隐私吗？</h3>
+      <p><strong>机场订阅链接会泄露隐私吗？</strong> 绝不会泄露你的浏览记录。但！这串链接是你的**专属认证凭证**。如果别人拿到了你的订阅链接，他们就可以免费使用你花钱买的节点流量。因此，**千万不要把你的订阅链接发到公开的网络论坛或群聊中**。</p>
+      
+      <h3>不同软件的订阅方式</h3>
+      <p>大多数主流机场后台都会提供“一键导入”按钮，或者提供专属的 <strong>Clash 订阅</strong> 与 <strong>小火箭订阅</strong> 按钮，点击后会自动唤醒对应的软件完成配置。</p>
+
+      <h2 id="what-is-client">3. 科学上网客户端推荐（你的专属交通工具）</h2>
+      <p>有新手经常问：<strong>为什么有了节点还要下载客户端？</strong> 节点、订阅和客户端是什么关系？<br>
+      回到我们的比喻，节点是目的地，订阅链接是车票。但如果你没有交通工具（客户端），你还是去不了。<strong>科学上网客户端</strong>就是一个能读懂订阅链接、并把你电脑里的流量进行加密发送到节点的软件。</p>
+
+      <h3>翻墙工具哪个好？各大平台客户端推荐：</h3>
+      <ul>
+        <li><strong>Windows 电脑：</strong> 强烈推荐 <strong>Clash Verge</strong> 或 Clash for Windows。这是目前最强大、支持分流规则最完善的客户端。如果需要更老牌的选择，v2rayN 也是不错的 V2ray 客户端。</li>
+        <li><strong>苹果 iOS 手机：</strong> 首推 <strong>Shadowrocket（俗称小火箭）</strong>。虽然需要美区 Apple ID 购买（约 $2.99），但它是生态最好、最省电、支持协议最全的神器。<strong>Clash vs Shadowrocket</strong> 怎么选？手机用小火箭，电脑用 Clash，这是目前的标配。</li>
+        <li><strong>Mac 电脑：</strong> Mac 科学上网客户端怎么选？首选 <strong>ClashX Pro</strong> 或 Clash Verge Mac 版，或者高级玩家可选 Surge（较贵）。</li>
+        <li><strong>Android 手机：</strong> 推荐 <strong>v2rayNG</strong> 或 Clash for Android。免费且开源。</li>
+      </ul>
+
+      <h2 id="how-to-use">4. 买了机场之后怎么用？（三步配置教程）</h2>
+      <p>了解了 <strong>翻墙软件怎么设置</strong> 后，这里给出一个最通用的标准流程：</p>
+      <ol>
+        <li><strong>下载并安装客户端</strong>：根据你的操作系统，下载上述推荐的软件（如 Clash Verge 或 Shadowrocket），并完成安装。</li>
+        <li><strong>复制或导入订阅链接</strong>：
+          <ul>
+            <li>登录你的机场后台。</li>
+            <li>找到“一键订阅”或“我的订阅”板块。</li>
+            <li><strong>复制</strong> 对应的订阅地址，或者直接点击“一键导入到 Clash / 小火箭”。</li>
+          </ul>
+        </li>
+        <li><strong>更新配置并开启代理</strong>：
+          <ul>
+            <li>在客户端中，找到“配置(Profiles)”或“订阅”页面，点击 <strong>下载 / 更新 (Update)</strong>。</li>
+            <li>下载成功后，在列表中选中你刚刚下载的配置文件。</li>
+            <li>回到软件首页，开启 <strong>系统代理 (System Proxy)</strong> 或点击 <strong>连接 (Connect)</strong>。</li>
+          </ul>
+        </li>
+      </ol>
+      <p>只要严格按照这三步走，你就成功跨入了全球互联网的大门！</p>
+
+      <h2 id="qa-faq">5. 新手常见问题解答 (FAQ)</h2>
+      <p>在实际操作中，你可能会遇到各种小问题，以下是针对 <strong>翻墙新手教程</strong> 中最高频的报错排查：</p>
+
+      <div class="faq-item">
+        <h3>Q1: 导入订阅链接后无法上网怎么办？</h3>
+        <p><strong>答：</strong> 首先检查电脑右下角的时间是否准确，科学上网协议要求系统时间误差不能超过 2 分钟。其次，确认你是否在软件首页勾选了“开启系统代理(System Proxy)”。最后，尝试在节点列表里换一个节点。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 订阅链接打不开怎么办？</h3>
+        <p><strong>答：</strong> 订阅链接是一串配置数据地址，<strong>不是让你直接在浏览器里打开的网页</strong>！正确的用法是“复制”这串链接，然后“粘贴”到科学上网客户端（如 Clash、v2rayN）的订阅设置栏里去更新。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 机场节点全部超时怎么解决？</h3>
+        <p><strong>答：</strong> 这通常有两个原因。第一：你的机场套餐流量用尽，或者已过期，请登录机场后台检查。第二：如果正值敏感时期，可能是该机场的服务器遭遇了大面积封锁，请耐心等待机场主修复并“更新订阅”以获取新的未被封锁的节点。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q4: 为什么客户端更新订阅失败？</h3>
+        <p><strong>答：</strong> 大部分是因为本地网络（如运营商 DNS 污染）阻断了机场的订阅域名。解决办法：把本地的 DNS 修改为 223.5.5.5 或 114.114.114.114。或者登录机场后台，通常他们会提供多个“备用订阅链接”，换一个备用的试试即可。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q5: 手机连上了节点但是没网络？</h3>
+        <p><strong>答：</strong> 苹果手机小火箭 (Shadowrocket) 配置教程中常提到：首次开启时系统会弹窗提示请求 VPN 权限，必须点击“允许 (Allow)”并输入锁屏密码。如果是安卓设备，检查是否被系统自带的安全管家拦截了流量。另外，请确认你所选的那个节点不是处于“超时”状态。</p>
+      </div>
+      
+      <p>如果您想寻找优质、靠谱的机场节点，不知道哪家的订阅链接最稳定，可以去看看我们的 <a href="/recommend/">精选翻墙机场推荐</a> 页面，为您省去试错成本。</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0; /* prevent overflow */
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #f0fdf4;
+      border-left: 4px solid #10b981;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
