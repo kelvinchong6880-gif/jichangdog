@@ -4,14 +4,16 @@ import path from 'path';
 const dir = 'c:\\\\Users\\\\USER\\\\Desktop\\\\新博客文章资料\\\\品牌套餐价格';
 const files = fs.readdirSync(dir);
 
-const predefinedOrder = [
-  '微风价格表.txt',
-  '飞猫云套餐价格.txt',
-  'firefly 套餐价格.txt',
-  '无忧套餐价格.txt',
-  '跨界套餐价格.txt',
-  '灵猫套餐价格.txt',
-  '闪跃套餐价格.txt'
+const predefinedOrderNames = [
+  '微风',
+  '飞猫云',
+  'firefly',
+  '无忧',
+  '跨界',
+  '灵猫',
+  '闪跃',
+  'flybit',
+  'xxyun'
 ];
 
 const linksMapping = {
@@ -158,10 +160,10 @@ for (const file of files) {
 }
 
 brands.sort((a, b) => {
-  let idxA = predefinedOrder.indexOf(a.file);
-  let idxB = predefinedOrder.indexOf(b.file);
-  if (idxA === -1) idxA = 999;
-  if (idxB === -1) idxB = 999;
+  let idxA = predefinedOrderNames.indexOf(a.name);
+  if (idxA === -1) idxA = a.name === '网际快车' ? 1000 : 999;
+  let idxB = predefinedOrderNames.indexOf(b.name);
+  if (idxB === -1) idxB = b.name === '网际快车' ? 1000 : 999;
   if (idxA !== idxB) return idxA - idxB;
   return a.name.localeCompare(b.name);
 });

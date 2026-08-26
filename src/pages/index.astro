@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RunawayTable from '../components/RunawayTable.astro';
 ---
 
 <BaseLayout 
@@ -56,7 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a class="button button-small" href="/jichang/" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(36, 87, 230, 0.2);">查看全部 36 家 <span>→</span></a>
     </div>
     
-                            <div class="featured-grid">
+                                <div class="featured-grid">
 
 
       <article class="featured-card">
@@ -218,6 +219,201 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <style is:inline>
+.reading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+.reading-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: #fcfcfc;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reading-icon-wrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+.reading-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.reading-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.5;
+  margin: 0;
+  transition: color 0.3s;
+}
+.reading-action {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2457e6;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+.reading-action span {
+  transition: transform 0.2s;
+}
+.reading-link:hover {
+  background: #fff;
+  border-color: rgba(36, 87, 230, 0.4);
+  box-shadow: 0 8px 30px rgba(36, 87, 230, 0.08);
+  transform: translateY(-4px);
+}
+.reading-link:hover .reading-title {
+  color: #2457e6;
+}
+.reading-link:hover .reading-action {
+  opacity: 1;
+}
+.reading-link:hover .reading-action span {
+  transform: translateX(4px);
+}
+@media (max-width: 768px) {
+  .reading-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="recommended-reading-section" style="background: #fff; border-top: 1px solid var(--line);">
+    <div class="page-shell" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="section-heading" style="margin-bottom: 40px; text-align: left;">
+        <h2 style="font-size: 2rem; color: var(--ink);">推荐阅读</h2>
+        <p style="color: var(--muted); margin-top: 8px;">深入了解翻墙技术与客户端配置，解决您的各类网络难题。</p>
+      </div>
+      <div class="reading-grid">
+        <a href="/knowledge/proxy-clients-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #eff6ff; color: #3b82f6;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">2026 翻墙客户端推荐：Clash、v2rayN、小火箭 (Shadowrocket) 怎么选？【附下载与图文教程】</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/knowledge/iplc-vs-iepl-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #fffbeb; color: #f59e0b;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">机场线路解析：IPLC 与 IEPL 专线有什么区别？玩外服游戏选哪个？【附真实测速】</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/knowledge/free-airport-nodes-security-risks/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #fef2f2; color: #ef4444;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">免费机场节点能用吗？揭秘免费翻墙背后的隐私与安全风险</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/knowledge/clash-verge-custom-routing-rules-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #eef2ff; color: #6366f1;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">Clash/Clash Verge 分流规则怎么写？实现国内外流量精准分流</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/knowledge/v2ray-vmess-vs-vless-protocol/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #faf5ff; color: #a855f7;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">V2Ray 核心解析：VMess 与 VLESS 协议的优缺点对比</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/knowledge/what-is-bgp-transit-relay/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #e0f2fe; color: #0284c7;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">什么是 BGP 中转？多入口 BGP 是如何拯救“移动/联通/电信”翻墙稳定性的？【附原理解析】</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/what-is-airport-subscription-link-how-to-use/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #f0fdfa; color: #0d9488;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">机场订阅链接是什么？怎么用？（附全平台图文解析）</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/free-vpn-vs-paid-airport-risks/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #ffe4e6; color: #e11d48;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">免费 VPN 与付费机场的本质区别：为什么不建议用免费翻墙软件？</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/v2rayn-download-and-setup-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #ffedd5; color: #ea580c;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">v2rayN 详细使用教程：从下载到添加机场订阅链接</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/shadowrocket-mac-m-chip-download-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #f3f4f6; color: #4b5563;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">Shadowrocket (小火箭) Mac 版安装与配置指南（支持 M芯片）</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/shadowrocket-ios-download-purchase-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #fdf2f8; color: #db2777;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">小火箭 Shadowrocket 下载、购买与机场节点配置全教程</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+        <a href="/guide/clash-for-android-cfa-beginner-guide/" class="reading-link">
+          <div class="reading-icon-wrap" style="background: #dcfce7; color: #16a34a;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <div class="reading-text">
+            <h3 class="reading-title">Clash for Android (CFA) 下载与订阅配置小白教程</h3>
+            <span class="reading-action">阅读全文 <span>→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
   <section class="needs-section">
     <div class="page-shell">
       <div class="section-heading">
@@ -261,6 +457,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <RunawayTable />
 
   <section class="page-shell methodology">
     <div>

@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "SagerNet 安卓端配置与使用教程（支持 Trojan/V2Ray）";
+const description = "请立刻停止折腾 SagerNet！深度揭秘 SagerNet 插件地狱报错、删库停更真相。带你平移配置到最新版安卓万能客户端 NekoBox，掌握极客级代理链与最新防封锁协议。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：请立刻停止在安卓手机上折腾 SagerNet！</strong><br><br>SagerNet 曾是安卓翻墙界的“瑞士军刀”，但它早已在两年前停止维护。现在强行使用 SagerNet，你将面临极其恐怖的<strong>“插件地狱”</strong>：主程序本身是个空壳，为了让节点连网，你还必须去全网寻找匹配的 Xray、Trojan 等第三方独立插件 APK，不仅极易下到木马，且根本不支持 2026 年最新的 Reality 防封锁协议。<br>正确的极客玩法是：直接下载它的正统进化版——<strong>NekoBox for Android (原 Matsuri 茉莉)</strong>。 它不仅完美继承了 SagerNet 强大的代理链 (Proxy Chain) 与路由功能，还内置了 Xray 和 Sing-box 双内核，无需安装任何繁琐插件，开箱即用。</p>
+
+      <h2 id="client-comparison">1. 时代弃子与极客新王：安卓全能客户端世代对比表</h2>
+      <p>为了打消你对旧软件的执念，避免把时间浪费在无意义的排错上，请看以下直观对比：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>SagerNet (时代眼泪)</th>
+              <th>NekoBox for Android (2026 极客新王)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>内核与插件生态</strong></td>
+              <td><strong>反人类。</strong> 纯空壳软件，需额外去 Github 寻找并安装 5+ 个独立插件包。</td>
+              <td><strong>一体化。</strong> 内部原生集成 Xray + Sing-box 双核，开箱即用。</td>
+            </tr>
+            <tr>
+              <td><strong>最新协议支持度</strong></td>
+              <td>严重落后。强行跑 VLESS-Reality 等新协议会疯狂报错，且极易被墙。</td>
+              <td><strong>满血支持。</strong> 2026 所有最新抗封锁黑科技协议第一时间跟进。</td>
+            </tr>
+            <tr>
+              <td><strong>高级玩法 (代理链)</strong></td>
+              <td>首创代理链 (Proxy Chain) 玩法。</td>
+              <td>完美继承代理链，并利用新内核大幅优化了系统级 UI 与底层耗电。</td>
+            </tr>
+            <tr>
+              <td><strong>Antigravity 博客定位</strong></td>
+              <td>❌ <strong>强烈建议立即卸载，残留插件务必彻底清理，徒增排障烦恼。</strong></td>
+              <td>🌟 <strong>追求万能协议与硬核路由的安卓玩家绝对首选。</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 技术解构：为什么 SagerNet 会沦为“插件地狱”？</h2>
+      <p>许多老玩家仍然试图在各大论坛搜索“SagerNet 安卓版下载”，却不知道这款软件的底层架构设计，在如今的安卓生态下已经彻底崩塌。</p>
+      
+      <h3>Xray / V2Ray / Trojan 独立插件包 (Plugin APK) 的致命缺陷</h3>
+      <p>SagerNet 当初的设计理念是极其“模块化”的：主程序 (SagerNet.apk) 只负责图形界面 UI 和 VPN 流量接管，而真正负责加解密的引擎，是以独立 App 的形式存在的。<br>比如，你要连接一个 Trojan 节点，你就必须额外安装一个 <code>Trojan-Go Plugin.apk</code>；要连接 VLESS 节点，还要安装 <code>Xray Plugin.apk</code>。这导致了以下灾难性后果：<br>1. <strong>木马温床：</strong> 由于官方早已删库，新手现在只能去乱七八糟的国内网站下载这些插件，99% 都被二次打包注入了木马病毒。<br>2. <strong>IPC 通信极度耗电：</strong> 在安卓系统中，主程序通过跨进程通信 (IPC) 不断调用另外几个插件 App 来转发流量，这会引发系统疯狂的 CPU 唤醒，导致手机发热、耗电量飙升。<br>3. <strong>后台被杀导致断流：</strong> 国产系统 (HyperOS, ColorOS) 会毫不留情地杀掉那些“在后台默默运行”的插件 App。一旦插件被杀，主程序的节点全部显示 Timeout。</p>
+
+      <h3>VLESS-Reality 协议兼容性断层与 Sing-box 内核的全面接管</h3>
+      <p>随着 GFW (防火长城) 的主动探测技术升级，老旧的 VMess / Trojan 协议特征已经极其明显。如今顶级机场全都在下发 <strong>VLESS-Reality</strong> 等伪装协议。<br>由于 SagerNet 停更，其底层的协议解析库永远停留在两年前。当你把包含 Reality 或 Vision 流控的机场订阅导入 SagerNet 时，系统会直接爆出 <code>unsupported protocol</code> 或者 <code>invalid flow</code> 的底层致命错误。<br>而 <strong>NekoBox</strong> 极其聪明地引入了跨平台新星 <strong>Sing-box 内核</strong>。它在同一个底层二进制文件中融合了所有新老协议，彻底埋葬了臃肿的插件生态。</p>
+
+      <h3>硬核迁移：如何在 NekoBox 中复刻“代理链分流 (Proxy Chain)”</h3>
+      <p>极客玩家当年死死抱住 SagerNet 不放，最大的原因就是它的杀手锏——<strong>代理链 (前置代理)</strong>。你可以让流量先进入中转节点 A (比如移动宽带友好的香港节点)，再由 A 节点作为前置跳板，连接到节点 B (原生解锁 Netflix 的美国节点)。<br>现在，你可以直接在 NekoBox 中无缝平移这项神级操作：</p>
+      <pre is:raw><code>// 在 NekoBox (Sing-box 核心) 中构建链式代理的底层逻辑
+{
+  "outbounds": [
+    {
+      "tag": "US-Netflix-Unlock",
+      "type": "vless",
+      "server": "us.example.com",
+      // 神来之笔：指定流量出口为另一个代理节点
+      "dialer_proxy": "HK-Transit-Node"
+    },
+    {
+      "tag": "HK-Transit-Node",
+      "type": "trojan",
+      "server": "hk.example.com"
+    }
+  ]
+}</code></pre>
+      <p>在 NekoBox 的 GUI 界面中，你只需要长按你想作为终点的节点 (US-Netflix)，选择<strong>“设置前置代理 (Set Forward Proxy)”</strong>，然后挑选你的中转节点 (HK-Transit)。无需任何代码，一秒实现极其暴力的链路转发！</p>
+
+      <h3>TUN 虚拟网卡革命：从 tun2socks 到 Sing-box Native TUN</h3>
+      <p>SagerNet 时代，如果遇到那些不走系统默认 HTTP/SOCKS 代理的流氓 App（比如某些国内银行、甚至国外的 TikTok），我们必须开启极其耗电的 `tun2socks` 模式，在应用层强行抓取所有 TCP/UDP 包。<br>而 <strong>NekoBox</strong> 搭载的 Sing-box 内核直接实现了 <strong>Native TUN (原生虚拟网卡)</strong>。当你开启 VPN 开关时，它会在安卓底层创建一个 <code>/dev/net/tun</code> 接口，并直接在 L3 网络层接管全量 IP 包。<br>这带来的震撼提升是：<strong>零流量泄漏、UDP 游戏不丢包、且比老一代方案省电 40% 以上！</strong> 你的手机就像硬件级连上了国外路由器，哪怕是 TikTok 这种通过底层自建协议通信的应用，也会被死死锁在加密隧道里。</p>
+
+      <h3>防泄漏天花板：Fake-IP 映射与远端 DoH 劫持</h3>
+      <p>老玩家都懂，DNS 污染是翻墙最大的敌人。SagerNet 的 DNS 方案经常因为插件间的通信延迟导致网页首屏加载缓慢（DNS 解析过慢）。<br>NekoBox 在路由设置中提供了极其硬核的 <strong>Fake-IP 模式</strong>：<br>1. 当浏览器请求 <code>youtube.com</code> 时，NekoBox 本地直接秒回一个假 IP（如 <code>198.18.1.1</code>）。<br>2. 浏览器立刻发起 TCP 握手连接这个假 IP。<br>3. NekoBox 把真实的域名封包通过隧道发送给海外节点的远端 DNS 进行绝对纯净的解析。<br>这一套组合拳，将网页打开的 TTFB (首包时间) 缩短了近百毫秒，而且 100% 杜绝了国内三大运营商的 DNS 劫持。</p>
+
+      <h3>最前沿防封锁技术：ECH (Encrypted Client Hello) 支持</h3>
+      <p>在 2026 年的今天，GFW 已经能精准识别普通 TLS 握手时的 SNI 明文。如果你还在用 SagerNet，GFW 可以瞬间看到你在访问哪个网站。<br>而 NekoBox 已经率先在安卓端全面支持了 <strong>ECH 协议</strong>。在添加最新的 VLESS 节点时，只要机场支持，开启 ECH 开关后，连 TLS 握手阶段的域名都被彻底加密。在网警的监控探头里，你的流量就如同深海黑洞，无法提取一丝一毫的有效指纹，真正实现了终极匿名防护！</p>
+
+      <h2 id="qa-faq">3. 长尾疑问与彻底排障指南 (Q&A)</h2>
+      <p>针对那些依然迷失在旧时代，或者刚装上 NekoBox 的玩家，我们整理了以下最高频的核心排障问答：</p>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么 SagerNet 导入节点后提示“缺少核心插件”？去哪里下载插件？</h3>
+        <p><strong>答：</strong>这是因为 SagerNet 只是一个空壳。由于原作者由于不可抗力在 Github 上删库停更事件，官方的插件下载渠道已经彻底死亡。<br><strong>解法：</strong>不要再去国内的野鸡下载站搜索 <code>Xray Plugin.apk</code> 了，那都是带有支付劫持的木马！<strong>彻底卸载 SagerNet 与残留配置清理！</strong> 前往 Github 搜索 <code>NekoBoxForAndroid</code>，下载它的最新 Release 版 APK 安装。所有的核心插件都已经原生打包在 NekoBox 里面了，装好立刻就能起飞。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 安卓手机装了 SagerNet 插件，右上角有 VPN 钥匙，但还是连不上网怎么办？</h3>
+        <p><strong>答：</strong>首先，检查你的系统“电池优化”是不是把插件 App 的后台进程给干掉了。其次，如果你购买的机场已经全面升级为 VLESS-Reality 协议，那么 SagerNet 的老旧插件即便在后台活着，也根本无法建立握手，导致所有流量黑洞。<br><strong>立刻换装 NekoBox (原 Matsuri 茉莉)</strong>，并在导入订阅后，右上角选择“更新订阅”，你会发现那些灰死的老节点，用新内核跑起来瞬间变成绿色的几十毫秒延迟。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: SagerNet 怎么把英文界面换成中文？</h3>
+        <p><strong>答：</strong>SagerNet 的默认系统语言跟随安卓系统，但在某些被魔改的手机 ROM 上会出现调用失败导致全英文的情况。<br>如果你使用继承者 NekoBox，它原生支持完美的简体中文本地化。进入 <code>Settings -> Interface -> Language</code>，强制选择 <code>Simplified Chinese</code> 并重启 App，即可获得最极客、最详尽的中文网络调试面板。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: NekoBox for Android 和 v2rayNG 哪个更好用，哪个更省电？</h3>
+        <p><strong>答：</strong>如果你是一台拥有 16GB 甚至 24GB 内存的顶级安卓旗舰（骁龙 8 Gen 3），并且你是个重度极客，喜欢折腾<strong>代理链中转</strong>、自定义 DNS 防泄漏、精细化的分应用路由，那么内置 Sing-box/Xray 双核的 <strong>NekoBox 是你的终极归宿</strong>。<br>但如果你用的是千元机，且极度在意每一丝电量损耗，不折腾链式代理，只求“简单挂着一个节点上 Google”，那么 <strong>v2rayNG</strong> 凭借最简陋的 UI 和单一原生内核，在极致省电领域依然是无敌的存在。</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：抛弃旧时代的船票，登上最强链路专线</h2>
+      <p>通过本文的解构，你应该彻底明白：在 2026 年，继续抱着 SagerNet 不放，无异于开着一台生锈的老爷车，在到处是暗雷的公路上裸奔。彻底卸载它，拥抱 NekoBox for Android，才是赛博世界的正确生存法则。</p>
+      <p>当你利用 NekoBox 完美掌握了“代理链 (Proxy Chain)”等神级分流技巧后，你已经拥有了安卓端最顶级的流量指挥棒。</p>
+      <p><strong>但是，无论是单节点直连，还是链式中转，它们都有一个不可逾越的物理前提：你的机场节点，必须具备极高的原生连通率。</strong></p>
+      <p>如果你用着最顶级的 NekoBox 代理链功能，却前置了一个疯狂丢包、晚高峰被 GFW 墙死死盯住的廉价直连节点。那么你的多重转发只会让延迟从 100ms 翻倍飙升到 5000ms 甚至直接断流。</p>
+      <p>要想真正玩转高端的极客分流，你的底层网络必须稳如泰山。强烈建议你抛弃那些月抛垃圾机场，移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。选择榜单中提供 <strong>全链路 IPLC / IEPL 企业级物理内网专线</strong> 的顶级供应商。</p>
+      <p>只有当你的每一层链路节点都不会被墙干扰时，你的 NekoBox 代理链，才能爆发出秒开 4K、零感知切换的绝对极速！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

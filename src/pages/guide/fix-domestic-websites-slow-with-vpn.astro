@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "为什么连上机场后，国内网站（淘宝/百度）打开很慢或打不开？";
+const description = "挂代理后微信连不上、淘宝打不开？深度解析全局代理与规则分流区别，教你在 Clash/v2rayN 中正确开启绕过局域网及大陆，实现国内外分流秒开。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：国内网站打不开，99% 是因为你误开了“全局代理”！</strong><br><br>很多新手在刚买完机场、第一次成功连上梯子后，会非常兴奋地发现 Google 和 YouTube 秒开，但随之而来的是一个巨大的痛点：打开国内的淘宝一直在转圈、百度图片加载不出来、甚至电脑版的微信直接断连。这并不是你的网络坏了，而是翻墙软件默认把你的“国内流量”也发送到了国外的机场服务器上，绕了地球一圈才回来，速度必然极其缓慢。<br><strong>三步极简修复指南：</strong><br>1. <strong>v2rayN 用户：</strong> 在软件底部的状态栏，找到【路由】选项，将其从“全局 (Global)”切换为 <strong>“绕过局域网及大陆 (Bypass CN)”</strong>。<br>2. <strong>Clash / CMFA 用户：</strong> 在代理控制面板中，将顶部的工作模式（Mode）从“全局 (Global)”切换为 <strong>“规则 (Rule)”</strong>。<br>3. <strong>浏览器排查：</strong> 如果改了模式依然打不开国内网页，请检查浏览器（如 Chrome/Edge）的设置，搜索“安全 DNS”，将其关闭或改为系统默认，防止浏览器的强制加密 DNS 与代理软件的分流底层产生冲突。</p>
+
+      <h2 id="symptoms-table">1. 代理模式对国内网络影响对照表</h2>
+      <p>在使用任何翻墙客户端时，彻底搞懂“分流模式”是你告别断网的第一步。请对照下表，理解你的流量到底是怎么走的：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>工作模式名称</th>
+              <th>核心流量走向原理</th>
+              <th>对国内网站（如淘宝/百度）的影响</th>
+              <th>Antigravity 博客使用建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>规则模式</strong><br><span style="font-size: 0.85em; color: #6b7280;">(Rule / Bypass CN)</span></td>
+              <td><strong>智能分流：</strong> 识别到国内网址走本地宽带直连，识别到被墙网址走加密代理节点。</td>
+              <td><strong>毫无影响，极速秒开。</strong><br>完全不消耗任何机场的宝贵流量。</td>
+              <td>🌟 <strong>99% 用户的日常挂机首选。</strong><br>开启后可 24 小时挂后台免开关。</td>
+            </tr>
+            <tr>
+              <td><strong>全局模式</strong><br><span style="font-size: 0.85em; color: #6b7280;">(Global)</span></td>
+              <td><strong>强制接管：</strong> 无论是百度还是谷歌，所有流量强制发往海外的代理节点。</td>
+              <td><strong>极其缓慢甚至彻底打不开。</strong><br>疯狂消耗机场流量，微信易掉线。</td>
+              <td>仅在规则分流失效、或需要全局伪装海外 IP（如访问 ChatGPT）时临时使用。</td>
+            </tr>
+            <tr>
+              <td><strong>直连模式</strong><br><span style="font-size: 0.85em; color: #6b7280;">(Direct)</span></td>
+              <td>彻底关闭代理转发功能，客户端相当于不存在。</td>
+              <td>正常访问，速度取决于你家宽带。</td>
+              <td><strong>无法翻墙。</strong><br>通常用于排查是宽带断网还是代理断网。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 极客解码：网络分流原理与 DNS 污染机制</h2>
+      <p>为什么仅仅是一个按钮的切换，就能产生如此巨大的网络体验差异？我们要像网络工程师一样，拆解 Clash 与 v2ray 底层的流量路由引擎 (Routing Engine)。</p>
+      
+      <h3>规则分流 (Rule-based Routing) 是如何工作的？</h3>
+      <p>当你在 Clash 中选择“规则 (Rule)”模式时，客户端会在本地加载两个极其庞大的数据库：<code>GeoIP</code> (全球 IP 归属地数据库) 和 <code>GeoSite / 域名列表</code> (包含数以万计的国内外常用域名)。<br>当你在浏览器输入 <code>taobao.com</code> 时：<br>1. Clash 引擎瞬间截获该请求，并在 <code>GeoSite</code> 数据库中进行比对。<br>2. 引擎发现这是一个中国大陆域名 (CN)，它会立即放行，让这个请求直接从你家里的路由器发往阿里云的服务器。速度就是你家宽带的裸连速度。<br>3. 但如果你输入的是 <code>youtube.com</code>，引擎发现它匹配了 <code>PROXY</code> 规则，就会立刻将其加密，塞进那条连往日本或美国节点的加密隧道里。<br>这就是为什么规则模式能做到“国内极速，国外翻墙”，互不干扰。</p>
+
+      <h3>全局模式的灾难：绕地球一圈的淘宝流量</h3>
+      <p>当你不小心点到了“全局模式 (Global)”时，分流引擎会直接关闭所有的数据库比对机制。<br>此时你访问淘宝，你的流量会发生极其离谱的物理位移：<br>广东的你发出请求 -> 流量被加密发往美国洛杉矶的代理节点 -> 洛杉矶的节点向杭州的淘宝服务器请求数据 -> 淘宝服务器将图片发给洛杉矶节点 -> 洛杉矶节点再把图片加密传回广东。<br>这也就是俗称的“出国绕一圈”。你的物理延迟瞬间从 10 毫秒飙升到 300 毫秒以上。更糟糕的是，国内的 App（如微信、B站）发现自己的数据是从美国 IP 访问进来的，往往会触发风控机制，直接掐断连接！</p>
+
+      <h3>Fake-IP 模式导致的 DNS 污染副作用</h3>
+      <p>很多极客玩家喜欢在 Clash 中开启 <strong>Fake-IP (伪造 IP) 模式</strong> 来追求极致的国外网页首屏秒开速度。但在早期配置不当的情况下，这会给国内网站带来毁灭性打击。<br>当访问百度时，Fake-IP 会直接返回一个 <code>198.18.0.1</code> 这样的假 IP 欺骗浏览器。如果你的 Clash 没有正确配置 <strong>Fake-IP 过滤列表 (fake-ip-filter)</strong>，电脑就会尝试用代理节点去强行连接百度的假 IP，导致国内网页频繁出现“找不到服务器”或是页面排版完全错乱、图片加载失败。<br><strong>解法：</strong> 确保你的 Clash 配置文件是由提供完善国内直连规则的大型机场下发的，或者手动在 YAML 中补充对 <code>*.qq.com</code>、<code>*.baidu.com</code> 的本地 DNS 逃逸规则。</p>
+
+      <h2 id="qa-faq">3. 高频焦虑排错与长尾报错终极解析 (Q&A)</h2>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么开了翻墙软件看国内视频（B站/爱奇艺）会消耗机场流量？</h3>
+        <p><strong>答：规则库过旧或被 DNS 劫持。</strong><br>这说明 B 站的视频服务器域名（例如某些 CDN 节点）没有被包含在你的客户端“直连 (Direct)”规则库里，导致它被当成了未知流量，走进了代理通道 (Match Final 规则)。<br><strong>解法：</strong>前往客户端设置中，手动更新 <code>GeoIP.dat</code> 和 <code>GeoSite.dat</code> 数据库文件。同时确保浏览器的“安全 DNS (DoH)”已关闭，否则浏览器会绕过 Clash 的识别引擎。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 手机开 VPN 后国内 App 彻底没网，怎么实现分应用代理？</h3>
+        <p><strong>答：善用安卓端的 Per-App Proxy。</strong><br>在安卓端（如 v2rayNG 或 Clash for Android）中，最完美的方法是开启“分应用代理”。<br>进入设置，找到 <strong>“路由/访问控制”</strong> 或 <strong>“分应用代理”</strong>，勾选【绕过所选应用】。然后在列表中勾选微信、支付宝、淘宝、网易云等所有国内 App。这样这些 App 连虚拟网卡都不会走，实现了从物理底层上的绝对直连隔离，彻底告别国内断网。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 浏览器提示“代理服务器拒绝连接 (ERR_PROXY_CONNECTION_FAILED)”？</h3>
+        <p><strong>答：系统代理残留卡死。</strong><br>这是因为你之前强行关闭了翻墙软件（或者电脑休眠醒来），导致 Windows 的 IE 代理开关没有自动还原。此时所有的国内网页都被强行发往一个已经死掉的本地端口。<br><strong>解法：</strong> 打开 Windows 设置 -> 网络和 Internet -> 代理，手动关闭“使用代理服务器”开关即可恢复国内网络。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: 软路由 OpenClash 开启后，家里智能家居（米家）全部离线怎么办？</h3>
+        <p><strong>答：智能家居对 Fake-IP 和网关劫持极度水土不服。</strong><br>智能家居设备（摄像头、扫地机器人）通常使用极其简陋的网络协议。当 OpenClash 劫持了全屋网络并下发 Fake-IP 时，米家设备无法解析正确的阿里云服务器 IP，导致全线崩溃。<br><strong>解法：</strong> 在 OpenClash 的 <strong>“访问控制 (Access Control)”</strong> 面板中，将所有智能家居的 MAC 地址或局域网静态 IP 加入 <strong>“不走代理的局域网设备 (Bypass MAC/IP)”</strong> 列表，让它们直接绕过软路由的内核。</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：分流是体验的核心，线路是速度的灵魂</h2>
+      <p>当你搞懂了“全局”与“规则”、“直连”与“代理”的底层逻辑后，你就不再是那个“一上网就得反复开关软件”的狼狈小白了。通过正确设置分流规则，你的电脑完全可以做到 <strong>24 小时开着代理挂在后台，国内网站极速秒开，国外服务丝滑连通</strong>，进入真正的“无感科学上网”境界。</p>
+      <p>但是，<strong>再完美的分流规则，也掩盖不了劣质节点的硬伤。</strong></p>
+      <p>如果你已经正确设置了“规则模式 (Rule)”，国内网站确实恢复了秒开，但你去访问 YouTube 依然转圈、打开 Google 依然提示验证码，这就说明你所使用的机场线路本身存在严重的丢包和被墙风险。那些便宜的“月抛机场”，其公网节点早已经被 GFW 重点关照，不论你怎么设置，速度都注定拉垮。</p>
+      <p>要想在配置好完美分流的基础上，真正体验国内外双线起飞的快感，你必须拥有一条 <strong>端到端全链路不过墙的高级专线 (IPLC/IEPL)</strong>。</p>
+      <p>专线节点不需要在公网艰难穿透 GFW，自然也就不存在高丢包和速度瓶颈。强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些榜单里的顶级服务商，不仅提供极致的专线速度，其下发的配置文件（YAML）均由专业团队维护更新，拥有极其庞大且精准的国内外分流规则库，真正让你做到“一次配置，终身无感”的顶级网络体验！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,359 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "安卓手机连上机场后，如何开启/关闭 VPN 代理分流？";
+const description = "深度解析安卓科学上网分流技巧！告别淘宝加载慢与微信断流。详解绕过局域网及大陆、分应用代理配置，支持 Clash/v2rayNG/NekoBox 极客排障。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：安卓翻墙的黄金法则就是“规则分流 + 分应用代理”！</strong><br><br>很多新手连上机场后，发现国内软件变慢、甚至经常断网，这是因为客户端默认开成了<strong>“全局模式 (Global)”</strong>——这会将所有国内流量也通过海外节点绕一大圈。这不仅会导致微信延迟飙升，还会极速耗光你的机场流量。<br><strong>正确的两步分流设置：</strong><br>1. <strong>域名与 IP 级分流：</strong> 在任意客户端中，将路由模式/出站模式从“全局”修改为 <strong>“绕过局域网及大陆 (Bypass CN)”</strong> 或 <strong>“规则模式 (Rule)”</strong>。<br>2. <strong>应用级精确分流：</strong> 如果某些国产敏感 App 依然报错，直接开启客户端的 <strong>“分应用代理 (Per-App Proxy)”</strong>，仅勾选 Chrome、YouTube、Telegram 等海外软件走代理，其余国内应用 100% 强制直连物理网卡。</p>
+
+      <h2 id="client-comparison">1. 一图看懂：主流安卓客户端分流设置对照表</h2>
+      <p>不管你使用的是什么代理工具，底层原理都是相通的。我们为你整理了当今市面上四大主流客户端的分流设置路径。按图索骥，只需两步即可完成全方位的流量保护：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>客户端软件</th>
+              <th>“国内直连、海外代理”的正确开关位置</th>
+              <th>“仅允许特定 App 翻墙”的设置路径</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>v2rayNG</strong></td>
+              <td>左侧菜单 ➔ 【设置】 ➔ 【预定义规则】 选择 <strong>“绕过局域网及大陆地址”</strong>。</td>
+              <td>左侧菜单 ➔ 【设置】 ➔ 打开 <strong>【分应用代理】</strong> ➔ 勾选你需要翻墙的海外 App。</td>
+            </tr>
+            <tr>
+              <td><strong>Clash / CMFA</strong></td>
+              <td>首页直接将模式切换为 <strong>【规则 (Rule)】</strong>，切勿选择【全局 (Global)】。</td>
+              <td>进入【设置】 ➔ 【网络】 ➔ <strong>【访问控制】</strong> ➔ 设为仅代理选中的应用，或绕过选中应用。</td>
+            </tr>
+            <tr>
+              <td><strong>NekoBox</strong></td>
+              <td>底部【路由】菜单 ➔ 路由规则选择 <strong>“绕过局域网和大陆”</strong>。</td>
+              <td>左侧菜单 ➔ 【设置】 ➔ 开启 <strong>【分应用代理】</strong> 并勾选指定的敏感或游戏应用。</td>
+            </tr>
+            <tr>
+              <td><strong>Surfboard</strong></td>
+              <td>首页底部出站模式直接勾选 <strong>【规则 (Rule)】</strong>。</td>
+              <td>点击【配置】 ➔ 编辑 <strong>应用分流规则 (App Rules)</strong>，或依赖底层配置的规则集进行控制。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 安卓内核揭秘：你真的搞懂“分流”了吗？</h2>
+      <p>想要成为真正的科学上网极客，光知道点开关是不够的。你必须了解当你在安卓机上按下“启动”按钮时，系统底层到底发生了什么。</p>
+      
+      <h3>规则引擎：域名分流与 IP CIDR 规则集</h3>
+      <p>当你选择“规则模式”或“绕过大陆”时，客户端会在底层载入两个巨大的数据库文件：<code>geosite.dat</code>（域名库）和 <code>geoip.dat</code>（IP 段库）。<br>当你在浏览器中发起一个请求时，客户端会进行瞬间的两次判定：<br>1. <strong>查域名：</strong> 访问 <code>taobao.com</code>，客户端在 <code>geosite:cn</code> 库中匹配成功，立刻挂上 <code>DIRECT (直连)</code> 标签。<br>2. <strong>查 IP (回退机制)：</strong> 如果是一个没有特征的域名，客户端会发起一次 DNS 解析，拿到 IP 地址。如果这个 IP 属于 <code>geoip:cn</code>（即中国大陆三大运营商分配的 CIDR IP 池），依然会被打上 <code>DIRECT</code> 标签。<br>在这两道坚固的城墙外，那些无法匹配的“漏网之鱼”（也就是海外网站的流量），才会被打包塞进 VLESS 或 Trojan 加密隧道，发往你的海外机场节点。这就是“国内直连、国外代理”的底层真相。</p>
+
+      <h3>Android VpnService 底层分流机制 (Per-App Proxy)</h3>
+      <p>前面提到的域名/IP 分流虽然智能，但依然会有 1% 的误伤可能（例如某些国内银行的底层域名没被收录，被错当成海外流量发往美国，导致异地风控封号）。<br>安卓系统相比于苹果 iOS，最大的特权就是开放了应用级隔离 API——<code>VpnService.Builder.addAllowedApplication</code>。<br>当你开启 <strong>分应用代理 (应用白名单)</strong> 并勾选了微信、银行、王者荣耀直连后，安卓会在系统内核网卡层面对这些 App 进行直接隔离。这些 App 发出的任何流量，连触碰 <code>geosite</code> 数据库的资格都没有，直接从手机的物理天线走 5G 基站发出，实现了 100% 的物理级防误判，彻底杜绝了国产 App 的流量偷跑与异常封号。</p>
+
+      <h3>终极硬核排雷：路由分流与 DNS 劫持防护</h3>
+      <p>很多人即使开了规则分流，依然觉得国内网站变慢。这是因为他们遭遇了 <strong>DNS 污染与劫持</strong>。如果在路由阶段，客户端使用错误的 DNS 服务器去解析淘宝的域名，可能淘宝会给你返回一个绕道香港的 CDN 节点，导致加载卡顿。<br><strong>极客排障手段：</strong> 在 Clash Meta 或 NekoBox 中，务必开启 <strong>Fake-IP 模式</strong>，并且在配置文件中明确区分国内外的 DNS 服务器：</p>
+      <pre is:raw><code>dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - https://dns.google/dns-query  # 海外域名强制走 DoH 防泄漏
+  nameserver-policy:
+    "geosite:cn":
+      - 223.5.5.5                   # 国内域名走阿里云极速直连 DNS
+      - 119.29.29.29                # 腾讯 DNSPod 备用</code></pre>
+      <p>通过这套极其严密的 DNS 政策配置，国内请求极速解析，国外请求绝对保密，才是真正的赛博极速体验。</p>
+
+      <h2 id="qa-faq">3. 安卓分流高频痛点与长尾排障 (Q&A)</h2>
+      <p>如果你在分流设置中依然遇到各种诡异的断流和报错，以下这套专门截获“疑难杂症”的排错指南绝对能救你一命：</p>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么安卓手机开了梯子后，淘宝和抖音刷不出来了，连微信都收不到消息？</h3>
+        <p><strong>答：</strong>99% 的原因是你把客户端（如 CMFA 或 v2rayNG）的路由模式不小心选成了 <strong>【全局 (Global)】</strong>。全局模式会将你的国内流量全部强制发送到机场的海外服务器。而抖音等很多国产 App 开启了“海外 IP 风控”，一旦检测到请求来自美国或日本，就会直接拒绝服务。<br><strong>解法：</strong>立刻前往软件首页，将模式切换回 <strong>【规则 (Rule)】</strong> 或 <strong>【绕过局域网及大陆】</strong> 即可瞬间恢复正常。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 手机开着翻墙软件看 B 站和国内爱奇艺，会消耗我买的机场流量吗？</h3>
+        <p><strong>答：只要你处于正确的【规则/绕过大陆】模式下，绝对不会消耗一丁点机场流量。</strong><br>就像文章第二部分剖析的，B 站和爱奇艺的服务器域名与 IP 已经被内置的 <code>geo</code> 数据库完美覆盖，所有视频数据全部走你的移动联通 5G 本地套餐直连下载，绝不触碰加密隧道。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 为什么开启分流后，部分国内银行 App（如农行/建行）依然提示“检测到代理软件，请关闭”？</h3>
+        <p><strong>答：</strong>银行 App 极其“流氓”，它们不仅仅检测你的流量出口 IP，还会直接读取你安卓手机系统的进程列表。只要它们发现后台有一个名为 <code>v2rayNG</code> 或 <code>Clash</code> 的进程正在运行，甚至屏幕右上角有个 VPN 的小钥匙图标，就会直接弹窗拒绝进入。<br><strong>解法：</strong><br>第一步，利用客户端的 <strong>【分应用代理 / 访问控制】</strong> 功能，将该银行 App 强制排除在代理之外。<br>第二步，如果还是弹窗，你的手机必须 Root 并安装 <code>Magisk/KernelSU</code>，刷入 <code>Hide MyApps (隐藏应用列表)</code> 模块，对银行 App 进行底层的环境伪装。如果不想折腾，只能老老实实关掉代理再登银行了。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: NekoBox 开启分应用代理后，为什么感觉依然是全局走流量，微信偶尔发图很慢？</h3>
+        <p><strong>答：</strong>这极有可能是你的国产手机系统（如澎湃 OS 或鸿蒙 OS）对底层的 VPN 路由 API 进行了魔改，导致 <code>VpnService</code> 下发的旁路名单没有完全生效。<br><strong>解法：</strong>打开 NekoBox 的 <code>设置 -> 路由</code>，除了开启分应用代理外，<strong>必须同时确保</strong>最基础的路由规则选择的是“绕过局域网和大陆”，让 <code>geo</code> 数据库作为最后一道双保险兜底。千万不要在分应用代理外围又套上一个“全局代理”！</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：顶级的分流，需要匹配最顶级的专线</h2>
+      <p>当你折腾完 <code>geosite</code>、分应用隔离以及 DNS 策略，你的安卓手机已经在系统层面实现了教科书般的流量切分。你的微信不会漏接任何一条消息，王者荣耀的延迟永远稳如老狗，而开启 Twitter 的瞬间却能行云流水。</p>
+      <p><strong>但是，即使你的本地分流做得再天衣无缝，那个被送往国外的包裹，依然要在黑暗的物理光缆中穿梭。</strong></p>
+      <p>如果你正在使用的，是几块钱一个月的低端直连中转机场。每当晚高峰到来，GFW 墙的无差别干扰与跨国公网带宽的极度拥挤，会让你即使连通了国外，YouTube 也连 720P 都带不动。空有最顶级的本地规则分流，却被烂网拖死了所有的体验。</p>
+      <p>要想真正享受国内国外双通道 0 延迟的秒开极客快感，你必须给这套完美的分流规则，配备一条<strong>端到端全链路不过墙的顶级 IPLC / IEPL 企业级物理专线</strong>。</p>
+      <p>强烈建议你抛弃那些卡顿断流的劣质节点，移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。选择榜单中提供纯净原生 IP 的顶级供应商，无论晚高峰墙多高，Ping 值永远稳如泰山。给你的完美分流引擎，换上最强劲的专线动力吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

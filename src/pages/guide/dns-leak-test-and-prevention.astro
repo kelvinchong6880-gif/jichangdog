@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "什么是 DNS 泄露？如何测试并防止真实 IP 泄露？";
+const description = "翻墙后 IP 归属地依然显示中国？深度解析 DNS 泄露原理、WebRTC 暴露与 Fake-IP 机制，教你利用 TUN 虚拟网卡彻底防止真实身份与 IP 泄露。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：DNS 泄露会直接导致你的真实身份曝光与流媒体解锁失败！</strong><br><br>很多新手以为，只要连上了机场节点，电脑的 IP 变成了“美国”，自己就在互联网上彻底隐身了。但在极其严苛的流媒体风控（如 Netflix、ChatGPT）面前，这只是掩耳盗铃。<br><strong>什么是 DNS 泄露？</strong> 当你开启代理访问海外网站时，虽然你的网页数据走了加密隧道，但“域名解析请求”却意外绕过了代理软件，直接发送给了国内的运营商（如中国电信/联通 DNS）。这就是 DNS 泄露。<br><strong>核心致命危害：</strong> 目标网站会发现一个极其诡异的现象——你的 IP 节点显示在美国，但你的 DNS 查询请求却来自中国广东！网站会立刻判定你使用了代理工具（Proxy），从而强制封锁你的账号或拒绝提供服务。<br><strong>如何测试与解决？</strong> 保持代理开启，立刻访问 <a href="https://dnsleaktest.com" target="_blank" rel="noopener noreferrer">dnsleaktest.com</a> 进行 Standard Test。如果结果列表中出现了中国节点（如 China Telecom），请立刻在客户端（如 Clash / v2rayN）中开启 <strong>“TUN 虚拟网卡模式”</strong> 接管底层所有流量。</p>
+
+      <h2 id="symptoms-table">1. 主流防泄露方案与效果对比表</h2>
+      <p>要防止真实 IP 暴露，不仅需要工具，更需要正确的网络配置层级。请参考下方的防泄露方案评级：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>防泄露方案</th>
+              <th>原理与效果表现</th>
+              <th>Antigravity 博客受众定位与建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TUN 虚拟网卡接管</strong></td>
+              <td><strong>极佳。</strong> 创建一张虚拟网卡，强制操作系统底层的所有流量（哪怕是不支持代理的软件）强行进入加密隧道。</td>
+              <td>🌟 <strong>强烈推荐。</strong> 傻瓜式一键解决 99% 的系统级泄露。适合所有 Clash Verge / v2rayN 用户。</td>
+            </tr>
+            <tr>
+              <td><strong>Fake-IP (虚拟 DNS)</strong></td>
+              <td><strong>优秀。</strong> 拦截 DNS 请求并毫秒级返回一个 198.18.x.x 的假 IP，完全阻断本地网络去进行真实解析。</td>
+              <td>适合软路由 (OpenClash) 玩家或熟练配置路由分流逃逸规则（防国内网站卡死）的老鸟。</td>
+            </tr>
+            <tr>
+              <td><strong>修改浏览器 DoH</strong></td>
+              <td><strong>较弱。</strong> 在浏览器中开启“安全 DNS”，仅能保护浏览器内的网页流量，无法接管电报、游戏等其他应用软件。</td>
+              <td>仅作为临时补救措施，或在公司内网无法开启 TUN 时的无奈之举。不推荐重度用户长期依赖。</td>
+            </tr>
+            <tr>
+              <td><strong>UDP 转发阻断</strong></td>
+              <td><strong>针对特定漏洞。</strong> 强制关闭 UDP，防止某些流氓软件绕过 TCP 代理层直接向外网发送真实 UDP 寻址包。</td>
+              <td>作为辅助防护手段。如果你不玩外服游戏，建议在客户端中关闭 UDP Forwarding。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 极客解码：DNS 是怎么偷偷把你“卖”掉的？</h2>
+      <p>想要做到绝对的网络隐身，我们必须下潜到 OSI 模型的网络层，拆解计算机请求网页的物理全过程。</p>
+      
+      <h3>系统代理 (System Proxy) 的先天残疾</h3>
+      <p>绝大多数小白在使用 Clash 或 v2rayN 时，只是简单地勾选了“开启系统代理”。<br>这种模式的本质，是往 Windows/Mac 的系统注册表中写入了一句话：“请把 <strong>HTTP 和 HTTPS (网页)</strong> 流量发给本机的 7890 端口”。<br>但致命的漏洞在于：<strong>DNS 查询通常走的是 UDP 53 端口！</strong><br>系统代理根本管不住 UDP 流量。于是，当你在浏览器输入 <code>netflix.com</code> 时，Windows 会越过代理软件，直接向国内的 <code>114.114.114.114</code> 大喊：“奈飞的 IP 是多少？”<br>这一喊，不仅国内运营商（GFW）立刻知道了你在看什么网站，海外的奈飞服务器也会通过追踪 DNS 请求的源头，瞬间查出你的真实国籍。这不仅是流媒体风控的重灾区，更是极其危险的隐私“裸奔”行为。</p>
+
+      <h3>Fake-IP 的降维打击与本地污染</h3>
+      <p>为了解决上述漏洞，极客们发明了 <strong>Fake-IP (伪造 IP) 模式</strong>。<br>当开启 Fake-IP 后，Clash 客户端会在底层化身为一个流氓 DNS 服务器。<br>1. 你的电脑大喊：“奈飞的 IP 是多少？”<br>2. Clash 立刻捂住电脑的嘴，不让声音传到外网，并毫秒级回答：“奈飞的 IP 是 <code>198.18.0.5</code>（这是一个瞎编的内网假 IP）”。<br>3. 电脑信以为真，向这个假 IP 发送流量。Clash 截获流量后，将其打包进加密隧道，让海外的代理节点去进行真正的 DNS 解析。<br><strong>这就是物理阻断 DNS 泄露的最完美形态。</strong> 但代价是，如果你没配置好国内直连规则，访问百度也会被返回假 IP，导致国内网页图片加载全部碎裂。</p>
+
+      <h3>WebRTC 暴露：连 TUN 都挡不住的底裤泄露</h3>
+      <p>有时候你开启了 TUN 虚拟网卡，DNS leak test 也显示 100% 干净，但依然被某些高安防网站封杀，这就属于 <strong>WebRTC 漏洞</strong>。<br>WebRTC 是浏览器底层用于网页视频通话（如 Google Meet、网页版 Zoom）的技术。为了追求极低延迟，浏览器会赋予 WebRTC 极高的系统权限，允许它直接穿透虚拟网卡，读取你电脑主板上网卡真实的物理 IP（甚至是 IPv6 地址），然后将这个真实 IP 强行发送给目标网站。<br><strong>唯一解法：</strong> 在 Chrome 或 Edge 浏览器中，安装 <code>WebRTC Control</code> 或 <code>WebRTC Leak Prevent</code> 扩展插件，彻底阉割浏览器的这项高级功能。</p>
+
+      <h2 id="qa-faq">3. 高频隐私焦虑排错与长尾报错终极解析 (Q&A)</h2>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么我的电脑已经开了全局代理，IP 归属地查询依然显示“中国”？</h3>
+        <p><strong>答：浏览器缓存或国内查 IP 网站的劫持。</strong><br>1. 如果你用的是百度搜索“IP”，百度会根据你之前的历史搜索或强制调取国内服务器缓存，依然显示你过去的真实 IP。请务必使用无痕模式，并访问纯海外的 <code>ipinfo.io</code> 进行查验。<br>2. 某些流氓国产浏览器（如 360 浏览器、搜狗浏览器）会在底层硬编码 DNS 绕过代理，把你的定位强行发回国内基站。科学上网请务必使用原版 Google Chrome 浏览器。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 怎么在 Clash 中正确开启 TUN 虚拟网卡模式防泄露？</h3>
+        <p><strong>答：以管理员权限接管路由。</strong><br>在 Clash Verge Rev 中：<br>1. 前往【设置】->【系统设置】，点击“服务模式 (Service Mode)”，安装虚拟网卡驱动（盾牌图标会变绿）。<br>2. 回到主界面，开启【TUN 模式】。<br>3. <strong>极其重要：</strong> 进入【TUN 模式设置】，确保勾选了 <strong>“严格路由 (Strict Route)”</strong>。这样所有绕过 7890 端口的野流量（如各种 App 的后台 DNS 嗅探）都会被强行吸入黑洞并走代理发送。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 手机上如何防止 DNS 泄露？</h3>
+        <p><strong>答：移动端先天优势。</strong><br>不论是苹果的 iOS (小火箭/Surge) 还是安卓系统 (v2rayNG)，它们在底层创建的 <code>VPN Configuration</code> 本质上就是极其严格的系统级 TUN 虚拟网卡。只要你成功连上并在顶部状态栏出现了 <strong>[VPN]</strong> 图标，手机的所有 DNS 流量默认就已经被全盘接管了，极少出现像 Windows 那样千疮百孔的系统代理泄露问题。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: 使用 DoH (DNS over HTTPS) 就能彻底防止泄露吗？</h3>
+        <p><strong>答：治标不治本。</strong><br>虽然 DoH 会把你的 DNS 查询伪装成 HTTPS 网页流量（加密查询），让你家的宽带运营商看不懂你访问了什么。但如果这个加密查询最终没有走代理节点，而是直接从本地网卡发向了国外的 <code>1.1.1.1</code>，Netflix 等网站依然能看到：发起这个加密 DNS 请求的源头，是一个属于中国大陆的 IP！这依然会被判定为代理使用。</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：隐身术的最后一环，是顶级的网络伪装</h2>
+      <p>当你搞懂了系统代理的先天残疾、Fake-IP 的降维打击、以及 WebRTC 的底层漏洞后，你就已经拥有了在赛博空间中彻底隐形的极客能力。通过配置严格的 TUN 路由与 WebRTC 阻断，你已经无懈可击。</p>
+      <p>但是，<strong>你的伪装技术再高超，也掩盖不了你的机场 IP 早就进入了黑名单的事实。</strong></p>
+      <p>如果你耗费了巨大精力配置好了所有的防泄露措施，去测试时依然打不开 ChatGPT 或 Netflix，这说明问题根本不在于“你泄露了真实身份”，而是你所使用的这个节点 IP，早已经被成千上万的免费白嫖党、或者发垃圾邮件的黑客给“污染”彻底拉黑了。</p>
+      <p>要想真正战胜流媒体风控，在不泄露国内身份的前提下，获得一个干干净净、如同海外当地居民一样的“纯净数字身份”，你必须拥有一条 <strong>提供原生 IP (Native IP) 与住宅代理 (Residential Proxy) 的企业级专线</strong>。</p>
+      <p>既然最底层的防泄漏大坝已经筑起，是时候给你的网络注入最纯净的血液了。强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些榜单里的顶级服务商，不仅提供极致的 IPLC 专线，更拥有重金维护的“全解锁纯净 IP 池”。让你的每一次跨国访问，都如同真正的海外高知精英一样，尊贵且畅通无阻！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

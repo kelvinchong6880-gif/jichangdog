@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "Quantumult X (圈X) 新手小白添加机场订阅教程";
+const description = "花 7.99 美金买了圈X却不会用？带你深度解析 Quantumult X 节点资源导入、资源解析器 (Parser) 原理及 MITM 配置，解决节点全空报错。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：搞定 Quantumult X 订阅，核心是勾选“资源解析器 (Parser)”！</strong><br><br>很多新手花重金 ($7.99) 把圈X买到手后，像用小火箭一样直接粘贴订阅链接，结果发现导入后“死活出不来节点”或者满屏报错。<br>根本原因在于：圈X 拥有自己极其独特的底层节点数据结构，它原生不认识市面上普通的 Base64 或 Clash 订阅，必须借助 <strong>“资源解析器 (Resource Parser)”</strong> 进行 JavaScript 格式转换。<br><br>小白极简导入只需 3 步：<br>1. 打开圈X，点击右下角“小风车”图标 ➔ 找到【节点】模块下的 <strong>【节点资源 (Server Resource)】</strong> ➔ 点击右上角“+”号。<br>2. 输入资源标签（如机场名），在“资源路径”粘贴你的机场订阅链接，<strong>务必在下方开启【解析器 (Resource Parser)】开关</strong>。<br>3. 点击右上角保存并返回主页。长按右下角小风车选择“全部节点”展开列表，选中一个有效节点，即可畅游全球。</p>
+
+      <h2 id="client-comparison">1. 苹果双雄之争：你到底该选圈X还是小火箭？</h2>
+      <p>买错工具是最大的浪费。在动手配置前，请通过以下横向对比，认清圈X的真实定位：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th>Quantumult X (圈X)</th>
+              <th>Shadowrocket (小火箭)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>官方售价</strong></td>
+              <td><strong>$7.99 美元</strong>（昂贵）</td>
+              <td>$2.99 美元（极具性价比）</td>
+            </tr>
+            <tr>
+              <td><strong>上手门槛</strong></td>
+              <td><strong>极高。</strong>必须理解分流、策略组、重写模块与外部解析器。</td>
+              <td>极低。一键导入，开箱即用。</td>
+            </tr>
+            <tr>
+              <td><strong>UI 与设计美学</strong></td>
+              <td><strong>苹果生态顶级。</strong>大风车转盘设计、UI 极具科幻感。</td>
+              <td>比较复古、像系统设置界面的列表。</td>
+            </tr>
+            <tr>
+              <td><strong>分流与重写能力</strong></td>
+              <td><strong>天花板级别。</strong>原生支持极其复杂的 JS 脚本 (Script) 拦截与改写。</td>
+              <td>优秀。能满足日常 99% 的分流与去广告需求。</td>
+            </tr>
+            <tr>
+              <td><strong>最新协议支持</strong></td>
+              <td><strong>较慢。</strong>对 VLESS / Reality / Hysteria 2 等新协议跟进极其迟缓。</td>
+              <td><strong>最快。</strong>第一时间紧跟前沿防封锁协议。</td>
+            </tr>
+            <tr>
+              <td><strong>人群建议</strong></td>
+              <td>喜欢折腾规则、追求精细化控制与高颜值的极客玩家。</td>
+              <td>追求省心、即开即用的大多数普通翻墙用户。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="core-mechanisms">2. 极客进阶：深度拆解圈X的核心架构与神级模块</h2>
+      <p>如果你不想止步于“能上个谷歌就行”，想要榨干这 7.99 刀的价值，你必须理解 Quantumult X 底层的黑客级“远程”模块逻辑。</p>
+      
+      <h3>核心一：节点资源解析器 (Resource Parser) 与 JavaScriptCore</h3>
+      <p>如前文所述，圈X 不支持 V2ray 常见的 <code>vmess://</code> 原始链接群。当你勾选 <strong>资源解析器</strong> 时，圈X 实际上在底层调用了 iOS 系统的 <code>JavaScriptCore</code> 引擎。这段由开源大佬编写的 JS 脚本会在你的手机本地执行，将乱码一样的 Base64 订阅数据实时解密，提取出服务器 IP 和密码，然后重新封装成圈X独有的 <code>shadowsocks=...</code> 配置格式。<br><strong>极客操作：</strong>如果你导入依旧报错，你可以点击设置里的“资源解析器”，手动填入目前全网最强的跨平台解析器地址：<br><code>https://raw.githubusercontent.com/KOP-XMAC/QuantumultX/master/Scripts/resource-parser.js</code><br>这样哪怕机场给的是只适配 Clash 的订阅 URL，圈X 的 JS 引擎也能强行转化吞下，实现全网通用！</p>
+
+      <h3>核心二：分流规则 (Filter) 与策略组 (Policy Group) 的底层算法</h3>
+      <p>圈X 最大的魅力在于你可以像搭建乐高一样组装你的路由规则。它不是死板的“一键开关”。在“分流”模块点击 <strong>分流规则引用 (Filter Remote)</strong>，你可以添加 Github 上的神机规则库。遇到 <code>DOMAIN-SUFFIX,bing.com</code> 走直连，遇到 <code>GEOIP,TW</code> 强制走台湾节点。<br>最强大的是它的 <strong>策略组 (Policy Group)</strong> 算法。极客通常会建立一个 <code>url-test</code> (自动测速) 策略组，每隔 600 秒向指定的 <code>http://cp.cloudflare.com/generate_204</code> 发起底层握手。圈X 会在毫秒级内自动剔除那些超时的垃圾节点，永远把当前延迟最低的节点作为你的出口，实现 100% 的晚高峰零断流体验。</p>
+
+      <h3>核心三：BoxJS 环境变量与 Cron 定时任务 (Task)</h3>
+      <p>这是圈X彻底碾压小火箭的降维打击能力。圈X 内部集成了一个基于 Unix Cron 语法的 <strong>定时任务引擎 (Task)</strong>。配合 <strong>BoxJS</strong>（一个运行在圈X网络代理层的全局键值对数据库），你可以实现极其离谱的全自动化脚本。<br>举个例子：你可以通过 MITM 抓取京东或 B 站的账号 Cookie 存入 BoxJS，然后写一行 <code>0 9 * * *</code> 的 Cron 任务，圈X 就会在每天早上 9 点，自动在后台利用你的网络发起 HTTP 请求，帮你完成所有 App 的自动签到领京豆！这等于在 iOS 内部塞进了一个小型的 Linux 自动化服务器。</p>
+
+      <h3>核心四：MITM 解密与 QUIC 广告拦截协议</h3>
+      <p>开启 <strong>MITM (中间人攻击解密)</strong> 并在 iOS 系统 <code>证书信任设置</code> 中打绿勾后，圈X 就能截获 HTTPS 加密流量，配合 <strong>重写 (Rewrite)</strong> 模块中的正则替换，直接剥离 App 广告。<br>但是，针对 YouTube 这种使用 <strong>QUIC (基于 UDP 443)</strong> 协议的顽固流媒体，MITM 是无效的，因为谷歌 App 底层锁死了证书（Certificate Pinning）。极客的终极破局法是：在圈X 的配置中，写一条 <code>IP-CIDR, 0.0.0.0/0, REJECT, no-resolve</code> 并结合 UDP 阻断策略，强迫 YouTube App 降级回退到普通的 TCP HTTPS 协议，然后再利用 MITM 进行精准的广告请求抹杀！</p>
+
+      <h2 id="qa-faq">3. 深度极客排障与高频报错解答 (Q&A)</h2>
+      <p>圈X 极其反人类的逻辑让无数小白疯狂翻车。以下是全网最高频报错的终极解答：</p>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么导入机场订阅后，圈X 的节点列表完全是空的，甚至提示“缺少资源解析器”？</h3>
+        <p><strong>答：</strong>你在添加订阅时，漏掉了最重要的一步——<strong>开启【解析器 (Resource Parser)】开关</strong>。请删除这个空节点资源，重新添加一次，并在粘贴链接后点亮那个开关。如果依然不行，说明机场的链接格式极度不规范，请使用我们在上一节提供的 <code>KOP-XMAC</code> 极客解析器进行强制底层解密转化。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 圈X 的大风车图标为什么点不开、一直显示黄色或红色，上不去网？</h3>
+        <p><strong>答：</strong>长按大风车，你会看到圈X的三种运行模式：<br>• <strong>蓝色风车 (全部直连)：</strong>所有流量走国内，VPN 隧道关闭拦截。<br>• <strong>黄色风车 (全局代理)：</strong>极度费电且卡顿，所有国内外流量全塞进出口节点，国内微信会发不出图片。<br>• <strong>彩色风车 (规则分流)：</strong>这才是极客首选的正确模式！如果彩色风车下依然断网，长按风车选择“全部节点”，看看是不是你的 <code>PROXIES</code> 策略组选到了一个死节点，手动切一个带国旗的可用节点即可。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 为什么机场节点测速全部超时 (Timeout)，而在朋友的小火箭上却飞快？</h3>
+        <p><strong>答：</strong>这是圈X用户 2026 年最大的痛点：<strong>底层协议断代！</strong> 圈X 的开发者极其佛系，至今没有原生支持 VLESS、Reality 或 Hysteria 2 等最前沿的抗封锁协议。如果你用的机场恰好全面升级了 Reality 协议，圈X 的 JSON 解析器根本连包都拆不开，只能全部报 Timeout。<br><strong>唯一解法：</strong>登录你的机场后台，查看他们是否提供 <code>Trojan</code> 或 <code>Shadowsocks (SS)</code> 的备用兼容节点。如果不提供，你只能换个支持旧协议的机场，或者老老实实换小火箭。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: 圈X 开启后，微信收不到消息、国内 App 疯狂转圈怎么办？</h3>
+        <p><strong>答：</strong>这说明你的 <strong>分流规则 (Filter Remote)</strong> 或者 DNS 配置彻底乱了，导致国内直连流量被误杀发往了国外（甚至引发了 DNS 污染）。<br><strong>极客修复法：</strong>去 Github 搜索 <code>神机规则 (DivineEngine)</code> 或者 <code>墨鱼懒人配置 (ddgksf2013)</code>，直接复制他们的 <strong>预配置懒人一键链接</strong>，在圈X最底部的 <strong>【配置文件 -> 下载】</strong> 处粘贴覆盖。让大佬写好的数万条分流规则帮你重写路由表，瞬间满血复活！</p>
+      </div>
+
+      <h2 id="conclusion-and-recommendation">4. 结语：顶级神器的性能，需要顶级专线来释放</h2>
+      <p>Quantumult X 就像是网络工具界里的一台“极其精密且难伺候的手动挡赛车”。你历经千辛万苦配置好了解析器、MITM 证书和分流规则，为的就是享受它极致的路由控制和重写去广告能力。</p>
+      <p><strong>但是，请不要让一辆 F1 赛车跑在泥泞的乡间小道上。</strong></p>
+      <p>如果你给圈X喂的只是几十块钱一年的“万人骑”公网中转机场。每当晚高峰 GFW 开始进行 QoS 丢包限速时，你那极其优雅的彩色风车依然会转不出任何网页，规则再精密也无济于事，因为物理链路已经断了。</p>
+      <p>想要真正释放这 $7.99 美金神器的狂暴性能，你需要一条底层干净、端到端零丢包，且兼容 Trojan/SS 协议以适配圈X的 <strong>顶级 IPLC/IEPL 国际物理专线</strong>。</p>
+      <p>直接访问我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。配合圈X极其暴力的智能测速策略组，让你在苹果手机上真正享受全天候不卡顿、晚高峰秒开 4K 油管的丝滑体验，体验一把什么叫做真正的“技术极客赛博冲浪”！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

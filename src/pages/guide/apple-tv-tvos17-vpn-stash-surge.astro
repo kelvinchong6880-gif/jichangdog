@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "Apple TV tvOS 17+ 翻墙教程：直接安装代理软件 (Stash/Surge)";
+const description = "抛弃软路由！深度解析 Apple TV tvOS 17 VPN 推荐与原生网络接管。教你零门槛安装 Stash/Surge，配置 iCloud 同步，完美解决奈飞解锁与节点超时报错。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：tvOS 17 让 Apple TV 正式化身最强客厅翻墙神器！</strong><br><br>过去想让 Apple TV 看奈飞，你必须折腾极其复杂的 OpenWrt 软路由透明代理。但在 2026 年，得益于苹果彻底开放了底层的 VPN API，现在只需三步即可原生翻墙：<br>1. <strong>升级系统：</strong> 确保你的设备已升级至 tvOS 17 及以上版本。<br>2. <strong>美区下载：</strong> 登录美区 Apple ID，在 App Store 直接搜索并下载 <strong>Stash</strong> 或 <strong>Surge</strong> 等代理客户端。<br>3. <strong>极速启动：</strong> 使用 iPhone 端的 iCloud 一键同步配置文件，或直接在电视端扫码输入机场订阅链接，点击“启动”即可无缝解锁全球流媒体。</p>
+
+      <h2 id="client-comparison">1. 阵营对决：tvOS 原生代理客户端横向对比表</h2>
+      <p>目前 tvOS 的 App Store 已经涌现了众多现象级的代理工具。以下对比可以帮助小白快速避坑并做出决策，极大降低折腾的时间成本：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>客户端名称</th>
+              <th>售价与生态</th>
+              <th>操作门槛与特性</th>
+              <th>Antigravity 博客受众定位</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stash</strong></td>
+              <td>$3.99 (iOS/tvOS 跨端买断)</td>
+              <td><strong>极低。</strong> 完美兼容主流的 Clash 订阅生态，支持按国家自动分流，UI 适配电视大屏极佳。</td>
+              <td>🌟 <strong>性价比之王，90% 新手与流媒体重度用户的首选。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Surge</strong></td>
+              <td>$49.99 起 (Mac/iOS 巨头)</td>
+              <td><strong>较高。</strong> 采用 <code>.conf</code> 极客托管配置，拥有顶级的底层流量抓包与面板监控能力。</td>
+              <td>🛠️ <strong>追求极致稳定与网关级接管 (Ponte 组网) 的神豪极客。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Loon</strong></td>
+              <td>$5.99 (跨端买断)</td>
+              <td><strong>较低。</strong> 图形化节点管理优秀，支持灵活的 JS 插件复写 (URL Rewrite)。</td>
+              <td>🎨 <strong>颜值党、喜欢通过一键安装插件解锁特殊服务的进阶用户。</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 极客进阶：解析 tvOS 17 原生 VPN 的底层黑科技</h2>
+      <p>为什么我们强烈建议你抛弃传统的“软路由做网关”方案，全面转向 tvOS 原生 App 翻墙？除了免去了买软路由的硬件成本，更在于原生网络引擎带来的毁灭级体验提升。</p>
+      
+      <h3>Network Extension (NEVPNManager) 的彻底解放</h3>
+      <p>在 tvOS 17 之前，Apple TV 的网络底层是全封闭的。而 tvOS 17 引入了 iOS 端极其成熟的 <code>NetworkExtension</code> 框架。<br>当你在电视上打开 Stash 并点击启动时，它在底层直接拉起了一个原生的虚拟网卡。这不仅意味着<strong>完全零损耗的 TCP/UDP 流量劫持</strong>，更意味着你的 Apple TV 终于可以像 iPhone 一样，对每个流媒体 App 进行“真·应用层级”的分流。<br>相比于软路由常常因为旁路由网关设置错误导致全屋设备断网，tvOS 原生翻墙做到了<strong>真正的沙盒化隔离</strong>：电视翻墙，绝不影响家里其他手机和电脑的直连网络。</p>
+
+      <h3>iCloud 同步机制 (CloudKit)：扔掉你的遥控器打字</h3>
+      <p>在电视机上用遥控器输入一长串 Base64 的机场订阅链接，简直是反人类的折磨。Stash 和 Surge 利用苹果官方的 CloudKit 容器，实现了绝杀级的同步体验：<br>1. 你只需在你的 iPhone 端下载并配置好 Stash，导入订阅，并设置好（Netflix 走新加坡，Disney+ 走台湾）的测速组分流规则。<br>2. 在 iPhone 端开启 <strong>“iCloud 云端同步”</strong>。<br>3. 打开 Apple TV 端的 Stash，所有极其复杂的 YAML 配置文件、分流规则集，甚至连 UI 的暗黑模式设置，都会在 1 秒钟内无缝同步到电视上。点击启动，直接开始享受 4K 杜比视界。</p>
+
+      <h3>流媒体解锁底层硬核护城河：DNS 本地防劫持</h3>
+      <p>很多小白发现，即使路由器挂了梯子，Apple TV 上的 Netflix (奈飞) 依然会弹出 <code>NW-2-5</code> 的致命网络错误，或者只能看该地区自制剧。<br>这通常是因为奈飞客户端极度严格的 <strong>DNS 溯源检测机制</strong>。当你使用原生客户端（如 Surge tvOS）时，你可以利用极客级的本地 DNS 映射配置，强行劫持所有发往 <code>netflix.com</code> 的 DNS 请求：</p>
+      <pre is:raw><code>// Surge tvOS 底层 DNS 与规则劫持片段
+[Host]
+*.nflxvideo.net = server:https://dns.google/dns-query
+
+[Rule]
+# 将所有奈飞流量强制打入解锁检测节点
+DOMAIN-SUFFIX,netflix.com,🇺🇸 奈飞原生解锁组
+DOMAIN-SUFFIX,nflximg.net,🇺🇸 奈飞原生解锁组
+DOMAIN-KEYWORD,netflix,🇺🇸 奈飞原生解锁组
+
+# 防止系统定位服务偷跑真实 IP
+DOMAIN-SUFFIX,ls.apple.com,DIRECT</code></pre>
+      <p>这种纯本地化、毫秒级的 DNS 分流与重定向，是软路由（极易发生 Dnsmasq 端口冲突）永远无法比拟的优雅体验。</p>
+
+      <h2 id="qa-faq">3. 高频排错与流媒体长尾痛点终极解析 (Q&A)</h2>
+      <p>虽然 tvOS 翻墙体验极佳，但在解锁极其严苛的流媒体生态下，你依然会遇到一些棘手的报错。以下是终极排障指南：</p>
+
+      <div class="faq-item">
+        <h3>Q1: Apple TV 怎么看 Netflix (奈飞)？为什么装了 Stash 还是提示只能看自制剧？</h3>
+        <p><strong>答：</strong>奈飞拥有全球最变态的 IP 风控机制。如果你的 Apple TV 装了 Stash 依然只能看自制剧（没有版权标志），说明你机场节点对应的海外 IP 已经被奈飞列入了黑名单（被识别为机房代理 IP）。<br><strong>解法：</strong>前往你的代理软件，将策略组手动切换到标有 <code>原生 IP</code> 或者 <code>Netflix 解锁</code> 字样的节点。这是纯纯的线路质量问题，与客户端配置无关。请购买一条真正具备高质量解锁 IP 的专线机场。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 解决 Apple TV 流媒体代理报错：开启 VPN 后，国内的爱奇艺/腾讯视频 TV 版 (CIBN) 打不开怎么办？</h3>
+        <p><strong>答：</strong>这是因为你在电视端使用了 <strong>全局代理 (Global)</strong>，导致国内的视频 App 流量也被送去了国外，触发了国内平台的异地版权限制。<br><strong>解法：</strong>打开电视上的 Stash 或 Surge，将运行模式切换为 <strong>【规则模式 (Rule)】</strong>。客户端底层的 <code>geosite:cn</code> 规则库会自动让国内视频 App 走家庭宽带物理直连，而让 YouTube 和奈飞走海外隧道。两者互不干扰。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: tvOS 17 节点超时 (Timeout) 怎么办？所有节点一片爆红！</h3>
+        <p><strong>答：</strong>在 tvOS 环境下，出现大面积 Timeout 报错有三个核心原因：<br>1. <strong>系统时间未同步：</strong> Apple TV 偶尔会因为网络问题未获取到准确时间。TLS 加密协议对时间戳极度敏感。去 Apple TV 系统设置中强制重新获取一次网络时间。<br>2. <strong>不支持的新协议：</strong> 你的机场下发了极度前沿的 Reality 协议，但你下载的电视端客户端版本过旧。请前往美区 App Store 检查并更新你的代理客户端。<br>3. <strong>晚高峰 GFW 阻断：</strong> 你的机场被防火墙阻断了。建议立刻更换采用企业级内网 IPLC 专线的顶级服务商。</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：顶级客厅巨幕，只配顶级专线</h2>
+      <p>得益于 tvOS 17 开放的系统底层，现在的 Apple TV 已经彻底摆脱了复杂的软路由依附，成为了一台开机即看、丝滑无比的流媒体旗舰终端。</p>
+      <p>当你看着 Stash 在电视屏幕上划出优雅的暗黑 UI，用遥控器轻轻一点，就能实现全球线路的瞬间切换时，你才会真正明白什么是“科技带来的纯粹乐趣”。</p>
+      <p><strong>但是，一块画质顶级的 4K 电视，绝不能忍受疯狂转圈的缓冲动画。</strong></p>
+      <p>如果你的机场节点是那种晚高峰丢包 30%、带宽被限速到 10Mbps 以下的便宜货。那么不管你是用 Stash 还是 Surge，你在 Apple TV 上看 YouTube 依然会自动掉到 480P 画质，甚至奈飞的封面海报都刷不出来。</p>
+      <p>为了不辜负 Apple TV 极其强大的 A15 芯片解码能力，为了感受真正的 <strong>0 缓冲 4K 杜比视界 (Dolby Vision) 秒开快感</strong>，你必须拥有一条原生流媒体 100% 解锁、端到端不过墙的顶级 IPLC / IEPL 物理内网专线。</p>
+      <p>强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。选择榜单中提供纯净原生住宅 IP 的顶级供应商，给你的家庭影院，注入真正源源不断的超大管宽带引擎吧！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>

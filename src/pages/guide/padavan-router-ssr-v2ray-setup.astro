@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "华硕老毛子 (Padavan) 固件配置 SSR/V2Ray 节点教程";
+const description = "斐讯 K2P 还能翻墙吗？2026 最新华硕老毛子 Padavan 固件配置 V2Ray/SSR 指南。深度解析 MT7621 算力瓶颈、CPU 100% 满载与脚本更新失败排错。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph"><strong>结论先行：用老毛子跑 V2Ray，请务必关注 CPU 占用！</strong><br><br>在 2026 年，如果你还在用斐讯 K2P 刷的 Padavan（老毛子）固件翻墙，你必须面对一个残酷的现实：老路由的 MT7621 芯片算力太弱，面对复杂的 V2Ray 加密，CPU 动辄 100% 满载直接卡死。<br><strong>勉强够用的 3 步小白配置法：</strong><br>1. 登录路由器后台（通常是 <code>192.168.123.1</code>），在左侧菜单找到 <strong>【扩展功能】 ➔ 【搭建 Web 环境】 ➔ 【Shadowsocks】</strong> 或 <strong>【v2ray】</strong>。<br>2. 开启开关，在“服务器节点”栏目下，<strong>强烈建议手动填入节点信息</strong>（因为老毛子的订阅更新脚本在 2026 年大概率已因 Github 证书过期而失效报错）。<br>3. 运行模式选择 <strong>【GFWList 模式】</strong>（仅被墙网站走代理，降低 CPU 压力），点击底部的“应用本页面设置”。如果没网，请手动点击“更新 GFWList 规则库”。</p>
+
+      <h2 id="hardware-comparison">1. 残酷的现实：路由器翻墙方案算力与协议对比表</h2>
+      <p>不要再对你抽屉里那台战损版的“斐讯 K2P”抱有不切实际的幻想。在 2026 年的宽带环境下，硬件底子决定了你的翻墙体验上限：</p>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>硬件平台与典型代表</th>
+              <th>算力上限 (V2Ray 测速极限)</th>
+              <th>支持的新协议 (2026 环境)</th>
+              <th>Antigravity 博客排雷建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>老毛子 Padavan</strong><br><span style="font-size: 0.85em; color: #6b7280;">斐讯 K2P / 新路由 3</span></td>
+              <td>约 <strong>30~50 Mbps</strong> 即卡死重启。</td>
+              <td><strong>极差。</strong> 只支持老旧的 SSR/Vmess，甚至不支持 Xray 内核。</td>
+              <td>❌ <strong>性能严重落后，极其容易断流死机，建议关闭翻墙功能，仅做单纯的无线 AP 使用。</strong></td>
+            </tr>
+            <tr>
+              <td><strong>ARM 架构硬路由</strong><br><span style="font-size: 0.85em; color: #6b7280;">华硕 AX 系列 (刷梅林)</span></td>
+              <td>约 <strong>200~500 Mbps</strong>。</td>
+              <td><strong>较好。</strong> 可安装 MerlinClash 支持主流节点。</td>
+              <td>⚠️ 适合不想折腾 X86 软路由，且家里只有基础看剧需求的普通家庭。</td>
+            </tr>
+            <tr>
+              <td><strong>X86 软路由</strong><br><span style="font-size: 0.85em; color: #6b7280;">J4125 / N100 迷你主机</span></td>
+              <td><strong>轻松跑满 1000 Mbps 千兆。</strong></td>
+              <td><strong>完美。</strong> 支持 OpenClash/PassWall 与最新的 Reality 协议。</td>
+              <td>🌟 <strong>极客与重度玩家首选。</strong> 全屋千兆透明代理的终极归宿。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tech-deep-dive">2. 极客解构：老毛子的硬件硬伤与底层排错</h2>
+      <p>虽然我们极度不推荐用老毛子翻墙，但如果你因为各种原因必须用它，你必须要懂以下这些底层硬件瓶颈与硬核救机操作。</p>
+      
+      <h3>MT7621 芯片算力极限与 AES 加密解密瓶颈</h3>
+      <p>Padavan 固件多运行于联发科 MT7621 芯片上。这颗 880MHz 的双核 CPU 应对普通的网页浏览绰绰有余，但致命伤是它 <strong>缺乏 AES-NI 硬件加密指令集加速</strong>。<br>当你运行 Vmess 或 Trojan 协议时，所有的 TLS 加密解密任务全靠这颗羸弱的 CPU 用纯软件“硬算”。一旦你打开 YouTube 4K 视频，路由器瞬间就会经历：<code>CPU 100% 满载 -> 内存耗尽 -> OOM (Out of Memory) 内核杀进程 -> 路由器死机断网重启</code>。<br><strong>保命设置：</strong>在节点配置中，如果你还在用 SSR (ShadowsocksR)，请将加密方式修改为对 CPU 最友好的 <code>chacha20-ietf</code>，绝对不要用 <code>aes-256-gcm</code>。同时，运行模式<strong>必须</strong>选【GFWList 绕过局域网】，绝不可开全局代理！</p>
+
+      <h3>闪存空间不足 (No space left on device) 与脚本更新订阅失败</h3>
+      <p>斐讯 K2P 的闪存 (ROM) 只有可怜的 16MB，而一个最新的 V2Ray 核心二进制文件动辄 15MB 以上。这就导致了非常尴尬的局面：老毛子固件根本装不下最新的内核。<br>很多 hiboy 版本的固件，每次重启路由器，都会执行 <code>curl</code> 脚本去 Github 或者云端临时下载 <code>v2ray-core</code> 到内存里运行。但在 2026 年，由于 Github 经常被墙或者云端服务器早已失效，你会看到日志里疯狂报错 <code>curl error 6</code> 或 <code>脚本更新订阅失败</code>。<br><strong>SSH 手动注入核心法：</strong></p>
+      <pre is:raw><code># 通过 SSH 登录路由器后，将旧版核心备份，手动上传新核心到 /opt/bin
+mv /opt/bin/v2ray /opt/bin/v2ray_bak
+# 使用 WinSCP 将你下载的适合 MIPS 架构的 v2ray 内核拖入 /opt/bin
+chmod 755 /opt/bin/v2ray
+chmod 755 /opt/bin/v2ctl
+# 重启 v2ray 进程
+/etc/storage/v2ray_script.sh restart</code></pre>
+      <p>注意，下载内核时必须认准 <code>mipsle</code> (小端序) 架构，x86 的核心扔进去是不可能跑起来的。</p>
+
+      <h3>老毛子固件不支持 Xray / Reality 协议的终极死局</h3>
+      <p>目前市面上最顶级的机场，为了对抗 GFW 极其先进的深度包检测 (DPI)，已经全面抛弃了老旧的 Vmess，转向了 <strong>VLESS-Reality</strong> 协议。<br>由于 Padavan 系统内核古老，且第三方开发者早已停更，老毛子的 UI 界面中根本没有 Xray 和 Reality 的设置选项（它也不支持 Clash 或 PassWall 这种先进插件）。这就造成了一个死局：<strong>就算你手里捏着最顶级的机场订阅，在老毛子路由器上也只是一堆无法解析的废代码。</strong></p>
+
+      <h3>iptables 防火墙透明劫持与 KCP 协议的 CPU 毁灭打击</h3>
+      <p>很多老玩家在 2026 年依然不信邪，非要在 K2P 上尝试使用 <code>mKCP</code> (基于 UDP 的多路复用协议) 来拯救晚高峰的丢包。这是一种极其自杀的行为。<br><strong>底层机制揭秘：</strong> 当你开启老毛子的“全局”或“GFWList”透明代理时，系统会在底层的 iptables 写入 <code>REDIRECT</code> 规则。这意味着所有局域网设备发出的 TCP 报文，都会被系统的 netfilter 防火墙强行拆包，然后重定向到 V2Ray 的 <code>1080</code> 监听端口。<br>而 KCP 协议本身为了降低延迟，会疯狂发送海量的冗余 UDP 包 (FEC 前向纠错)。<br>对于缺乏硬件加速的 MT7621 来说：<strong>iptables 频繁的上下文切换 (Context Switch) + 海量 UDP 软件加解密 + 16MB 的可怜内存</strong> = 路由器温度瞬间飙升至 80 度以上，系统看门狗 (Watchdog) 直接强制触发硬件重启。</p>
+
+      <h2 id="qa-faq">3. 高频排错与长尾硬件焦虑终极解析 (Q&A)</h2>
+      <p>如果你还在用老毛子苦苦支撑，以下这些现象一定每天都在折磨着你：</p>
+
+      <div class="faq-item">
+        <h3>Q1: 为什么 2026 年用老毛子跑 V2Ray 速度连 50M 都跑不满？</h3>
+        <p><strong>答：</strong>前面提到了，这是 MT7621 芯片的物理极限。纯靠软件计算 TLS 加密，跑到 50Mbps 时 CPU 已经被榨干了。这跟你的百兆宽带和机场节点质量毫无关系，纯粹是路由器“带不动”了。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: SSR 节点全部超时，国内网站打不开是怎么回事？是不是机场跑路了？</h3>
+        <p><strong>答：</strong>不一定是机场跑路。<br>1. <strong>GFW 精准阻断：</strong> SSR (ShadowsocksR) 协议的特征在 2026 年已经如同裸奔，极易被防火墙探测并瞬间阻断连接，导致超时。<br>2. <strong>国内打不开：</strong> 这是因为你的 <code>GFWList</code> 路由表由于脚本失效，未能成功下载。导致国内域名也被送到了海外死节点去解析。去后台找到“更新 GFWList 规则”，多点几次，或者手动导入最新的 <code>gfwlist.txt</code>。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 老毛子固件怎么没有 Clash 或 PassWall 插件？斐讯 K2P 还能刷吗？</h3>
+        <p><strong>答：</strong>Clash / PassWall 需要庞大的依赖环境 (如 iptables-mod-tproxy, dnsmasq-full) 和极大的存储空间。老毛子的 16M 闪存和古老的 Linux 内核根本无法支撑这些现代化的路由组件。<br>斐讯 K2P 确实可以强行刷入阉割版的 OpenWrt 来安装简陋版的 OpenClash，但内存只有 128MB 的它，只要 Clash 规则条目超过几万条，路由器就会瞬间内存溢出崩溃。认清现实吧，K2P 的时代早已落幕。</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Q4: 开启 V2Ray 后路由器频繁死机重启怎么解决？</h3>
+        <p><strong>答：</strong>典型的内存溢出 (OOM) 导致系统崩溃。老毛子固件为了防死机，系统底层通常有一个看门狗 (Watchdog) 脚本，发现可用内存不足就会强制重启硬件。<br><strong>缓解方案：</strong>进入路由器【系统管理】 -> 【系统设置】，开启 <strong>定时重启</strong>，设定每天凌晨 4 点自动重启释放内存。同时关闭路由器所有的多余功能（如去广告、内网穿透、Aria2 下载等）。</p>
+      </div>
+
+      <h2 id="conclusion">4. 结语：与其折磨古董，不如拥抱未来</h2>
+      <p>看完这篇教程，你应该明白：强行在 2026 年用斐讯 K2P 刷老毛子翻墙，无异于给一台老年代步车强行绑上喷气式发动机，结果必然是车毁人亡（频繁死机断流）。</p>
+      <p>如果你仅仅是想在手机上看看外网，老老实实关掉老毛子后台的那个 V2Ray 开关，在手机上安装 <strong>NekoBox</strong> 或 <strong>v2rayNG</strong> 客户端，体验会比让路由器强行跑解密好一万倍。</p>
+      <p>如果你家里有大量设备（电视、PS5）必须实现全屋网络接管，是时候让老旧的 MT7621 退休，或者把它降级成一台纯粹的无线发射器 (AP) 了。</p>
+      <p>花几百块钱买一台 X86 架构的 J4125/N100 软路由，搭配我们推荐的 <strong><a href="/recommend/">2026 高端专线机场榜单</a></strong>。那些原生支持 VLESS-Reality 的顶级专线，在千兆算力的软路由加持下，能让你瞬间拥有 0 延迟、全屋秒开 4K 的现代网络生活。放下对老物件的执念吧，外面的世界其实很流畅！</p>
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    
+    /* Typography / Prose Styles */
+    .prose h1 {
+      font-size: 2rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .prose .lead-paragraph {
+      font-size: 1.1rem;
+      color: #374151;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eff4ff;
+      padding-bottom: 8px;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    .prose ul li, .prose ol li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+    .prose pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ef4444;
+    }
+    .prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .prose th {
+      background: #f9fafb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .prose tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: #fcfcfc;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    /* TOC Sidebar Styles */
+    .toc-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .toc-container {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toc-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: block;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-left-color: var(--blue);
+    }
+
+    @media (max-width: 992px) {
+      .knowledge-layout {
+        flex-direction: column;
+      }
+      .toc-sidebar {
+        display: none; 
+      }
+      .article-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
