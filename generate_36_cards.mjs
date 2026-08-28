@@ -625,6 +625,19 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">XSUS机场怎么样？寻找全平台通用梯子软件的必看测评！提供高性价比基础包与绝版不限时流量包。原生解锁全平台 AI 与流媒体，小白开箱即用！</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
+  } else if (brand.name === '网际快车') {
+    astroCards += `
+      <a href="/jichang/wangjikuaiche/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="wangjikuaiche" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin: 0; font-weight: 700; line-height: 1.3;">[永久包神盘] 网际快车机场：流量永不过期的梯子工具推荐</h3>
+          </div>
+          <div style="background: #fff7ed; color: #c2410c; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; border: 1px solid #fed7aa; white-space: nowrap; margin-left: 12px;">🛠️ 工具 推荐</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">网际快车机场怎么样？主打 24元流量永久不过期套餐与 60G日享超大包！不限设备数量，4K 秒开，全平台一键傻瓜式配置防失联梯子工具。</p>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
+      </a>`;
   } else {
     astroCards += `
       <article class="featured-card">
