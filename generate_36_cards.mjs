@@ -715,3 +715,22 @@ ${astroCards}
 
 fs.writeFileSync('c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\jichang\\\\index.astro', astroPage);
 console.log('Successfully generated jichang/index.astro with 36 brands, links, and copy buttons.');
+
+// Inject into home page as well
+const homePagePath = 'c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\index.astro';
+let homePage = fs.readFileSync(homePagePath, 'utf8');
+let topPart = homePage.split('<div class="featured-grid">')[0];
+let bottomPartRaw = homePage.split('<div class="featured-grid">')[1];
+if (topPart && bottomPartRaw) {
+  let endMarkerIndex = bottomPartRaw.indexOf('</section>');
+  if (endMarkerIndex !== -1) {
+    let bottomPart = bottomPartRaw.substring(endMarkerIndex + '</section>'.length);
+    homePage = topPart + '<div class="featured-grid">\\n' + astroCards + '\\n    </div>\\n  </section>' + bottomPart;
+    fs.writeFileSync(homePagePath, homePage);
+    console.log('Successfully injected 36 brands into index.astro');
+  } else {
+    console.log('Could not find </section> after grid.');
+  }
+} else {
+  console.log('Could not split index.astro correctly.');
+}
