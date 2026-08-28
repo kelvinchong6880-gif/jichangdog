@@ -586,7 +586,7 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Adgenova (边缘节点) 怎么样？顶级魔法上网工具首选！全 IPLC 架构配合分布式边缘计算，无视晚高峰阻断。提供 15元体验包，全系不限设备！</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
-  } else if (brand.name === 'sogo云') {
+  } else if (brand.name === 'sogo 云') {
     astroCards += `
       <a href="/jichang/sogoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
