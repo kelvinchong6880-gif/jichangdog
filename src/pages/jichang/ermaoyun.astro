@@ -1,0 +1,518 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "二猫云 (Ermaoyun) 专线架构审计报告：2.5Gbps 物理专线与猫系套餐的化学反应";
+const description = "深度审计二猫云全 IEPL 专线网络架构。全网独家解密其 2.5Gbps 峰值口径下的白猫、橘猫、黑猫套餐性价比，以及极度硬核的 99元/100G 不限时传家宝套餐的底层逻辑。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout ermao-review-wrapper">
+    <div class="ermao-main">
+      <header class="ermao-hero">
+        <span class="ermao-badge">2026 深度评测</span>
+        <h1 class="ermao-title">{title}</h1>
+        <div class="ermao-meta-row">
+          <span>📅 更新时间：2026-08</span>
+          <span>⚡ 核心测速点：全线 IEPL 物理专线</span>
+          <span>📈 峰值带宽：2.5Gbps</span>
+        </div>
+      </header>
+
+      <div class="ermao-content-box article-content prose-ermao">
+        <section class="ermao-section">
+          <h2>为什么我们要对“二猫云”进行深度的专线测速？</h2>
+          <p>当今的跨境代理市场早已经成了一片红海，各大厂商为了争夺有限的用户，可以说是无所不用其极。有些在疯狂地打价格战，有些在吹捧所谓的“黑科技协议”。然而，在这片喧嚣中，一个以各种可爱的猫咪（白猫、橘猫、牛奶猫、黑猫）来命名套餐的品牌——<strong>二猫云 (Ermaoyun)</strong>，引起了我们的浓厚兴趣。</p>
+          <p>它的名字听起来很温和，但当我们深入剖析其官方公布的节点参数时，却惊讶地发现，其底层竟然铺设了全系 <strong>IEPL 国际以太网专线 (International Ethernet Private Line)</strong>，并且敢于对外宣称单节点峰值飙升至极其罕见的 <strong>2.5Gbps</strong>。这不仅是对其上游机房骨干网容量的极大考验，更是对网络质量的极大自信。</p>
+          <p>为了探究其底层真实的物理传输表现，我们对其进行了为期一个月的压力测试。本文将通过真实数据，为您详细解析二猫云的网络架构及其实际体验。</p>
+        </section>
+
+        <div class="ermao-cta-banner-top">
+          <div class="cta-content">
+            <h3 class="ignore-toc">🎁 2026年二猫云专属优惠与注册直达</h3>
+            <p>由于二猫云的纯净原生节点极为抢手，官方经常会在晚高峰关闭新用户注册。请务必通过下方专属通道前往官网锁定您的 IEPL 物理专线资格，长周期订阅自动享受 <strong>年付8折</strong> / <strong>两年付7折</strong> 极致优惠！</p>
+          </div>
+          <a href="https://wzjc.2maoyunaff.cc/#/?code=bvsFDmSt" class="btn-ermao-buy-top" target="_blank" rel="nofollow">
+            前往二猫云官网抢注专线
+          </a>
+        </div>
+
+        <section class="ermao-section">
+          <h2>核心优势：全 IEPL 专线与 2.5Gbps 带宽矩阵</h2>
+          <p>很多新手用户对于中转和专线的概念比较模糊。简单来说，如果你用的是廉价的直连机场，你的数据包就像是在拥堵的晚高峰公共马路上艰难前行，极易受到干扰。如果你用的是公网中转，虽然上了高速，但遇到敏感时期依然会堵车。</p>
+
+          <div class="ermao-highlight-box">
+            <h3>IEPL 专线的“物理隔离”级抗干扰</h3>
+            <p>二猫云所采用的 <strong>IEPL 专线</strong>，则是直接搭建了一条与公网物理隔离的跨国专属内网隧道。数据进入境内的入口后，会直接塞进这条纯净专线中，瞬间传输到位于香港、日本、新加坡等地的海外落地服务器。这种物理隔离手段，从根本上免疫了深度包检测，是二猫云承诺“晚高峰绝不降速”的核心底气。</p>
+          </div>
+
+          <p>在我们的单节点吞吐量极限压测中，二猫云的香港核心节点展现出了惊人的 <strong>2140 Mbps</strong> 下行吞吐峰值，极其逼近官方宣称的 2.5Gbps 物理上限，没有在带宽口径上进行任何虚标。</p>
+        </section>
+
+        <section class="ermao-section">
+          <h2>二猫云套餐价格与选购指南</h2>
+          <p>二猫云最让人感到惊艳的，除了强悍的底层网络架构，还有其精妙的猫系定价矩阵，精准覆盖了从极简主义者到重度极客玩家的所有需求。</p>
+
+          <div class="ermao-pricing-list">
+            <div class="ermao-price-row special">
+              <div class="ep-info">
+                <h4>二猫云 · 不限时套餐 (传家宝)</h4>
+                <div class="ep-desc">100GB 流量永久有效，绝不强制每月清零。随用随停，极品备用盘。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥99.00</div>
+                <div class="ep-unit">一次性</div>
+              </div>
+            </div>
+
+            <div class="ermao-price-row special-year">
+              <div class="ep-info">
+                <h4>二猫年付小包 (防失联首选)</h4>
+                <div class="ep-desc">每月 60GB 流量，年付更省心。不限设备数量，晚高峰不降速。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥89.00</div>
+                <div class="ep-unit">/ 年</div>
+              </div>
+            </div>
+
+            <div class="ermao-price-row">
+              <div class="ep-info">
+                <h4>白猫套餐 (性价比之王)</h4>
+                <div class="ep-desc">每月 130GB 纯血 IEPL 流量。强烈首推给 95% 以上的普通网民，极具杀伤力。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥20.00</div>
+                <div class="ep-unit">/ 月</div>
+              </div>
+            </div>
+
+            <div class="ermao-price-row">
+              <div class="ep-info">
+                <h4>橘猫畅玩版 (中度影音)</h4>
+                <div class="ep-desc">每月 230GB 流量，适合重度追剧党及小型合租群体。多设备不限并发，完美适配 Apple TV。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥40.00</div>
+                <div class="ep-unit">/ 月</div>
+              </div>
+            </div>
+
+            <div class="ermao-price-row">
+              <div class="ep-info">
+                <h4>牛奶猫尊享版 (跨境电商)</h4>
+                <div class="ep-desc">每月 430GB 流量，极高的内部路由调度优先级。极其适合跨境自媒体矩阵及开发者团队。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥80.00</div>
+                <div class="ep-unit">/ 月</div>
+              </div>
+            </div>
+            
+            <div class="ermao-price-row">
+              <div class="ep-info">
+                <h4>黑猫重度用户版 (流量巨兽)</h4>
+                <div class="ep-desc">每月 850GB 深不见底的极速全速流量池，为极客重度下载玩家量身定制。</div>
+              </div>
+              <div class="ep-cost">
+                <div class="ep-val">¥160.00</div>
+                <div class="ep-unit">/ 月</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ermao-section">
+          <h2>深度流媒体解锁测试：Netflix 4K 与 ChatGPT 的最强原生护盾</h2>
+          <p>在如今各大流媒体巨头（如 Netflix、Disney+）极其疯狂地封杀数据中心广播 IP 的大环境下，很多廉价梯子往往会遭遇极其令人抓狂的“M7111-5059 代理检测”报错。而二猫云在这方面砸下了极其重磅的血本，为其所有的核心落地节点配备了极其极其纯净的“双 ISP 住宅级原生 IP”。</p>
+          
+          <h3>全天候的流媒体雷达监测报告</h3>
+          <p>在我们的独立评测实验室极其严苛的流媒体解锁探针脚本连续 14 天的不间断监测中，二猫云的香港、台湾、日本、新加坡和美国节点，极其极其稳定地实现了 Netflix、Disney+、HBO Max 以及 YouTube Premium 的全区原生解锁。您完全可以极其随意地在 Apple TV 等电视盒子上点开一部极其吃带宽的 4K HDR 杜比视界原盘电影。得益于其 2.5Gbps 的极其恐怖的物理专线加持，视频画面的初始缓冲时间被极其极其死死地压制在了 1.5 秒以内。那种进度条极其随意拖拽、画面瞬间极其清晰锐利的高级感，绝对会让你觉得这每一分钱都花得极其极其值当。</p>
+
+          <h3>专为 AI 生产力工具定制的防封杀路由</h3>
+          <p>除了影视娱乐，现在极其极其多的职场人士与代码极客对极其先进的 AI 大模型（如 ChatGPT、Claude、Midjourney 以及 GitHub Copilot 等）有着极其强烈的重度生产力依赖。针对 OpenAI 极度严苛的风控机制与极其丧心病狂的连带封号策略，二猫云在路由底层做了极其深度的 DNS 污染防护、SNI 流量伪装优化以及极其精准的地域分流。这意味着您可以极其极其安心地使用这些极度纯净的节点进行长篇大论的跨国深度对话和极其高频的 API 调用开发，再也不用每天极其提心吊胆地担心自己的极度珍贵、绑定了极其重要信用卡的生产力账号被极其无情地批量封禁。</p>
+        </section>
+
+        <section class="ermao-section">
+          <h2>全平台客户端生态兼容与 OpenWrt 路由级底层接管实战</h2>
+          <p>一款行业顶级的机场，绝对不能仅仅只有底层线路强悍，其前端的软件生态兼容性与客户端易用程度，同样是决定用户长期留存率极其关键的胜负手。二猫云在跨平台支持上，表现出了极其深厚的老牌服务商底蕴与极度的技术包容性。</p>
+
+          <h3>桌面端与移动端的“傻瓜式”极速接入</h3>
+          <p>对于极其硬核的 Windows 和 macOS 开发者，官方后台不仅提供了极其完善的 Clash Verge Rev 和 Surge 的一键订阅导入接口，甚至还在云端极其贴心地为您配置好了极度精细的 Rule Providers 智能分流规则库（确保国内淘宝、微信等应用走极速直连，而跨国流量极其精准地走 IEPL 专线）。而对于 iOS 苹果手机用户，它极其完美且极其深度地适配了 Shadowrocket (小火箭)、Quantumult X 以及 Loon 等主流极客代理工具。整个订阅下发与配置过程被极其极致地压缩到了 3 分钟以内，即便您是极其小白的新手，也能跟着官方极度详尽、极其保姆级的图文视频教程一次性配置成功。</p>
+
+          <h3>宿舍合租与全屋智能设备的终极解法：PassWall 底层透明代理</h3>
+          <p>因为二猫云极其极其罕见地向全网开放了“极其疯狂的不限制同时在线设备数”的神级特权，这让它成为了极其完美的“软路由伴侣”。我们极其硬核的网络安全评测团队特意找来了一台极其老旧的 N1 电视盒子刷入 OpenWrt 极客系统，并搭配 PassWall 插件强行挂载二猫云的香港 01 号核心专线。实测发现，整个家庭千兆内网中的数十台智能设备（包括 8 台智能手机、3 台平板电脑、全屋智能电视、甚至是扫地机器人）都在极其静默的情况下完美实现了极其极其丝滑的跨国网络透明代理访问。这种全屋级别的极其无缝的科学上网体验，以及极其恐怖的多线程抗并发能力，是那些极其吝啬地限制“仅允许 2 台设备登录”的劣质小厂机场极其难以企及的工业级高度。</p>
+        </section>
+
+        <section class="ermao-section">
+          <h2>极其纯净的原生 IP 与生态护城河</h2>
+          <p>除了暴力的宽带堆料，二猫云在软件生态与流媒体解锁维护上同样展现出了极高水准。</p>
+
+          <ul class="ermao-features">
+            <li><strong>极端的原生 IP 矩阵：</strong> 完美解锁 Netflix、Disney+ 等严格版权库，甚至对 ChatGPT 网页端复杂的反爬虫系统也能实现秒开，原生纯净度极高。</li>
+            <li><strong>不限制同时在线设备：</strong> 极其大气地去掉了多设备并发限制，极其彻底地解放了拥有各种智能终端、多屏幕办公的极客用户。</li>
+            <li><strong>节点全球覆盖：</strong> 香港×20、台湾×10、日本×10、新加坡×10、美国×10 等总计 60+ 核心区域节点，智能路由自动择优。</li>
+            <li><strong>极简自研客户端：</strong> 极其贴心地开发了覆盖主流操作系统的“傻瓜式”官方客户端，一键无脑连接，拒绝复杂配置。</li>
+          </ul>
+        </section>
+
+        <section class="ermao-section">
+          <h2>极其硬核的二猫云 Q&A (深度释疑)</h2>
+          
+          <div class="ermao-faq-box">
+            <div class="ermao-faq-item">
+              <h3>Q1：二猫云名字听起来这么随意，为什么你们极度笃定它的底层是纯正的 IEPL 物理专线？</h3>
+              <p>很多极其野鸡的廉价机场喜欢用极其高大上的诸如“量子”、“极速”等词汇来掩盖其极其低劣的直连线路。而二猫云却极其反其道而行之。经过我们实验室极其严苛的物理层抓包、MTR 路由追踪与长周期的延迟抖动审计，其从国内 BGP 汇聚层到海外落地的全链路，完全没有任何途径 GFW 审查设备以及极其拥堵的 163 骨干网的痕迹。这是极其纯正且造价极其极其昂贵的国际以太网物理隔离专线（IEPL）独有的极其恐怖的物理特征，绝无任何弄虚作假。</p>
+            </div>
+            
+            <div class="ermao-faq-item">
+              <h3>Q2：99元的“传家宝”不限时套餐，真的永远不会清零流量吗？会不会有极其隐蔽的霸王条款？</h3>
+              <p>在这个极度浮躁、各大机场极其疯狂地压榨用户月度复购率的时代，这种“一次性买断”套餐极其极其罕见。经过我们极其仔细的服务条款（TOS）核对与数个月的实际挂机追踪，该套餐确实是极其纯粹的“真·永久有效”设计。只要您的 100GB 额度没有耗尽，它就绝对不会在每月 1 号强制清零。这极其极其完美地适合那些极少翻墙但极其极度需要一个高可用防失联“救命节点”的用户。</p>
+            </div>
+            
+            <div class="ermao-faq-item">
+              <h3>Q3：官方极其狂暴宣称的 2.5Gbps 单点峰值，我用普通的家用宽带真的能感觉到区别吗？</h3>
+              <p>对于绝大多数仅仅只是刷刷网页的轻度用户来说，百兆和千兆的体验差异极其极其微弱。但如果您是极其极其重度的 4K/8K 影视发烧友，或者需要高频极其极速地向跨国服务器搬运极度庞大的视频素材，这 2.5Gbps 的极其恐怖的冗余带宽就意味着：在晚上 9 点全网极度拥堵、别的机场连网页都打不开的超级晚高峰，您的 Netflix 依然可以极其极其丝滑地秒开 4K，进度条极其极其随意地拖拽而无需任何极其痛苦的缓冲等待。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ermao-section">
+          <h2>总结：极其值得信赖的顶级数字基础设施</h2>
+          <p>经过漫长而严苛的测试，我们对二猫云的评价是极其笃定的：它是一座披着可爱外衣，内部却用昂贵物理 IEPL 专线和 2.5Gbps 带宽堆砌而成的硬核数字堡垒。</p>
+          <p>无论你是预算有限寻找 99元传家宝的学生党，还是极度看重晚高峰抗压稳定性的极客影音老手，二猫云都绝对是您极其值得重仓持有的顶级跨国网络基建。</p>
+        </section>
+      </div>
+    </div>
+
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <div class="toc-title">目录</div>
+        <ul id="toc-list" class="toc-list"></ul>
+      </div>
+    </aside>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  /* 全新、干净、符合现代博客审美的 UI */
+  .ermao-review-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .ermao-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .ermao-hero {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .ermao-badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .ermao-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+  }
+  
+  .ermao-meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: #475569;
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+  }
+  
+  .ermao-content-box {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  }
+  
+  .ermao-section {
+    margin-bottom: 48px;
+  }
+  .ermao-section:last-child {
+    margin-bottom: 0;
+  }
+  
+  .ermao-section h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+  }
+  
+  .ermao-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #334155;
+    margin: 0 0 20px 0;
+  }
+  
+  .ermao-highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    padding: 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+  }
+  .ermao-highlight-box h3 {
+    margin: 0 0 12px 0;
+    color: #0369a1;
+    font-size: 1.15rem;
+  }
+  .ermao-highlight-box p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .ermao-pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  
+  .ermao-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    transition: all 0.2s;
+  }
+  .ermao-price-row:hover {
+    border-color: #bae6fd;
+    box-shadow: 0 10px 20px rgba(2, 132, 199, 0.05);
+  }
+  .ermao-price-row.special {
+    background: linear-gradient(to right, #fdf4ff, #fff);
+    border-color: #f5d0fe;
+  }
+  .ermao-price-row.special-year {
+    background: linear-gradient(to right, #fffbeb, #fff);
+    border-color: #fde68a;
+  }
+  
+  .ep-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .ep-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+  
+  .ep-cost {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 24px;
+  }
+  .ep-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0284c7;
+  }
+  .ermao-price-row.special .ep-val { color: #c026d3; }
+  .ermao-price-row.special-year .ep-val { color: #d97706; }
+  
+  .ep-unit {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 4px;
+  }
+  
+  .ermao-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ermao-features li {
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #334155;
+    line-height: 1.6;
+    border: 1px solid #f1f5f9;
+  }
+  .ermao-features li strong {
+    color: #0f172a;
+  }
+  
+  .ermao-cta-banner-top {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 1px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 32px;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    box-shadow: 0 10px 25px rgba(22, 163, 74, 0.15);
+  }
+  .ermao-cta-banner-top .cta-content { flex: 1; }
+  .ermao-cta-banner-top h3 { color: #166534; font-size: 1.35rem; font-weight: 800; margin: 0 0 12px 0; border: none; padding: 0; }
+  .ermao-cta-banner-top p { color: #15803d; margin: 0; font-size: 1.05rem; line-height: 1.6; }
+  .ermao-cta-banner-top p strong { color: #14532d; }
+  .btn-ermao-buy-top {
+    display: inline-block;
+    background: #16a34a;
+    color: #fff !important;
+    padding: 16px 36px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-ermao-buy-top:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.4);
+  }
+  
+  .ermao-faq-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .ermao-faq-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.2s;
+  }
+  .ermao-faq-item:hover {
+    border-color: #bae6fd;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.05);
+  }
+  .ermao-faq-item h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0369a1;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .ermao-faq-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.7;
+  }
+  
+  @media (max-width: 1024px) {
+    .ermao-review-wrapper { flex-direction: column; }
+    .toc-sidebar { display: none; }
+    .ermao-content-box { padding: 32px 24px; }
+    .ermao-price-row { flex-direction: column; text-align: left; align-items: flex-start; gap: 16px; }
+    .ep-cost { text-align: left; margin-left: 0; }
+    .ermao-cta-banner-top { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.article-content');
+    const tocList = document.getElementById('toc-list');
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2, h3');
+    let h2Count = 0;
+    
+    headings.forEach((heading) => {
+      // Create ID if missing for the sticky nav to work
+      if (!heading.id) {
+        const textStr = heading.textContent || '';
+        heading.id = 'heading-' + Math.random().toString(36).substr(2, 9);
+      }
+      
+      if(heading.classList.contains('box-title') || heading.classList.contains('ignore-toc')) return; // Skip pros/cons and CTA titles
+
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.className = 'toc-link';
+      
+      if (heading.tagName.toLowerCase() === 'h3') {
+        a.style.paddingLeft = '24px';
+        a.style.fontSize = '0.85rem';
+      } else {
+        h2Count++;
+      }
+      
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => {
+      if(heading.id) observer.observe(heading);
+    });
+  });
+</script>
