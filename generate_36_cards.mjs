@@ -534,6 +534,19 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">星梦机场怎么样？寻找 Clash Meta 机场的硬核选择！原生支持 Hy2 与 Vless-Reality 抗封锁协议，全系 IEPL/IPLC 专线，提供 100元永不限时极客包！</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
+  } else if (brand.name === '一翻云') {
+    astroCards += `
+      <a href="/jichang/yifanyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="一翻云" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin: 0; font-weight: 700; line-height: 1.3;">[iOS玩家必备] 一翻云：Quantumult X 原生订阅与免拔卡 TikTok 解锁</h3>
+          </div>
+          <div style="background: #fef2f2; color: #dc2626; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; border: 1px solid #fecaca; white-space: nowrap; margin-left: 12px;">🍎 圈X 专线</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">一翻云好用吗？专为圈X量身定制的企业级 IEPL 专线！自带智能分流规则组，原生纯净 IP 完美解锁 TikTok 与 ChatGPT，年付折算仅 8 元/月！</p>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
+      </a>`;
   } else {
     astroCards += `
       <article class="featured-card">
