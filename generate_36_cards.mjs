@@ -5,11 +5,6 @@ const dir = 'c:\\\\Users\\\\USER\\\\Desktop\\\\新博客文章资料\\\\品牌�
 const files = fs.readdirSync(dir);
 
 const predefinedOrderNames = [
-  'xsus',
-  '网际快车',
-  'sogo 云',
-  'u1s1',
-  'edgenova',
   '微风',
   '飞猫云',
   'firefly',
