@@ -339,6 +339,19 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">深度测评光年梯 (Lightyear) 机场。每月 18元起享纯正 IPLC 专线，自带云端去广告规则，更有 680元独享私人原生 IP 专线，完美赋能跨境电商与 TikTok 矩阵运营。</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #4f46e5; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
+  } else if (brand.name === '光速云') {
+    astroCards += `
+      <a href="/jichang/guangsu/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="光速云" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin: 0; font-weight: 700; line-height: 1.3;">[极致速度] 光速云：全球 IPLC 物理专线与不限时 1TB 传家宝</h3>
+          </div>
+          <div style="background: #f0fdfa; color: #0d9488; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; border: 1px solid #99f6e4; white-space: nowrap; margin-left: 12px;">⚡ IPLC 极速</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">深度解构光速云 (Guangsu Cloud) 机场。月付 23元起享 2.5Gbps 全球 IPLC 专线，提供永久不限时 1TB 流量包。不限设备并发，完美解锁 Netflix 4K 与 ChatGPT。</p>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #0d9488; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
+      </a>`;
   } else {
     astroCards += `
       <article class="featured-card">
