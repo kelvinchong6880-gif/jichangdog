@@ -168,10 +168,60 @@ brands.sort((a, b) => {
   return a.name.localeCompare(b.name);
 });
 
-let astroCards = '';
+
+let reviewCardsHTML = '';
+let brandCardsHTML = '';
+
 for (const brand of brands) {
+  let badgeText = '重点关注';
+  let badgeClass = 'badge';
+  if (['微风', '无忧', '气泡云', '星岛梦'].includes(brand.name)) {
+    badgeText = '优先推荐';
+    badgeClass = 'badge badge-primary';
+  } else if (brand.name === '光年梯' || brand.name === 'flybit' || brand.name === 'u1s1' || brand.name === '山水云') {
+    badgeText = '性价比优选';
+  } else if (brand.name === '老猫云' || brand.name === '一翻云') {
+    badgeText = '圈X推荐';
+  } else if (brand.name === '快狸' || brand.name === '浪网') {
+    badgeText = '小火箭首选';
+  } else if (brand.name === '跨界' || brand.name === '极连云' || brand.name === '可信云') {
+    badgeText = 'Clash精选';
+  } else if (brand.name === '全球云' || brand.name === '梯子云' || brand.name === 'sogo 云' || brand.name === 'firefly' || brand.name === '光速云' || brand.name === '唯兔云') {
+    badgeText = '稳定专线';
+  }
+
+  // --- 1. Generate the Brand Card (for homepage) ---
+  brandCardsHTML += `
+      <article class="featured-card">
+        <div class="brand-card-top">
+          <img src="/images/brands/${brand.imgName}.png?v=2" width="48" height="48" alt="${brand.name}" class="brand-avatar-img large" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2U0ZTlmMiIvPjwvc3ZnPg=='">
+        <span class="${badgeClass}">${badgeText}</span>
+        </div>
+        <h3>${brand.name}</h3>
+        <p>${brand.desc}</p>
+        <div class="price-promo-box">
+          <div class="price-item">
+            <span>最低价格</span>
+            <strong>${brand.formattedPrice}</strong>
+          </div>
+          <div class="promo-item">
+            <span>专属优惠码</span>
+            <div class="promo-code-group">
+              <code>${brand.code}</code>
+              <button class="copy-code-btn" data-code="${brand.code}" title="点击一键复制">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="button" style="width: 100%; justify-content: center;" href="${brand.link}" target="_blank">官网注册 <span>↗</span></a>
+        </div>
+      </article>`;
+
+  // --- 2. Generate the Review Card (for /jichang/ page) ---
   if (brand.name === '微风') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/weifeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -184,7 +234,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '飞猫云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/feimaoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -197,7 +247,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'firefly') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/firefly/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -210,7 +260,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '无忧') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/wuyou/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -223,7 +273,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '跨界') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/kuajie/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -236,7 +286,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '灵猫') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/lingmao/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -249,7 +299,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '闪跃') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/shanyue/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -262,7 +312,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'flybit') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/flybit/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -275,7 +325,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'xxyun') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/xxyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -288,7 +338,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '大哥云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/dageyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -301,7 +351,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '二猫云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/ermaoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -314,7 +364,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '飞V' || brand.name === 'FlyV') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/flyv/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -327,7 +377,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '光年梯' || brand.name === '光年') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/guangnian/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -340,7 +390,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '光速云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/guangsu/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -353,7 +403,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '极连云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/jilian/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -366,7 +416,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '可信云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/kexin/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -379,7 +429,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '快狸') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/kuaili/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -392,7 +442,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '浪网') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/langwang/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -405,7 +455,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '老猫云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/laomao/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -418,7 +468,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '灵动') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/lingdong/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -431,7 +481,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '暮光') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/muguang/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -444,7 +494,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '气泡云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/qipao/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -457,7 +507,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '全球云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/quanqiu/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -470,7 +520,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '山水云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/shanshui/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -483,7 +533,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '速界') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/sujie/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -496,7 +546,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '梯子云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/tiziyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -509,7 +559,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '唯兔云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/weituyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -522,7 +572,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '星岛梦') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/xingdaomeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -535,7 +585,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '一翻云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/yifanyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -548,7 +598,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '隐形人') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/yinxingren/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -561,7 +611,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '宇宙云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/yuzhouyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -574,7 +624,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'edgenova') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/edgenova/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -587,7 +637,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'sogo 云') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/sogoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -600,7 +650,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'u1s1') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/u1s1/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -613,7 +663,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === 'xsus') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/xsus/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -626,7 +676,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else if (brand.name === '网际快车') {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="/jichang/wangjikuaiche/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -639,7 +689,7 @@ for (const brand of brands) {
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
   } else {
-    astroCards += `
+    reviewCardsHTML += `
       <a href="${brand.link}" target="_blank" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -663,76 +713,75 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout 
   title="全部36家机场品牌推荐｜机场狗" 
-  description="机场狗为您整理全部36家稳定机场和优质机场，包含最低价格、优惠码与详细评测信息。"
+  description="机场狗为您整理全部36家稳定机场和优质机场，包含详细评测信息。"
 >
   <section class="page-shell home-section" style="padding-top: 120px;">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">完整收录</p>
-        <h1 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">36 品牌档案</h1>
+        <p class="eyebrow">测评档案</p>
+        <h1 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">36家机场深度测评报告</h1>
       </div>
     </div>
     
-    <div class="featured-grid">
-${astroCards}
+    <div class="featured-grid" style="display: flex; flex-direction: column; gap: 8px;">
+${reviewCardsHTML}
     </div>
   </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.copy-code-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const code = btn.getAttribute('data-code');
-          if(code && code !== '无需填写') {
-            navigator.clipboard.writeText(code).then(() => {
-              const originalHTML = btn.innerHTML;
-              btn.classList.add('copied');
-              btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-              setTimeout(() => {
-                btn.classList.remove('copied');
-                btn.innerHTML = originalHTML;
-              }, 2000);
-            });
-          }
-        });
-      });
-    });
-  </script>
 </BaseLayout>
 `;
 
 fs.writeFileSync('c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\jichang\\\\index.astro', astroPage);
-console.log('Successfully generated jichang/index.astro with 36 brands, links, and copy buttons.');
+console.log('Successfully generated jichang/index.astro with 36 review banners.');
 
-
-\n
-// Inject into home page as a separate section
-const homePagePath = 'c:\\Users\\USER\\Desktop\\jichangdog.com\\src\\pages\\index.astro';
+// Inject into home page
+const homePagePath = 'c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\index.astro';
 let homePage = fs.readFileSync(homePagePath, 'utf8');
 
-// Remove the old all-brands section if it exists
-homePage = homePage.replace(/<section class="home-section page-shell" id="all-brands"[\s\S]*?\n\n  <style is:inline>/, '<style is:inline>');
+// We want to inject `brandCardsHTML` into the homepage where the 36 brands should be.
+// But wait, the user's latest request says "把36家品牌都展示出来，展示到机场狗推荐的区域", and before that "不是要这样的，是要36家品牌的板块".
+// "机场狗推荐的区域展示 36 家品牌的板块出来，然后机场测评的页面就展示36家机场的测评文章"
+// The "机场狗推荐的区域" on homepage currently holds only 6 cards by default (or wait, the user manually edit them?).
+// In index.astro, there is a section with id "airport-recommendation" maybe? 
+// No, the homepage has `<div class="featured-grid">`.
+// Actually, earlier we split index.astro by `<div class="featured-grid">`. Let's just do that and replace the contents inside the first `<div class="featured-grid">`.
+// Wait, the homepage's `featured-grid` might already contain the 6 cards. If the user wants 36 cards there, we replace the contents of `featured-grid`!
 
-const injection = `
-  <section class="home-section page-shell" id="all-brands" style="padding-top: 60px;">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">完整收录</p>
-        <h2 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">36家品牌档案</h2>
-      </div>
-    </div>
-    <div class="featured-grid">
-${astroCards}
-    </div>
-  </section>
-`;
-
-let splitIndex = homePage.indexOf('<style is:inline>');
-if (splitIndex !== -1) {
-  const newHomePage = homePage.substring(0, splitIndex) + injection + "\n\n  " + homePage.substring(splitIndex);
-  fs.writeFileSync(homePagePath, newHomePage);
-  console.log('Successfully added 36 brands section to homepage.');
-} else {
-  console.log('Could not find split target in index.astro.');
+let topPart = homePage.split('<div class="featured-grid">')[0];
+let bottomPartRaw = homePage.split('<div class="featured-grid">')[1];
+if (topPart && bottomPartRaw) {
+  let endMarkerIndex = bottomPartRaw.indexOf('</section>');
+  if (endMarkerIndex !== -1) {
+    let bottomPart = bottomPartRaw.substring(endMarkerIndex + '</section>'.length);
+    homePage = topPart + '<div class="featured-grid">\n' + brandCardsHTML + '\n    </div>\n  </section>' + bottomPart;
+    
+    // Check if the script exists, if not, append before </body> or layout end
+    if (!homePage.includes('.copy-code-btn')) {
+        homePage = homePage.replace('</BaseLayout>', `
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.copy-code-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const code = btn.getAttribute('data-code');
+        if(code && code !== '无需填写') {
+          navigator.clipboard.writeText(code).then(() => {
+            const originalHTML = btn.innerHTML;
+            btn.classList.add('copied');
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            setTimeout(() => {
+              btn.classList.remove('copied');
+              btn.innerHTML = originalHTML;
+            }, 2000);
+          });
+        }
+      });
+    });
+  });
+</script>
+</BaseLayout>`);
+    }
+    
+    fs.writeFileSync(homePagePath, homePage);
+    console.log('Successfully injected 36 brands into index.astro');
+  }
 }
