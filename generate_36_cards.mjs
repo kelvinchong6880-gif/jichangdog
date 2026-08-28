@@ -705,21 +705,34 @@ ${astroCards}
 fs.writeFileSync('c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\jichang\\\\index.astro', astroPage);
 console.log('Successfully generated jichang/index.astro with 36 brands, links, and copy buttons.');
 
-// Inject into home page as well
-const homePagePath = 'c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\index.astro';
+
+\n
+// Inject into home page as a separate section
+const homePagePath = 'c:\\Users\\USER\\Desktop\\jichangdog.com\\src\\pages\\index.astro';
 let homePage = fs.readFileSync(homePagePath, 'utf8');
-let topPart = homePage.split('<div class="featured-grid">')[0];
-let bottomPartRaw = homePage.split('<div class="featured-grid">')[1];
-if (topPart && bottomPartRaw) {
-  let endMarkerIndex = bottomPartRaw.indexOf('</section>');
-  if (endMarkerIndex !== -1) {
-    let bottomPart = bottomPartRaw.substring(endMarkerIndex + '</section>'.length);
-    homePage = topPart + '<div class="featured-grid">\\n' + astroCards + '\\n    </div>\\n  </section>' + bottomPart;
-    fs.writeFileSync(homePagePath, homePage);
-    console.log('Successfully injected 36 brands into index.astro');
-  } else {
-    console.log('Could not find </section> after grid.');
-  }
+
+// Remove the old all-brands section if it exists
+homePage = homePage.replace(/<section class="home-section page-shell" id="all-brands"[\s\S]*?\n\n  <style is:inline>/, '<style is:inline>');
+
+const injection = `
+  <section class="home-section page-shell" id="all-brands" style="padding-top: 60px;">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">完整收录</p>
+        <h2 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">36家品牌档案</h2>
+      </div>
+    </div>
+    <div class="featured-grid">
+${astroCards}
+    </div>
+  </section>
+`;
+
+let splitIndex = homePage.indexOf('<style is:inline>');
+if (splitIndex !== -1) {
+  const newHomePage = homePage.substring(0, splitIndex) + injection + "\n\n  " + homePage.substring(splitIndex);
+  fs.writeFileSync(homePagePath, newHomePage);
+  console.log('Successfully added 36 brands section to homepage.');
 } else {
-  console.log('Could not split index.astro correctly.');
+  console.log('Could not find split target in index.astro.');
 }
