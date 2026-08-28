@@ -404,6 +404,19 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">浪网机场怎么样？主打 BGP 多线融合与专线级出口。极度罕见提供 640元/月定制独享专线与永不限时大流量包，完美适配小火箭，高端外贸/TikTok 直播用户必看。</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
+  } else if (brand.name === '老猫云') {
+    astroCards += `
+      <a href="/jichang/laomao/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="老猫云" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin: 0; font-weight: 700; line-height: 1.3;">[圈X极客首选] 老猫云：全 IEPL 原生订阅与完美分流</h3>
+          </div>
+          <div style="background: #ecfdf5; color: #10b981; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; border: 1px solid #a7f3d0; white-space: nowrap; margin-left: 12px;">⚙️ Quantumult X 适配</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">老猫云机场怎么样？寻找稳定圈X机场的极客必看。提供完美契合 Quantumult X 的原生订阅，全线 IEPL 企业级专线，限速保稳策略，最低月均仅 15元起。</p>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
+      </a>`;
   } else {
     astroCards += `
       <article class="featured-card">
