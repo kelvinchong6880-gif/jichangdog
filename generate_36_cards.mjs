@@ -508,6 +508,19 @@ for (const brand of brands) {
         <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">梯子云机场怎么样？寻找企业级纯内网 IEPL 专线的高端答案。晚高峰 0 丢包极低抖动，提供极具商业价值的“永不限时大流量包”及私人独享专线！</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
       </a>`;
+  } else if (brand.name === '唯兔云') {
+    astroCards += `
+      <a href="/jichang/weituyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="唯兔云" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin: 0; font-weight: 700; line-height: 1.3;">[游戏党福音] 唯兔云：全 IPLC 专线搭载 Vless 协议，极致低延迟</h3>
+          </div>
+          <div style="background: #ecfdf5; color: #059669; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; border: 1px solid #a7f3d0; white-space: nowrap; margin-left: 12px;">🎮 极低延迟 专线</div>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">唯兔云机场怎么样？打外服游戏与日常办公的低延迟利器！全系采用 Vless 协议 + 纯内网过境，实测晚高峰 0 丢包。年付仅需 79.9元起。</p>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 4px;">立即阅读完整报告 <span>→</span></span>
+      </a>`;
   } else {
     astroCards += `
       <article class="featured-card">
