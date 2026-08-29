@@ -14,7 +14,7 @@ const description = "独家深度评测微风机场（Weifeng）：揭秘其全 
       <blockquote style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 8px; margin: 24px 0; font-size: 1.1rem;">
         <p style="margin: 0; color: #1e293b;">🚀 <strong>微风机场本月限时专属福利：</strong><br>
         通过我们的内部专属入口注册，全系纯血 IPLC 专线套餐最低仅需 ¥27/月，立享丝滑极速网络。<br>
-        专属优惠码（结算时输入可享折扣）：<code>hM8APccJ</code><br>
+        专属优惠码（结算时输入可享折扣）：<span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">hM8APccJ</code><button class="copy-code-btn" data-code="hM8APccJ" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
         👉 <a href="https://edp01.breezenetaff.com/#/?code=hM8APccJ" target="_blank" style="display: inline-block; background: #2563eb; color: #fff; padding: 10px 28px; border-radius: 8px; margin-top: 14px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">点击此处，直达微风官网安全注册 ↗</a></p>
       </blockquote>
 
@@ -352,6 +352,26 @@ const description = "独家深度评测微风机场（Weifeng）：揭秘其全 
       }, observerOptions);
 
       headings.forEach(heading => observer.observe(heading));
+
+      document.querySelectorAll('.copy-code-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const code = btn.getAttribute('data-code');
+          navigator.clipboard.writeText(code).then(() => {
+            const originalTitle = btn.getAttribute('title');
+            btn.setAttribute('title', '已复制!');
+            const svg = btn.innerHTML;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            btn.style.color = '#10b981';
+            setTimeout(() => {
+              btn.setAttribute('title', originalTitle);
+              btn.innerHTML = svg;
+              btn.style.color = '#64748b';
+            }, 2000);
+          });
+        });
+      });
+
     });
   </script>
 </BaseLayout>

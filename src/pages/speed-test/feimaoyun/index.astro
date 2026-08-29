@@ -14,7 +14,7 @@ const description = "深度评测 2026 年爆款“飞猫云机场” (Feimaoyun
       <blockquote style="background: #f8fafc; border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 8px; margin: 32px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);">
         <p style="margin: 0; color: #1e293b;">🚀 <strong>飞猫云限时破盘价：</strong><br>
         通过我们的内部直达通道，即可抢购极其罕见的 **84元/年** 传家宝套餐！<br>
-        专属优惠码（防伪必填）：<code>w5lO9fqB</code><br>
+        专属优惠码（防伪必填）：<span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">w5lO9fqB</code><button class="copy-code-btn" data-code="w5lO9fqB" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
         👉 <a href="https://feimao-cloud.com/#/?code=w5lO9fqB" target="_blank" style="display: inline-block; background: #f59e0b; color: #fff; padding: 10px 28px; border-radius: 8px; margin-top: 14px; text-decoration: none; font-weight: bold; transition: all 0.2s;">点击抢注飞猫云 84元/年 IPLC 套餐 ↗</a></p>
       </blockquote>
 
@@ -157,7 +157,7 @@ const description = "深度评测 2026 年爆款“飞猫云机场” (Feimaoyun
       <blockquote style="background: #f8fafc; border-left: 4px solid #3b82f6; padding: 20px 24px; border-radius: 8px; margin: 32px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);">
         <p style="margin: 0; color: #1e293b;">🎯 <strong>进阶省钱指南：</strong><br>
         如果是作为全年的主力梯子，建议直接拿下 <strong>84元/年的轻量传家宝套餐</strong>，80GB的月流量对于查资料和日常流媒体绝对够用。如果是经常下载大文件的极客用户，可以考虑 40元/季的大流量版。<br>
-        👉 <a href="https://feimao-cloud.com/#/?code=w5lO9fqB" target="_blank" style="color: #3b82f6; font-weight: bold; text-decoration: underline;">别忘了在付款页面使用专属优惠码 <code>w5lO9fqB</code> 锁定最低折扣</a></p>
+        👉 <a href="https://feimao-cloud.com/#/?code=w5lO9fqB" target="_blank" style="color: #3b82f6; font-weight: bold; text-decoration: underline;">别忘了在付款页面使用专属优惠码 <span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">w5lO9fqB</code><button class="copy-code-btn" data-code="w5lO9fqB" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span> 锁定最低折扣</a></p>
       </blockquote>
 
       <h2 id="clients">5. 手把手配置：全平台客户端支持指南</h2>
@@ -307,6 +307,26 @@ const description = "深度评测 2026 年爆款“飞猫云机场” (Feimaoyun
       }, observerOptions);
 
       headings.forEach(heading => observer.observe(heading));
+
+      document.querySelectorAll('.copy-code-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const code = btn.getAttribute('data-code');
+          navigator.clipboard.writeText(code).then(() => {
+            const originalTitle = btn.getAttribute('title');
+            btn.setAttribute('title', '已复制!');
+            const svg = btn.innerHTML;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            btn.style.color = '#10b981';
+            setTimeout(() => {
+              btn.setAttribute('title', originalTitle);
+              btn.innerHTML = svg;
+              btn.style.color = '#64748b';
+            }, 2000);
+          });
+        });
+      });
+
     });
   </script>
 </BaseLayout>
