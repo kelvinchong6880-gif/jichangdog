@@ -282,7 +282,7 @@ for (const brand of brands) {
   // --- 2. Generate the Review Card (for /jichang/ page) ---
   if (brand.name === '微风') {
     reviewCardsHTML += `
-      <a href="/speed-test/weifeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+      <a href="/jichang/weifeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <img src="/images/brands/weifeng.png?v=2" width="36" height="36" alt="微风" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
@@ -295,7 +295,7 @@ for (const brand of brands) {
       </a>`;
   } else if (brand.name === '飞猫云') {
     reviewCardsHTML += `
-      <a href="/speed-test/feimaoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+      <a href="/jichang/feimaoyun/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="飞猫云" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
@@ -308,7 +308,7 @@ for (const brand of brands) {
       </a>`;
   } else if (brand.name === 'firefly') {
     reviewCardsHTML += `
-      <a href="/speed-test/firefly/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+      <a href="/jichang/firefly/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <img src="/images/brands/${brand.imgName}.png?v=2" width="36" height="36" alt="Firefly" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">

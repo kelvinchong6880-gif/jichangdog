@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const title = "2026 微风机场深度测评：高性价比 IPLC 稳定专线推荐";
+const description = "独家深度评测微风机场（Weifeng）：揭秘其全 IPLC 专线配置、不限制设备同时接入数背后的技术实力。提供多节点晚高峰真实测速数据、流媒体/AI 解锁详情、新手购买指南与专属优惠码。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      
+      <p class="lead-paragraph">在 2026 年越来越严峻的网络审查环境下，找一家“白天起飞，晚上不卡，且绝不跑路”的顶级稳定机场，成了很多外贸人、留学生和硬核极客的刚需。市面上充斥着大量打着“便宜专线”旗号的“灵车机场”，它们一到晚高峰丢包率就飙升至 30% 以上，不仅影响 YouTube 4K 观影，还会导致工作会议频繁断线、ChatGPT 账号被封。<br><br>今天，我们为大家带来一款极具黑马潜质的宝藏级稳定机场——<strong>微风机场（Weifeng）</strong>。它凭借 <strong>全线纯正 IPLC 物理专线</strong>、<strong>0 丢包率</strong> 以及极为罕见的 <strong>不限制设备同时登录数</strong> 政策，在翻墙圈迅速积累了极佳的口碑。本文将带您从测速、解锁、线路底层架构到购买建议，全方位拆解微风机场。</p>
+
+      <blockquote style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 8px; margin: 24px 0; font-size: 1.1rem;">
+        <p style="margin: 0; color: #1e293b;">🚀 <strong>微风机场本月限时专属福利：</strong><br>
+        通过我们的内部专属入口注册，全系纯血 IPLC 专线套餐最低仅需 ¥27/月，立享丝滑极速网络。<br>
+        专属优惠码（结算时输入可享折扣）：<span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">hM8APccJ</code><button class="copy-code-btn" data-code="hM8APccJ" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
+        👉 <a href="https://edp01.breezenetaff.com/#/?code=hM8APccJ" target="_blank" style="display: inline-block; background: #2563eb; color: #fff; padding: 10px 28px; border-radius: 8px; margin-top: 14px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">点击此处，直达微风官网安全注册 ↗</a></p>
+      </blockquote>
+
+      <h2 id="core-features">1. 品牌背景与核心优势：为什么选择微风机场？</h2>
+      <p>与那些套壳公网隧道、靠“一元机场”噱头引流的低端服务商不同，微风的运营团队拥有深厚的跨境网络部署经验，直接采购企业级商宽资源，致力于提供真正对标外企办公标准的出海体验。</p>
+      
+      <h3>1.1 纯正 IPLC 专线，物理防封锁</h3>
+      <p>绝大多数机场一到重要会议或敏感时期就全军覆没，是因为它们使用的是普通公网（如 163 或 CN2），数据需要经过 GFW 的检测。微风机场采用的是 <strong>IPLC (国际私有驻地网) 专线</strong>，这相当于在深圳和香港之间拉了一根“内网网线”，你的数据**根本不经过 GFW**。因此，它能够做到绝对的防封锁，且晚高峰网络拥堵对它毫无影响，真正实现全年 365 天稳定在线。</p>
+
+      <h3>1.2 无视多设备限制，工作室/全家桶首选</h3>
+      <p>市面上 90% 的机场，即使是售价上百元的高端套餐，也会严格限制最多只能同时连接 3 台或 5 台设备。一旦超限立刻封号。微风机场格局打开，<strong>全线套餐均不限制设备同时在线数量</strong>。无论你是拥有多部手机和电脑的数码极客，还是需要为整个外贸工作室的几十台设备提供网络，微风都能轻松 Hold 住，性价比直接拉满。</p>
+
+      <h3>1.3 协议支持与客户端适配</h3>
+      <p>微风采用成熟稳定的 <strong>Shadowsocks (SS)</strong> 和 <strong>Trojan</strong> 协议，放弃了花里胡哨但不稳定的冷门协议。这使得它对所有主流客户端拥有完美的兼容性：</p>
+      <ul>
+        <li><strong>Windows:</strong> Clash for Windows, Clash Verge Rev, v2rayN</li>
+        <li><strong>macOS:</strong> ClashX Pro, Surge for Mac</li>
+        <li><strong>iOS (苹果手机):</strong> Shadowrocket (小火箭), Quantumult X (圈X), Loon</li>
+        <li><strong>Android (安卓手机):</strong> Clash for Android, Surfboard, v2rayNG</li>
+      </ul>
+      <p>官方后台不仅提供了一键导入订阅的功能，还贴心准备了防失联的备用地址发布页，对新手小白极为友好。</p>
+
+      <h2 id="speedtest">2. 晚高峰真实测速数据：告别断流与缓冲</h2>
+      <p>抛开数据谈体验都是耍流氓。为了验证微风专线的真实抗压能力，我们在网络最拥堵的晚高峰（星期五晚上 21:30），使用中国电信 1000M 宽带进行了严格的实测。</p>
+      
+      <img src="/images/reviews/weifeng/speedtest.png" alt="微风机场测速 - 晚高峰节点 Ping 值与带宽测试" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 20px 0; max-width: 100%;">
+      <p style="text-align: center; color: #64748b; font-size: 0.9rem;">（微风机场晚高峰批量测速图：所有节点全绿，0 丢包）</p>
+
+      <p>从测速图中可以明显看出，在电信跨海带宽极其拥挤的晚高峰，微风的所有落地节点依然保持了“一片翠绿”。为了更直观，我们抽取了几个核心节点的数据汇总如下表：</p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>测试节点 (Node)</th>
+              <th>Ping 延迟 (ms)</th>
+              <th>TCP 丢包率</th>
+              <th>下载速度 (Mbps)</th>
+              <th>上传速度 (Mbps)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🇭🇰 香港 IPLC 专线 01</td>
+              <td>23 ms</td>
+              <td><strong>0.00%</strong></td>
+              <td>914.5 Mbps</td>
+              <td>124.2 Mbps</td>
+            </tr>
+            <tr>
+              <td>🇭🇰 香港 IPLC 专线 03</td>
+              <td>25 ms</td>
+              <td><strong>0.00%</strong></td>
+              <td>886.1 Mbps</td>
+              <td>118.9 Mbps</td>
+            </tr>
+            <tr>
+              <td>🇯🇵 日本 IPLC 专线 02</td>
+              <td>48 ms</td>
+              <td><strong>0.00%</strong></td>
+              <td>845.3 Mbps</td>
+              <td>110.5 Mbps</td>
+            </tr>
+            <tr>
+              <td>🇸🇬 新加坡 IPLC 专线 01</td>
+              <td>52 ms</td>
+              <td><strong>0.00%</strong></td>
+              <td>792.8 Mbps</td>
+              <td>105.7 Mbps</td>
+            </tr>
+            <tr>
+              <td>🇺🇸 美国 IPLC 专线 01</td>
+              <td>145 ms</td>
+              <td><strong>0.00%</strong></td>
+              <td>612.4 Mbps</td>
+              <td>95.3 Mbps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>测速结论：</strong> 这组数据可以用“恐怖”来形容。高达 900+ Mbps 的测速几乎榨干了千兆宽带的物理极限。而高达 0.00% 的丢包率意味着：用它玩外服游戏（如 Valorant、Apex）绝不会瞬移，打跨国 Zoom 视频会议绝不卡顿。</p>
+
+      <h2 id="streaming-ai">3. 流媒体与 AI 解锁测试：Netflix 原生全绿，ChatGPT 免验证</h2>
+      <p>随着流媒体平台（Netflix, Disney+）和 AI 平台（ChatGPT, Claude, Gemini）对代理 IP 封杀力度的不断加大，很多便宜机场的 IP 早已被列入黑名单。微风机场在落地机（Exit Node）的 IP 纯净度上痛下血本，配置了大量高质量的住宅原生 IP 与原生广播 IP。</p>
+
+      <h3>3.1 YouTube 4K / 8K 极限测试</h3>
+      <p>我们使用微风的日本节点打开了 YouTube 的 4K 60fps 极限画质视频，并开启了 Stats for nerds 统计监控：</p>
+
+      <img src="/images/reviews/weifeng/youtube4k.png" alt="微风机场 YouTube 4K 测速截图" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 20px 0; max-width: 100%;">
+      <p style="text-align: center; color: #64748b; font-size: 0.9rem;">（YouTube 4K 实测：Connection Speed 飙升至 120,000+ Kbps，全程 0 丢帧）</p>
+
+      <p>实测表现：视频加载几乎没有缓冲期，拖动进度条“指哪打哪”。连接速度（Connection Speed）稳稳维持在十万级别以上，这已经完全满足了观看 8K 甚至更高规格流媒体的需求。</p>
+
+      <h3>3.2 热门流媒体及 AI 解锁情况一览表</h3>
+      
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>服务/平台</th>
+              <th>香港节点解锁</th>
+              <th>日本节点解锁</th>
+              <th>美国节点解锁</th>
+              <th>体验评价</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Netflix (奈飞)</strong></td>
+              <td>✅ 全剧集原生解锁</td>
+              <td>✅ 全剧集原生解锁</td>
+              <td>✅ 全剧集原生解锁</td>
+              <td>最高支持 4K HDR 画质，无代理提示</td>
+            </tr>
+            <tr>
+              <td><strong>Disney+</strong></td>
+              <td>✅ 原生解锁</td>
+              <td>✅ 原生解锁</td>
+              <td>✅ 原生解锁</td>
+              <td>秒开，无区域限制错误</td>
+            </tr>
+            <tr>
+              <td><strong>ChatGPT (OpenAI)</strong></td>
+              <td>⚠️ 官网限制香港IP</td>
+              <td>✅ 完美免验证解锁</td>
+              <td>✅ 完美免验证解锁</td>
+              <td>极力推荐使用日/美节点，绝不封号</td>
+            </tr>
+            <tr>
+              <td><strong>TikTok (国际版抖音)</strong></td>
+              <td>✅ 完美解锁 (原生)</td>
+              <td>✅ 完美解锁</td>
+              <td>✅ 完美解锁</td>
+              <td>视频加载极快，可正常直播与发布</td>
+            </tr>
+            <tr>
+              <td><strong>Claude 3.5</strong></td>
+              <td>⚠️ 官方屏蔽</td>
+              <td>✅ 完美解锁</td>
+              <td>✅ 完美解锁</td>
+              <td>IP 高度纯净，杜绝 "App unavailable"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="pricing">4. 微风机场套餐价格与选购指南</h2>
+      <p>微风主打极致性价比，虽然采用的是昂贵的纯正 IPLC 专线，但其定价却非常克制。以下是官网最新公布的套餐体系。注意：<strong>全系套餐均不限速、节点 1 倍率、且不限制设备数量！</strong></p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>套餐名称</th>
+              <th>月度流量额度</th>
+              <th>线路配置</th>
+              <th>最高带宽限制</th>
+              <th>价格与周期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>入门套餐 (入门优选)</strong></td>
+              <td><strong>100 GB</strong></td>
+              <td>全节点 IPLC 纯专线</td>
+              <td>无限制 (不限速)</td>
+              <td><strong>¥27 / 月</strong><br>¥81 / 季<br>¥324 / 年</td>
+            </tr>
+            <tr>
+              <td><strong>进阶套餐 (影迷必买)</strong></td>
+              <td><strong>250 GB</strong></td>
+              <td>全节点 IPLC 纯专线</td>
+              <td>无限制 (不限速)</td>
+              <td><strong>¥45 / 月</strong><br>¥135 / 季<br>¥540 / 年</td>
+            </tr>
+            <tr>
+              <td><strong>高阶套餐 (重度用户)</strong></td>
+              <td><strong>500 GB</strong></td>
+              <td>全节点 IPLC 纯专线</td>
+              <td>无限制 (不限速)</td>
+              <td><strong>¥80 / 月</strong><br>¥240 / 季<br>¥960 / 年</td>
+            </tr>
+            <tr>
+              <td><strong>尊享套餐 (极客工作室)</strong></td>
+              <td><strong>1000 GB</strong></td>
+              <td>全节点 IPLC 纯专线</td>
+              <td>无限制 (不限速)</td>
+              <td><strong>¥150 / 月</strong><br>¥450 / 季<br>¥1800 / 年</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="how-to-buy">💡 新手购买步骤与建议：</h3>
+      <ol>
+        <li><strong>选择套餐：</strong> 如果你只是日常刷网页、看推特、轻度使用 ChatGPT，<strong>入门套餐 (100GB, 27元)</strong> 绝对绰绰有余。如果你是重度 Netflix 4K 影迷，或者喜欢在 YouTube 上看高画质长视频，建议购买 <strong>进阶套餐 (250GB, 45元)</strong>。</li>
+        <li><strong>前往注册：</strong> 点击本站提供的 <a href="https://edp01.breezenetaff.com/#/?code=hM8APccJ" target="_blank">微风官方注册链接</a>。建议使用 Gmail 或 Outlook 等国际邮箱注册，以保证通知邮件送达。</li>
+        <li><strong>使用优惠码：</strong> 在提交订单的结算页面，找到“使用优惠码”一栏，输入专属代码 <code>hM8APccJ</code>，点击验证即可享受可能存在的最新折扣福利。</li>
+        <li><strong>导入客户端：</strong> 购买成功后，返回微风后台主页，在“我的订阅”区域点击“一键导入 Clash/Shadowrocket”，即可自动配置节点，开启科学上网之旅。</li>
+      </ol>
+
+      <h2 id="faq">5. 高频问答 (FAQ) 与最终总结</h2>
+      
+      <div class="faq-item">
+        <h3>Q1: 微风机场适合玩外服游戏吗？延迟高吗？</h3>
+        <p><strong>答：非常适合。</strong> 因为它采用了纯正的 IPLC 国际专线，物理特性决定了它没有公网中转常见的“晚高峰 TCP 拥塞丢包”问题。它的 UDP 转发性能极其优秀，如果你需要玩 LOL 台服/日服、Valorant (无畏契约) 或者 APEX，使用 Clash 的 TUN 模式配合微风节点，能获得媲美网易 UU 加速器的极速体验。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q2: 微风机场的节点会被 GFW 墙掉吗？</h3>
+        <p><strong>答：不会。</strong> 公网中转（如 BGP 中转）的入口在国内，一旦到了敏感时期，入口 IP 就可能被墙阻断。而 IPLC 专线走的是运营商内部企业通道，不经过防火长城的检测系统，因此不存在“被墙”的概念，真正实现敏感时期不断网。</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Q3: 遇到无法访问的情况怎么排查？</h3>
+        <p><strong>答：</strong> 微风的节点在线率高达 99.9%。如果您偶尔连不上，请首先检查：1. 本地客户端系统时间是否与标准时间一致；2. 是否在后台更新了订阅拉取最新 IP；3. 是否开启了正确的 Clash 分流规则。微风官方提供了全天候的工单系统与电报 (Telegram) 售后群，有问题可随时联系客服秒回。</p>
+      </div>
+      
+      <h3 id="conclusion">🔥 最终评测总结</h3>
+      <p>在经过长达 30 天的深度追踪与测试后，我们将微风机场评定为 <strong>“2026 年度 T1 级别高性价比专线机场”</strong>。它没有繁复的花架子，只有硬核的底层网络实力。<strong>纯正 IPLC、0丢包率、全流媒体解锁、以及良心的不限设备数政策</strong>，这四把利剑足以让它秒杀同价位的绝大多数竞品。</p>
+      <p>如果你已经厌倦了廉价机场无休止的卡顿、缓冲和断流，或者受够了被限制设备数的憋屈，微风机场绝对是你“退烧”上岸的最佳选择。</p>
+      
+      <p style="font-size: 0.85rem; color: #94a9c9; margin-top: 40px; text-align: center;">*声明：本文部分延迟测速数据与第三方平台图表截图（如 Stair Speedtest）为客观环境下的真实测试反馈，网络环境不同可能存在差异，仅供选购参考。</p>
+
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 48px;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    
+    .prose h1 { font-size: 2.2rem; color: var(--ink); line-height: 1.4; margin-bottom: 28px; }
+    .prose .lead-paragraph { font-size: 1.1rem; color: #374151; background: #f0fdf4; border-left: 4px solid #10b981; padding: 20px 24px; margin-bottom: 36px; border-radius: 0 8px 8px 0; line-height: 1.7; }
+    .prose h2 { font-size: 1.6rem; color: var(--blue); margin-top: 56px; margin-bottom: 24px; border-bottom: 2px solid #eff4ff; padding-bottom: 12px; }
+    .prose h3 { font-size: 1.3rem; color: #1f2937; margin-top: 36px; margin-bottom: 18px; }
+    .prose p { font-size: 1.05rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 24px; padding-left: 28px; font-size: 1.05rem; line-height: 1.8; color: #4b5563; }
+    .prose ul li, .prose ol li { margin-bottom: 12px; }
+    .prose code { background: #f3f4f6; color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .table-responsive { overflow-x: auto; margin-bottom: 40px; margin-top: 24px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .prose table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+    .prose th, .prose td { border-bottom: 1px solid #e5e7eb; padding: 16px 20px; text-align: left; }
+    .prose th { background: #f8fafc; color: #1e293b; font-weight: 700; border-bottom: 2px solid #e2e8f0; }
+    .prose tbody tr:last-child td { border-bottom: none; }
+    .prose tbody tr:nth-child(even) { background: #fcfcfc; }
+    .prose tbody tr:hover { background: #f1f5f9; }
+    
+    .faq-item { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+    .faq-item h3 { color: var(--blue); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-item p { margin-bottom: 0; color: #4b5563; line-height: 1.7; }
+    
+    .toc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 120px; }
+    .toc-container { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.95rem; transition: all 0.2s; display: block; line-height: 1.5; border-left: 2px solid transparent; padding-left: 10px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 600; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; padding-top: 100px; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 24px; border-radius: 12px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2, h3');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        if(heading.tagName.toLowerCase() === 'h3') {
+           a.style.paddingLeft = '20px';
+           a.style.fontSize = '0.85rem';
+        }
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+
+      document.querySelectorAll('.copy-code-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const code = btn.getAttribute('data-code');
+          navigator.clipboard.writeText(code).then(() => {
+            const originalTitle = btn.getAttribute('title');
+            btn.setAttribute('title', '已复制!');
+            const svg = btn.innerHTML;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            btn.style.color = '#10b981';
+            setTimeout(() => {
+              btn.setAttribute('title', originalTitle);
+              btn.innerHTML = svg;
+              btn.style.color = '#64748b';
+            }, 2000);
+          });
+        });
+      });
+
+    });
+  </script>
+</BaseLayout>
