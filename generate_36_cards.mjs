@@ -67,7 +67,52 @@ const codeMapping = {
   '梯子云': 'zUCoDtv6', '浪网': '9U2hOtDu', '灵动': 'HDiWuF7L', '隐形人': 'BtPRayAl'
 };
 
+
+const customDescMapping = {
+  '微风': '全IPLC专线，享受低延迟高速率，不限制设备同时接入，不限速。',
+  '飞猫云': '全IPLC专线网络最高2.5Gbps，原生IP解锁流媒体与AI，智能路由。',
+  'firefly': 'IPLC专线网络，不限速，不限设备数，解锁Netflix、Disney+及ChatGPT。',
+  '无忧': '全IPLC专线，节点速率×1，稳定支持全球ChatGPT、Gemini等AI与4K观影。',
+  '跨界': 'IPLC高端线路不限速，解锁各大流媒体与AI，不限制设备登录数。',
+  '灵猫': '全IPLC专线，最高1000Mbps带宽，原生IP解锁流媒体，全天客服。',
+  '闪跃': '支持全平台一键导入配置，全节点IPLC专线，晚高峰YouTube 4K极速秒开。',
+  'flybit': '低至月付15元起，更有永不过期的不限时传家宝套餐，完美解锁流媒体。',
+  'xxyun': '主打9.99元低门槛、BGP+中转架构的高带宽便宜机场，不限制设备数。',
+  '大哥云': '主打Trojan协议的千兆大带宽老牌机场，抗压能力强，1000Mbps测速。',
+  '二猫云': '2.5Gbps IEPL专线，极度硬核的99元不限时传家宝套餐的底层逻辑。',
+  '飞V': '全节点物理专线，提供纯独享黄金原生IP专线的骨灰级极客机场。',
+  'FlyV': '全节点物理专线，提供纯独享黄金原生IP专线的骨灰级极客机场。',
+  '光年梯': '每月18元起享纯正IPLC专线，自带云端去广告规则，独享私人原生IP。',
+  '光年': '每月18元起享纯正IPLC专线，自带云端去广告规则，独享私人原生IP。',
+  '光速云': '月付23元起享2.5Gbps全球IPLC专线，提供永久不限时1TB流量包。',
+  '极连云': '月付18元起，全IPLC专线，完美解锁Netflix与ChatGPT，支持Clash。',
+  '可信云': '全线IEPL专线，不限设备，完美解锁流媒体与AI，月付15元起。',
+  '快狸': '全线IEPL专线2.5Gbps满配，完美解锁TikTok与Netflix，支持小火箭。',
+  '浪网': '主打BGP多线融合与专线级出口，定制独享专线与永不限时大流量包。',
+  '老猫云': '提供完美契合Quantumult X的原生订阅，全线IEPL企业级专线。',
+  '灵动': '全线BGP专线不限速，完美契合Surge 5的原生托管配置，极度稳定。',
+  '暮光': '专为Apple TV与iOS Stash玩家打造的BGP专线，提供完美原生规则。',
+  '气泡云': '专为手机小白设计的一键连接梯子，更有极其划算的永久一次性流量包。',
+  '全球云': '全系BGP智能调度，晚高峰零丢包低抖动，企业级IPLC极高性价比。',
+  '山水云': '专为性价比党打造的BGP隧道中转，极其划算的月付套餐与永不到期流量。',
+  '速界': '全网极度稀缺的纯净原生IP梯子，0欺诈分防封号，2.5Gbps的IPLC专线。',
+  '梯子云': '企业级纯内网IEPL专线，晚高峰0丢包极低抖动，永不限时大流量包。',
+  '唯兔云': '全系采用Vless协议+纯内网过境，实测晚高峰0丢包，年付仅需79.9元。',
+  '唯图云': '全系采用Vless协议+纯内网过境，实测晚高峰0丢包，年付仅需79.9元。',
+  '星岛梦': '原生支持Hy2与Vless-Reality抗封锁协议，全系IEPL/IPLC专线。',
+  '一翻云': '专为圈X量身定制的企业级IEPL专线！原生纯净IP完美解锁TikTok。',
+  '隐形人': '全面适配Hiddify客户端一键导入，专线+BGP出口极度抗封锁。',
+  '宇宙云': '自研一键翻墙客户端，70+顶级专线全线不限设备，年付低至96元。',
+  'edgenova': '全IPLC架构配合分布式边缘计算，无视晚高峰阻断，全系不限设备。',
+  '边缘节点': '全IPLC架构配合分布式边缘计算，无视晚高峰阻断，全系不限设备。',
+  'sogo 云': '全系专线0丢包，支持罕见的三年6折优惠，流量不过期的不限时传家宝。',
+  'u1s1': '提供不限设备、不限速的BGP三网智能优化与IEPL跨境专线。',
+  'xsus': '提供高性价比基础包与绝版不限时流量包，原生解锁全平台AI与流媒体。',
+  '网际快车': '主打24元流量永久不过期套餐，不限设备数量，4K秒开，一键防失联。'
+};
+
 let brands = [];
+
 
 for (const file of files) {
   let name = file.replace('套餐价格', '').replace('价格表', '').replace('.txt', '').trim();
@@ -92,25 +137,8 @@ for (const file of files) {
      formattedPrice = '¥' + minPrice + '<small>/' + cycleText + '</small>';
   }
   
-  let desc = '全IPLC专线，解锁流媒体与AI服务，稳定低延迟。';
-  const lines = content.split('\n');
-  for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('详情：')) {
-      desc = lines[i].replace('详情：', '').trim();
-      if (!desc && i+1 < lines.length) desc = lines[i+1].trim();
-      break;
-    } else if (lines[i].startsWith('- ')) {
-      desc = lines[i].replace('- ', '').trim();
-      break;
-    }
-  }
+  let desc = customDescMapping[name] || customDescMapping[name.toLowerCase()] || '全IPLC专线，解锁流媒体与AI服务，稳定低延迟。';
   if (desc.length > 40) desc = desc.substring(0, 38) + '...';
-  if (name === '微风') desc = '全IPLC专线，享受低延迟高速率，不限制设备同时接入，不限速。';
-  if (name === '飞猫云') desc = '全IPLC专线网络最高2.5Gbps，原生IP解锁流媒体与AI，智能路由。';
-  if (name === 'firefly') desc = 'IPLC专线网络，不限速，不限设备数，解锁Netflix、Disney+及ChatGPT。';
-  if (name === '无忧') desc = '全IPLC专线，节点速率×1，稳定支持全球ChatGPT、Gemini等AI与4K观影。';
-  if (name === '跨界') desc = 'IPLC高端线路不限速，解锁各大流媒体与AI，不限制设备登录数。';
-  if (name === '灵猫') desc = '全IPLC专线，最高1000Mbps带宽，原生IP解锁流媒体，全天客服。';
 
   let lookupName = name;
   if (name.toLowerCase() === 'u1s1') lookupName = 'u1s1';
@@ -171,6 +199,7 @@ brands.sort((a, b) => {
 
 let reviewCardsHTML = '';
 let brandCardsHTML = '';
+let featuredCardsHTML = '';
 
 for (const brand of brands) {
   let badgeText = '重点关注';
@@ -219,10 +248,41 @@ for (const brand of brands) {
         </div>
       </article>`;
 
+  const featuredBrandNames = ['微风', '飞猫云', 'firefly', '无忧', '跨界', '灵猫'];
+  if (featuredBrandNames.includes(brand.name)) {
+    featuredCardsHTML += `
+      <article class="featured-card">
+        <div class="brand-card-top">
+          <img src="/images/brands/${brand.imgName}.png?v=2" width="48" height="48" alt="${brand.name}" class="brand-avatar-img large" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2U0ZTlmMiIvPjwvc3ZnPg=='">
+        <span class="${badgeClass}">${badgeText}</span>
+        </div>
+        <h3>${brand.name}</h3>
+        <p>${brand.desc}</p>
+        <div class="price-promo-box">
+          <div class="price-item">
+            <span>最低价格</span>
+            <strong>${brand.formattedPrice}</strong>
+          </div>
+          <div class="promo-item">
+            <span>专属优惠码</span>
+            <div class="promo-code-group">
+              <code>${brand.code}</code>
+              <button class="copy-code-btn" data-code="${brand.code}" title="点击一键复制">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="button" style="width: 100%; justify-content: center;" href="${brand.link}" target="_blank">官网注册 <span>↗</span></a>
+        </div>
+      </article>`;
+  }
+
   // --- 2. Generate the Review Card (for /jichang/ page) ---
   if (brand.name === '微风') {
     reviewCardsHTML += `
-      <a href="/jichang/weifeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
+      <a href="/speed-test/weifeng/" class="review-card-special" style="display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; text-decoration: none; transition: all 0.3s ease; grid-column: 1 / -1; margin-bottom: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <img src="/images/brands/weifeng.png?v=2" width="36" height="36" alt="微风" style="border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
@@ -752,7 +812,7 @@ if (topPart && bottomPartRaw) {
   let endMarkerIndex = bottomPartRaw.indexOf('</section>');
   if (endMarkerIndex !== -1) {
     let bottomPart = bottomPartRaw.substring(endMarkerIndex + '</section>'.length);
-    homePage = topPart + '<div class="featured-grid">\n' + brandCardsHTML + '\n    </div>\n  </section>' + bottomPart;
+    homePage = topPart + '<div class="featured-grid">\n' + featuredCardsHTML + '\n    </div>\n  </section>' + bottomPart;
     
     // Check if the script exists, if not, append before </body> or layout end
     if (!homePage.includes('.copy-code-btn')) {
@@ -785,3 +845,56 @@ if (topPart && bottomPartRaw) {
     console.log('Successfully injected 36 brands into index.astro');
   }
 }
+
+
+// --- 3. Generate the Brands Library Page (for /brands/ page) ---
+const brandsPageHTML = `---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="品牌库 - 36家机场品牌推荐｜机场狗" 
+  description="机场狗为您整理全部36家稳定机场和优质机场，包含详细价格与优惠信息。"
+>
+  <section class="page-shell home-section" style="padding-top: 120px;">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">品牌库</p>
+        <h1 style="font-size: 2.5rem; margin: 0; background: linear-gradient(135deg, var(--blue) 0%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">全部 36 家机场品牌板块</h1>
+      </div>
+    </div>
+    
+    <div class="featured-grid">
+${brandCardsHTML}
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-code-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const code = btn.getAttribute('data-code');
+          if(code && code !== '无需填写') {
+            navigator.clipboard.writeText(code).then(() => {
+              const originalHTML = btn.innerHTML;
+              btn.classList.add('copied');
+              btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+              setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = originalHTML;
+              }, 2000);
+            });
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
+`;
+const brandsDir = 'c:\\\\Users\\\\USER\\\\Desktop\\\\jichangdog.com\\\\src\\\\pages\\\\brands';
+if (!fs.existsSync(brandsDir)) {
+    fs.mkdirSync(brandsDir, { recursive: true });
+}
+fs.writeFileSync(brandsDir + '\\\\index.astro', brandsPageHTML);
+console.log('Successfully generated brands/index.astro with 36 brand cards.');

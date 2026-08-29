@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = "机场测速 | 真实晚高峰测速报告与评测";
+const description = "机场狗定期发布各大热门翻墙机场的真实晚高峰测速报告，包含延迟测试、流媒体解锁测试与速度分析，用真实数据帮您挑选稳定优质机场。";
+---
+<BaseLayout title={title} description={description}>
+  <section class="page-shell home-section" style="padding-top: 120px; padding-bottom: 80px; min-height: 70vh;">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">数据说话</p>
+        <h1 style="font-size: 2.5rem; margin: 0; color: var(--ink);">机场晚高峰测速</h1>
+      </div>
+      <p style="color: var(--muted); margin-top: 16px; font-size: 1.1rem; max-width: 600px;">
+        我们坚持在最拥堵的晚高峰进行网络测速，用最真实的数据揭示各大机场的抗压能力，拒绝虚假宣传。
+      </p>
+    </div>
+    
+    <div class="articles-grid">
+      <a href="/speed-test/weifeng/" class="article-card">
+        <div class="card-tag" style="background: #eef2ff; color: #4338ca;">独家测速</div>
+        <h3>2026 高性价比稳定机场推荐：微风机场评测与晚高峰 IPLC 测速分析</h3>
+        <p>深度评测微风机场（Weifeng）：全 IPLC 专线配置，不限制设备同时接入数，超高性价比。附真实晚高峰测速、Netflix 原生解锁情况与专属优惠码...</p>
+        <span class="read-more">查看测速报告 <span>→</span></span>
+      </a>
+      
+      <!-- Placeholder for future articles -->
+      <div class="article-card placeholder">
+        <div class="card-tag" style="background: #f3f4f6; color: #9ca3af;">持续更新中</div>
+        <h3 style="color: #9ca3af;">更多机场测速报告筹备中</h3>
+        <p style="color: #d1d5db;">我们正在夜以继日地对更多主流机场进行深度晚高峰测速与抗压测试，新的测速报告将很快上线，敬请期待...</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .article-card:not(.placeholder):hover {
+      border-color: rgba(36, 87, 230, 0.4);
+      box-shadow: 0 16px 40px rgba(36, 87, 230, 0.08);
+      transform: translateY(-6px);
+    }
+    .card-tag {
+      align-self: flex-start;
+      background: #eff4ff;
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .article-card h3 {
+      font-size: 1.35rem;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .article-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .read-more {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .read-more span {
+      transition: transform 0.2s;
+    }
+    .article-card:hover .read-more span {
+      transform: translateX(4px);
+    }
+    .placeholder {
+      background: #fcfcfc;
+      border: 1px dashed var(--line);
+      cursor: default;
+    }
+  </style>
+</BaseLayout>
