@@ -825,6 +825,37 @@ svg {
 /* =========================================
    Premium Footer Styles
    ========================================= */
+.article-meta-bar {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.article-meta-bar a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.article-meta-bar + article.page-shell {
+  padding-top: 24px !important;
+}
+
+@media (max-width: 640px) {
+  .article-meta-bar {
+    width: min(100% - 28px, 1200px);
+    padding-top: 36px;
+    gap: 4px 12px;
+    font-size: 0.82rem;
+  }
+}
+
 .site-footer { 
   background: #ffffff; 
   border-top: 1px solid var(--line); 

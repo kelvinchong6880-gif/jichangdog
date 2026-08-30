@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import pagePublished from '../data/page-published.json';
+import pageModified from '../data/sitemap-lastmod.json';
 
 interface Props {
   title: string;
@@ -9,6 +11,61 @@ interface Props {
 const { title, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 const siteUrl = (Astro.site ? Astro.site.toString() : Astro.url.origin).replace(/\/$/, '');
+const pathname = Astro.url.pathname;
+const isHomePage = pathname === '/';
+const isArticle = /^\/(guide|knowledge|jichang|speed-test|recommend)\/[^/]+\/$/.test(pathname);
+const datePublished = (pagePublished as Record<string, string>)[pathname];
+const dateModified = (pageModified as Record<string, string>)[pathname];
+const organizationDescription = '机场狗提供机场测评、测速资料、线路知识和客户端使用教程，并说明测试条件、信息来源与推广关系。';
+const organization = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: '机场狗',
+  url: siteUrl,
+  description: organizationDescription,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/images/logo.png`,
+  },
+};
+const structuredData = isHomePage
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        organization,
+        {
+          '@type': 'WebSite',
+          '@id': `${siteUrl}/#website`,
+          name: '机场狗',
+          url: siteUrl,
+          description: organizationDescription,
+          inLanguage: 'zh-CN',
+          publisher: { '@id': `${siteUrl}/#organization` },
+        },
+      ],
+    }
+  : isArticle && datePublished && dateModified
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description,
+        url: canonicalURL.href,
+        mainEntityOfPage: canonicalURL.href,
+        inLanguage: 'zh-CN',
+        datePublished,
+        dateModified,
+        author: {
+          '@type': 'Person',
+          name: 'Kelvin Chong',
+          url: `${siteUrl}/author/#kelvin-chong`,
+        },
+        publisher: organization,
+        image: `${siteUrl}/images/logo.png`,
+      }
+    : undefined;
+const displayPublished = datePublished?.slice(0, 10);
+const displayModified = dateModified?.slice(0, 10);
 ---
 
 <!DOCTYPE html>
@@ -34,26 +91,7 @@ const siteUrl = (Astro.site ? Astro.site.toString() : Astro.url.origin).replace(
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={`${siteUrl}/images/logo.png`}>
   
-  <script type="application/ld+json" set:html={`
-    [
-      {
-        "@context":"https://schema.org",
-        "@type":"WebSite",
-        "name":"机场狗",
-        "url":"${siteUrl}",
-        "inLanguage":"zh-CN",
-        "description":"${description}"
-      },
-      {
-        "@context":"https://schema.org",
-        "@type":"Organization",
-        "name":"机场狗",
-        "url":"${siteUrl}",
-        "description":"${description}",
-        "logo": "${siteUrl}/images/logo.png"
-      }
-    ]
-  `} />
+  {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 </head>
 <body>
   <div class="flex min-h-screen flex-col">
@@ -91,6 +129,13 @@ const siteUrl = (Astro.site ? Astro.site.toString() : Astro.url.origin).replace(
     </header>
 
     <main class="flex-grow">
+      {isArticle && datePublished && dateModified && (
+        <div class="article-meta-bar" aria-label="文章信息">
+          <span>作者：<a href="/author/#kelvin-chong">Kelvin Chong</a></span>
+          <span>首次发布：<time datetime={datePublished}>{displayPublished}</time></span>
+          <span>最近更新：<time datetime={dateModified}>{displayModified}</time></span>
+        </div>
+      )}
       <slot />
     </main>
 
