@@ -1,0 +1,42 @@
+name: Submit changed URLs to IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: Submit every canonical URL after deployment
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-production
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Wait for Cloudflare and submit changed URLs
+        shell: bash
+        run: |
+          args=(--head "$GITHUB_SHA")
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            args+=(--base "${{ github.event.before }}")
+          elif [[ "${{ inputs.submit_all }}" == "true" ]]; then
+            args+=(--all)
+          else
+            args+=(--base "$GITHUB_SHA^")
+          fi
+          npm run indexnow:submit -- "${args[@]}"

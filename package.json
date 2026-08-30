@@ -7,10 +7,12 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/write-deployment-version.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sitemap:lastmod": "node scripts/generate-sitemap-lastmod.mjs"
+    "sitemap:lastmod": "node scripts/generate-sitemap-lastmod.mjs",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
