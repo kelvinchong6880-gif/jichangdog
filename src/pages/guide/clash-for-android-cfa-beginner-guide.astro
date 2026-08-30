@@ -60,7 +60,7 @@ const description = "警惕假冒 CFA 安装包！带你下载真正的 Clash Me
       <p>很多小白抱怨：“为什么我锁屏待机 10 分钟，再亮屏时微信消息全收不到，YouTube 还在疯狂转圈？” 这不是机场的问题，而是你的安卓系统把 Clash 的后台进程给杀了！<br><strong>极限保活 3 步曲：</strong><br>1. 进入 <code>系统设置 -> 应用设置 -> 找到 Clash Meta (CMFA)</code>。<br>2. 点击 <strong>电池优化 / 省电策略</strong>，将其从“智能限制”强制改为 <strong>【无限制 (No Restrictions)】</strong>。<br>3. 点击 <strong>自启动管理</strong>，允许 CMFA <strong>自启动</strong> 以及 <strong>关联启动</strong>。最后，在安卓的多任务卡片界面，将 CMFA 加上一把 <strong>小锁</strong>（下拉或长按应用卡片）。<br>做完这三步，你的 Clash 隧道将坚如磐石，即使手机待机一整晚，唤醒瞬间也能秒开 Google！</p>
 
       <h3>安卓特权降维打击：应用级分流 (Split Tunneling)</h3>
-      <p>这是 iOS 用户做梦都想拥有的神级功能！在苹果系统上，VPN 必须接管全局；而在安卓底层，利用 `VpnService.Builder.addAllowedApplication` API，你可以指定哪些 App 走代理，哪些 App 直接放行物理网卡。<br>在 CMFA 的设置中找到 <strong>【访问控制 (Access Control) / 绕过应用】</strong>，强烈建议极客玩家将以下 App 强制加入直连名单：<br><strong>所有银行与金融 App (防风控异地登录封号)、所有国内手游 (如王者荣耀，防止绕路导致 400ms 延迟掉线)、系统下载管理器与相册备份。</strong><br>如此一来，哪怕你不小心在首页点到了“全局代理 (Global)”，国内网银和游戏流量依然会毫发无损地走本地物理直连，实现了最高级别的金融防风控安全。</p>
+      <p>这是 iOS 用户做梦都想拥有的神级功能！在苹果系统上，VPN 必须接管全局；而在安卓底层，利用 <code>VpnService.Builder.addAllowedApplication</code> API，你可以指定哪些 App 走代理，哪些 App 直接放行物理网卡。<br>在 CMFA 的设置中找到 <strong>【访问控制 (Access Control) / 绕过应用】</strong>，强烈建议极客玩家将以下 App 强制加入直连名单：<br><strong>所有银行与金融 App (防风控异地登录封号)、所有国内手游 (如王者荣耀，防止绕路导致 400ms 延迟掉线)、系统下载管理器与相册备份。</strong><br>如此一来，哪怕你不小心在首页点到了“全局代理 (Global)”，国内网银和游戏流量依然会毫发无损地走本地物理直连，实现了最高级别的金融防风控安全。</p>
 
       <h3>内核内存压榨：GeoData 模式与路由树瘦身</h3>
       <p>很多用着 8GB 甚至 6GB 内存老旧安卓机的玩家，开启 Clash 后会觉得系统疯狂杀后台。这是因为机场动辄下发几十万条规则，导致 Clash 内存暴增。<br>在 CMFA 时代，请务必在设置中开启 <strong>GeoData 模式</strong>。这是一种将冗长的文本规则编译为高效的 <code>.dat</code> 二进制数据库的技术。当 Clash 匹配 <code>geosite:cn</code> 时，它不需要在内存里遍历数万个域名，而是直接进行极速的二进制寻址。这不仅让你的 DNS 解析快了数十毫秒，更能让 Clash 的后台内存占用瞬间从 150MB 骤降至 60MB 以内，彻底拯救老旧安卓机的续航！</p>

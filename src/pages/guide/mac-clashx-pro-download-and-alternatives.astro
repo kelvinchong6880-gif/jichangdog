@@ -71,7 +71,7 @@ const description = "寻找 Mac 苹果电脑翻墙软件？别再搜 ClashX 官�
 
       <h3>终端命令：彻底清剿 ClashX 系统代理残留</h3>
       <p>一旦 ClashX 异常崩溃，它根本来不及把系统的代理开关关掉，你的 Mac 就会陷入无休止的断网。极客玩家绝对不屑于去“系统偏好设置”里一个个点鼠标，请直接打开终端执行以下排障清剿指令：<br>
-      1. <strong>验证残留：</strong>输入 <code>networksetup -getwebproxy Wi-Fi</code>，如果返回结果显示 `Enabled: Yes` 且指向 127.0.0.1，说明你的网络已经被卡死了。<br>
+      1. <strong>验证残留：</strong>输入 <code>networksetup -getwebproxy Wi-Fi</code>，如果返回结果显示 <code>Enabled: Yes</code> 且指向 127.0.0.1，说明你的网络已经被卡死了。<br>
       2. <strong>一键斩杀：</strong>连续输入并执行以下三行命令，强制抹除所有代理残留：<br>
          <code>networksetup -setwebproxystate Wi-Fi off</code><br>
          <code>networksetup -setsecurewebproxystate Wi-Fi off</code><br>
@@ -79,7 +79,7 @@ const description = "寻找 Mac 苹果电脑翻墙软件？别再搜 ClashX 官�
       3. <strong>深层文件拔除：</strong>前往终端执行 <code>rm -rf ~/.config/clash</code> 和 <code>rm -rf ~/Library/Application\ Support/ClashX</code>，将旧时代的缓存配置连根拔起。</p>
 
       <h3>将机场订阅无缝转移到 Clash Verge Rev</h3>
-      <p>去你购买的机场官网后台，找到“一键导入”，通常会提供 <code>导入到 Clash</code> 的按钮。在新版的 Clash Verge Rev 中，点击左侧的“订阅 (Profiles)”，在右上角的输入框中粘贴该链接并点击“导入”。<br>极客提示：如果遇到订阅更新报错 `TLS Handshake Failed`，大概率是校园网或公司内网进行了 <strong>SNI 证书阻断</strong>。你只需在设置中将“订阅更新的底层机制”强制从 <code>Golang</code> 切换为 macOS 系统内置的 <code>Fetch</code> 网络引擎，即可利用系统的信任根证书库强势绕过阻断。</p>
+      <p>去你购买的机场官网后台，找到“一键导入”，通常会提供 <code>导入到 Clash</code> 的按钮。在新版的 Clash Verge Rev 中，点击左侧的“订阅 (Profiles)”，在右上角的输入框中粘贴该链接并点击“导入”。<br>极客提示：如果遇到订阅更新报错 <code>TLS Handshake Failed</code>，大概率是校园网或公司内网进行了 <strong>SNI 证书阻断</strong>。你只需在设置中将“订阅更新的底层机制”强制从 <code>Golang</code> 切换为 macOS 系统内置的 <code>Fetch</code> 网络引擎，即可利用系统的信任根证书库强势绕过阻断。</p>
 
       <h2 id="qa-faq">4. 深度极客排障与高频疑问解答 (Q&A)</h2>
       <p>针对 Mac 用户在迁移和折腾次世代翻墙软件时最焦虑的疑问，以下是我们的终极解答：</p>

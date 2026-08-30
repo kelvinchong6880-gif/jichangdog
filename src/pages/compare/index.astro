@@ -132,8 +132,13 @@ const allAirports = [...top7, ...others];
 
     /* 容器设计：剔除常规表格线，使用阴影与卡片缝隙 */
     .table-container {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       margin-top: 32px;
       overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      -webkit-overflow-scrolling: touch;
       padding-bottom: 24px;
     }
     
@@ -332,6 +337,22 @@ const allAirports = [...top7, ...others];
       background: var(--blue);
       transform: translateY(-1px);
       box-shadow: 0 6px 16px rgba(14, 165, 233, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .compare-section {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .table-container {
+        margin-top: 20px;
+      }
+
+      .compare-table th,
+      .compare-table td {
+        padding: 12px 14px;
+      }
     }
   </style>
 

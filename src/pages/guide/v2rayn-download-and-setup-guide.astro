@@ -9,7 +9,7 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：v2rayN 核心配置只需三步！</strong><br><br>很多新手觉得 v2rayN 界面全是文字和代码，看起来极其复杂。但实际上，只要掌握了核心逻辑，配置过程不到 1 分钟。<br><br><strong>第一步：下载对的版本。</strong> 务必下载带有 `With-Core` 后缀的压缩包，解压后双击蓝色 V 字图标运行。<br><strong>第二步：导入订阅链接。</strong> 点击顶部菜单栏的“订阅” -> “订阅设置”，粘贴你购买的机场订阅链接，然后点击“更新订阅”。<br><strong>第三步：开启系统代理与路由。</strong> 选中一个测速有数值的节点，敲击回车键（设为活动节点）。在软件底部，将路由设为<strong>“绕过局域网及大陆”</strong>，系统代理设为<strong>“自动配置系统代理”</strong>，即可成功翻墙。</p>
+      <p class="lead-paragraph"><strong>结论先行：v2rayN 核心配置只需三步！</strong><br><br>很多新手觉得 v2rayN 界面全是文字和代码，看起来极其复杂。但实际上，只要掌握了核心逻辑，配置过程不到 1 分钟。<br><br><strong>第一步：下载对的版本。</strong> 务必下载带有 <code>With-Core</code> 后缀的压缩包，解压后双击蓝色 V 字图标运行。<br><strong>第二步：导入订阅链接。</strong> 点击顶部菜单栏的“订阅” -> “订阅设置”，粘贴你购买的机场订阅链接，然后点击“更新订阅”。<br><strong>第三步：开启系统代理与路由。</strong> 选中一个测速有数值的节点，敲击回车键（设为活动节点）。在软件底部，将路由设为<strong>“绕过局域网及大陆”</strong>，系统代理设为<strong>“自动配置系统代理”</strong>，即可成功翻墙。</p>
 
       <h2 id="version-and-troubleshooting">1. 核心排障与版本选择对照表</h2>
       <p>绝大多数的新手翻车，不是因为节点不行，而是倒在了下载空壳软件和选错运行模式上。请务必对照下表解决你初次运行时的痛点：</p>
@@ -62,7 +62,7 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
       <p>为什么开启代理后，挂着微信和国内淘宝依然丝滑，且不消耗机场流量？因为 v2rayN 在底层加载了 <code>geoip.dat</code> 和 <code>geosite.dat</code> 两个庞大的数据库。当你将底部的路由选项设为 <strong>“绕过局域网及大陆”</strong> 时，所有发往国内 IP 频段 (IP-CIDR) 和国内域名（如 <code>.cn</code> 或 <code>baidu.com</code>）的数据包，都会被直接放行（Direct）；只有匹配到国外 IP 的数据包，才会被封装并发送给机场节点。这就是分流的奥秘所在。</p>
 
       <h3>自动开启系统代理与局域网共享代理</h3>
-      <p>当你勾选<strong>“自动配置系统代理”</strong>时，v2rayN 实际上是在悄悄修改 Windows 系统的注册表 (<code>Internet Settings -> ProxyEnable = 1</code>)，强制让 Chrome 和 Edge 浏览器将流量发送给本地的 `127.0.0.1:10808` 端口。</p>
+      <p>当你勾选<strong>“自动配置系统代理”</strong>时，v2rayN 实际上是在悄悄修改 Windows 系统的注册表 (<code>Internet Settings -> ProxyEnable = 1</code>)，强制让 Chrome 和 Edge 浏览器将流量发送给本地的 <code>127.0.0.1:10808</code> 端口。</p>
       <p>而底部的<strong>“局域网共享”</strong>选项则是主机玩家的神器。如果你家里有一台不能装翻墙软件的 Apple TV 或者是游戏主机 (PS5 / Switch)，你可以勾选此项。软件会开放一个监听全网段的本地端口。此时，只需进入 PS5 的网络设置 -> 手动设置代理 -> 填入你这台电脑的局域网 IP（例如 <code>192.168.1.100</code>），端口填 <code>10808</code>，你的游戏主机就能瞬间起飞，畅玩外服联机游戏！（注意：第一次开启时，Windows Defender 防火墙会弹窗警告，务必勾选“允许专用网络和公用网络访问”）。</p>
 
       <h3>开启 TUN 虚拟网卡模式 (接管 UWP 与 Telegram)</h3>
@@ -89,7 +89,7 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
       
       <div class="faq-item">
         <h3>Q4: 怎么解决 v2rayN 底部红字报错端口被占用 (Port in use)？</h3>
-        <p><strong>答：</strong>如果在底部的黑色日志框中疯狂跳出“Port 10808 already in use”，说明这个默认端口被电脑里的其他流氓软件（或者你开了另一个代理客户端、杀毒软件）霸占了。极客的查杀方法是打开 CMD 输入 <code>netstat -ano | findstr 10808</code> 找出 PID 然后杀掉进程。但对小白来说，最简单的办法是：点击顶部的“设置” -> “参数设置”，将“本地 HTTP 端口”修改为一个没人用的冷门端口（比如 `12345`），然后点击确定重启软件即可完美解决。</p>
+        <p><strong>答：</strong>如果在底部的黑色日志框中疯狂跳出“Port 10808 already in use”，说明这个默认端口被电脑里的其他流氓软件（或者你开了另一个代理客户端、杀毒软件）霸占了。极客的查杀方法是打开 CMD 输入 <code>netstat -ano | findstr 10808</code> 找出 PID 然后杀掉进程。但对小白来说，最简单的办法是：点击顶部的“设置” -> “参数设置”，将“本地 HTTP 端口”修改为一个没人用的冷门端口（比如 <code>12345</code>），然后点击确定重启软件即可完美解决。</p>
       </div>
       
       <div class="faq-item">

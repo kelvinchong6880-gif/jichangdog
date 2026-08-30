@@ -51,7 +51,7 @@ const description = "OpenClash 核心下载失败？深度解析软路由 OpenWr
       <p>相比于在手机上点几下，软路由 (Linux 系统) 对权限和依赖极其敏感。以下是最高效、最不易出错的纯手工安装流程：</p>
       
       <h3>IPK 依赖包地狱：libcap-bin 与 coreutils-nohup</h3>
-      <p>在安装 <code>luci-app-openclash.ipk</code> 之前，请务必前往 OpenWrt 的 【系统】 -> 【软件包】，点击“更新列表”，并手动搜索安装以下核心依赖（缺一不可）：<br><code>coreutils-nohup</code> (用于后台守护进程)、<code>bash</code>、<code>dnsmasq-full</code> (注意：卸载普通的 dnsmasq 后才能装 full 版本)、<code>curl</code>、<code>ca-certificates</code>、<code>ipset</code>、<code>ip-full</code>、<code>libcap-bin</code>。<br>缺少任何一个，都会导致你在安装 IPK 时看到满屏的红色 `postinst script returned status 255` 致命报错。</p>
+      <p>在安装 <code>luci-app-openclash.ipk</code> 之前，请务必前往 OpenWrt 的 【系统】 -> 【软件包】，点击“更新列表”，并手动搜索安装以下核心依赖（缺一不可）：<br><code>coreutils-nohup</code> (用于后台守护进程)、<code>bash</code>、<code>dnsmasq-full</code> (注意：卸载普通的 dnsmasq 后才能装 full 版本)、<code>curl</code>、<code>ca-certificates</code>、<code>ipset</code>、<code>ip-full</code>、<code>libcap-bin</code>。<br>缺少任何一个，都会导致你在安装 IPK 时看到满屏的红色 <code>postinst script returned status 255</code> 致命报错。</p>
 
       <h3>硬核拯救：Clash Meta (Mihomo) 内核手动上传与权限赋予</h3>
       <p>这是 99% 的新手翻车的地方：点击启动 OpenClash，系统提示“正在下载内核”，然后永远卡在“检查内核更新”或者提示“核心下载失败”。因为软路由在没翻墙之前，是连不上 GitHub 下载内核的！<br><strong>手动离线安装大法：</strong><br>1. 去 PC 浏览器下载最新的 Clash Meta 内核压缩包，解压得到无后缀名的二进制文件，改名为 <code>clash_meta</code>。<br>2. 打开 <strong>WinSCP</strong>，连接软路由 IP (如 192.168.1.1)，账号密码与网页端一致。<br>3. 将 <code>clash_meta</code> 文件拖入 <code>/etc/openclash/core/</code> 目录。<br>4. <strong>最致命的一步（赋予可执行权限）：</strong>打开 SSH 终端 (如 PuTTY)，输入以下指令：</p>

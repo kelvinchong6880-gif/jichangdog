@@ -12,7 +12,7 @@ const description = "结论先行：免费在线订阅转换存在极大安全�
       <p class="lead-paragraph"><strong>结论先行：使用未经信任的免费在线订阅转换存在极大的安全风险。</strong>你的订阅链接（含有账户 Token 和节点服务器明文信息）在转换过程中会完整经过第三方的后端服务器。这可能导致机场节点被盗用、流量被偷跑，甚至你的敏感访问日志被记录拦截。如需进行订阅转换，强烈建议使用本地离线转换、自建 Subconverter 后端，或直接使用客户端自带的解析功能。</p>
 
       <h2 id="what-is-subconverter">1. 什么是机场订阅转换 (Subconverter)？</h2>
-      <p>在科学上网圈，**机场订阅转换**是一个非常高频的词汇。为了解答“<strong>什么是机场订阅转换</strong>”，我们首先要了解翻墙协议的多样性。</p>
+      <p>在科学上网圈，<strong>机场订阅转换</strong>是一个非常高频的词汇。为了解答“<strong>什么是机场订阅转换</strong>”，我们首先要了解翻墙协议的多样性。</p>
       <p>市面上有几十种翻墙协议（如 Shadowsocks, V2Ray/VMess, Trojan, SSR, Hysteria）和上百种代理客户端（如 Clash, Shadowrocket, V2rayN, Quantumult X, Surge）。然而，每个客户端能识别的“订阅格式”是不一样的。</p>
       <p>比如，你购买的机场因为成本原因，只提供了原生的 Base64 格式（最古老的 SSR/V2ray格式）的链接，但你想在电脑上使用当前最强大、界面最美观的 Clash Verge 软件，这时候你就需要进行 <strong>V2ray 转 Clash</strong> 或 <strong>SSR 转 Clash 配置</strong>。这就催生了“订阅转换”的需求。</p>
       
@@ -29,18 +29,18 @@ const description = "结论先行：免费在线订阅转换存在极大安全�
       <p>如果你仔细观察过在线转换工具生成的链接，你会发现它通常长这样（以 Clash 为例）：</p>
       <code>https://api.v1.mk/sub?target=clash&url=https%3A%2F%2F你的机场订阅链接&insert=false&emoji=true&config=https%3A%2F%2F特定分流规则.ini</code>
       <p>解析一下这些参数：
-      <br>• <code>https://api.v1.mk/sub</code>：这就是**后端服务器**的地址，它是执行转换的核心大脑。
+      <br>• <code>https://api.v1.mk/sub</code>：这就是<strong>后端服务器</strong>的地址，它是执行转换的核心大脑。
       <br>• <code>target=clash</code>：告诉后端，我要生成 Clash 格式的文件。
-      <br>• <code>url=...</code>：这就是你**最宝贵的原始机场链接**（经过了 URL 编码）。
+      <br>• <code>url=...</code>：这就是你<strong>最宝贵的原始机场链接</strong>（经过了 URL 编码）。
       <br>• <code>emoji=true</code>：为节点名称自动添加国旗图标 🇺🇸🇭🇰🇯🇵。
       <br>• <code>config=...</code>：指定要注入的分流规则（如 ACL4SSR 规则）。</p>
       
       <h3>订阅转换前端和后端有什么区别？</h3>
-      <p>在使用 <strong>在线 Subconverter 推荐</strong> 网站时，你看到的那个带有很多按钮、复选框的网页页面，叫作<strong>“前端 (Frontend)”</strong>。它只负责拼接出上面那段带有参数的链接。当你点击“一键导入 Clash”时，真正干活的是那个**隐藏在链接里的“后端 (Backend)”**服务器。</p>
+      <p>在使用 <strong>在线 Subconverter 推荐</strong> 网站时，你看到的那个带有很多按钮、复选框的网页页面，叫作<strong>“前端 (Frontend)”</strong>。它只负责拼接出上面那段带有参数的链接。当你点击“一键导入 Clash”时，真正干活的是那个<strong>隐藏在链接里的“后端 (Backend)”</strong>服务器。</p>
       <p>因此，<strong>决定订阅转换是否安全的，根本不是前端网页长得多好看，而是那个后端服务器到底是谁控制的！</strong></p>
 
       <h2 id="why-need-it">2. 订阅转换有什么用？（三大核心场景）</h2>
-      <p>很多新手会问：<strong>机场本身支持 Clash 还需要转换吗？</strong> 如果你的机场后台已经提供了专门的“一键导入 Clash”按钮，那么你**绝对不需要**使用第三方的在线转换。直接导入是最安全、最快的。但高级玩家依然离不开订阅转换，主要有以下目的：</p>
+      <p>很多新手会问：<strong>机场本身支持 Clash 还需要转换吗？</strong> 如果你的机场后台已经提供了专门的“一键导入 Clash”按钮，那么你<strong>绝对不需要</strong>使用第三方的在线转换。直接导入是最安全、最快的。但高级玩家依然离不开订阅转换，主要有以下目的：</p>
       <ul>
         <li><strong>合并多个机场（负载均衡）：</strong> 如果你买了 3 个不同的机场来防止失联，通过订阅转换（用 <code>|</code> 符号连接 URL），可以把它们合并成一条统一的订阅链接。这样在一个客户端里就能轻松管理成百上千个节点。</li>
         <li><strong>自定义强大的分流规则：</strong> 原始机场提供的路由规则往往十分简陋，可能会导致你上国内网站变慢。通过转换并指定 <code>config</code>，你可以注入“网易云音乐解锁”、“各大视频网站去广告”、“OpenAI/ChatGPT 专属节点强制分流”等高级自定义规则。</li>
@@ -70,7 +70,7 @@ const description = "结论先行：免费在线订阅转换存在极大安全�
       <p>这是不用买服务器也能享受绝对安全的高级做法。你可以在 GitHub 上下载 Subconverter 的官方发型包（Release），在自己的电脑上运行。
       <br><strong>Windows 本地搭建订阅转换教程：</strong>
       <ol>
-        <li>去 GitHub 搜索 `tindy2013/subconverter`，下载 `subconverter_windows.zip` 并解压。</li>
+        <li>去 GitHub 搜索 <code>tindy2013/subconverter</code>，下载 <code>subconverter_windows.zip</code> 并解压。</li>
         <li>双击运行文件夹里的 <code>subconverter.exe</code>，你会看到一个黑色的命令行窗口闪过。此时，它已经在你的电脑本地（本地环回地址）开放了一个 <code>127.0.0.1:25500</code> 的后端接口。</li>
         <li>去网页上随便找一个前端页面（如 sub-web），在前端页面的“高级设置”里，将默认的“后端地址”修改为 <code>http://127.0.0.1:25500</code>。</li>
         <li>然后照常粘贴你的订阅并点击生成。</li>
@@ -93,7 +93,7 @@ const description = "结论先行：免费在线订阅转换存在极大安全�
 
       <div class="faq-item">
         <h3>Q2: 订阅转换提示网络错误怎么办？</h3>
-        <p><strong>答：</strong> 这是因为你所使用的转换**后端服务器**，无法访问你的机场订阅链接。很多大机场为了防止节点被爬虫抓取，屏蔽了阿里云、腾讯云等常见云服务器机房的 IP。你可以尝试更换不同的在线后端（换个国家的服务器），或者直接使用你本地网络（方案 B）去抓取即可解决。</p>
+        <p><strong>答：</strong> 这是因为你所使用的转换<strong>后端服务器</strong>，无法访问你的机场订阅链接。很多大机场为了防止节点被爬虫抓取，屏蔽了阿里云、腾讯云等常见云服务器机房的 IP。你可以尝试更换不同的在线后端（换个国家的服务器），或者直接使用你本地网络（方案 B）去抓取即可解决。</p>
       </div>
 
       <div class="faq-item">

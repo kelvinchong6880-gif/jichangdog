@@ -71,7 +71,7 @@ FINAL,PROXY</code></pre>
       <p>Loon 的底层会利用高效的 <strong>Radix Tree (基数树) 算法</strong>，将几十万条域名在后台静默加载到内存树中，匹配耗时不到 1 毫秒！这种极致的性能压榨，是小火箭完全无法企及的。</p>
 
       <h3>生态降维打击：Loon 插件体系 (Plugins) 与 JavaScript 重写</h3>
-      <p>在圈X中，想去除 YouTube 广告或者解锁 Spotify，你需要在一堆英文配置文件里分别找到 `Rewrite`、`MITM` 和 `Script` 区块，分次粘贴不同的 URL，一步搞错就会导致全盘崩溃。<br>而 Loon 开创了极其优雅的 <strong>插件 (Plugin) 体系</strong>。大佬们把所有的 JS 拦截代码、域名正则和主机名列表打包成了一个单独的 <code>.plugin</code> 文本文件。你只需要在 Loon 底部的【配置】->【插件】中，点击右上角的“+”号，粘贴链接即可一键安装。<br>不仅如此，如果你有 JS 基础，你可以自己编写一段神级脚本，直接篡改 App 的网络响应体，实现“本地 VIP 破解”。例如，一段标准的 Loon JS 响应体重写代码如下：</p>
+      <p>在圈X中，想去除 YouTube 广告或者解锁 Spotify，你需要在一堆英文配置文件里分别找到 <code>Rewrite</code>、<code>MITM</code> 和 <code>Script</code> 区块，分次粘贴不同的 URL，一步搞错就会导致全盘崩溃。<br>而 Loon 开创了极其优雅的 <strong>插件 (Plugin) 体系</strong>。大佬们把所有的 JS 拦截代码、域名正则和主机名列表打包成了一个单独的 <code>.plugin</code> 文本文件。你只需要在 Loon 底部的【配置】->【插件】中，点击右上角的“+”号，粘贴链接即可一键安装。<br>不仅如此，如果你有 JS 基础，你可以自己编写一段神级脚本，直接篡改 App 的网络响应体，实现“本地 VIP 破解”。例如，一段标准的 Loon JS 响应体重写代码如下：</p>
       <pre is:raw><code>// 拦截特定 API 响应并修改 JSON 体
 let body = $response.body;
 let obj = JSON.parse(body);

@@ -79,7 +79,7 @@ const description = "请立刻停止折腾 SagerNet！深度揭秘 SagerNet 插�
       <p>在 NekoBox 的 GUI 界面中，你只需要长按你想作为终点的节点 (US-Netflix)，选择<strong>“设置前置代理 (Set Forward Proxy)”</strong>，然后挑选你的中转节点 (HK-Transit)。无需任何代码，一秒实现极其暴力的链路转发！</p>
 
       <h3>TUN 虚拟网卡革命：从 tun2socks 到 Sing-box Native TUN</h3>
-      <p>SagerNet 时代，如果遇到那些不走系统默认 HTTP/SOCKS 代理的流氓 App（比如某些国内银行、甚至国外的 TikTok），我们必须开启极其耗电的 `tun2socks` 模式，在应用层强行抓取所有 TCP/UDP 包。<br>而 <strong>NekoBox</strong> 搭载的 Sing-box 内核直接实现了 <strong>Native TUN (原生虚拟网卡)</strong>。当你开启 VPN 开关时，它会在安卓底层创建一个 <code>/dev/net/tun</code> 接口，并直接在 L3 网络层接管全量 IP 包。<br>这带来的震撼提升是：<strong>零流量泄漏、UDP 游戏不丢包、且比老一代方案省电 40% 以上！</strong> 你的手机就像硬件级连上了国外路由器，哪怕是 TikTok 这种通过底层自建协议通信的应用，也会被死死锁在加密隧道里。</p>
+      <p>SagerNet 时代，如果遇到那些不走系统默认 HTTP/SOCKS 代理的流氓 App（比如某些国内银行、甚至国外的 TikTok），我们必须开启极其耗电的 <code>tun2socks</code> 模式，在应用层强行抓取所有 TCP/UDP 包。<br>而 <strong>NekoBox</strong> 搭载的 Sing-box 内核直接实现了 <strong>Native TUN (原生虚拟网卡)</strong>。当你开启 VPN 开关时，它会在安卓底层创建一个 <code>/dev/net/tun</code> 接口，并直接在 L3 网络层接管全量 IP 包。<br>这带来的震撼提升是：<strong>零流量泄漏、UDP 游戏不丢包、且比老一代方案省电 40% 以上！</strong> 你的手机就像硬件级连上了国外路由器，哪怕是 TikTok 这种通过底层自建协议通信的应用，也会被死死锁在加密隧道里。</p>
 
       <h3>防泄漏天花板：Fake-IP 映射与远端 DoH 劫持</h3>
       <p>老玩家都懂，DNS 污染是翻墙最大的敌人。SagerNet 的 DNS 方案经常因为插件间的通信延迟导致网页首屏加载缓慢（DNS 解析过慢）。<br>NekoBox 在路由设置中提供了极其硬核的 <strong>Fake-IP 模式</strong>：<br>1. 当浏览器请求 <code>youtube.com</code> 时，NekoBox 本地直接秒回一个假 IP（如 <code>198.18.1.1</code>）。<br>2. 浏览器立刻发起 TCP 握手连接这个假 IP。<br>3. NekoBox 把真实的域名封包通过隧道发送给海外节点的远端 DNS 进行绝对纯净的解析。<br>这一套组合拳，将网页打开的 TTFB (首包时间) 缩短了近百毫秒，而且 100% 杜绝了国内三大运营商的 DNS 劫持。</p>

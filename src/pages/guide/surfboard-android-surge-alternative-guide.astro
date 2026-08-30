@@ -65,7 +65,7 @@ const description = "寻找安卓 Surge 替代软件？深度解析 Surfboard �
 DOMAIN-SUFFIX,google.com,🌐 代理模式
 DOMAIN-KEYWORD,netflix,🎬 流媒体
 FINAL,DIRECT</code></pre>
-      <p>如上所示，Surfboard 能完美识别并渲染出漂亮的测速组 (url-test) 与选择组 (select)。将机场链接强转为 `.conf` 格式后，导入 Surfboard 的 <strong>【配置 (Profiles)】</strong> 即可满血复活！</p>
+      <p>如上所示，Surfboard 能完美识别并渲染出漂亮的测速组 (url-test) 与选择组 (select)。将机场链接强转为 <code>.conf</code> 格式后，导入 Surfboard 的 <strong>【配置 (Profiles)】</strong> 即可满血复活！</p>
 
       <h3>彻底关闭 MIUI/HyperOS 电池绞肉机：Surfboard 绕过局域网与耗电优化</h3>
       <p>虽然 Surfboard 的功耗控制优于早期的原生 Clash，但在严苛的国产安卓系统（如小米 HyperOS、华为鸿蒙、ColorOS）面前，依然逃不过被“系统杀后台”导致频繁断流的命运。<br><strong>极限防断流保活 4 步曲：</strong><br>1. 在系统设置的应用管理中找到 Surfboard，将【电池优化 / 省电策略】强制改为 <strong>【无限制】</strong>。<br>2. 在【自启动权限】中，开启 <strong>自启动</strong> 与 <strong>关联启动</strong>。<br>3. 在多任务卡片界面，将 Surfboard 卡片 <strong>下拉加锁</strong>。<br>4. <strong>最重要的一步（耗电优化核心）：</strong>打开 Surfboard 侧边栏，进入【设置】 -> 【路由】，务必勾选 <strong>【绕过局域网 (Bypass LAN)】</strong> 和 <strong>【绕过中国大陆 IP】</strong>。这会让国内流量和局域网投屏流量直接绕过 VPN 隧道模块，大幅降低 CPU 发热与耗电量！</p>
@@ -96,7 +96,7 @@ tcp-connection = true</code></pre>
 
       <div class="faq-item">
         <h3>Q3: 为什么打开 Surfboard 后，手机连不上家里的 Wi-Fi 打印机，也无法给电视投屏了？</h3>
-        <p><strong>答：</strong>这是因为 Surfboard 的 VPN 模块拦截了 `192.168.x.x` 的局域网网段，导致流量被强行送往了海外节点（海外节点当然找不到你家里的打印机）。<br><strong>解法：</strong>打开 Surfboard，进入 <code>设置 -> 路由规则</code>，确保勾选了 <strong>“绕过局域网”</strong>。另外，如果你的配置文件 <code>[Rule]</code> 中缺失了 <code>IP-CIDR,192.168.0.0/16,DIRECT</code> 这一核心内网防拦截规则，也会导致此问题，请检查你的订阅配置源是否完善。</p>
+        <p><strong>答：</strong>这是因为 Surfboard 的 VPN 模块拦截了 <code>192.168.x.x</code> 的局域网网段，导致流量被强行送往了海外节点（海外节点当然找不到你家里的打印机）。<br><strong>解法：</strong>打开 Surfboard，进入 <code>设置 -> 路由规则</code>，确保勾选了 <strong>“绕过局域网”</strong>。另外，如果你的配置文件 <code>[Rule]</code> 中缺失了 <code>IP-CIDR,192.168.0.0/16,DIRECT</code> 这一核心内网防拦截规则，也会导致此问题，请检查你的订阅配置源是否完善。</p>
       </div>
       
       <div class="faq-item">

@@ -60,10 +60,10 @@ const description = "M1/M2/M3 Mac 怎么下载小火箭电脑版？深度解析 
       <p>M 系列芯片与 iPhone A 系列芯片同源，这让 macOS 能够直接解释执行小火箭的 <code>aarch64</code> 机器码指令，几乎没有性能损耗。但为了系统安全，苹果强制给所有跨端运行的 iOS 软件套上了一个极其严格的“沙盒 (Sandbox)”。<br>这导致小火箭在 Mac 上<strong>彻底丢失了 <code>com.apple.developer.networking.networkextension</code> 这个极其关键的内核级开发授权</strong>。也就是说，它无法像原生软件（如 Surge）那样去接管 macOS 底层的 <code>utun</code> 虚拟物理网卡。它只能退而求其次，在本地静默开启 <code>127.0.0.1:1082</code> (SOCKS) 和 <code>1081</code> (HTTP) 监听端口，然后通过调用系统 API 去修改偏好设置里的代理参数。这种被动监听机制，注定了它无法掌控那些绕过系统代理的顽固应用（如部分终端命令、Telegram）。</p>
 
       <h3>Mac 端全局路由 (Global Routing) 与系统代理冲突</h3>
-      <p>很多用户发现在 Mac 上开启小火箭后，只有 Safari 浏览器能上外网，微信却发不出去图片。这是因为小火箭默认采用了 <code>配置 (Config)</code> 路由模式，而它自带的 `default.conf` 主要是针对 iOS 系统的域名规则，在 Mac 上经常发生漏判。<br><strong>排障神技：</strong>点击小火箭底部的“首页”，找到 <strong>全局路由 (Global Routing)</strong>，将其强制切换为 <strong>“代理 (Proxy)”</strong>。在这个模式下，小火箭会强行无视规则，把本地监听端口收到的所有流量打包丢进加密隧道，让你的 Mac 网络瞬间变得通畅无比。</p>
+      <p>很多用户发现在 Mac 上开启小火箭后，只有 Safari 浏览器能上外网，微信却发不出去图片。这是因为小火箭默认采用了 <code>配置 (Config)</code> 路由模式，而它自带的 <code>default.conf</code> 主要是针对 iOS 系统的域名规则，在 Mac 上经常发生漏判。<br><strong>排障神技：</strong>点击小火箭底部的“首页”，找到 <strong>全局路由 (Global Routing)</strong>，将其强制切换为 <strong>“代理 (Proxy)”</strong>。在这个模式下，小火箭会强行无视规则，把本地监听端口收到的所有流量打包丢进加密隧道，让你的 Mac 网络瞬间变得通畅无比。</p>
       
       <h3>高阶操作：解决 UDP 丢包与 QUIC 协议阻断</h3>
-      <p>在 Mac 上使用小火箭看 YouTube 时经常遇到视频一直转圈？这是因为 YouTube 默认使用 <strong>QUIC 协议 (基于 UDP 443 端口)</strong> 进行视频串流。而 macOS 的沙盒机制对跨端 iOS 应用的 UDP 缓冲区 (Buffer Size) 进行了极其严苛的限制，导致大规模 UDP 封包被系统强行丢弃。<br><strong>极客解法：</strong>打开小火箭 ➔ 配置 ➔ 点击 `default.conf` ➔ 编辑配置 ➔ 规则 ➔ 添加规则。类型选择 <code>PORT</code>，端口填入 <code>443</code>，策略选择 <code>REJECT</code>，并一定要开启“仅限 UDP”。这招叫做“UDP 阻断大法”，它能强迫 YouTube 放弃不稳定的 QUIC 协议，乖乖退回到极其稳定的 TCP (HTTP/2) 协议进行加载，视频瞬间秒开！</p>
+      <p>在 Mac 上使用小火箭看 YouTube 时经常遇到视频一直转圈？这是因为 YouTube 默认使用 <strong>QUIC 协议 (基于 UDP 443 端口)</strong> 进行视频串流。而 macOS 的沙盒机制对跨端 iOS 应用的 UDP 缓冲区 (Buffer Size) 进行了极其严苛的限制，导致大规模 UDP 封包被系统强行丢弃。<br><strong>极客解法：</strong>打开小火箭 ➔ 配置 ➔ 点击 <code>default.conf</code> ➔ 编辑配置 ➔ 规则 ➔ 添加规则。类型选择 <code>PORT</code>，端口填入 <code>443</code>，策略选择 <code>REJECT</code>，并一定要开启“仅限 UDP”。这招叫做“UDP 阻断大法”，它能强迫 YouTube 放弃不稳定的 QUIC 协议，乖乖退回到极其稳定的 TCP (HTTP/2) 协议进行加载，视频瞬间秒开！</p>
 
       <h3>局域网共享代理 (Share over LAN) 的极客妙用</h3>
       <p>如果你有一台无法安装代理软件的 Apple TV 或 PS5 游戏机，Mac 版小火箭可以充当超级旁路由。点击底部的“设置” ➔ 找到“代理 (Proxy)” ➔ 开启 <strong>“共享 (Share over LAN)”</strong>。此时，小火箭会将你的 Mac 变成一个局域网透明代理网关。只要将 Apple TV 的网络代理 IP 指向你 Mac 的局域网 IP（并在同一 WiFi 下），你的电视就能直接看 Netflix 4K 视频了！</p>

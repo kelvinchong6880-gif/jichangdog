@@ -118,12 +118,12 @@ const description = "代理协议对比：Shadowsocks、V2Ray、Trojan 区别在
 
       <div class="faq-item">
         <h3>Q7: Clash 客户端怎么配置 Trojan 节点的 SNI？</h3>
-        <p><strong>答：</strong>在 Clash 的配置文件中，在你的 Trojan 节点参数下找到 `sni` 字段。这里必须填入你的真实伪装域名（通常是你节点服务器配置证书所绑定的域名）。如果 SNI 填写错误或被运营商阻断，将直接导致节点超时连不上。</p>
+        <p><strong>答：</strong>在 Clash 的配置文件中，在你的 Trojan 节点参数下找到 <code>sni</code> 字段。这里必须填入你的真实伪装域名（通常是你节点服务器配置证书所绑定的域名）。如果 SNI 填写错误或被运营商阻断，将直接导致节点超时连不上。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q8: V2Ray 开启 TLS 后速度变慢怎么解决？</h3>
-        <p><strong>答：</strong>TLS 握手确实会增加延迟。你可以尝试：1. 将 Vmess 升级为 Vless 协议以减少多重加密开销；2. 使用 XTLS 开启 `xtls-rprx-vision` 拼接模式，它能在数据传输阶段跳过复杂的加密解密，直接让流量“飞”起来。</p>
+        <p><strong>答：</strong>TLS 握手确实会增加延迟。你可以尝试：1. 将 Vmess 升级为 Vless 协议以减少多重加密开销；2. 使用 XTLS 开启 <code>xtls-rprx-vision</code> 拼接模式，它能在数据传输阶段跳过复杂的加密解密，直接让流量“飞”起来。</p>
       </div>
 
       <h2 id="premium-choice">8. 选购决策：2026 敏感时期依然坚挺的高端翻墙服务商</h2>

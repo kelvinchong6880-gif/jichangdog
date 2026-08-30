@@ -58,7 +58,7 @@ const description = "原版 Clash Verge 已停更！寻找 Clash Verge 替代品
       
       <h3>Clash Verge Rev 下载：完美继承者的进阶之路</h3>
       <p>在原版 Verge 停更后，开源社区火速接力推出了 Clash Verge Rev。它不仅仅是一个复刻版，更是全面拥抱了 <strong>Mihomo 内核 (原 Clash Meta)</strong>。它提供了令人惊叹的 <strong>WebUI 面板与自定义规则 (Merge/Script)</strong> 功能。</p>
-      <p>什么是 Merge 脚本？举个极客的例子：很多机场的默认配置文件里，DNS 设置得非常糟糕，导致国内网站解析极慢。在 Verge Rev 中，你可以直接编写一段简单的 JavaScript 脚本（Script），在每次更新机场订阅时，自动拦截并重写 YAML 文件，强制将国内域名解析指向 `119.29.29.29`，将国外域名指向 `1.1.1.1`。这种“不修改原订阅，但在内存中实时动态注入规则”的能力，是 Verge Rev 最核心的护城河。同时，它对 <strong>Hysteria 2 (基于 UDP QUIC 的拥塞控制算法) / Vless Reality (伪装 TLS 流量)</strong> 原生支持得极为出色，是重度折腾党的不二之选。</p>
+      <p>什么是 Merge 脚本？举个极客的例子：很多机场的默认配置文件里，DNS 设置得非常糟糕，导致国内网站解析极慢。在 Verge Rev 中，你可以直接编写一段简单的 JavaScript 脚本（Script），在每次更新机场订阅时，自动拦截并重写 YAML 文件，强制将国内域名解析指向 <code>119.29.29.29</code>，将国外域名指向 <code>1.1.1.1</code>。这种“不修改原订阅，但在内存中实时动态注入规则”的能力，是 Verge Rev 最核心的护城河。同时，它对 <strong>Hysteria 2 (基于 UDP QUIC 的拥塞控制算法) / Vless Reality (伪装 TLS 流量)</strong> 原生支持得极为出色，是重度折腾党的不二之选。</p>
 
       <h3>Mihomo Party 图文教程：(2026 新晋黑马)</h3>
       <p>如果你看到满屏密密麻麻的 YAML 代码和 JavaScript 脚本就头疼，那 <strong>Mihomo Party</strong> 绝对是你的梦中情软。它在界面设计上进行了彻底的颠覆，采用了类似“网易 UU 加速器”那种卡片化、圆角和大字体的炫酷 UI，甚至内置了“游戏主机 (Game Console) 加速”的专属页面，观感极其现代化。</p>
@@ -72,10 +72,10 @@ const description = "原版 Clash Verge 已停更！寻找 Clash Verge 替代品
       <p>在下载和配置这些新世代软件时，有一些极易被新手忽略的底层机制陷阱，一旦踩中，就会出现“明明节点是绿的，但电脑就是上不去网”的诡异现象。</p>
 
       <h3>便携版 (Portable) 与安装版 (Setup) 的区别</h3>
-      <p>在 GitHub 的 Release 页面下载客户端时，你通常会看到以 <code>.zip</code> 结尾的便携版和 <code>.exe</code> 结尾的安装版。<strong>安装版 (Setup)</strong> 会在系统的注册表、`AppData/Roaming` 目录下写入配置，适合小白长期固定使用；而 <strong>便携版 (Portable)</strong> 则将所有的配置文件、内核和日志都存放在软件自己的独立文件夹内，绝不污染 C 盘。便携版最大的好处是可以放在 U 盘里随身携带，换电脑也不需要重新配置。但请注意：如果你打算开启 TUN 模式，便携版由于没有写入系统注册表权限，每次打开都必须“右键 -> 以管理员身份运行”。</p>
+      <p>在 GitHub 的 Release 页面下载客户端时，你通常会看到以 <code>.zip</code> 结尾的便携版和 <code>.exe</code> 结尾的安装版。<strong>安装版 (Setup)</strong> 会在系统的注册表、<code>AppData/Roaming</code> 目录下写入配置，适合小白长期固定使用；而 <strong>便携版 (Portable)</strong> 则将所有的配置文件、内核和日志都存放在软件自己的独立文件夹内，绝不污染 C 盘。便携版最大的好处是可以放在 U 盘里随身携带，换电脑也不需要重新配置。但请注意：如果你打算开启 TUN 模式，便携版由于没有写入系统注册表权限，每次打开都必须“右键 -> 以管理员身份运行”。</p>
 
       <h3>TUN 虚拟网卡与 UWP 应用隔离解除 (Loopback)</h3>
-      <p>由于 <strong>TUN 虚拟网卡底层驱动</strong> 需要对 Windows 系统的全局网络栈进行接管，无论是哪个客户端，开启 TUN 都是有门槛的。更让人头疼的是，Windows 系统自带的微软商店应用（如 Netflix 客户端、Xbox Game Bar、Disney+ App）拥有一种叫做 <strong>UWP 网络隔离 (Loopback Isolation)</strong> 的安全机制。这种机制会强制禁止这些 App 访问 `127.0.0.1` 的本地代理端口，导致你就算开了系统代理，Netflix 客户端也依然提示无网络。</p>
+      <p>由于 <strong>TUN 虚拟网卡底层驱动</strong> 需要对 Windows 系统的全局网络栈进行接管，无论是哪个客户端，开启 TUN 都是有门槛的。更让人头疼的是，Windows 系统自带的微软商店应用（如 Netflix 客户端、Xbox Game Bar、Disney+ App）拥有一种叫做 <strong>UWP 网络隔离 (Loopback Isolation)</strong> 的安全机制。这种机制会强制禁止这些 App 访问 <code>127.0.0.1</code> 的本地代理端口，导致你就算开了系统代理，Netflix 客户端也依然提示无网络。</p>
       <p><strong>解决方案：</strong> 在 Mihomo Party 或 Verge Rev 中，进入“工具 (Tools)”页面，点击“UWP 解除隔离工具 (Enable Loopback)”，在弹出的列表里勾选上你需要的 App（或者直接全选），点击保存。随后再进入设置，点击盾牌图标授予管理员权限，开启 <strong>TUN 模式 (配合 Strict Route 严格路由)</strong>。此时，你的电脑无论是打外服《绝地求生 (PUBG)》还是看 Netflix 客户端，所有的流量都会被底层虚拟网卡强行劫持并发往海外节点，实现毫无死角的“真·全局翻墙”。</p>
 
       <h2 id="qa-faq">4. 实操排障与疑难问答 (Q&A)</h2>
@@ -93,7 +93,7 @@ const description = "原版 Clash Verge 已停更！寻找 Clash Verge 替代品
 
       <div class="faq-item">
         <h3>Q3: 为什么我的客户端一开，电脑内存和 CPU 占用就特别高？</h3>
-        <p><strong>答：</strong>原版 Verge 采用的是 Tauri + Rust 架构，本应极度轻量。但是，如果你导入了包含数千条测速节点的“一元机场超大订阅”，且在设置里把内核日志级别 (Log Level) 设置成了 `debug` 或 `info`，内核就会以每秒上百行的速度疯狂将所有的连接记录写入内存和硬盘，导致电脑严重卡顿。强烈建议在设置中将日志级别改为 `silent` 或 `error`，并开启“忽略无效节点”功能。</p>
+        <p><strong>答：</strong>原版 Verge 采用的是 Tauri + Rust 架构，本应极度轻量。但是，如果你导入了包含数千条测速节点的“一元机场超大订阅”，且在设置里把内核日志级别 (Log Level) 设置成了 <code>debug</code> 或 <code>info</code>，内核就会以每秒上百行的速度疯狂将所有的连接记录写入内存和硬盘，导致电脑严重卡顿。强烈建议在设置中将日志级别改为 <code>silent</code> 或 <code>error</code>，并开启“忽略无效节点”功能。</p>
       </div>
 
       <div class="faq-item">

@@ -79,7 +79,7 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
       <p>通过这三段简单的 JSON 对象，你在底层调用了 <code>geosite.dat</code> 数据库。当访问带有广告插件的网页时，广告请求在到达安卓网卡前，就已经被 v2rayNG 内部的路由引擎“直接丢弃 (block)”，实现零毫秒去广告！</p>
 
       <h3>DNS 泄漏防护：进阶 DoH (DNS over HTTPS) 部署</h3>
-      <p>很多新手翻墙后依然被网警精准“喝茶”，是因为他们遭遇了 <strong>DNS 泄漏</strong>。当你访问被禁网站时，如果向国内运营商发起明文 DNS 请求，你的隐私将荡然无存。<br>在 v2rayNG 的【设置】最深处，找到 <strong>【远程 DNS (Remote DNS)】</strong>，不要使用默认的 `1.1.1.1`，请强制改为 DoH 格式：<br><code>https://dns.google/dns-query</code> 或 <code>https://cloudflare-dns.com/dns-query</code><br>这样一来，你的所有域名解析请求都将通过 HTTPS 加密隧道发往国外的安全服务器，彻底切断国内运营商的嗅探链条。</p>
+      <p>很多新手翻墙后依然被网警精准“喝茶”，是因为他们遭遇了 <strong>DNS 泄漏</strong>。当你访问被禁网站时，如果向国内运营商发起明文 DNS 请求，你的隐私将荡然无存。<br>在 v2rayNG 的【设置】最深处，找到 <strong>【远程 DNS (Remote DNS)】</strong>，不要使用默认的 <code>1.1.1.1</code>，请强制改为 DoH 格式：<br><code>https://dns.google/dns-query</code> 或 <code>https://cloudflare-dns.com/dns-query</code><br>这样一来，你的所有域名解析请求都将通过 HTTPS 加密隧道发往国外的安全服务器，彻底切断国内运营商的嗅探链条。</p>
 
       <h3>金融级防风控特权：分应用代理 (Per-App Proxy)</h3>
       <p>这是安卓系统开放 VPN API 所独有的超级特权，也是 iOS 用户梦寐以求的功能。国内很多银行 App (如招商银行) 和主流手游 (如王者荣耀)，一旦检测到你挂了海外 IP，会立刻触发风控冻结账号。<br>在 v2rayNG 中，你可以做到 100% 的物理级隔离：<br>1. 进入【设置】 -> 找到 <strong>【分应用代理】</strong> 并开启。<br>2. 选择 <strong>【绕过选中的应用】</strong>，然后在列表里勾选所有的手机银行、支付宝以及国内游戏。<br>如此一来，哪怕手机顶部挂着 VPN 图标，这些敏感 App 依然会直接走基站直连网络，实现了最高级别的金融防封号安全。</p>
