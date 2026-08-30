@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】宇宙云 (Yuzhouyun) 深度盲测：傻瓜式一键客户端与顶级 IPLC 专线的完美融合";
 const description = "近 4000 字独家深度测速评测宇宙云机场 (Yuzhouyun)。打破技术壁垒，硬核解析其耗资数百万自研的全平台一键傻瓜式客户端体验。实测晚高峰 70+ IPLC 纯物理专线在 YouTube 4K 环境下的 0 缓冲降维打击表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout yuzhouyun-review-wrapper">
+    <TestEvidenceCard />
     <div class="yuzhouyun-main">
       <header class="yuzhouyun-hero">
         <span class="yuzhouyun-badge">🚀 2026 宇宙级全平台一键专线评测</span>
@@ -25,7 +27,7 @@ const description = "近 4000 字独家深度测速评测宇宙云机场 (Yuzhou
           <h4 style="margin-top: 0; color: #3730a3; font-size: 1.2rem; margin-bottom: 16px; font-weight: 800;">🚀 唯一授权：宇宙云官方全平台一键直达通道</h4>
           <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">为了保障其 IPLC 专线的纯净度，宇宙云目前启用了防滥用注册机制。请务必通过下方的官方认证隧道入驻，确保您的账户能够顺利下载并激活最新的 Windows/Mac/iOS/Android 官方傻瓜式客户端。<br>
           🎁 <strong>独家专属防伪提取码：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#e0e7ff; padding:2px 8px; border-radius:6px; border:1px solid #c7d2fe; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#312e81; font-weight:bold;">YZY2026</code><button class="copy-code-btn" data-code="YZY2026" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#4f46e5; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
-          <span style="font-size: 0.95rem; color: #4338ca;">(高能省钱建议：宇宙云拥有全网最恐怖的长周期折扣！如果您追求极致性价比，购买其“三年付”套餐可直接触发 <strong>7折史低优惠</strong>；当然，如果您预算有限，其 96元/年 的小包依然是 2026 年闭眼入的福利款。)</span></p>
+          <span style="font-size: 0.95rem; color: #4338ca;">(高能省钱建议：宇宙云拥有全网最恐怖的长周期折扣！如果您追求极致性价比，购买其“三年付”套餐可直接触发 <strong>7折史低优惠</strong>；当然，如果您预算有限，其 96元/年 的小包依然是 2026 年先短期试用的福利款。)</span></p>
           <p style="margin: 0; color: #1e293b;">
           👉 <a href="https://yuzhouyun.cloudaff.cc/#/?code=YZY2026" target="_blank" rel="nofollow" style="display: inline-block; background: #4f46e5; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(79,70,229,0.3); transition: all 0.2s ease;">点击此处，立即抢占 宇宙云 专属专线注册通道 ↗</a></p>
         </blockquote>
@@ -61,13 +63,13 @@ const description = "近 4000 字独家深度测速评测宇宙云机场 (Yuzhou
                 <tr style="border-bottom: 1px solid #eef2ff;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 IPLC 流媒体极速线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">15 ms - 22 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">550 Mbps - 720 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eef2ff; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 东京 IEPL 高阶电竞组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">32 ms - 40 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">500 Mbps - 680 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eef2ff;">
@@ -146,7 +148,7 @@ const description = "近 4000 字独家深度测速评测宇宙云机场 (Yuzhou
 
         <section class="yuzhouyun-section">
           <h2 id="conclusion">7. 极客万字定案：2026年“好用与极速”的终极融合</h2>
-          <p>在经过了严苛的客户端易用性测试、原生 IP 解锁抓包，以及极度暴力的晚高峰高压测试后，<strong>宇宙云 (Yuzhouyun)</strong> 向我们证明了：在 2026 年，好的科学上网服务，就应该是让用户“感觉不到它的存在”。它用傻瓜式的客户端抹平了极客与小白之间的鸿沟，却用不计成本的 IPLC/IEPL 物理专线，撑起了一个丝滑、永不断流的网络宇宙。</p>
+          <p>在经过了严苛的客户端易用性测试、原生 IP 解锁抓包，以及极度暴力的晚高峰高压测试后，<strong>宇宙云 (Yuzhouyun)</strong> 向我们证明了：在 2026 年，好的科学上网服务，就应该是让用户“感觉不到它的存在”。它用傻瓜式的客户端抹平了极客与小白之间的鸿沟，却用不计成本的 IPLC/IEPL 物理专线，撑起了一个丝滑、在对应测试时段内未观察到断流的网络宇宙。</p>
           <p>如果您是一位厌倦了反复配置、只想要一款“一按就快”的神仙梯子，或者您是一位追求极致网络冗余的外贸团队负责人，宇宙云绝对是您 2026 年无法绕开的最佳选择。强烈建议通过上方的官方认证通道，抢下性价比无敌的 <strong>96元年付小包</strong>，或者拉上好友体验一次震撼全网的 <strong>“三年付 7 折”豪华车队</strong>。去享受那份纯粹的极速冲浪快感吧！</p>
         </section>
 

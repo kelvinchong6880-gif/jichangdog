@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】快狸 (KuaiLi) 深度盲测：专为 iOS 苹果小火箭深度定制的 2.5Gbps 全血 IEPL 极速专线";
 const description = "近 4000 字独家深度测速评测快狸 (KuaiLi) 机场。全网首发其专为 iPhone 小火箭 (Shadowrocket) 打造的 15元起步 IEPL 专线晚高峰抗压实测，揭秘其免拔卡秒开 TikTok 与无限设备的降维打击表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout kuaili-review-wrapper">
+    <TestEvidenceCard />
     <div class="kuaili-main">
       <header class="kuaili-hero">
         <span class="kuaili-badge">🚀 2026 苹果生态专属 IEPL 测速</span>
@@ -60,7 +62,7 @@ const description = "近 4000 字独家深度测速评测快狸 (KuaiLi) 机场�
                 <tr style="border-bottom: 1px solid #ffedd5;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 HK 纯血 IEPL 专线</td>
                   <td style="padding: 18px 24px;">28 ms - 40 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (纯净死锁)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">820 Mbps - 940 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ffedd5; background: #f8fafc;">

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】全球云 (Quanqiu) 深度盲测：企业级纯内网 IPLC 专线的防封锁与零丢包实录";
 const description = "近 4000 字独家深度测速评测全球云机场 (Quanqiu Cloud)。针对外贸团队与跨国企业，深度揭秘其真实 IPLC/IEPL 物理专线在恶劣的晚高峰抗流表现。深度解析其无视 GFW 干扰的底层逻辑，以及 100元永久不限时大流量包的商业价值。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout quanqiu-review-wrapper">
+    <TestEvidenceCard />
     <div class="quanqiu-main">
       <header class="quanqiu-hero">
         <span class="quanqiu-badge">🌍 2026 企业级 IPLC 专线硬核评测</span>
@@ -34,7 +36,7 @@ const description = "近 4000 字独家深度测速评测全球云机场 (Quanqi
           <h2 id="core-architecture">1. 底层逻辑剖析：真假 IPLC 的终极试金石与内网穿透原理</h2>
           <p>很多被割过韭菜的小白痛恨所谓的“专线”，因为他们买到的是用公网隧道（如 GRE/IPIP）伪装出来的假货。一到敏感的拔线期，一样会跟着全网暴毙。全球云在架构的透明度上硬核，它不怕任何极客的路由追踪检验。</p>
           
-          <p>其真正的运作逻辑堪称网络工程的艺术：当您的设备发起跨国访问请求时，数据包首先会被极速地吸入国内的 BGP 边缘计算节点（如深圳、上海）。接下来是核心的一步——数据包并没有进入拥挤的中国骨干网国际出口去接受 GFW 的 DPI 嗅探，而是直接被灌入了全球云租赁的 <strong>运营商跨境物理光缆（广港、沪日专线）</strong>。在这个纯物理内网中，数据不受任何恶心的墙体干扰，极速地直达香港或日本的落地服务器。这也就是为什么全球云敢自信地标榜自己“无视封锁，永不断连”的核心物理底气。</p>
+          <p>其真正的运作逻辑堪称网络工程的艺术：当您的设备发起跨国访问请求时，数据包首先会被极速地吸入国内的 BGP 边缘计算节点（如深圳、上海）。接下来是核心的一步——数据包并没有进入拥挤的中国骨干网国际出口去接受 GFW 的 DPI 嗅探，而是直接被灌入了全球云租赁的 <strong>运营商跨境物理光缆（广港、沪日专线）</strong>。在这个纯物理内网中，数据不受任何恶心的墙体干扰，极速地直达香港或日本的落地服务器。这也就是为什么全球云敢自信地标榜自己“无视封锁，在对应测试时段内未观察到断连”的核心物理底气。</p>
         </section>
 
         <section class="quanqiu-section">

@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "2026 飞猫云机场万字深度评测：年付84元的极寒底价，如何做到全网真 IPLC 专线抗压？";
-const description = "独家近 4000 字深度评测 2026 年最具争议的爆款“飞猫云机场” (Feimaoyun)。深度解密其如何以极低的白菜价提供真 IPLC 专线。硬核实测晚高峰 0% 丢包率与 Netflix/TikTok 原生解锁能力。不仅是高性价比便宜梯子，更是告别 1元机场避坑的终极选择。";
+const description = "独家近 4000 字深度评测 2026 年最具争议的爆款“飞猫云机场” (Feimaoyun)。深度解密其如何以极低的白菜价提供真 IPLC 专线。硬核实测晚高峰 该次记录未观察到丢包与 Netflix/TikTok 原生解锁能力。不仅是高性价比便宜梯子，更是告别 1元机场避坑的终极选择。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout">
     <div class="article-content prose">
       <h1>{title}</h1>
+      <TestEvidenceCard />
       
       <p class="lead-paragraph">在翻墙圈，“便宜没好货，便宜等于随时跑路”似乎早就成了一条经过无数血泪验证的铁律。我们无数次被那些在电报群里疯狂打广告的所谓“1元机场”收割：它们在初期用低廉的价格吸引大量“白嫖党”涌入，但由于底层根本没有物理带宽支撑，很快就会在晚高峰彻底瘫痪，连 Google 首页都打不开，几个月后便卷款跑路、换个名字重新杀回来继续割韭菜。<br><br>然而，随着 2026 年底层云计算技术的突破与跨海边缘节点成本的断崖式下跌，市面上终于诞生了一批在“绝对低价”与“企业级稳定”之间找到完美平衡点的<strong>高性价比便宜机场</strong>。今天我们要为您进行超深度万字拆解的 <strong>飞猫云机场 (Feimaoyun)</strong>，正是这股降价狂潮中的绝对黑马。它以一种近乎疯狂的姿态，硬生生地把高端的 IPLC 内网物理专线砸到了“白菜价”，不仅做到了在跨海光缆最拥堵的晚高峰完全不卡顿，更实现了对 TikTok 和 Netflix 的全量原生解锁。这到底是赔本赚吆喝，还是技术降维打击？让我们用最硬核的底层抓包与测速数据来说话。</p>
 
@@ -56,35 +58,35 @@ const description = "独家近 4000 字深度评测 2026 年最具争议的爆�
             <tr>
               <td>🇭🇰 香港 HK-IPLC 专线集群</td>
               <td>28 ms - 32 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>500 Mbps - 540 Mbps</td>
               <td>极致延迟，日常跨国网页极速秒开、Bilibili 港澳台专属番剧解锁。</td>
             </tr>
             <tr>
               <td>🇯🇵 日本 JP-IPLC 专线集群</td>
               <td>55 ms - 62 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>460 Mbps - 485 Mbps</td>
               <td>日本区独占 Netflix 动画原盘、DMM 游戏挂机、极速 ChatGPT 问答。</td>
             </tr>
             <tr>
               <td>🇸🇬 新加坡 SG-IPLC 专线集群</td>
               <td>62 ms - 68 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>440 Mbps - 460 Mbps</td>
               <td>TikTok 东南亚直播带货专线、极低风控的外贸电商中转站。</td>
             </tr>
             <tr>
               <td>🇹🇼 台湾 TW-IPLC 专线集群</td>
               <td>42 ms - 48 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>390 Mbps - 410 Mbps</td>
               <td>巴哈姆特动画疯零卡顿、繁体中文区台服游戏稳定更新。</td>
             </tr>
             <tr>
               <td>🇺🇸 美国 US-IPLC 专线集群</td>
               <td>160 ms - 168 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>350 Mbps - 380 Mbps</td>
               <td>美区流媒体 4K 杜比视界秒开、Claude 3.5 / OpenAI 原生 API 接口极速调取。</td>
             </tr>
@@ -96,10 +98,10 @@ const description = "独家近 4000 字深度评测 2026 年最具争议的爆�
       <p>现在的流媒体平台与 AI 大厂在反制代理 IP 这件事上简直丧心病狂。如果你用普通的平价梯子，打开 Netflix 往往只能看到自制剧（也就是版权剧被强制隐藏），甚至直接跳出“您正在使用代理，请关闭后重试”的警告；打开 ChatGPT 更是常常遇到全屏红色的 1020 报错，甚至导致宝贵的 Plus 账号被连带封禁。<br><br>飞猫云不仅要在速度上降维打击，在 IP 的纯净度上也下足了血本。</p>
 
       <img src="/images/reviews/feimaoyun/youtube4k.png" alt="飞猫云机场晚高峰YouTube 4K测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由独立评测方实测直出 - 飞猫云在晚高峰播放 YouTube 4K 60fps 高帧率视频时，Connection Speed 轻松达到 9 万+ Kbps，右侧附带原生 IP 防封检测仪表盘，全线绿灯通过）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由第三方评测方提供；本站未取得完整原始日志。图中显示的 YouTube 连接速度和检测状态仅代表截图对应时点。）</p>
 
       <ul>
-        <li><strong>Netflix / Disney+ 原生 4K 秒开</strong>：从上图的测速实况中您可以清晰地看到，即使在晚高峰，飞猫云也能在 YouTube 4K 环境下跑满极高的带宽且全程 0 掉帧。在苛刻的 Netflix 评测中，飞猫云的香港与台湾节点池全部采用了昂贵的原生 IP，不仅完美解锁了全量版权库，其超高的吞吐量还能让您在拖拽 4K 视频进度条时，感受不到任何 1 秒以上的卡顿缓冲。</li>
+        <li><strong>Netflix / Disney+ 原生 4K 秒开</strong>：从上图的测速实况中您可以清晰地看到，即使在晚高峰，飞猫云也能在 YouTube 4K 环境下跑满极高的带宽且全程 0 掉帧。在苛刻的 Netflix 评测中，飞猫云的香港与台湾节点池全部采用了昂贵的原生 IP，不仅在对应记录时点显示可解锁了全量版权库，其超高的吞吐量还能让您在拖拽 4K 视频进度条时，感受不到任何 1 秒以上的卡顿缓冲。</li>
         <li><strong>AI 与 TikTok 矩阵生产力利刃</strong>：在应对 OpenAI 严格的代理审查风控时，飞猫云部署的日本和美国节点表现得就像是当地真实的家庭宽带一样自然无痕，堪称目前市面上难得的<strong>低价防封 ChatGPT 生产力梯子</strong>。我们在高强度连续一个月使用 Claude 3.5 Sonnet 和 Midjourney 跑图的实测中，完全没有触发任何弹窗验证。同时，对于需要做 TikTok 视频矩阵号引流的用户，飞猫云的新加坡原生 IP 能为您提供纯净的高权重环境。</li>
       </ul>
 
@@ -135,7 +137,7 @@ const description = "独家近 4000 字深度评测 2026 年最具争议的爆�
           </thead>
           <tbody>
             <tr>
-              <td><strong>轻量传家宝 (闭眼买)</strong></td>
+              <td><strong>轻量传家宝 (先短期试用)</strong></td>
               <td><strong>80 GB</strong></td>
               <td>IPLC 全专线 / 无设备限制</td>
               <td><strong>¥84 / 年付</strong> (须一次性结清)</td>

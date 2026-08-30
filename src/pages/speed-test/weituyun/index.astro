@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】唯兔云 (Weituyun) 深度盲测：Vless+IPLC 电竞级低延迟专线的 0 丢包游戏报告";
 const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。硬核解析其 Vless 轻量化协议搭配 IPLC 物理专线带来的超低首字节响应 (TTFB)。实测 Steam 与 LOL 外服联机 UDP 转发的零丢包表现，以及 79.9 元年付套餐对低频游戏党的极高性价比价值。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout weituyun-review-wrapper">
+    <TestEvidenceCard />
     <div class="weituyun-main">
       <header class="weituyun-hero">
         <span class="weituyun-badge">🎮 2026 极限低延迟电竞专线评测</span>
@@ -60,13 +62,13 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
                 <tr style="border-bottom: 1px solid #ecfdf5;">
                   <td style="padding: 18px 24px;">🇯🇵 沪日 IPLC 游戏专用组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">28 ms - 34 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">400 Mbps - 550 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇭🇰 广港 IEPL 极速专线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">15 ms - 25 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">450 Mbps - 650 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5;">

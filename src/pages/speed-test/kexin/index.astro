@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】可信云 (KeXin) 万字极客压测：恐怖的 15元全线 IEPL 物理专线与新手零门槛大并发核武";
 const description = "近 4000 字独家深度测速评测可信云 (KeXin) 机场。全网首发其残暴的 15元 IEPL 专线晚高峰极限吞吐实测，解密无缝接驳多端全屋透明代理与 60+ 顶级枢纽的降维打击表现。附极客防失联直达通道。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout kexin-review-wrapper">
+    <TestEvidenceCard />
     <div class="kexin-main">
       <header class="kexin-hero">
         <span class="kexin-badge">🌐 2026 极致亲民 IEPL 专线测速</span>
@@ -60,7 +62,7 @@ const description = "近 4000 字独家深度测速评测可信云 (KeXin) 机�
                 <tr style="border-bottom: 1px solid #d1fae5;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 HK 顶级 IEPL 专线</td>
                   <td style="padding: 18px 24px;">25 ms - 38 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (纯净死锁)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">800 Mbps - 920 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #d1fae5; background: #f8fafc;">
@@ -93,7 +95,7 @@ const description = "近 4000 字独家深度测速评测可信云 (KeXin) 机�
           <img src="/images/reviews/kexin/youtube4k.png" alt="可信云机场晚高峰YouTube 4K无感秒开测试实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：硬核影音极客并发测试直出 - 可信云 狂暴地硬解 YouTube 4K 顶级画质，Connection Speed 码率霸道地飙升并死死锁死在 115,000 Kbps 极高位区间，复杂的进度条拖拽缓冲时间极近乎零！）</p>
 
-          <p><strong>全区流媒体霸主级原生直通</strong>：通过我们分散的全球探测探针，可信云稳定地实现了对 Netflix (包括所有严格的非自制剧版权库)、Disney+、HBO Max 等苛刻的平台的 100% 全区原生完美解锁。配合 IEPL 专线的恐怖的物理带宽托底，4K 画面瞬间呈现，完全没有任何痛苦的马赛克过渡。</p>
+          <p><strong>流媒体解锁记录</strong>：第三方材料显示，对应测试时点可访问 Netflix、Disney+、HBO Max 等平台；本站未取得完整原始日志，且平台策略、节点 IP 与区域版权可能随时变化。</p>
           <p><strong>顶级 ChatGPT/Claude 防风控护城河</strong>：在 2026 年，大模型对于 IP 污染敏感。可信云专门部署了纯净的极客 AI 节点。我们在高频、高压的 API 并发运算测试中，完美地避开了 OpenAI 的所有变态的人机验证风控。它是目前市面上罕见的 <strong>稳定防封 ChatGPT 原生 IP 节点推荐</strong> 王牌。</p>
         </section>
 

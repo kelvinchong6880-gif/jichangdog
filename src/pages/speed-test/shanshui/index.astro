@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】山水云 (Shanshui) 深度盲测：15元极客中转隧道的 4K 解锁与防断流实战";
 const description = "近 4000 字独家深度测速评测山水云机场 (Shanshui Cloud)。深度揭密其 BGP 多线隧道中转在晚高峰的网络吞吐能力。实测其全节点解锁 Netflix 4K 与 ChatGPT 的底层路由，并详细拆解 88元/年 轻量套餐的极致性价比。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout shanshui-review-wrapper">
+    <TestEvidenceCard />
     <div class="shanshui-main">
       <header class="shanshui-hero">
         <span class="shanshui-badge">🏔️ 2026 高性价比 BGP 中转专项评测</span>
@@ -25,7 +27,7 @@ const description = "近 4000 字独家深度测速评测山水云机场 (Shansh
           <h4 style="margin-top: 0; color: #0369a1; font-size: 1.2rem; margin-bottom: 16px; font-weight: 800;">🚀 唯一授权：山水云官方 BGP 中转防阻断通道与极客福利</h4>
           <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">由于近期山水云那夸张的“88元包年”轻量套餐在学生党和考研党中引发了裂变式传播，其部分公网分发节点偶尔会遭到同行的恶意流量攻击。为了确保您的代理客户端能随时随地一键抓取到最新的订阅配置，请务必直接使用下方本站专属的高防备用网关进入。<br>
           🎁 <strong>独家专属防伪提取码：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#e0f2fe; padding:2px 8px; border-radius:6px; border:1px solid #bae6fd; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#0c4a6e; font-weight:bold;">SS2026</code><button class="copy-code-btn" data-code="SS2026" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#0284c7; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
-          <span style="font-size: 0.95rem; color: #0369a1;">(极客薅羊毛建议：如果您厌烦每个月都要续费的焦虑，山水云隐藏的“150元永久有效梅兰包”绝对是您的最佳防御伞。只要流量没跑空，哪怕过了一年依然能满速翻墙！)</span></p>
+          <span style="font-size: 0.95rem; color: #0369a1;">（商家目前将 150 元梅兰包标注为“不限时”；实际可用期限和速度仍取决于服务商持续运营、套餐政策及网络条件。）</span></p>
           <p style="margin: 0; color: #1e293b;">
           👉 <a href="https://shanshui.cloudaff.cc/#/?code=SS2026" target="_blank" rel="nofollow" style="display: inline-block; background: #0284c7; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(2,132,199,0.3); transition: all 0.2s ease;">点击此处，立即抢占 山水云 BGP 极速中转专属通道 ↗</a></p>
         </blockquote>
@@ -98,7 +100,7 @@ const description = "近 4000 字独家深度测速评测山水云机场 (Shansh
 
         <section class="shanshui-section">
           <h2 id="pricing">4. 无敌的阶梯定价：把性价比武装到了牙齿</h2>
-          <p>山水云最出圈的，就是它那套为普通网民考虑的“古风”价格体系。没有那些动不动就上百的抢钱套餐，主打的就是一个“闭眼买不心疼”：</p>
+          <p>山水云最出圈的，就是它那套为普通网民考虑的“古风”价格体系。没有那些动不动就上百的抢钱套餐，主打的就是一个“先短期试用不心疼”：</p>
 
           <div class="shanshui-pricing-list" style="display: flex; flex-direction: column; gap: 20px; margin: 36px 0;">
             <div class="shanshui-price-row special-native" style="display: flex; flex-direction: column; padding: 24px; border: 1px solid #bae6fd; border-radius: 12px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
@@ -140,7 +142,7 @@ const description = "近 4000 字独家深度测速评测山水云机场 (Shansh
           
           <div class="faq-item">
             <h3>💡 Q3：山水云支持解锁我喜欢的海外流媒体（比如 Disney+、Hulu）吗？</h3>
-            <p><strong>答：绝对完美解锁。</strong> 这也是山水云亮眼的强项。不仅是那些主流的流媒体巨头，哪怕是偏门的区域性流媒体（如吃纯净 IP 的 TikTok 特定地区推荐流），它的节点也能智能地代理解析，完全享受纯净的原生待遇。</p>
+            <p><strong>答：不能保证持续解锁。</strong> 第三方材料显示部分节点在对应记录时点可访问相关流媒体；平台风控、节点 IP 和区域版权变化后，结果可能不同。</p>
           </div>
         </section>
 

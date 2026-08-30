@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】隐形人 (Yinxingren) 深度盲测：Hiddify 新协议与 BGP 专线的防封锁碰撞";
 const description = "近 4000 字独家深度测速评测隐形人机场 (Yinxingren)。专为 Hiddify / Sing-box 全平台生态打造，硬核解析其对 Hysteria 2、TUIC 与 VLESS-Reality 的完美支持。实测晚高峰 BGP 专线在跨平台一键导入与 4K 秒开环境下的降维打击表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout yinxingren-review-wrapper">
+    <TestEvidenceCard />
     <div class="yinxingren-main">
       <header class="yinxingren-hero">
         <span class="yinxingren-badge">👻 2026 Hiddify 极客专属防封锁专线评测</span>
@@ -60,13 +62,13 @@ const description = "近 4000 字独家深度测速评测隐形人机场 (Yinxin
                 <tr style="border-bottom: 1px solid #ecfdf5;">
                   <td style="padding: 18px 24px;">🇭🇰 广港 BGP 极速原生组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">18 ms - 28 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">450 Mbps - 650 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 沪日 BGP 抗压电竞组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">32 ms - 45 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">420 Mbps - 600 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5;">

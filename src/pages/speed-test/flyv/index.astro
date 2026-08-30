@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】飞V (FlyV) 万字深度测速报告：BGP 多线融合与独享原生 IP 专线的性能怪兽";
 const description = "近 4000 字独家深度测速评测飞V (FlyV) 机场。全网首发其纯物理专线 1x倍率 的晚高峰极限吞吐实测，解密高达 1.8TB 巨量带宽以及 600元独享原生 IP 在跨境电商与 8K 影音上的降维打击表现。附带防伪直达入口。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout flyv-review-wrapper">
+    <TestEvidenceCard />
     <div class="flyv-main">
       <header class="flyv-hero">
         <span class="flyv-badge">🔥 2026 骨灰级物理专线测速评测</span>
@@ -59,7 +61,7 @@ const description = "近 4000 字独家深度测速评测飞V (FlyV) 机场。�
                 <tr style="border-bottom: 1px solid #e2e8f0;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 HK 纯物理专线集群</td>
                   <td style="padding: 18px 24px;">25 ms - 38 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (死锁)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">800 Mbps - 940 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
@@ -112,7 +114,7 @@ const description = "近 4000 字独家深度测速评测飞V (FlyV) 机场。�
 
             <div class="flyv-price-row" style="display: flex; flex-direction: column; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff;">
               <h4 style="margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">⚡ 进阶方案 & 入门方案 (¥50/月 & ¥25/月)</h4>
-              <p style="margin: 0; color: #475569; font-size: 1rem; line-height: 1.6;">分别慷慨地提供了 380GB 和 150GB 的月度物理专线配额。这是全网 95% 追求极致网络质量的中度极客用户的首推闭眼入主力盘。一杯普通的咖啡钱，换来的是超级晚高峰完全不转圈的高级尊严。</p>
+              <p style="margin: 0; color: #475569; font-size: 1rem; line-height: 1.6;">分别慷慨地提供了 380GB 和 150GB 的月度物理专线配额。这是全网 95% 追求极致网络质量的中度极客用户的首推先短期试用主力盘。一杯普通的咖啡钱，换来的是超级晚高峰完全不转圈的高级尊严。</p>
             </div>
             
             <div class="flyv-price-row" style="display: flex; flex-direction: column; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc;">

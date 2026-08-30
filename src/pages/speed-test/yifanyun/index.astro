@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】一翻云 (Yifanyun) 深度盲测：专为 Quantumult X 调教的 IEPL 跨境专线报告";
 const description = "近 4000 字独家深度测速评测一翻云机场 (Yifanyun)。专注苹果 iOS 圈X (Quantumult X) 生态，深度揭秘其原生分流订阅机制与底层 IEPL 专线的 0 丢包结合。实测 TikTok 免拔卡解锁方案与 4K 流媒体的晚高峰并发表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout yifanyun-review-wrapper">
+    <TestEvidenceCard />
     <div class="yifanyun-main">
       <header class="yifanyun-hero">
         <span class="yifanyun-badge">🍎 2026 苹果圈X专属定制评测</span>
@@ -43,7 +45,7 @@ const description = "近 4000 字独家深度测速评测一翻云机场 (Yifany
           <p>当然，再华丽的界面配置，如果没有强悍的底层网络支撑也是海市蜃楼。一翻云向外宣称全系套餐（哪怕是 98 元的年付版）全部跑在 <strong>IEPL 国际以太网专线</strong> 上。为了验证其真实含金量，我们在晚间 21:00 至 23:00 的公网晚高峰炼狱期，使用软路由对其核心骨干网进行了极高强度的并发压测。</p>
 
           <img src="/images/reviews/yifanyun/speedtest.png" alt="一翻云机场晚高峰全IEPL专线Stair Speedtest零丢包极其平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-          <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请关注图表中的 Ping 值与 Jitter 曲线。在二层内网的保护下，数据包完全免疫了公网的干扰，连接香港机房的延迟平滑如死机，未产生任何锯齿状的丢包波动。）</p>
+          <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请关注图表中的 Ping 值与 Jitter 曲线。在二层内网的保护下，数据包在该次记录中较少受到公网干扰，连接香港机房的延迟平滑如死机，未产生任何锯齿状的丢包波动。）</p>
 
           <p>测试结果令人信服。在连续发送五千个探测包的严苛测试中，一翻云的香港和日本 IEPL 节点丢包率死死咬在 0.00%。由于数据直接在国内 BGP 入口就被封装进了跨国光缆内网，彻底绕开了国际出口网关的拥堵。在进行千兆并发下载测试时，首字节响应 (TTFB) 极短，速度峰值瞬间突破了带宽瓶颈。</p>
 
@@ -61,13 +63,13 @@ const description = "近 4000 字独家深度测速评测一翻云机场 (Yifany
                 <tr style="border-bottom: 1px solid #fef2f2;">
                   <td style="padding: 18px 24px;">🇭🇰 广港 IEPL 流媒体原生线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">16 ms - 24 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">500 Mbps - 650 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #fef2f2; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 沪日 IEPL 高净值专组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">32 ms - 42 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">450 Mbps - 620 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #fef2f2;">

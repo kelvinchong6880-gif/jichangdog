@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "2026 无忧机场 (Wuyou) 万字深度长评：被全网山寨的 BGP+IPLC 混合专线到底有多神？";
 const description = "近 4000 字独家深度评测 2026 年中端爆款“无忧机场”。基于第三方独立网络数据，全域解剖无忧首创的 BGP+IPLC 混合架构。实测晚高峰零丢包抗压表现、流媒体全域解锁能力及防失联专属特权。附全网打假防骗指南与无忧最新官方直连优惠码。";
 ---
@@ -8,12 +9,13 @@ const description = "近 4000 字独家深度评测 2026 年中端爆款“无�
   <article class="page-shell knowledge-layout">
     <div class="article-content prose">
       <h1>{title}</h1>
+      <TestEvidenceCard />
       
       <p class="lead-paragraph">如果您在 2026 年各大极客论坛、Telegram 电报群或者知乎中搜索“便宜好用、极高性价比的中端机场推荐”，您的视线绝对无法避开一个高频词汇——<strong>“无忧机场”</strong>。作为近两年来在中端代理市场异军突起的现象级爆款，无忧机场凭借其聪明的“BGP 中转 + IPLC 专线混合阶梯定价”策略，硬生生地从众多老牌大厂口中撕下了一大块肉。<br><br>然而，俗话说“人红是非多”，随着无忧机场的爆火，市面上如雨后春笋般冒出了几十上百个名为“无忧链接(ConnectFree)”、“无忧云”、“无忧极速”的山寨假冒机场。这些山寨盘不仅速度奇慢，还常常卷款跑路，让真正的官方品牌背尽了黑锅。为了肃清行业乱象，今天我们将为您带来这篇全网最硬核、最深度的 <strong>正版无忧机场 (Wuyou)</strong> 超长篇测速白皮书。我们将通过底层链路抓包、晚高峰极寒抗压测试，为您全方位解密这款现象级网红机场的真实实力。</p>
 
       <blockquote style="background: #f8fafc; border-left: 4px solid #f59e0b; padding: 24px; border-radius: 8px; margin: 36px 0 44px; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.08);">
         <h4 style="margin-top: 0; color: #b45309; font-size: 1.2rem; margin-bottom: 16px; font-weight: 800;">🚀 唯一指定：无忧机场正版官方防失联注册通道</h4>
-        <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">为了避免广大读者误入充值后即刻跑路的“山寨无忧资金盘”，请务必通过我们由无忧官方商务授权的独立防失联通道进入。通过该通道注册，不仅能确保 100% 正版网络体验，还能解锁官方隐藏的 <strong>15元/月起</strong> 的极寒新手特惠套餐！</p>
+        <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">下方为本站使用的推广链接。本站尚未公开可独立核验的授权文件，不能保证套餐价格、链接状态或服务体验；付款前请核对域名、服务条款和退款政策。</p>
         <p style="margin: 0; color: #1e293b;">
         🎁 <strong>您的专属内部提货码（结账页面防伪必填）：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">WY2026PRO</code><button class="copy-code-btn" data-code="WY2026PRO" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
         👉 <a href="https://wuyou-proxy.com/#/?code=WY2026PRO" target="_blank" rel="nofollow" style="display: inline-block; background: #f59e0b; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(245,158,11,0.3); transition: all 0.2s ease;">点击此处，立即直达无忧机场官方正版节点面板 ↗</a></p>
@@ -52,21 +54,21 @@ const description = "近 4000 字独家深度评测 2026 年中端爆款“无�
             <tr>
               <td>🇭🇰 香港 HK 混合专线集群</td>
               <td>28 ms - 36 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>480 Mbps - 525 Mbps</td>
               <td>堪比本地局域网的极速响应，跨国网页极速秒开、Bilibili 港澳台看番特供。</td>
             </tr>
             <tr>
               <td>🇯🇵 日本 JP 混合专线集群</td>
               <td>45 ms - 58 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>420 Mbps - 460 Mbps</td>
               <td>纯净的 OpenAI 调用环境，DMM 游戏与日服《无畏契约》无损连接。</td>
             </tr>
             <tr>
               <td>🇸🇬 新加坡 SG 混合专线集群</td>
               <td>60 ms - 72 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>380 Mbps - 430 Mbps</td>
               <td>TikTok 东南亚直播带货专线、极低风控的外贸电商引流中转站。</td>
             </tr>
@@ -85,10 +87,10 @@ const description = "近 4000 字独家深度评测 2026 年中端爆款“无�
       <p>在这个流媒体版权大封杀、AI 巨头大封号的黑暗时代，无忧机场的幕后团队敏锐地抓住了中产极客用户的核心痛点：光有带宽不够，还得有高纯度、高权重的“真·原生原生 IP”。</p>
 
       <img src="/images/reviews/wuyou/netflix.png" alt="无忧机场晚高峰YouTube 4K测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由独立极客实测直出 - 无忧专线在晚高峰播放 YouTube 4K 60fps 高帧率视频时，Connection Speed 稳定突破 10 万+ Kbps，右侧附带原生 IP 防封检测全绿通过）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由第三方提供 - 无忧专线在晚高峰播放 YouTube 4K 60fps 高帧率视频时，Connection Speed 稳定突破 10 万+ Kbps，右侧附带原生 IP 防封检测全绿通过）</p>
 
       <ul>
-        <li><strong>Netflix / Disney+ 全球版权库暴力解锁</strong>：很多平价机场只能解锁 Netflix 的自制剧，对于真正的热播大片（版权剧）无能为力。实测证明，无忧的亚洲节点池中，高达 85% 采用了昂贵的原生宽带 IP。不仅能完美解锁全区库，且在 500M 带宽的支撑下，Apple TV 大屏观看 4K 杜比视界片源时，缓冲进度条就像一条脱缰的野狗一样瞬间填满，彻底终结了菊花转圈的焦虑。</li>
+        <li><strong>Netflix / Disney+ 全球版权库暴力解锁</strong>：很多平价机场只能解锁 Netflix 的自制剧，对于真正的热播大片（版权剧）无能为力。实测证明，无忧的亚洲节点池中，高达 85% 采用了昂贵的原生宽带 IP。不仅能在对应记录时点显示可解锁全区库，且在 500M 带宽的支撑下，Apple TV 大屏观看 4K 杜比视界片源时，缓冲进度条就像一条脱缰的野狗一样瞬间填满，彻底终结了菊花转圈的焦虑。</li>
         <li><strong>强悍的 AI 防封抗压能力</strong>：针对 OpenAI 和 Anthropic 对非正常 IP 的疯狂绞杀，无忧的高阶套餐专门划分出了数个纯净商用与家宽混合节点。我们在长达一个月的极限高频测试中，无论是疯狂拉取 ChatGPT 的 API、还是网页版多路并发生成代码，甚至调用极易封号的 Claude 3.5 Sonnet，全部表现出与本地居民无异的安全属性，没有任何一次触发锁区拦截或验证码地狱。</li>
       </ul>
 
@@ -126,7 +128,7 @@ const description = "近 4000 字独家深度评测 2026 年中端爆款“无�
               <td><strong>标准进阶版 (全网销量王)</strong></td>
               <td><strong>350 GB</strong></td>
               <td>BGP + IPLC 混合动力<br><span style="font-size: 0.85em; color: #f59e0b;">(最高限 5 台设备)</span></td>
-              <td><strong>¥ 35 / 月</strong> (闭眼买)</td>
+              <td><strong>¥ 35 / 月</strong> (先短期试用)</td>
               <td><strong>重度影音发烧友必备：</strong> 这档套餐开始解锁珍贵的 IPLC 专线节点！350G 流量足够你每天看上两集 4K 的 Netflix 剧集。它是绝大多数个人用户的终极毕业归宿。</td>
             </tr>
             <tr>

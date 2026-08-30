@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】老猫云 (Laomao) 深度盲测：Quantumult X 极客专供的 15元 IEPL “限速保稳”王牌";
-const description = "近 4000 字独家深度测速评测老猫云机场。全网首发其针对 Quantumult X (圈X) 原生订阅的底层适配实录。深度剖析其独特的“限速保稳”策略如何在晚高峰抗拒网络断流，以及完美解锁 TikTok 与 Netflix 的真实表现。附带 QX 一键配置福利通道。";
+const description = "近 4000 字独家深度测速评测老猫云机场。全网首发其针对 Quantumult X (圈X) 原生订阅的底层适配实录。深度剖析其独特的“限速保稳”策略如何在晚高峰抗拒网络断流，以及在对应记录时点显示可解锁 TikTok 与 Netflix 的真实表现。附带 QX 一键配置福利通道。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout laomao-review-wrapper">
+    <TestEvidenceCard />
     <div class="laomao-main">
       <header class="laomao-hero">
         <span class="laomao-badge">⚙️ 2026 圈X (QX) 专属 IEPL 测速</span>
@@ -87,7 +89,7 @@ const description = "近 4000 字独家深度测速评测老猫云机场。全�
         </section>
 
         <section class="laomao-section">
-          <h2 id="streaming-ai">3. 专属原生分发：完美解锁 TikTok 与 Netflix 高清防封体系</h2>
+          <h2 id="streaming-ai">3. 专属原生分发：在对应记录时点显示可解锁 TikTok 与 Netflix 高清防封体系</h2>
           <p>对于 iOS 苹果端用户而言，能够免拔卡刷 TikTok 并流畅观看 Netflix 是一项硬指标。得益于老猫云纯净的落地 IP 池，结合 Quantumult X 强大的 MITM (中间人攻击) 重写功能，这一目标变得唾手可得。</p>
 
           <img src="/images/reviews/laomao/youtube4k.png" alt="老猫云机场晚高峰YouTube 4K圈X智能分流无感播放实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">

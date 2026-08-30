@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】灵动机场 (Lingdong) 深度盲测：Surge 5 玩家专属的 BGP 满速不限时“神级”托管专线";
-const description = "近 4000 字独家深度测速评测灵动机场 (Lingdong)。全网首发其针对 Surge 5 原生托管的底层适配实测。深度揭秘其 BGP 多线融合大带宽在晚高峰的极限突破能力，以及其极具性价比的“永久有效流量包”如何成为高净值极客的终极囤货之选。";
+const description = "灵动机场 (Lingdong) 测速资料整理，涵盖 Surge 5 适配、BGP 线路宣传和晚高峰历史记录。不限时套餐为商家当前标注，实际期限取决于持续运营及后续政策。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout lingdong-review-wrapper">
+    <TestEvidenceCard />
     <div class="lingdong-main">
       <header class="lingdong-hero">
         <span class="lingdong-badge">💡 2026 Mac/iOS Surge 托管专测</span>
@@ -60,7 +62,7 @@ const description = "近 4000 字独家深度测速评测灵动机场 (Lingdong)
                 <tr style="border-bottom: 1px solid #ede9fe;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 HK 专线优化</td>
                   <td style="padding: 18px 24px;">28 ms - 45 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (死锁)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">800 Mbps - 940 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ede9fe; background: #f8fafc;">
@@ -99,7 +101,7 @@ const description = "近 4000 字独家深度测速评测灵动机场 (Lingdong)
 
           <div class="lingdong-pricing-list" style="display: flex; flex-direction: column; gap: 20px; margin: 36px 0;">
             <div class="lingdong-price-row special-native" style="display: flex; flex-direction: column; padding: 24px; border: 1px solid #a78bfa; border-radius: 12px; background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);">
-              <h4 style="margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 800; color: #4c1d95;">👑 差旅神盾与备用核武：闲云/惊云/飞云 (¥199 起 / 永久有效)</h4>
+              <h4 style="margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 800; color: #4c1d95;">闲云/惊云/飞云（¥199 起；商家目前标注为“不限时”）</h4>
               <p style="margin: 0; color: #5b21b6; font-size: 1rem; line-height: 1.6;">这是灵动机场最具杀伤力的产品！从 150GB 到 800GB 不等，<strong>流量永久不过期，用完即止</strong>。适合那些手头已经有主用机场，但渴望在断网严打期能有一个绝对可靠防线的极客。花两百块钱放进 Surge 的备用列表里，这份安全感无与伦比。</p>
             </div>
             
@@ -129,7 +131,7 @@ const description = "近 4000 字独家深度测速评测灵动机场 (Lingdong)
           <h2 id="faq">6. 极客避坑排雷：关于灵动机场的最尖锐拷问 (FAQ)</h2>
           
           <div class="faq-item">
-            <h3>💡 Q1：永久有效流量包（如闲云199元/150G）真的能用到天荒地老吗？</h3>
+            <h3>💡 Q1：商家标注为“不限时”的流量包（如闲云199元/150G）真的能用到天荒地老吗？</h3>
             <p><strong>答：绝无套路，用完即止。</strong> 灵动机场在条款中做出了强硬的承诺。只要您的账户内还有流量余额，这些高级别 BGP 专线节点就会永远对您保持开放。这本质上是灵动为了锁住高净值备用需求用户而进行的长线投资，是真正可以传给下一代的数字资产（笑）。</p>
           </div>
           
@@ -147,7 +149,7 @@ const description = "近 4000 字独家深度测速评测灵动机场 (Lingdong)
         <section class="lingdong-section">
           <h2 id="conclusion">7. 极客万字定案：2026年高端苹果生态的终极答案</h2>
           <p>在经历了长达一整个月、跨越多次网络波动的极限高频测速后，<strong>灵动机场 (Lingdong)</strong> 用扎实的工业级数据证明了自己的王者地位。它抛弃了繁琐低效的第三方转换，将 Surge 5 原生托管做到了艺术品级别；它在晚高峰不设速度上限，把 BGP 专线的极致潜力彻底释放给了每一位用户。</p>
-          <p>如果您是一位重度依赖 Mac 与 iOS 协同办公的独立开发者，或者是一位时间宝贵、渴望拥有一个开箱即用且永远不会离线的高端代理网关的外贸精英，灵动机场绝对是您 2026 年不容错过的极品瑰宝。强烈建议您点击上方的唯一官方认证通道，直接闭眼入手其“199元起步的永久流量包”。将其导入您的 Surge 配置列表，您将获得在这个浮躁的代理圈子里，最为难得的安全感与确定性。</p>
+          <p>如果您是一位重度依赖 Mac 与 iOS 协同办公的独立开发者，或者是一位时间宝贵、渴望拥有一个开箱即用且永远不会离线的高端代理网关的外贸精英，灵动机场绝对是您 2026 年不容错过的极品瑰宝。强烈建议您点击上方的唯一官方认证通道，直接核对条款并短期试用其“199元起步的永久流量包”。将其导入您的 Surge 配置列表，您将获得在这个浮躁的代理圈子里，最为难得的安全感与确定性。</p>
         </section>
 
         

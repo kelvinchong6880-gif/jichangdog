@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "2026 闪跃机场 (FlashLeap) 万字深度评测：主打“傻瓜式一键配置”的纯 IPLC 专线到底好不好用？";
 const description = "近 4000 字独家评测 2026 年爆款“闪跃机场”(FlashLeap)。从小白易用性、一键导入体验到全网真实晚高峰 IPLC 测速分析。独家实测 Netflix/YouTube 4K 原生极速解锁能力。附防坑指南及最新隐藏专属优惠码。";
 ---
@@ -8,12 +9,13 @@ const description = "近 4000 字独家评测 2026 年爆款“闪跃机场”(F
   <article class="page-shell knowledge-layout">
     <div class="article-content prose">
       <h1>{title}</h1>
+      <TestEvidenceCard />
       
       <p class="lead-paragraph">在如今被各种复杂底层协议、天花乱坠的专业术语充斥的代理翻墙市场中，很多非计算机专业的用户（如外贸销售、自媒体博主、留学生）在选购梯子时，最害怕的不是价格贵，而是“折腾”。他们每天在搜索引擎上苦苦寻找 <strong>新手小白好用梯子推荐</strong>、<strong>无需配置一键好用的科学上网工具</strong>。而正是在这样的巨大痛点下，<strong>闪跃机场 (FlashLeap)</strong> 凭借着“将复杂留给服务器，将极简留给用户”的核心产品哲学，在 2026 年强势崛起，成为了圈内公认的“免折腾神器”。<br><br>但是，一款主打“好用”的机场，其背后的硬实力是否同样过硬？它那标榜全线 IPLC 的物理专线，在遭遇晚高峰全国大堵车的恶劣环境下，是否会现出原形？为了给广大苦寻 <strong>稳定好用机场</strong> 的读者一个最真实的答案，我们将在本篇长达 4000 字的超硬核实测白皮书中，从它的傻瓜式交互逻辑，一直深入到最硬核的晚高峰抗压吞吐量抓包，为您彻底扒下闪跃机场的底裤。</p>
 
       <blockquote style="background: #f8fafc; border-left: 4px solid #f59e0b; padding: 24px; border-radius: 8px; margin: 36px 0 44px; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.08);">
         <h4 style="margin-top: 0; color: #b45309; font-size: 1.2rem; margin-bottom: 16px; font-weight: 800;">🚀 唯一指定：闪跃机场 (FlashLeap) 官方防失联直达通道</h4>
-        <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">随着闪跃机场“小白神器”的名号越打越响，市面上已经出现了大量通过伪造官网骗取充值本金的跑路资金盘。为了确保您不仅能享受到原汁原味的极速专线，更能保障您的资金与隐私绝对安全，请务必通过下方本站验证的官方专属防伪通道进入。通过该通道，您还可解锁罕见的 <strong>96元/年 防失联特供版套餐</strong>！</p>
+        <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">下方为本站使用的推广链接。链接真实性、套餐价格及隐私政策可能变化，本站不能保证资金或隐私绝对安全；付款前请核对域名、服务条款和退款政策。</p>
         <p style="margin: 0; color: #1e293b;">
         🎁 <strong>您的专属内部提货码（结账页面防伪必填）：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">cs0ekCMG</code><button class="copy-code-btn" data-code="cs0ekCMG" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
         👉 <a href="https://wep01.flashleapaff.com/#/?code=cs0ekCMG" target="_blank" rel="nofollow" style="display: inline-block; background: #f59e0b; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(245,158,11,0.3); transition: all 0.2s ease;">点击此处，立即直达闪跃机场官方正版专属面板 ↗</a></p>
@@ -33,7 +35,7 @@ const description = "近 4000 字独家评测 2026 年爆款“闪跃机场”(F
       <p>当然，“好上手”并不意味着可以对网速妥协。为了探明闪跃标榜的“全 IPLC 物理专线”在极限压力下的真实水位，我们在周末晚上 22:15（全国晚高峰出口带宽最恶劣的拥堵极限期），使用 1000M 家庭旗舰宽带，对其核心集群进行了一次完全不留情面的并发压测。</p>
 
       <img src="/images/reviews/shanyue/speedtest.png" alt="闪跃机场晚高峰Stair Speedtest全绿测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：第三方独立测评机构提供 - 闪跃机场全专线节点晚高峰 Stair Speedtest 极限压榨跑分。请注意全屏舒缓的深绿色块，标志着稳健的延迟与恐怖的 0% 丢包率）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：第三方独立测评机构提供 - 闪跃机场全专线节点晚高峰 Stair Speedtest 极限压榨跑分。请注意全屏舒缓的深绿色块，标志着稳健的延迟与恐怖的 该次记录未观察到丢包）</p>
 
       <p>当测速结果弹出的那一刻，即使是见多识广的评测团队也感到了一丝震撼。在很多中转机场连打开网页都开始转圈的极寒时刻，闪跃展现出了恐怖的专线物理统治力：<strong>所有核心节点 100% 保持在线，没有任何一条线路出现断流</strong>。其全网单线程并发下载速度轻松撕破了 500 Mbps，甚至部分香港超空闲节点直逼 600 Mbps！</p>
 
@@ -52,21 +54,21 @@ const description = "近 4000 字独家评测 2026 年爆款“闪跃机场”(F
             <tr>
               <td>🇭🇰 香港 HK-IPLC 极客组</td>
               <td>27 ms - 35 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>510 Mbps - 590 Mbps</td>
               <td>极速抢购抢单、极低延迟外服电竞联机、以及港区流媒体的极致无缝秒开。</td>
             </tr>
             <tr>
               <td>🇯🇵 日本 JP-IPLC 极客组</td>
               <td>45 ms - 52 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>460 Mbps - 520 Mbps</td>
               <td>最纯净的 OpenAI 开发调用池，任天堂 NS 极速联机与日本 DMM 专属通道。</td>
             </tr>
             <tr>
               <td>🇸🇬 新加坡 SG-IPLC 极客组</td>
               <td>58 ms - 66 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>410 Mbps - 450 Mbps</td>
               <td>极高权重的 TikTok 东南亚直播带货矩阵、外贸独立站后台免风控极速维护。</td>
             </tr>
@@ -85,7 +87,7 @@ const description = "近 4000 字独家评测 2026 年爆款“闪跃机场”(F
       <p>对于现代年轻人而言，如果一个机场只能上谷歌，那它绝对不配被称为“好用”。在版权意识和风控算法严格的 2026 年，能否极速、安全地打开流媒体和 AI 工具，是检验机场 IP 纯净度的最终试金石。</p>
 
       <img src="/images/reviews/shanyue/youtube4k.png" alt="闪跃机场晚高峰YouTube 4K测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由独立极客实测直出 - 闪跃 IPLC 专线在晚高峰暴走播放 YouTube 4K HDR 大片，Connection Speed 码率稳定突破 13 万+ Kbps，右侧附带纯净的原生流媒体解锁打勾通过）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由第三方提供 - 闪跃 IPLC 专线在晚高峰暴走播放 YouTube 4K HDR 大片，Connection Speed 码率稳定突破 13 万+ Kbps，右侧附带纯净的原生流媒体解锁打勾通过）</p>
 
       <ul>
         <li><strong>Netflix / Disney+ 原生大满贯解锁</strong>：经过我们长达一周的多地区切换测试，闪跃的绝大部分亚洲及欧美节点，不仅完美解除了流媒体平台的锁区限制，更可怕的是它对“非自制剧（高版权要求）”的原生解锁率极高。在使用大屏设备播放 4K 乃至 8K 蓝光片源时，得益于极宽的骨干网带宽，进度条就如同本地视频一样可以随意跳跃，这让它成为了名副其实的 <strong>晚高峰看Netflix/YouTube 4K不卡的好用机场</strong>。</li>

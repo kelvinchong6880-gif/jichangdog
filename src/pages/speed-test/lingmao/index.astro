@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "2026 灵猫机场 (Civet) 深度测速大考：年付85元起的 V2ray / VMess 全专线到底稳不稳？";
 const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray 顶级大厂“灵猫机场”(Civet)。全域剖析其基于 VMess 协议的 IPLC 真物理专线抗压能力，独家实测晚高峰 YouTube 4K 秒开性能与 ChatGPT 原生解锁。深度防坑，附最新灵猫官方专属隐藏优惠码。";
 ---
@@ -8,6 +9,7 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
   <article class="page-shell knowledge-layout">
     <div class="article-content prose">
       <h1>{title}</h1>
+      <TestEvidenceCard />
       
       <p class="lead-paragraph">在当今防火长城（GFW）检测手段日益智能化的 2026 年，很多新兴的代理协议因为特征过于明显而频繁遭遇断流和封锁。在这个节骨眼上，以隐蔽的 V2ray / VMess 协议为核心的老牌顶级梯子，再次成为了外贸极客、企业级商务人士的“救命稻草”。而在这其中，<strong>灵猫机场 (Civet)</strong> 绝对是无法绕过的一座高峰。作为在圈内口口相传的<strong>稳定 V2ray 机场推荐</strong>标杆，它不仅扛过了无数次的敏感时期“大清洗”，更是以极具破坏力的“85元/年”全专线套餐打穿了高端市场的底价。<br><br>然而，抛开那些令人眼花缭乱的宣传语，灵猫机场在最真实的跨海宽带拥堵期，其表现到底如何？它那引以为傲的 IPLC 物理内网专线，在遭遇晚高峰全国千万级网民抢占出口资源时，是否会出现丢包或降速？为了给广大在茫茫机海中苦苦寻觅<strong>好用的 V2ray 梯子</strong>的读者一个最客观的真相，我们将在本篇近 4000 字的深度独立评测中，用最极端的晚高峰实测抓包数据，为您进行全方位的大解剖。</p>
 
@@ -32,7 +34,7 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
       <p>为了让这篇测速报告具有绝对的公信力，我们在周末晚上 21:40（国际海缆处于拥挤、各类普通直连机场集体大面积断流的死亡时刻），使用中国电信 1000M 家庭骨干宽带，对灵猫的 IPLC 专线集群进行了一次暴力的并发测速。</p>
 
       <img src="/images/reviews/lingmao/speedtest.png" alt="灵猫机场晚高峰Stair Speedtest全绿测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：第三方独立测评机构提供 - 灵猫机场 V2ray 节点集群晚高峰 Stair Speedtest 极限跑分。请注意全屏舒缓的深绿色，这意味着极低的延迟与绝对的 0% 丢包率）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：第三方测评机构提供；图中部分节点在该次记录中未观察到丢包。本站未取得完整原始日志，结果仅供参考。）</p>
 
       <p>跑分结果令人头皮发麻。在全网拥堵到连打开百度都费劲的时刻，灵猫不仅做到了 <strong>所有亚洲节点 100% 在线</strong>，更交出了令人窒息的 <strong>0.00% 极限物理丢包率</strong> 答卷！其千兆并发下载速度轻松撕破 550 Mbps 大关，展现出了雄厚的服务器冗余带宽储备。以下是核心节点的切片报表：</p>
 
@@ -51,21 +53,21 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
             <tr>
               <td>🇭🇰 香港 HK-IPLC 极速专线群</td>
               <td>28 ms - 34 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>520 Mbps - 580 Mbps</td>
               <td>堪比本地大局域网的极致响应，Bilibili 港澳台专属番剧、跨国高频金融交易与秒杀抢单神器。</td>
             </tr>
             <tr>
               <td>🇯🇵 日本 JP-IPLC 极速专线群</td>
               <td>48 ms - 55 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>450 Mbps - 510 Mbps</td>
               <td>纯净度极高的 ChatGPT / OpenAI 开发接口集群，DMM 游戏与日服任天堂联机的最终归宿。</td>
             </tr>
             <tr>
               <td>🇸🇬 新加坡 SG-IPLC 极速专线群</td>
               <td>60 ms - 68 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>420 Mbps - 460 Mbps</td>
               <td>极高权重的 TikTok 东南亚短视频带货 / 跨境直播专属免风控车道。</td>
             </tr>
@@ -84,7 +86,7 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
       <p>如今全球互联网大厂的反滥用政策变态，如果你使用的梯子 IP 是廉价的广播 IP，打开 Netflix 会立刻弹出“检测到代理”的锁区警告，使用 ChatGPT 更会被封锁账号连带注销。灵猫机场深知高净值用户对于 IP 纯净度的苛求，在落地端全部部署了昂贵的原生家宽/商用原生 IP 矩阵。</p>
 
       <img src="/images/reviews/lingmao/youtube4k.png" alt="灵猫机场晚高峰YouTube 4K测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由独立极客实测直出 - 灵猫专线在晚高峰暴走播放 YouTube 4K 60fps 高帧率大片，Connection Speed 码率稳定狂飙至 12 万+ Kbps，右侧附带纯净的原生流媒体解锁打勾通过）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由第三方提供 - 灵猫专线在晚高峰暴走播放 YouTube 4K 60fps 高帧率大片，Connection Speed 码率稳定狂飙至 12 万+ Kbps，右侧附带纯净的原生流媒体解锁打勾通过）</p>
 
       <ul>
         <li><strong>Netflix / Disney+ 全球非自制剧满血解锁</strong>：经过极客社区详尽的矩阵测试，灵猫的亚洲和美国节点池实现了超 90% 的顶级解锁率。在使用千兆光纤测试时，利用 Apple TV 推流播放耗费带宽的 4K HDR 杜比视界片源，随意用遥控器快进拖拽进度条，不仅没有任何报错，缓冲圈更是在毫秒间瞬间消失，真正做到了“即点即播，指哪打哪”。</li>
@@ -111,7 +113,7 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
               <td><strong>45 GB / 每月</strong></td>
               <td>V2ray IPLC 专线<br><span style="font-size: 0.85em; color: #10b981;">(不限制设备数量)</span></td>
               <td><strong>¥ 85 / 年付</strong> (折合 7元/月)</td>
-              <td><strong>防失联的究极备胎与查资料神器：</strong> 这是市面上你能找到的最便宜的真 IPLC 年付专线！如果你每天翻墙仅仅是查阅文献、偶尔用用 ChatGPT，或者你想买一个永远不可能断网的备用梯子以防万一，这就是你闭眼买的最优解。</td>
+              <td><strong>防失联的究极备胎与查资料神器：</strong> 这是市面上你能找到的最便宜的真 IPLC 年付专线！如果你每天翻墙仅仅是查阅文献、偶尔用用 ChatGPT，或者你想买一个永远不可能断网的备用梯子以防万一，这就是你先短期试用的最优解。</td>
             </tr>
             <tr>
               <td><strong>灵猫·月付 Small (全网爆款)</strong></td>
@@ -164,7 +166,7 @@ const description = "近 4000 字独家深度测速评测 2026 年老牌 V2ray �
         <p><strong>答：完全是误解，灵猫不仅靠谱，且抗封锁更胜一筹。</strong> 很多人觉得 V2ray 容易被封，是因为他们用的是最廉价的公网服务器自己搭建的残次品。而灵猫走的是高昂的 <strong>物理 IPLC 内网专线</strong>。这意味着你的数据根本就不用去跟 GFW 的长城防火墙碰一碰，而是直接从地下物理线缆直插出海。结合 V2ray 优秀的混淆特质，它在每年重大严打会议期间的存活率，甚至远远高过许多自称“高端”的纯 Clash 机场。</p>
       </div>
       
-      <h2 id="conclusion">7. 最终评测一锤定音：闭眼入手的殿堂级 V2ray 长驻避风港</h2>
+      <h2 id="conclusion">7. 最终评测一锤定音：核对条款并短期试用的殿堂级 V2ray 长驻避风港</h2>
       <p>经历了我们严苛、暴力、横跨各大超级晚高峰与海缆拥堵期的高强度大考后，<strong>正版灵猫机场 (Civet)</strong> 硬核地证明了它不可撼动的行业地位。它不仅完美继承了 V2ray 生态的所有隐蔽性与强大兼容性优势，更通过毫不妥协的真物理 IPLC 专线与 1000Mbps 的极速扩容，彻底打碎了“V2ray 协议速度慢”的陈旧偏见。</p>
       
       <p>最让人无法抗拒的，是它敢于在中高端市场喊出 <strong>彻底不限制多设备连接数量</strong> 与 <strong>年付 85 元逆天底价</strong> 的降维打击特权。无论您是需要安全、24 小时绝对不能断线的跨国贸易团队中枢；还是一个只想在下班后舒舒服服地躺在沙发上，用 Apple TV 秒开 Netflix 4K 原盘大片的超级影视发烧友；只要您避开了那些险恶的山寨诈骗盘、认准了正版官方入口，灵猫绝对是你在 2026 年闭着眼睛盲狙都不会后悔的终极长线网络归宿。</p>

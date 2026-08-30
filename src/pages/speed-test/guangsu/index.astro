@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】光速云 (Guangsu) 极客深度测速：全线 IPLC 纯物理大带宽与真正的无限设备极速风暴";
 const description = "近 4000 字独家深度测速评测光速云 (Guangsu) 机场。全网首发其 2.5Gbps 纯血 IPLC 专线晚高峰极限吞吐实测，解密无视并发数量的软路由挂机体验与独享商用原生 IP 降维打击表现。附防伪直达入口。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout guangsu-review-wrapper">
+    <TestEvidenceCard />
     <div class="guangsu-main">
       <header class="guangsu-hero">
         <span class="guangsu-badge">⚡ 2026 极限物理专线抗压测速</span>
@@ -60,7 +62,7 @@ const description = "近 4000 字独家深度测速评测光速云 (Guangsu) 机
                 <tr style="border-bottom: 1px solid #e0f2fe;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 HK 纯血 IPLC 专线</td>
                   <td style="padding: 18px 24px;">30 ms - 42 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (纯净死锁)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">820 Mbps - 940 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #e0f2fe; background: #f8fafc;">

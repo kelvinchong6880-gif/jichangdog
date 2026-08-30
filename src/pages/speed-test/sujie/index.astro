@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】速界 (Sujie) 深度盲测：2.5Gbps 纯净原生 IP 专线的防风控实战解析";
 const description = "近 4000 字独家深度测速评测速界机场 (Sujie Cloud)。硬核拆解其底层 2.5Gbps 全 IPLC 专线与双 ISP 原生住宅 IP 库的真实纯净度。深度测试 ChatGPT 免封号能力、TikTok 直播推流稳定性以及跨国电商店铺防关联的实战表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout sujie-review-wrapper">
+    <TestEvidenceCard />
     <div class="sujie-main">
       <header class="sujie-hero">
         <span class="sujie-badge">💎 2026 纯净原生 IP 专线专项评测</span>

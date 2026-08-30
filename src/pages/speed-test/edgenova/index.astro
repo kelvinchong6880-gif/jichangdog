@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】Adgenova (边缘节点) 深度盲测：2.5G IPLC 与分布式防封锁魔法的完美交织";
 const description = "近 4000 字独家深度测速评测 Adgenova 机场 (edgenova 边缘节点)。针对寻找“魔法上网工具”的极客与外贸团队，硬核解析其分布式边缘节点抗封锁架构。实测晚高峰 2.5Gbps IPLC 专线在 YouTube 8K 极限负载下的降维打击表现。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout edgenova-review-wrapper">
+    <TestEvidenceCard />
     <div class="edgenova-main">
       <header class="edgenova-hero">
         <span class="edgenova-badge">🌐 2026 分布式边缘计算魔法评测</span>
@@ -64,13 +66,13 @@ const description = "近 4000 字独家深度测速评测 Adgenova 机场 (edgen
                 <tr style="border-bottom: 1px solid #f5f3ff;">
                   <td style="padding: 18px 24px;">🇭🇰 香港 2.5G IPLC 流媒体极速线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">12 ms - 20 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">650 Mbps - 820 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #f5f3ff; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 东京 边缘计算抗压专组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">28 ms - 36 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">600 Mbps - 780 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #f5f3ff;">

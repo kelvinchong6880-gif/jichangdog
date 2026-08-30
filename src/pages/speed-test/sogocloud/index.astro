@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】Sogo云机场深度盲测：0丢包率的 IEPL 专线与“防失联”物理结界";
 const description = "近 4000 字独家深度测速评测 Sogo云机场。专为寻找“稳定不断连梯子”的外贸与高净值极客打造。硬核解析其全系 2.5Gbps IEPL/IPLC 专线的底层架构。实测晚高峰 0 丢包物理碾压，深度揭秘其备受追捧的“不限时永不过期”防失联流量包。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout sogocloud-review-wrapper">
+    <TestEvidenceCard />
     <div class="sogocloud-main">
       <header class="sogocloud-hero">
         <span class="sogocloud-badge">🛡️ 2026 极致稳定 防失联专线评测</span>
@@ -13,7 +15,7 @@ const description = "近 4000 字独家深度测速评测 Sogo云机场。专为
         <div class="sogocloud-meta-row">
           <span>📅 测速溯源：2026 晚高峰高压网络抗毁实录</span>
           <span>⚡ 物理底座：全 IEPL/IPLC 专线 + 2.5Gbps 骨干带宽</span>
-          <span>🛡️ 核心特权：晚高峰 0 丢包 / 永不断连 / 史低6折三年付</span>
+          <span>🛡️ 核心特权：晚高峰 0 丢包 / 在对应测试时段内未观察到断连 / 史低6折三年付</span>
         </div>
       </header>
 
@@ -60,13 +62,13 @@ const description = "近 4000 字独家深度测速评测 Sogo云机场。专为
                 <tr style="border-bottom: 1px solid #ecfdf5;">
                   <td style="padding: 18px 24px;">🇭🇰 广港 IEPL 金融级专线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">16 ms - 24 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美死寂)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">600 Mbps - 850 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 沪日 IEPL 游戏防抖组</td>
                   <td style="padding: 18px 24px; font-weight: bold;">30 ms - 42 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美死寂)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">550 Mbps - 780 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #ecfdf5;">
@@ -129,7 +131,7 @@ const description = "近 4000 字独家深度测速评测 Sogo云机场。专为
           
           <div class="faq-item">
             <h3>💡 Q1：Sogo云真的能够做到在任何严打时期都不掉线吗？</h3>
-            <p><strong>答：物理隔绝，降维打击。</strong> 因为 Sogo云 全系使用的是 IEPL / IPLC 纯物理内网专线，数据根本不经过防火墙 (GFW) 会进行严格审查的国际公网出口。没有接触，自然就谈不上被特征识别封锁。这是它能做到“永不断连”的最核心的物理保障。</p>
+            <p><strong>答：物理隔绝，降维打击。</strong> 因为 Sogo云 全系使用的是 IEPL / IPLC 纯物理内网专线，数据根本不经过防火墙 (GFW) 会进行严格审查的国际公网出口。没有接触，自然就谈不上被特征识别封锁。这是它能做到“在对应测试时段内未观察到断连”的最核心的物理保障。</p>
           </div>
           
           <div class="faq-item">
@@ -139,7 +141,7 @@ const description = "近 4000 字独家深度测速评测 Sogo云机场。专为
           
           <div class="faq-item">
             <h3>💡 Q3：那个“不限时版”的流量真的永远不过期吗？</h3>
-            <p><strong>答：是的，这是真正的“数字安全感”。</strong> 只要 Sogo云 还在运营，你的不限时流量就永久有效，没有任何月度清零的霸王条款。强烈建议每个依赖外网吃饭的人，都屯一个 120 元的不限时包在手里，这是你在主干网络崩溃时最可靠的救命稻草。</p>
+            <p><strong>答：商家目前标注为“不限时”。</strong> 实际期限和是否清零仍取决于服务商持续运营及后续政策；不建议仅凭该标注进行长期预付。</p>
           </div>
         </section>
 

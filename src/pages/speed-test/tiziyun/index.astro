@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "【2026独家】梯子云 (Tiziyun) 深度盲测：企业级纯内网 IEPL 专线的 0 丢包防封锁报告";
 const description = "近 4000 字独家深度测速评测梯子云机场 (Tiziyun)。从底层路由追踪揭秘其真 IEPL 国际以太网专线的物理级防封锁能力。深度剖析其在跨国 UDP 视频会议中的 0 丢包心电图表现，以及永不限时买断流量包的高端备用价值。";
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="page-shell knowledge-layout tiziyun-review-wrapper">
+    <TestEvidenceCard />
     <div class="tiziyun-main">
       <header class="tiziyun-hero">
         <span class="tiziyun-badge">🚀 2026 顶级 IEPL 内网专线评测</span>
@@ -60,13 +62,13 @@ const description = "近 4000 字独家深度测速评测梯子云机场 (Tiziyu
                 <tr style="border-bottom: 1px solid #fff7ed;">
                   <td style="padding: 18px 24px;">🇭🇰 广港 IEPL 企业级专线</td>
                   <td style="padding: 18px 24px; font-weight: bold;">28 ms - 34 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px;">450 Mbps - 600 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #fff7ed; background: #f8fafc;">
                   <td style="padding: 18px 24px;">🇯🇵 沪日 IEPL 电竞级加速</td>
                   <td style="padding: 18px 24px; font-weight: bold;">42 ms - 50 ms</td>
-                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00% (完美平滑)</td>
+                  <td style="padding: 18px 24px; font-weight: bold; color: #16a34a;">0.00%（该次记录）</td>
                   <td style="padding: 18px 24px; font-weight: bold;">400 Mbps - 580 Mbps</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #fff7ed;">

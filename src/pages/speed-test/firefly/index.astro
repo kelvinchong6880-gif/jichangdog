@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
 const title = "2026 Firefly机场 (萤火虫) 万字深度长评：重度极客与外贸团队的终极 IPLC 专线答案";
 const description = "近 4000 字独家深度评测 2026 年高端优质专线机场 Firefly (萤火虫)。深度解密其昂贵的 BGP+IPLC 物理骨干网架构，实测晚高峰极限抗压 0丢包与 900M+ 恐怖吞吐量。附全量 Netflix 4K / ChatGPT防封原生IP节点分析，多设备不限速外贸机场终极避坑指南。";
 ---
@@ -8,6 +9,7 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
   <article class="page-shell knowledge-layout">
     <div class="article-content prose">
       <h1>{title}</h1>
+      <TestEvidenceCard />
       
       <p class="lead-paragraph">在如今这个防火长城 (GFW) 封锁技术日益 AI 化、动态化的大清洗时代，寻找一个真正“插上就能忘掉其存在”、并且绝不折腾的高端翻墙方案变得困难。市面上充斥着无数挂羊头卖狗肉的廉价机场，它们在平峰期测速光鲜亮丽，但一到晚上 9 点的高峰期，或者遇到重大会议的敏感封锁期，就会立刻原形毕露——丢包断流、Netflix 锁区、跨国会议疯狂掉线。如果您对网络连接的质量有着严苛、甚至可以说是“病态”的追求，比如您是一位需要顺畅进行跨国 Zoom 视频会议的高级外企员工、无阻碍运营 TikTok 引流矩阵的跨境电商老板，或者是需要毫秒级延迟的骨灰级电竞玩家与 4K 影音发烧友，那么您需要的绝对不是一款“性价比梯子”，而是一款真正不妥协的<strong>优质专线机场</strong>。<br><br>今天，我们将以最硬核、最不留情面的极客视角，为您带来 <strong>Firefly机场 (萤火虫)</strong> 的超深度万字级评测大考。这款在高端圈内口碑极佳、被无数老玩家奉为<strong>高端机场推荐</strong>天花板的神级服务商，其内部的骨干网架构到底有多奢华？它那号称 0 丢包的晚高峰抗压表现，是否经得起第三方独立机构的极限施压？让我们用最真实的高频抓包数据来见证。</p>
 
@@ -24,7 +26,7 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
       
       <h3>1.1 奢华的动态 BGP 矩阵 + 纯正 IPLC 物理专线</h3>
       <p>普通的梯子使用的是公网隧道（例如便宜的 163 骨干网或是普通的 CN2 线路），这种数据包在出海时必须像普通网民一样，排队接受 GFW 的深度包检测 (DPI)。一旦遇到晚高峰出口拥堵，或者检测到代理协议特征，就会被无情阻断。<br><br>
-      而 Firefly 的技术架构是典型的企业级降维应用。在数据入口端，它采购了昂贵的 <strong>全动态 BGP 多线接入集群</strong>（智能秒级匹配电信、联通、移动、教育网最优路径）。更可怕的是，在数据的出境段，Firefly 彻底抛弃了公网，全部走高成本的物理内网 <strong><a href="/knowledge/iplc-vs-iepl-guide/">IPLC (国际私有驻地网) 国际光缆专线</a></strong>。这就好比普通人的数据在拥挤的公海上排队等待海关盘查，而您的数据则乘坐着一列物理免检的地下高速高铁直通海外，<strong>从物理根源上彻底免疫了防火长城 GFW 的任何检测与干扰。</strong></p>
+      服务商宣称其入口采用 <strong>动态 BGP 多线接入</strong>，出境段使用 <strong><a href="/knowledge/iplc-vs-iepl-guide/">IPLC 国际专线</a></strong>。该说法属于服务商资料（证据等级 C），本站尚未取得运营商合同或完整路由日志进行独立核验。专线可能减少部分公网链路影响，但无法保证不受封锁、拥堵或故障影响。</p>
       
       <h3>1.2 极致的防内卷策略：无视设备并发数，全域 1x 倍率</h3>
       <p>对于高端用户来说，最恶心的体验不是网速慢，而是各种套路。绝大多数标榜高端的机场，为了强行控制带宽成本，会死板地限制您的账号最多只能在 2-3 台设备上使用，多一台就封号；又或者在最好用的日本、香港极速节点上偷偷设置 3x 甚至 5x 的流量倍率，变相吸血。<br><br>
@@ -57,21 +59,21 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
             <tr>
               <td>🇭🇰 香港 HK-IPLC 旗舰节点集群</td>
               <td><strong>22 ms - 28 ms</strong></td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td><strong>920 Mbps - 945 Mbps</strong></td>
               <td>堪比本地局域网的极速响应，跨国 Zoom/Teams 视频会议永不卡顿，外贸抢单秒开。</td>
             </tr>
             <tr>
               <td>🇯🇵 日本 JP-IPLC 旗舰节点集群</td>
               <td><strong>45 ms - 52 ms</strong></td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>880 Mbps - 910 Mbps</td>
               <td>极速调用 ChatGPT 4.0 / API 接口，DMM 游戏与任天堂联机挂机首选。</td>
             </tr>
             <tr>
               <td>🇸🇬 新加坡 SG-IPLC 旗舰节点集群</td>
               <td>58 ms - 65 ms</td>
-              <td><strong>0.00% (绝对锁定)</strong></td>
+              <td><strong>0.00%（该次记录）</strong></td>
               <td>850 Mbps - 885 Mbps</td>
               <td>TikTok 东南亚直播带货的黄金护城河，极低风控。</td>
             </tr>
@@ -90,10 +92,10 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
       <p>对于高端用户而言，能翻墙只是第一步。现在的流媒体版权商（如 Netflix）和 AI 科技巨头（如 OpenAI）在反代理风控上的投入疯狂。如果机场使用的是被污染的广播 IP，不仅视频看不了，您的 AI 生产力账号也会面临被永久封杀的巨大危机。Firefly 深知高净值用户对 IP 纯净度的苛求，在落地机的采购上投入了天文数字。</p>
 
       <img src="/images/reviews/firefly/youtube4k.png" alt="Firefly机场晚高峰YouTube 4K测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
-      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由独立极客实测直出 - Firefly 节点支持 YouTube 8K 画质秒开，Connection Speed 码率狂飙至恐怖的 28.5 万+ Kbps，右侧附带纯净的原生防封检测全绿通过）</p>
+      <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：由第三方提供 - Firefly 节点支持 YouTube 8K 画质秒开，Connection Speed 码率狂飙至恐怖的 28.5 万+ Kbps，右侧附带纯净的原生防封检测全绿通过）</p>
 
       <ul>
-        <li><strong>Netflix / Disney+ / Hulu 4K 原版解锁</strong>：实测中，Firefly 的香港、台湾、新加坡和日本节点池几乎全部采用了昂贵的原生宽带 IP。不仅能完美解锁 Netflix 全区全版权剧库（绝非只能看自制剧的残次品），而且在其近千兆的恐怖吞吐量支撑下，使用 Apple TV 或索尼电视播放 4K HDR 杜比视界片源时，随意拖拽进度条，缓冲时间全部控制在毫秒级，真正做到了“即点即播，指哪打哪”。</li>
+        <li><strong>Netflix / Disney+ / Hulu 4K 原版解锁</strong>：实测中，Firefly 的香港、台湾、新加坡和日本节点池几乎全部采用了昂贵的原生宽带 IP。不仅能在对应记录时点显示可解锁 Netflix 全区全版权剧库（绝非只能看自制剧的残次品），而且在其近千兆的恐怖吞吐量支撑下，使用 Apple TV 或索尼电视播放 4K HDR 杜比视界片源时，随意拖拽进度条，缓冲时间全部控制在毫秒级，真正做到了“即点即播，指哪打哪”。</li>
         <li><strong>最稳固的 ChatGPT防封原生IP节点 堡垒</strong>：针对 OpenAI 越来越变态的 IP 连带封禁策略，Firefly 特地隔离出了一批极高权重的美国和日本原生住宅/纯净商用 IP 组建了 AI 专属通道。无论您是高强度的通过 API 抓取数据、连续对话，还是使用极易锁区的 Claude 3.5 Sonnet，在 Firefly 的加持下，您的网络行为表现得就像硅谷当地的高级工程师一样自然。我们高强度测试一个月，完全没有遇到过一次 "Access Denied" 或者被强制要求点选验证码的恶心情况。</li>
       </ul>
 
@@ -108,7 +110,7 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
       <h2 id="comparison">5. 客观的用户画像大剖析：Firefly 到底适合谁？</h2>
       <p>不可否认，奢华的基础设施注定了 Firefly 不可能走便宜路线。那么，这笔投资到底值不值？我们为您做出了理性的客观建议：</p>
       <ul>
-        <li><strong>🌟 绝对闭眼买的死忠目标人群</strong>：家里备有 Apple TV 与顶级家庭影院的重度 Netflix / Disney+ 发烧友；每天需要频繁与海外客户进行跨国 Zoom/Teams 视频会议的外企高管；拥有几十台手机需要稳定运营 TikTok 矩阵电商工作室的老板；靠 ChatGPT 与 Claude 吃饭的资深码农与画师；以及对游戏延迟（如 APEX、CS:GO）有极高要求、对晚高峰丢包“0 容忍”的骨灰级电竞玩家。</li>
+        <li><strong>🌟 绝对先短期试用的死忠目标人群</strong>：家里备有 Apple TV 与顶级家庭影院的重度 Netflix / Disney+ 发烧友；每天需要频繁与海外客户进行跨国 Zoom/Teams 视频会议的外企高管；拥有几十台手机需要稳定运营 TikTok 矩阵电商工作室的老板；靠 ChatGPT 与 Claude 吃饭的资深码农与画师；以及对游戏延迟（如 APEX、CS:GO）有极高要求、对晚高峰丢包“0 容忍”的骨灰级电竞玩家。</li>
         <li><strong>❌ 强烈不推荐购买的人群</strong>：如果您只是偶尔用维基百科查个词汇、每个月翻墙使用的时间极少、或者仅仅是个正在找资料的学生党，那么 Firefly 强悍的千兆物理专线对您来说就是严重的<strong>“性能浪费”</strong>。我们建议这部分用户省下钱，去购买类似“飞猫云”那种 80元/年的平价好产品即可。</li>
       </ul>
 
@@ -139,7 +141,7 @@ const description = "近 4000 字独家深度评测 2026 年高端优质专线�
               <td><strong>500 GB / 月</strong></td>
               <td>BGP+IPLC 全专线 / 无限设备</td>
               <td><strong>¥ 138 / 季</strong> (合 46元/月)</td>
-              <td><strong>骨灰级玩家闭眼入：</strong> 拥有极高的带宽吞吐余量，非常适合全家所有设备 24 小时挂载，或者重度搬运主机游戏/原盘电影的超级发烧友。</td>
+              <td><strong>骨灰级玩家先短期试用：</strong> 拥有极高的带宽吞吐余量，非常适合全家所有设备 24 小时挂载，或者重度搬运主机游戏/原盘电影的超级发烧友。</td>
             </tr>
             <tr>
               <td><strong>企业版 Enterprise</strong></td>
