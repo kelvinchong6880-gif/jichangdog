@@ -1136,6 +1136,13 @@ svg {
   .knowledge-layout {
     width: 100% !important;
     max-width: 100% !important;
+    align-items: stretch !important;
+  }
+
+  .knowledge-layout > :not(.toc-sidebar) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .knowledge-layout .article-content {

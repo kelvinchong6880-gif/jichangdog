@@ -437,5 +437,13 @@ const description = "机场狗知识库整理代理协议、线路类型、节�
       border: 1px dashed var(--line);
       cursor: default;
     }
+    @media (max-width: 700px) {
+      .articles-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .article-card {
+        padding: 24px;
+      }
+    }
   </style>
 </BaseLayout>
