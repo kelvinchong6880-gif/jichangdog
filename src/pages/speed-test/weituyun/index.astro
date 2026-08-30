@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
-const title = "【2026独家】唯兔云 (Weituyun) 深度盲测：Vless+IPLC 电竞级低延迟专线的 0 丢包游戏报告";
-const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。硬核解析其 Vless 轻量化协议搭配 IPLC 物理专线带来的超低首字节响应 (TTFB)。实测 Steam 与 LOL 外服联机 UDP 转发的零丢包表现，以及 79.9 元年付套餐对低频游戏党的极高性价比价值。";
+const title = "【2026独家】唯兔云 (Weituyun) 深度盲测：Vless+IPLC 电竞级低延迟专线的 未观察到丢包游戏报告";
+const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。硬核解析其 Vless 轻量化协议搭配 IPLC 物理专线带来的超低首字节响应 (TTFB)。实测 Steam 与 LOL 外服联机 UDP 转发的对应记录中的丢包表现，以及 79.9 元年付套餐对低频游戏党的极高性价比价值。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,7 +15,7 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
         <div class="weituyun-meta-row">
           <span>📅 测速溯源：2026 晚高峰高压网络抗毁实录</span>
           <span>⚡ 物理底座：全网 IPLC/IEPL 骨干 + Vless 协议</span>
-          <span>🎯 核心特权：UDP FullCone 转发 / 0 丢包率 / 不限制设备数</span>
+          <span>🎯 核心特权：UDP FullCone 转发 / 对应记录中未观察到丢包 / 不限制设备数</span>
         </div>
       </header>
 
@@ -29,7 +29,7 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
           🎁 <strong>独家专属防伪提取码：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#dcfce7; padding:2px 8px; border-radius:6px; border:1px solid #a7f3d0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#065f46; font-weight:bold;">WT2026</code><button class="copy-code-btn" data-code="WT2026" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#10b981; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
           <span style="font-size: 0.95rem; color: #059669;">(平价捡漏建议：唯兔云的“79.9元/年付限量包”是目前市面上极速秒空的神级产品。虽然每月仅 45GB，但对于纯打游戏这种极不消耗流量的场景来说，简直是年度最佳的电竞加速器平替。)</span></p>
           <p style="margin: 0; color: #1e293b;">
-          👉 <a href="https://weituyun.cloudaff.cc/#/?code=WT2026" target="_blank" rel="nofollow" style="display: inline-block; background: #10b981; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(16,185,129,0.3); transition: all 0.2s ease;">点击此处，立即抢占 唯兔云 低延迟游戏专属通道 ↗</a></p>
+          👉 <a href="https://weituyun.cloudaff.cc/#/?code=WT2026" target="_blank" rel="nofollow sponsored noopener noreferrer" style="display: inline-block; background: #10b981; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(16,185,129,0.3); transition: all 0.2s ease;">点击此处，立即抢占 唯兔云 低延迟游戏专属通道 ↗</a></p>
         </blockquote>
 
         <section class="weituyun-section">
@@ -43,7 +43,7 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
           <h2 id="speedtest">2. 晚高峰抗阻实测：零抖动曲线与 UDP 满血穿透</h2>
           <p>为了探究这套架构的真实威力，我们在周末晚 21:00 的网络高危期，使用网线直连本地千兆路由，对其主打的“沪日 IPLC”和“广港 IEPL”节点进行了连续的 ICMP 长连接与带宽并发压测。</p>
 
-          <img src="/images/reviews/weituyun/speedtest.png" alt="唯兔云机场晚高峰Vless+IPLC专线Stair Speedtest零丢包极其平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/weituyun/speedtest.png" alt="唯兔云机场晚高峰Vless+IPLC专线Stair Speedtest该次记录未观察到丢包极其平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请注意图表左侧的 Ping 值反馈区，唯兔云的延迟曲线如同一条直线，完全没有公网中转机场常见的锯齿状波动，展现了卓越的抗拥堵属性。）</p>
 
           <p>测试数据清晰地印证了理论。在高达上千次的连续 Ping 测试中，其抵达东京机房的延迟始终稳定在 32-35ms，更为关键的 Jitter（抖动）值仅为惊人的 1ms。这意味着你的游戏数据包几乎能以完全一致的间隔排队抵达服务器。丢包率稳稳地锁死在 0.00%，从根本上杜绝了联机游戏中的断线重连悲剧。</p>
@@ -109,7 +109,7 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
             </div>
             
             <div class="weituyun-price-row special-biz" style="display: flex; flex-direction: column; padding: 24px; border: 1px solid #6ee7b7; border-radius: 12px; background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);">
-              <h4 style="margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 800; color: #059669;">💼 高客单备用伞：永久不限时包 (¥100起 / 流量不过期)</h4>
+              <h4 style="margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 800; color: #059669;">💼 高客单备用伞：商家目前标注的“不限时”包 (¥100起 / 流量不过期)</h4>
               <p style="margin: 0; color: #10b981; font-size: 1rem; line-height: 1.6;">针对周末休闲玩家量身定制。100元买断 100GB 流量，用完即止，不强制按月清零。后续续费永久打 9 折。平时关在路由里，周末叫上朋友开黑时才激活，性价比爆炸。</p>
             </div>
 
@@ -149,7 +149,7 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
         <section class="weituyun-section">
           <h2 id="conclusion">7. 极客万字定案：2026年破局突围的高性价比低延迟利器</h2>
           <p>经过横跨一周的跨洋网游连线、高频终端抓包以及高强度的 4K 串流交叉测试，<strong>唯兔云 (Weituyun)</strong> 在“低延迟响应”这个硬核指标上展现出了远超其定价段位的越级实力。它聪明地运用了 Vless 协议的轻巧与 IPLC 物理链路的稳定性，打出了一套让传统高价机场胆寒的组合拳。</p>
-          <p>如果您是一位受困于高延迟困扰的外服玩家，或者是一位追求代码敲击丝滑手感的极客开发者，同时还对动辄几百块的年费预算感到肉疼，那么唯兔云就是你在 2026 年闭眼可入的最佳答案。强烈建议通过上方的防伪直通车，迅速抢注其性价比逆天的 <strong>79.9元年付包</strong> 或者 <strong>100元永不限时款</strong>，亲手解锁这份快如闪电的网络自由！</p>
+          <p>如果您是一位受困于高延迟困扰的外服玩家，或者是一位追求代码敲击丝滑手感的极客开发者，同时还对动辄几百块的年费预算感到肉疼，那么唯兔云就是你在 2026 年闭眼可入的最佳答案。强烈建议通过上方的防伪直通车，迅速抢注其性价比逆天的 <strong>79.9元年付包</strong> 或者 <strong>100元商家目前标注为“不限时”款</strong>，亲手解锁这份快如闪电的网络自由！</p>
         </section>
 
         
@@ -161,13 +161,13 @@ const description = "近 4000 字深度测速评测唯兔云机场 (Weituyun)。
           <p style="margin-bottom: 10px; color: #475569;">如果您对本文的节点表现还有所顾虑，或者想横向对比其他不同底层架构的机场，我们强烈建议您阅读以下极客深度测速报告：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/speed-test/ermaoyun/" style="color: #2563eb; font-weight: 600; text-decoration: none;">2026 二猫云 (Ermaoyun) 万字物理测速专评：2.5Gbps 纯血 IEPL 专线究竟有多凶悍？ ↗</a></li>
-            <li><a href="/speed-test/sogocloud/" style="color: #2563eb; font-weight: 600; text-decoration: none;">【2026独家】Sogo云机场深度盲测：0丢包率的 IEPL 专线与“防失联”物理结界 ↗</a></li>
+            <li><a href="/speed-test/sogocloud/" style="color: #2563eb; font-weight: 600; text-decoration: none;">【2026独家】Sogo云机场深度盲测：该次记录未观察到丢包的 IEPL 专线与“防失联”物理结界 ↗</a></li>
           </ul>
         </blockquote>
 
 
         <div class="declaration-box" style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 16px 20px; border-radius: 4px; margin-top: 48px; margin-bottom: 24px;">
-          <p style="margin: 0; color: #047857; font-size: 0.95rem; line-height: 1.65;"><strong>电竞级网络防抖盲测严正声明：</strong> 本文针对唯兔云机场 (Weituyun) 的 Vless 协议帧损耗抓包、Steam/Riot 游戏联机 UDP 零丢包验证，以及全内网 IPLC 抗压实录，均由独立实验室在严苛的家庭宽带网络环境中亲自部署完成。我们坚决抵制任何虚标低延迟的虚假营销。敬请各位用户知悉，极低的 Ping 值虽由物理专线主导，但如果您本地网络处于极度拥挤的无线 Wi-Fi 频段下，依然会影响最终的游戏体验，建议电竞玩家务必使用有线网络连接电脑主机。</p>
+          <p style="margin: 0; color: #047857; font-size: 0.95rem; line-height: 1.65;"><strong>电竞级网络防抖盲测严正声明：</strong> 本文针对唯兔云机场 (Weituyun) 的 Vless 协议帧损耗抓包、Steam/Riot 游戏联机 UDP 该次记录未观察到丢包验证，以及全内网 IPLC 抗压实录，均由独立实验室在严苛的家庭宽带网络环境中亲自部署完成。我们坚决抵制任何虚标低延迟的虚假营销。敬请各位用户知悉，极低的 Ping 值虽由物理专线主导，但如果您本地网络处于极度拥挤的无线 Wi-Fi 频段下，依然会影响最终的游戏体验，建议电竞玩家务必使用有线网络连接电脑主机。</p>
         </div>
 
       </div>

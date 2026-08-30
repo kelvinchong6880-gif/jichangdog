@@ -39,7 +39,7 @@ const description = "机场老板说的原生 IP 是什么意思？为什么用�
       <p>在原生 IP 的范畴里，还可以继续细分为 <strong>机房 IP (Datacenter IP)</strong> 和 <strong>家宽 IP (Residential ISP)</strong>：</p>
       <ul>
         <li><strong>机房 IP：</strong> 绝大多数优质机场提供的“原生 IP”都是这一类。它由正规云服务商（如 AWS, Linode）提供，注册地和物理地一致。它的优势是带宽极大（千兆甚至万兆），适合看视频和下载。缺点是，部分极其严格的平台（如动画疯、某些网银）知道这是机房，仍会限制。</li>
-        <li><strong>家宽 IP（纯净住宅 IP）：</strong> 这是翻墙界的“劳斯莱斯”。它是通过技术手段，借用了国外真实普通家庭（比如安装了美国康卡斯特宽带的用户）的路由器 IP。<strong>纯净 IP 节点</strong> 在任何风控系统眼里，你都是一个坐在纽约家里喝咖啡的美国人。它能 100% 解锁一切。但缺点是带宽较小、价格极其昂贵，往往只有在顶级的高端机场中才会提供几条这种节点。</li>
+        <li><strong>家宽 IP（纯净住宅 IP）：</strong> 这是翻墙界的“劳斯莱斯”。它是通过技术手段，借用了国外真实普通家庭（比如安装了美国康卡斯特宽带的用户）的路由器 IP。<strong>纯净 IP 节点</strong> 在任何风控系统眼里，你都是一个坐在纽约家里喝咖啡的美国人。它能 在对应记录时点显示可访问一切。但缺点是带宽较小、价格极其昂贵，往往只有在顶级的高端机场中才会提供几条这种节点。</li>
       </ul>
 
       <h2 id="how-to-check">4. 实用教程：怎样查机场节点是不是原生 IP？</h2>
@@ -48,13 +48,13 @@ const description = "机场老板说的原生 IP 是什么意思？为什么用�
       <div class="faq-item">
         <h3>方法一：使用 IPinfo.io 检测属地是否一致</h3>
         <p>1. 开启你的代理软件（Clash/V2rayN），并设置为“全局模式”，选中你要测试的节点。<br>
-        2. 浏览器打开 <a href="https://ipinfo.io" target="_blank" rel="nofollow">ipinfo.io</a>。<br>
+        2. 浏览器打开 <a href="https://ipinfo.io" target="_blank" rel="nofollow sponsored noopener noreferrer">ipinfo.io</a>。<br>
         3. 查看页面上的信息。重点对比左侧的 <strong>“Country（所在国家/城市）”</strong> 和右下角 AS 信息里的国家代码。如果左边显示 <code>Tokyo, Japan</code>，但右侧的 ASN 注册者显示来自 <code>US</code> (美国) 或其他国家，那么这 100% 是个广播 IP。如果两边完全一致，大概率就是原生 IP。</p>
       </div>
 
       <div class="faq-item">
         <h3>方法二：使用 Scamalytics 测试 IP 纯净度（欺诈分数）</h3>
-        <p>浏览器打开 <a href="https://scamalytics.com/ip" target="_blank" rel="nofollow">Scamalytics</a>，网站会自动检测你当前的节点 IP。如果给出的 <code>Fraud Score</code>（欺诈分数）超过 50 分甚至变红，说明这个 IP 是极其肮脏的劣质广播/机房 IP，极大概率无法使用 ChatGPT 且频繁弹谷歌验证码。如果分数在 0-10 之间，说明这是一个极佳的 <strong>纯净 IP 节点</strong>。</p>
+        <p>浏览器打开 <a href="https://scamalytics.com/ip" target="_blank" rel="nofollow sponsored noopener noreferrer">Scamalytics</a>，网站会自动检测你当前的节点 IP。如果给出的 <code>Fraud Score</code>（欺诈分数）超过 50 分甚至变红，说明这个 IP 是极其肮脏的劣质广播/机房 IP，极大概率无法使用 ChatGPT 且频繁弹谷歌验证码。如果分数在 0-10 之间，说明这是一个极佳的 <strong>纯净 IP 节点</strong>。</p>
       </div>
 
       <h2 id="qa-faq">5. 原生 IP 与流媒体解锁常见问题解答 (Q&A)</h2>

@@ -33,8 +33,8 @@ const description = "怎么看节点支不支持 ChatGPT？深度揭秘机场 DN
             </tr>
             <tr>
               <td><strong>家庭宽带/住宅 IP (ISP)</strong></td>
-              <td>使用真实的海外家庭网络宽带，OpenAI 风控对其实行完全免疫。</td>
-              <td><strong>最顶级（绝对安全）</strong>，极其适合重度 Plus / API 开发者。</td>
+              <td>使用真实的海外家庭网络宽带，OpenAI 风控对其可能减少部分相关影响。</td>
+              <td><strong>风险仍需自行评估</strong>，极其适合重度 Plus / API 开发者。</td>
               <td>在 IP 查询网站显示类型为 ISP，而非 Hosting（数据中心）。</td>
             </tr>
             <tr>
@@ -59,7 +59,7 @@ const description = "怎么看节点支不支持 ChatGPT？深度揭秘机场 DN
       <p>答案是：99% 是因为你使用了劣质机场的 <strong>DNS 解锁 (DNS Hijacking)</strong> 节点。<br>
       什么是 DNS 伪解锁？假设你买了一个便宜的机场，它的节点 IP 其实早就被 OpenAI 拉黑了（一打开就提示 Access Denied）。为了让你能用，机场老板在后台写了一段代码：只要检测到你在访问 <code>chatgpt.com</code>，就把你的流量偷偷“劫持”并转发到老板手里仅有的 2 台干净服务器上。<br>
       这就导致了一个极其恐怖的现象：<strong>几十个人共用一个机场节点问 ChatGPT，实际上是几千人同时用那 2 台服务器向 OpenAI 发送请求！</strong><br>
-      OpenAI 的风控系统一看：怎么全世界有 5000 个账号，同时都在用这 1 个 IP 地址疯狂提问？这绝对是恶意机器人攻击！于是，OpenAI 会在某天夜里进行批量清洗，<strong>直接把你辛辛苦苦充值的 ChatGPT Plus 账号永久封禁 (Banned)</strong>。这就是 DNS 伪解锁带来的“连坐封禁”惨案。</p>
+      OpenAI 的风控系统一看：怎么全世界有 5000 个账号，同时都在用这 1 个 IP 地址疯狂提问？这可作为恶意机器人攻击！于是，OpenAI 会在某天夜里进行批量清洗，<strong>直接把你辛辛苦苦充值的 ChatGPT Plus 账号永久封禁 (Banned)</strong>。这就是 DNS 伪解锁带来的“连坐封禁”惨案。</p>
       
       <p>更可怕的是 <strong>节点 IP 乱跳封号</strong>。有些机场为了维持解锁，每天在后台给你疯狂更换转发 IP。今天你在美国加州登录，明天在纽约，后天在法兰克福。这种极度异常的物理位置跳动，会让你的账号瞬间触发“异地高危登录风控”，秒封。</p>
 
@@ -81,7 +81,7 @@ const description = "怎么看节点支不支持 ChatGPT？深度揭秘机场 DN
 
       <div class="faq-item">
         <h3>Q2: 手机端 ChatGPT App 登录失败 / 一直转圈，是节点问题吗？</h3>
-        <p><strong>答：100% 是节点不支持。</strong> 手机端 App 的风控比网页端更加变态。很多通过 DNS 伪解锁的劣质机场，只能勉强骗过网页版，一到 App 端就会原形毕露。只有 <strong>数据中心原生 IP</strong> 或 <strong>住宅 IP 翻墙</strong> 才能丝滑登录手机 App，并顺畅使用语音通话（Voice）功能。</p>
+        <p><strong>答：更可能与节点支持情况有关。</strong> 手机端 App 的风控比网页端更加变态。很多通过 DNS 伪解锁的劣质机场，只能勉强骗过网页版，一到 App 端就会原形毕露。只有 <strong>数据中心原生 IP</strong> 或 <strong>住宅 IP 翻墙</strong> 才能丝滑登录手机 App，并顺畅使用语音通话（Voice）功能。</p>
       </div>
       
       <div class="faq-item">

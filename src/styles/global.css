@@ -1102,6 +1102,25 @@ svg {
 }
 
 @media (max-width: 992px) {
+  .knowledge-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .knowledge-layout .article-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .knowledge-layout .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
   .knowledge-layout .toc-sidebar {
     display: none !important;
   }

@@ -82,7 +82,7 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
       <p>很多新手翻墙后依然被网警精准“喝茶”，是因为他们遭遇了 <strong>DNS 泄漏</strong>。当你访问被禁网站时，如果向国内运营商发起明文 DNS 请求，你的隐私将荡然无存。<br>在 v2rayNG 的【设置】最深处，找到 <strong>【远程 DNS (Remote DNS)】</strong>，不要使用默认的 <code>1.1.1.1</code>，请强制改为 DoH 格式：<br><code>https://dns.google/dns-query</code> 或 <code>https://cloudflare-dns.com/dns-query</code><br>这样一来，你的所有域名解析请求都将通过 HTTPS 加密隧道发往国外的安全服务器，彻底切断国内运营商的嗅探链条。</p>
 
       <h3>金融级防风控特权：分应用代理 (Per-App Proxy)</h3>
-      <p>这是安卓系统开放 VPN API 所独有的超级特权，也是 iOS 用户梦寐以求的功能。国内很多银行 App (如招商银行) 和主流手游 (如王者荣耀)，一旦检测到你挂了海外 IP，会立刻触发风控冻结账号。<br>在 v2rayNG 中，你可以做到 100% 的物理级隔离：<br>1. 进入【设置】 -> 找到 <strong>【分应用代理】</strong> 并开启。<br>2. 选择 <strong>【绕过选中的应用】</strong>，然后在列表里勾选所有的手机银行、支付宝以及国内游戏。<br>如此一来，哪怕手机顶部挂着 VPN 图标，这些敏感 App 依然会直接走基站直连网络，实现了最高级别的金融防封号安全。</p>
+      <p>这是安卓系统开放 VPN API 所独有的超级特权，也是 iOS 用户梦寐以求的功能。国内很多银行 App (如招商银行) 和主流手游 (如王者荣耀)，一旦检测到你挂了海外 IP，会立刻触发风控冻结账号。<br>在 v2rayNG 中，你可以通过分应用规则进行流量隔离：<br>1. 进入【设置】 -> 找到 <strong>【分应用代理】</strong> 并开启。<br>2. 选择 <strong>【绕过选中的应用】</strong>，然后在列表里勾选所有的手机银行、支付宝以及国内游戏。<br>如此一来，哪怕手机顶部挂着 VPN 图标，这些敏感 App 依然会直接走基站直连网络，实现了最高级别的金融防封号安全。</p>
 
       <h3>彻底解决“假死”与杀后台：电池优化白名单</h3>
       <p>在鸿蒙 (HarmonyOS)、澎湃 (HyperOS) 等极其激进的国产系统中，如果你发现 v2rayNG 锁屏后微信断流，那是系统“进程绞肉机”把它的后台扬了。<br><strong>保活三步曲：</strong><br>1. 系统设置 -> 应用管理 -> v2rayNG -> 将【省电策略】改为 <strong>“无限制”</strong>。<br>2. 【自启动权限】中，允许 <strong>自动启动</strong> 与 <strong>关联启动</strong>。<br>3. 多任务卡片界面，将 v2rayNG <strong>加锁 (下滑卡片)</strong>。做完这三步，隧道将全天候坚如磐石。</p>
@@ -92,7 +92,7 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
 
       <div class="faq-item">
         <h3>Q1: 我的鸿蒙/澎湃系统在安装 v2rayNG 时，疯狂提示“发现木马/高危病毒，禁止安装”，怎么办？</h3>
-        <p><strong>答：</strong>这是国产 ROM 特有的“纯净模式”误报机制，专门为了拦截没有上架国内应用商店的 VPN 类软件。<br><strong>解法：</strong><br>1. <strong>前提条件：</strong>你必须确保你下载的安装包 (apk) 来自 Github 作者 <code>2dust/v2rayNG</code> 的官方 Release 页面，而不是百度搜索来的野鸡下载站。<br>2. <strong>华为鸿蒙系统 (HarmonyOS)：</strong>前往手机设置 -> 系统和更新 -> <strong>纯净模式</strong>，将其强制关闭。安装完成后，再进入安全中心将 v2rayNG 加入风险应用白名单。<br>3. <strong>小米澎湃系统 (HyperOS)：</strong>在安装界面点击右上角设置，或者多次点击允许安装，忽略警告强制写入即可。只要是 Github 官方包，100% 绝对安全无毒。</p>
+        <p><strong>答：</strong>这是国产 ROM 特有的“纯净模式”误报机制，专门为了拦截没有上架国内应用商店的 VPN 类软件。<br><strong>解法：</strong><br>1. <strong>前提条件：</strong>你必须确保你下载的安装包 (apk) 来自 Github 作者 <code>2dust/v2rayNG</code> 的官方 Release 页面，而不是百度搜索来的野鸡下载站。<br>2. <strong>华为鸿蒙系统 (HarmonyOS)：</strong>前往手机设置 -> 系统和更新 -> <strong>纯净模式</strong>，将其强制关闭。安装完成后，再进入安全中心将 v2rayNG 加入风险应用白名单。<br>3. <strong>小米澎湃系统 (HyperOS)：</strong>在安装界面点击右上角设置，或者多次点击允许安装，忽略警告强制写入即可。只要是 Github 官方包，仍应核对发布者、签名和校验值，不能保证安装包无毒。</p>
       </div>
 
       <div class="faq-item">

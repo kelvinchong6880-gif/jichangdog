@@ -106,7 +106,7 @@ $done({body: JSON.stringify(obj)});</code></pre>
 
       <div class="faq-item">
         <h3>Q3: 安装了牛逼的去广告插件 (Plugin)，为什么提示“MITM 未启用”或者开屏广告依然顽固存在？</h3>
-        <p><strong>答：</strong>Loon 的插件体系要发挥去广告的威力，100% 依赖于 <strong>HTTPS 流量解密</strong>。<br>如果你只安装了插件，却没有去系统 <code>设置 -> 关于本机 -> 证书信任设置</code> 里给 Loon 的 CA 证书打上绿勾，iOS 底层的安全机制会死死防住 Loon，导致插件只能看到加密后的乱码，自然无法去广告。<br>另外，针对 YouTube 这种采用 <strong>QUIC 协议 (基于 UDP 443)</strong> 的流媒体，MITM 是抓不到包的。你必须在规则中加入一条 <code>REJECT, no-resolve</code> 阻断 UDP 443 端口，强迫 YouTube 降级回 TCP，再去广告才能成功。</p>
+        <p><strong>答：</strong>Loon 的插件体系要发挥去广告的威力，需要依赖于 <strong>HTTPS 流量解密</strong>。<br>如果你只安装了插件，却没有去系统 <code>设置 -> 关于本机 -> 证书信任设置</code> 里给 Loon 的 CA 证书打上绿勾，iOS 底层的安全机制会死死防住 Loon，导致插件只能看到加密后的乱码，自然无法去广告。<br>另外，针对 YouTube 这种采用 <strong>QUIC 协议 (基于 UDP 443)</strong> 的流媒体，MITM 是抓不到包的。你必须在规则中加入一条 <code>REJECT, no-resolve</code> 阻断 UDP 443 端口，强迫 YouTube 降级回 TCP，再去广告才能成功。</p>
       </div>
       
       <div class="faq-item">
@@ -118,7 +118,7 @@ $done({body: JSON.stringify(obj)});</code></pre>
       <p>当你斥资 $5.99 买下 Loon，你不仅买到了当今 iOS 平台上颜值最高的代理工具，更获得了一个支持最新协议引擎、完美解耦的插件中心以及强大的底层网络调试器。</p>
       <p><strong>但是，引擎再华丽，没有顶级的网络物理链路支撑，也只是空中楼阁。</strong></p>
       <p>如果你给 Loon 导入的是几十块钱一年、天天被 GFW 疯狂丢包的公网直连机场，每当晚高峰来临，无论 Loon 的 <code>url-test</code> 策略组怎么拼命测试，无论它的插件写得多么优雅，你连一张 1080P 的图片都刷不出来。因为底层跨国物理海缆的拥堵，是任何软件层面都无法解决的物理法则。</p>
-      <p>想要真正释放 Loon 引擎的极致流畅度，体验什么叫做“全球网络，点击即秒开”，你必须搭配 <strong>全链路底层干净、端到端零丢包，且原生完美适配最新协议的 IPLC/IEPL 国际专线</strong>。</p>
+      <p>想要真正释放 Loon 引擎的极致流畅度，体验什么叫做“全球网络，点击即秒开”，你必须搭配 <strong>全链路底层干净、第三方记录中未观察到丢包，且原生完美适配最新协议的 IPLC/IEPL 国际专线</strong>。</p>
       <p>强烈建议您直接访问我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。榜单中的顶级供应商，不仅提供纯正的高端物理专线，更能与 Loon 的智能分流体系完美契合。告别折腾与晚高峰断流，让你的 iPhone 真正享受全天候零延时、丝滑如初的顶级赛博冲浪体验！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
