@@ -287,24 +287,6 @@ const description = "近 4000 字本站测速评测快速云 (Guangsu) 机场。
 
       headings.forEach(heading => observer.observe(heading));
 
-      document.querySelectorAll('.copy-code-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const code = btn.getAttribute('data-code');
-          navigator.clipboard.writeText(code).then(() => {
-            const originalTitle = btn.getAttribute('title');
-            btn.setAttribute('title', '已复制!');
-            const svg = btn.innerHTML;
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-            btn.style.color = '#0ea5e9';
-            setTimeout(() => {
-              btn.setAttribute('title', originalTitle);
-              btn.innerHTML = svg;
-              btn.style.color = '#0284c7';
-            }, 2000);
-          });
-        });
-      });
     });
   </script>
 </BaseLayout>

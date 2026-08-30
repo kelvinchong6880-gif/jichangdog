@@ -288,24 +288,6 @@ const description = "近 4000 字本站测速评测宇宙云机场 (Yuzhouyun)�
 
       headings.forEach(heading => observer.observe(heading));
 
-      document.querySelectorAll('.copy-code-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const code = btn.getAttribute('data-code');
-          navigator.clipboard.writeText(code).then(() => {
-            const originalTitle = btn.getAttribute('title');
-            btn.setAttribute('title', '已复制!');
-            const svg = btn.innerHTML;
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-            btn.style.color = '#4f46e5';
-            setTimeout(() => {
-              btn.setAttribute('title', originalTitle);
-              btn.innerHTML = svg;
-              btn.style.color = '#4f46e5';
-            }, 2000);
-          });
-        });
-      });
     });
   </script>
 </BaseLayout>

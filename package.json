@@ -10,6 +10,7 @@
     "prebuild": "node scripts/write-deployment-version.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro",
     "sitemap:lastmod": "node scripts/generate-sitemap-lastmod.mjs",
     "indexnow:submit": "node scripts/submit-indexnow.mjs"
@@ -20,5 +21,9 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
   }
 }
