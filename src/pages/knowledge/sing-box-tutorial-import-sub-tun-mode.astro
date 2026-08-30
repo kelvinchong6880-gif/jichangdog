@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "Sing-box 新手配置指南：如何导入订阅并开启 TUN 模式";
-const description = "Sing-box怎么用？深度解析系统代理与TUN模式的区别，手把手教你导入机场订阅、开启虚拟网卡实现电脑全局翻墙与游戏加速。";
+const description = "Sing-box怎么用？解析系统代理与TUN模式的区别，手把手教你导入机场订阅、开启虚拟网卡实现电脑全局翻墙与游戏加速。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,9 +9,9 @@ const description = "Sing-box怎么用？深度解析系统代理与TUN模式的
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：为什么要开启 TUN 模式？很多新手在用 Sing-box 翻墙时，发现浏览器能看 YouTube，但 Telegram 一直转圈、游戏大厅（Steam/Epic）进不去，或者程序员的命令行（CMD）死活连不上网。这是因为默认的“系统代理（System Proxy）”只能管得住浏览器等听话的软件。而 TUN 模式（虚拟网卡模式），相当于在你的电脑底层装了一个物理级别的“强行导流管”。一旦开启并授予管理员权限，电脑上所有软件的流量，都会被强制拦截并发送到机场节点。这就是实现真正意义上“全局翻墙”与“代理打游戏”的终极方案。</strong> 如果你想用 Sing-box 替代传统的 Clash，学会开启 TUN 模式是你的第一门必修课。</p>
+      <p class="lead-paragraph"><strong>结论先行：为什么要开启 TUN 模式？很多新手在用 Sing-box 翻墙时，发现浏览器能看 YouTube，但 Telegram 一直转圈、游戏大厅（Steam/Epic）进不去，或者程序员的命令行（CMD）死活连不上网。这是因为默认的“系统代理（System Proxy）”只能管得住浏览器等听话的软件。而 TUN 模式（虚拟网卡模式），相当于在你的电脑底层装了一个物理级别的“强行导流管”。一旦开启并授予管理员权限，电脑上所有软件的流量，都会被强制拦截并发送到机场节点。这就是实现意义上“全局翻墙”与“代理打游戏”的备选方案。</strong> 如果你想用 Sing-box 替代传统的 Clash，学会开启 TUN 模式是你的第一门必修课。</p>
 
-      <h2 id="core-comparison">1. 秒懂排障：系统代理 (System Proxy) 与 TUN 模式的终极对比</h2>
+      <h2 id="core-comparison">1. 秒懂排障：系统代理 (System Proxy) 与 TUN 模式的对比</h2>
       <p>当你疑惑 <strong>什么是虚拟网卡代理</strong> 以及 <strong>电脑翻墙 TUN 模式</strong> 有什么用时，请仔细对比下方这张排障表格。它能解答你 90% 的“连不上网”的问题：</p>
 
       <div class="table-responsive">
@@ -42,22 +42,22 @@ const description = "Sing-box怎么用？深度解析系统代理与TUN模式的
             <tr>
               <td><strong>常见痛点解决</strong></td>
               <td>适合日常轻度网页浏览，不折腾。</td>
-              <td><strong>彻底解决 Telegram 转圈、外服游戏连不上、微软商店打不开等痛点。</strong></td>
+              <td><strong>解决 Telegram 转圈、外服游戏连不上、微软商店打不开等痛点。</strong></td>
             </tr>
             <tr>
               <td><strong>流量消耗与风控</strong></td>
               <td>较低，因为只代理了浏览器的流量，相对省流量。</td>
-              <td>极高（强烈建议配合完美的分流规则使用，防止后台流氓软件偷跑流量）。</td>
+              <td>高（建议配合的分流规则使用，防止后台流氓软件偷跑流量）。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <h2 id="import-subscription">2. 新手实操：如何将机场订阅链接导入 GUI.for.SingBox</h2>
-      <p>Sing-box 本身是一个极其强大的内核程序，对于没有编程基础的用户来说，我们推荐使用目前最火的图形化客户端：<strong>GUI.for.SingBox (适用于 Windows / Mac)</strong>。</p>
+      <p>Sing-box 本身是一个强大的内核程序，对于没有编程基础的用户来说，我们推荐使用目前最火的图形化客户端：<strong>GUI.for.SingBox (适用于 Windows / Mac)</strong>。</p>
       
       <p><strong>第一步：获取并转换订阅链接</strong><br>
-      由于 Sing-box 使用的是极其严格的 <strong>Sing-box JSON 配置文件</strong> 格式，很多老机场默认不提供这种格式。如果你遇到了 <strong>Sing-box 怎么把 V2Ray/Clash 订阅链接转成 JSON 格式</strong> 的问题，你需要：</p>
+      由于 Sing-box 使用的是严格的 <strong>Sing-box JSON 配置文件</strong> 格式，很多老机场默认不提供这种格式。如果你遇到了 <strong>Sing-box 怎么把 V2Ray/Clash 订阅链接转成 JSON 格式</strong> 的问题，你需要：</p>
       <ol>
         <li>登录机场后台，复制通用的“订阅链接 (Subscribe URL)”。</li>
         <li>使用第三方的 <strong>订阅链接转换 (Subconverter)</strong> 网站（在谷歌搜索“Sing-box 订阅转换”）。</li>
@@ -75,9 +75,9 @@ const description = "Sing-box怎么用？深度解析系统代理与TUN模式的
       <p>在享受 TUN 模式的强大之前，你需要跨过几个常见的技术门槛：</p>
       
       <p><strong>痛点 1：提示“TUN 模式初始化失败”怎么解决？</strong><br>
-      这 100% 是权限问题。<strong>Sing-box 的 TUN 模式需要管理员权限吗？</strong> 必须需要。在 Windows 上创建虚拟网卡是极高权限的操作。解决办法：完全退出 Sing-box 客户端，然后在桌面快捷方式上 <strong>右键 -> 以管理员身份运行 (Run as Administrator)</strong>，再次点击开启 TUN 模式即可成功。</p>
+      这 100% 是权限问题。<strong>Sing-box 的 TUN 模式需要管理员权限吗？</strong> 必须需要。在 Windows 上创建虚拟网卡是高权限的操作。解决办法：完全退出 Sing-box 客户端，然后在桌面快捷方式上 <strong>右键 -> 以管理员身份运行 (Run as Administrator)</strong>，再次点击开启 TUN 模式即可成功。</p>
 
-      <p><strong>痛点 2：为什么 Sing-box 开启 TUN 模式后电脑就彻底没网了？</strong><br>
+      <p><strong>痛点 2：为什么 Sing-box 开启 TUN 模式后电脑就没网了？</strong><br>
       最常见的原因是你忘记配置 <strong>严格路由 (Strict Route)</strong> 和 <strong>代理绕过局域网 (Bypass LAN)</strong>。当 TUN 模式接管了所有流量，如果它把连向你家路由器的流量（比如 192.168.1.1）也代理到了美国节点，你的电脑自然就断网了。请在软件设置中确保勾选了“绕过局域网”，或者在分流规则的顶部添加 <code>IP-CIDR,192.168.0.0/16,DIRECT</code> 直连规则。</p>
 
       <h2 id="faq">4. 常见问题解答 (FAQ)：游戏加速与 UWP 应用连网</h2>
@@ -89,7 +89,7 @@ const description = "Sing-box怎么用？深度解析系统代理与TUN模式的
 
       <div class="faq-item">
         <h3>Q2: 微软商店 (Microsoft Store) 打不开，怎么用 TUN 模式解决？</h3>
-        <p><strong>答：勾选开启 UWP 应用绕过 (UWP Loopback)。</strong> 微软出于安全考虑，禁止 UWP 商店应用访问本地代理（127.0.0.1）。但在 Sing-box 开启 TUN 模式后，所有的流量在底层被截获，从而完美绕过了这个限制。开启 TUN 后，你会发现此前死活打不开的微软商店瞬间满速加载了。</p>
+        <p><strong>答：勾选开启 UWP 应用绕过 (UWP Loopback)。</strong> 微软出于安全考虑，禁止 UWP 商店应用访问本地代理（127.0.0.1）。但在 Sing-box 开启 TUN 模式后，所有的流量在底层被截获，从而绕过了这个限制。开启 TUN 后，你会发现此前死活打不开的微软商店瞬间满速加载了。</p>
       </div>
       
       <div class="faq-item">
@@ -97,27 +97,27 @@ const description = "Sing-box怎么用？深度解析系统代理与TUN模式的
         <p><strong>答：使用 PROCESS-NAME（进程名）分流规则直连。</strong> 既然 TUN 接管了所有流量，为了防止浪费机场流量，你必须在 Sing-box 的 <code>route</code> 配置模块中，添加针对国内软件的直连规则：<code>"process_name": ["WeChat.exe", "DingTalk.exe"], "outbound": "direct"</code>。</p>
       </div>
 
-      <h2 id="recommendation">5. 终极选购建议：原生支持 Sing-box 订阅的高端机场推荐</h2>
-      <p>看完了这篇极其深度的配置指南，你应该发现了一个核心痛点：<strong>自己去搞订阅转换和配置 JSON 规则，真的非常容易出错导致断网。</strong></p>
+      <h2 id="recommendation">5. 选购建议：原生支持 Sing-box 订阅的机场推荐</h2>
+      <p>看完了这篇的配置指南，你应该发现了一个核心痛点：<strong>自己去搞订阅转换和配置 JSON 规则，真的容易出错导致断网。</strong></p>
       
-      <p>👉 <strong>小白与懒人玩家的终极避坑法则：</strong><br>
-      随着 Sing-box 因为其极低的资源占用和对新协议（如 Reality / Hysteria 2）的完美支持而爆火，真正有技术实力的高端机场，早就已经在后台为你准备好了 <strong>一键导入 Sing-box 的原生订阅链接</strong>。<br>
-      你完全不需要去第三方网站转换，更不需要自己写复杂的 Bypass LAN 规则。导入即可使用，开启 TUN 模式直接畅玩外服游戏，极其省心。</p>
+      <p>👉 <strong>小白与懒人玩家的避坑法则：</strong><br>
+      随着 Sing-box 因为其低的资源占用和对新协议（如 Reality / Hysteria 2）的支持而爆火，有技术实力的机场，早就已经在后台为你准备好了 <strong>一键导入 Sing-box 的原生订阅链接</strong>。<br>
+      你完全不需要去第三方网站转换，更不需要自己写复杂的 Bypass LAN 规则。导入即可使用，开启 TUN 模式直接畅玩外服游戏，省心。</p>
       
-      <p>为了让大家能体验到 Sing-box 最极致的丝滑翻墙体验，我们团队为您精选了目前市面上 <strong>完美兼容 Sing-box 格式、内置完美分流规则、极度适合开启 TUN 模式打游戏的高端低延迟专线机场</strong>：</p>
+      <p>为了让大家能体验到 Sing-box 最的流畅翻墙体验，我们团队为您精选了目前市面上 <strong>兼容 Sing-box 格式、内置分流规则、适合开启 TUN 模式打游戏的低延迟专线机场</strong>：</p>
       
-      <p>👉 <strong><a href="/recommend/">2026 游戏党首选！原生支持 Sing-box、提供超低延迟专线的顶级机场排行</a></strong></p>
+      <p>👉 <strong><a href="/recommend/">2026 游戏党候选！原生支持 Sing-box、提供超低延迟专线的机场排行</a></strong></p>
       
-      <p>告别繁琐的折腾，拥抱现代代理内核的极致性能。选对服务商，让你的每一次跨国冲浪与对战都畅通无阻！</p>
+      <p>告别繁琐的折腾，拥抱现代代理内核的性能。选对服务商，让你的每一次跨国冲浪与对战都畅通无阻！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #8b5cf6; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.05);">
           <h4 style="margin-top: 0; color: #6d28d9; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
-            <li style="margin-bottom: 8px;"><a href="/knowledge/are-ss-and-ssr-outdated/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Shadowsocks (SS) 和 SSR 过时了吗？为什么高端机场还在用？ ↗</a></li>
+            <li style="margin-bottom: 8px;"><a href="/knowledge/are-ss-and-ssr-outdated/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Shadowsocks (SS) 和 SSR 过时了吗？为什么机场还在用？ ↗</a></li>
             <li><a href="/knowledge/proxy-beginner-guide/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">科学上网新手必看：节点、订阅链接与客户端有什么用？【附通俗比喻】 ↗</a></li>
           </ul>
         </blockquote>

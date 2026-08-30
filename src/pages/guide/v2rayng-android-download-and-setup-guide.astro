@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "v2rayNG 安卓版最新下载、安装与图文配置指南";
-const description = "2026年安卓端最轻量省电的 Xray 原生利器！深度解析 v2rayNG 官方下载防木马、VLESS-Reality 极速配置、分应用代理与鸿蒙系统报毒完美排障。";
+const description = "2026年安卓端最轻量省电的 Xray 原生利器！解析 v2rayNG 官方下载防木马、VLESS-Reality 极速配置、分应用代理与鸿蒙系统报毒排障。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,10 +9,10 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：v2rayNG 是 2026 年安卓端最轻量、最省电的 Xray 原生利器！</strong><br><br>与动辄占用巨大内存和电量的臃肿客户端不同，v2rayNG 凭借极低的底层内存占用和对最新 <strong>VLESS-Reality</strong> 协议的原生完美支持，成为安卓老玩家、极客以及电量焦虑者的首选。<br>新手最大的坑在于通过百度搜索下载了国内带有“篡改剪贴板”木马的修改版，或是忘记设置国内分流路由。想要体验极致的省电与速度，只需通过 <strong>GitHub 官方渠道</strong>下载，导入机场订阅并更新，最后在设置中开启 <strong>“绕过局域网及大陆”</strong>，即可实现国内直连、海外秒开的完全无感体验。</p>
+      <p class="lead-paragraph"><strong>结论先行：v2rayNG 是 2026 年安卓端最轻量、最省电的 Xray 原生利器！</strong><br><br>与动辄占用巨大内存和电量的臃肿客户端不同，v2rayNG 凭借低的底层内存占用和对最新 <strong>VLESS-Reality</strong> 协议的原生支持，成为安卓老玩家、极客以及电量焦虑者的候选。<br>新手最大的坑在于通过百度搜索下载了国内带有“篡改剪贴板”木马的修改版，或是忘记设置国内分流路由。想要体验的省电与速度，只需通过 <strong>GitHub 官方渠道</strong>下载，导入机场订阅并更新，最后在设置中开启 <strong>“绕过局域网及大陆”</strong>，即可实现国内直连、海外加载的完全无感体验。</p>
 
-      <h2 id="client-comparison">1. 为什么选择 v2rayNG？安卓轻量化神器对比表</h2>
-      <p>安卓端的代理工具百花齐放，究竟该选功能繁复的 Clash 还是极致精简的 v2rayNG？以下对比能帮助你快速完成工具决策：</p>
+      <h2 id="client-comparison">1. 为什么选择 v2rayNG？安卓轻量化工具对比表</h2>
+      <p>安卓端的代理工具百花齐放，究竟该选功能繁复的 Clash 还是精简的 v2rayNG？以下对比能帮助你快速完成工具决策：</p>
       
       <div class="table-responsive">
         <table>
@@ -27,14 +27,14 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
           <tbody>
             <tr>
               <td><strong>v2rayNG</strong></td>
-              <td>原生搭载最新 Xray 内核，第一时间完美支持 VLESS/XTLS 等最前沿防封锁协议。</td>
-              <td><strong>极低 (极度省电)</strong></td>
-              <td>🔋 <strong>续航焦虑者、中低端安卓机型首选。</strong> 习惯单节点测速，无需复杂分流。</td>
+              <td>原生搭载最新 Xray 内核，第一时间支持 VLESS/XTLS 等最前沿防封锁协议。</td>
+              <td><strong>低 (省电)</strong></td>
+              <td>🔋 <strong>续航焦虑者、中低端安卓机型候选。</strong> 习惯单节点测速，无需复杂分流。</td>
             </tr>
             <tr>
               <td><strong>CMFA (Clash Meta)</strong></td>
-              <td>拥有极其强大的规则集、策略组智能分流算法。</td>
-              <td>较高</td>
+              <td>拥有强大的规则集、策略组智能分流算法。</td>
+              <td></td>
               <td>🛠️ <strong>喜欢精细化控制网络规则的折腾党。</strong> 随时随地切换不同国家落地。</td>
             </tr>
             <tr>
@@ -48,10 +48,10 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
       </div>
 
       <h2 id="tech-deep-dive">2. 安卓极客进阶：榨干 v2rayNG 的原生内核与底层路由</h2>
-      <p>很多小白装上 v2rayNG 后，只会导入订阅然后傻傻地点“全局连接”。这完全是对这把极速利器的巨大浪费！如果你想让安卓机在实现 24 小时翻墙的同时，彻底屏蔽广告，且内存消耗不超过 40MB，你必须掌握以下几个底层机制：</p>
+      <p>很多小白装上 v2rayNG 后，只会导入订阅然后傻傻地点“全局连接”。这完全是对这把极速利器的巨大浪费！如果你想让安卓机在实现 24 小时翻墙的同时，屏蔽广告，且内存消耗不超过 40MB，你必须掌握以下几个底层机制：</p>
       
       <h3>原生 Xray 内核与底层 JSON 架构 (Inbounds/Outbounds)</h3>
-      <p>与其他经过层层魔改的客户端不同，v2rayNG 本质上只是一个极其轻量化的图形外壳。当你在屏幕上点击“连接”时，它实际上是在后台实时生成了一份名为 <code>config.json</code> 的标准 Xray 配置文件，并拉起 C 语言编写的底层二进制内核。一个极客应该明白它的流量走向：</p>
+      <p>与其他经过层层魔改的客户端不同，v2rayNG 本质上只是一个轻量化的图形外壳。当你在屏幕上点击“连接”时，它实际上是在后台实时生成了一份名为 <code>config.json</code> 的标准 Xray 配置文件，并拉起 C 语言编写的底层二进制内核。一个极客应该明白它的流量走向：</p>
       <pre is:raw><code>{
   "inbounds": [{ "port": 10808, "protocol": "socks" }, { "port": 10809, "protocol": "http" }],
   "outbounds": [{
@@ -62,11 +62,11 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
 }</code></pre>
       <p>正因为这种“没有中间商赚差价”的直连架构，v2rayNG 的 TLS 握手延迟能比 Clash 系列再低 10-20 毫秒，是目前所有安卓平台中原生性能最强的方案。</p>
 
-      <h3>XTLS-Reality 终极防封锁：深入 SNI 伪装与 Flow 流控</h3>
-      <p>2026 年，传统的 VMess 协议基本已被 GFW (防火长城) 精准识别并秒封。如果你购买了支持最前沿 <strong>VLESS-Reality</strong> 协议的高端专线节点，你必须在 v2rayNG 中检查两项极其核心的参数（点击节点右侧的小铅笔进入编辑）：<br>1. <strong>流控 (Flow)：</strong> 确保填写了 <code>xtls-rprx-vision</code>。这是 Reality 协议的灵魂，它能在底层消除代理流量的 TLS 特征，将其伪装成普通的网页浏览。<br>2. <strong>SNI 与 pbk (Public Key)：</strong> 确保 SNI (Server Name Indication) 填写了诸如 <code>www.microsoft.com</code> 等极其干净的大厂海外域名。这样一来，当 GFW 对你的流量进行中间人探测时，它只会认为你在访问微软官网，从而直接予以放行。<strong>注意：使用 Vision 流控时，切记必须关闭 v2rayNG 中的 Mux (多路复用) 选项，否则会导致连接瞬间崩溃！</strong></p>
+      <h3>XTLS-Reality 防封锁：深入 SNI 伪装与 Flow 流控</h3>
+      <p>2026 年，传统的 VMess 协议基本已被 GFW (防火长城) 精准识别并秒封。如果你购买了支持最前沿 <strong>VLESS-Reality</strong> 协议的专线节点，你必须在 v2rayNG 中检查两项核心的参数（点击节点右侧的小铅笔进入编辑）：<br>1. <strong>流控 (Flow)：</strong> 确保填写了 <code>xtls-rprx-vision</code>。这是 Reality 协议的灵魂，它能在底层消除代理流量的 TLS 特征，将其伪装成普通的网页浏览。<br>2. <strong>SNI 与 pbk (Public Key)：</strong> 确保 SNI (Server Name Indication) 填写了诸如 <code>www.microsoft.com</code> 等干净的大厂海外域名。这样一来，当 GFW 对你的流量进行中间人探测时，它只会认为你在访问微软官网，从而直接予以放行。<strong>注意：使用 Vision 流控时，切记必须关闭 v2rayNG 中的 Mux (多路复用) 选项，否则会导致连接瞬间崩溃！</strong></p>
 
       <h3>自定义路由引擎：手搓极客分流规则 (Custom Rules)</h3>
-      <p>如果你不满足于粗暴的“绕过大陆”，v2rayNG 同样提供了极其强大的自定义路由引擎。进入【设置】 -> <strong>【自定义路由规则】</strong>，你可以像写代码一样，对流量进行手术刀级别的切割。<br>假设你希望彻底屏蔽全网广告，同时让特定网站必须走直连，你可以直接输入以下规则：</p>
+      <p>如果你不满足于粗暴的“绕过大陆”，v2rayNG 同样提供了强大的自定义路由引擎。进入【设置】 -> <strong>【自定义路由规则】</strong>，你可以像写代码一样，对流量进行手术刀级别的切割。<br>假设你希望屏蔽市场上广告，同时让特定网站必须走直连，你可以直接输入以下规则：</p>
       <pre is:raw><code>// 拦截所有广告域名与追踪器
 {"domain": ["geosite:category-ads-all"], "outboundTag": "block"}
 
@@ -79,43 +79,43 @@ const description = "2026年安卓端最轻量省电的 Xray 原生利器！深�
       <p>通过这三段简单的 JSON 对象，你在底层调用了 <code>geosite.dat</code> 数据库。当访问带有广告插件的网页时，广告请求在到达安卓网卡前，就已经被 v2rayNG 内部的路由引擎“直接丢弃 (block)”，实现零毫秒去广告！</p>
 
       <h3>DNS 泄漏防护：进阶 DoH (DNS over HTTPS) 部署</h3>
-      <p>很多新手翻墙后依然被网警精准“喝茶”，是因为他们遭遇了 <strong>DNS 泄漏</strong>。当你访问被禁网站时，如果向国内运营商发起明文 DNS 请求，你的隐私将荡然无存。<br>在 v2rayNG 的【设置】最深处，找到 <strong>【远程 DNS (Remote DNS)】</strong>，不要使用默认的 <code>1.1.1.1</code>，请强制改为 DoH 格式：<br><code>https://dns.google/dns-query</code> 或 <code>https://cloudflare-dns.com/dns-query</code><br>这样一来，你的所有域名解析请求都将通过 HTTPS 加密隧道发往国外的安全服务器，彻底切断国内运营商的嗅探链条。</p>
+      <p>很多新手翻墙后依然被网警精准“喝茶”，是因为他们遭遇了 <strong>DNS 泄漏</strong>。当你访问被禁网站时，如果向国内运营商发起明文 DNS 请求，你的隐私将荡然无存。<br>在 v2rayNG 的【设置】最深处，找到 <strong>【远程 DNS (Remote DNS)】</strong>，不要使用默认的 <code>1.1.1.1</code>，请强制改为 DoH 格式：<br><code>https://dns.google/dns-query</code> 或 <code>https://cloudflare-dns.com/dns-query</code><br>这样一来，你的所有域名解析请求都将通过 HTTPS 加密隧道发往国外的安全服务器，切断国内运营商的嗅探链条。</p>
 
       <h3>金融级防风控特权：分应用代理 (Per-App Proxy)</h3>
-      <p>这是安卓系统开放 VPN API 所独有的超级特权，也是 iOS 用户梦寐以求的功能。国内很多银行 App (如招商银行) 和主流手游 (如王者荣耀)，一旦检测到你挂了海外 IP，会立刻触发风控冻结账号。<br>在 v2rayNG 中，你可以通过分应用规则进行流量隔离：<br>1. 进入【设置】 -> 找到 <strong>【分应用代理】</strong> 并开启。<br>2. 选择 <strong>【绕过选中的应用】</strong>，然后在列表里勾选所有的手机银行、支付宝以及国内游戏。<br>如此一来，哪怕手机顶部挂着 VPN 图标，这些敏感 App 依然会直接走基站直连网络，实现了最高级别的金融防封号安全。</p>
+      <p>这是安卓系统开放 VPN API 所独有的超级特权，也是 iOS 用户梦寐以求的功能。国内很多银行 App (如招商银行) 和主流手游 (如代表性产品荣耀)，一旦检测到你挂了海外 IP，会立刻触发风控冻结账号。<br>在 v2rayNG 中，你可以通过分应用规则进行流量隔离：<br>1. 进入【设置】 -> 找到 <strong>【分应用代理】</strong> 并开启。<br>2. 选择 <strong>【绕过选中的应用】</strong>，然后在列表里勾选所有的手机银行、支付宝以及国内游戏。<br>如此一来，哪怕手机顶部挂着 VPN 图标，这些敏感 App 依然会直接走基站直连网络，实现了最高级别的金融防封号安全。</p>
 
-      <h3>彻底解决“假死”与杀后台：电池优化白名单</h3>
-      <p>在鸿蒙 (HarmonyOS)、澎湃 (HyperOS) 等极其激进的国产系统中，如果你发现 v2rayNG 锁屏后微信断流，那是系统“进程绞肉机”把它的后台扬了。<br><strong>保活三步曲：</strong><br>1. 系统设置 -> 应用管理 -> v2rayNG -> 将【省电策略】改为 <strong>“无限制”</strong>。<br>2. 【自启动权限】中，允许 <strong>自动启动</strong> 与 <strong>关联启动</strong>。<br>3. 多任务卡片界面，将 v2rayNG <strong>加锁 (下滑卡片)</strong>。做完这三步，隧道将全天候坚如磐石。</p>
+      <h3>解决“假死”与杀后台：电池优化白名单</h3>
+      <p>在鸿蒙 (HarmonyOS)、澎湃 (HyperOS) 等激进的国产系统中，如果你发现 v2rayNG 锁屏后微信断流，那是系统“进程绞肉机”把它的后台扬了。<br><strong>保活三步曲：</strong><br>1. 系统设置 -> 应用管理 -> v2rayNG -> 将【省电策略】改为 <strong>“无限制”</strong>。<br>2. 【自启动权限】中，允许 <strong>自动启动</strong> 与 <strong>关联启动</strong>。<br>3. 多任务卡片界面，将 v2rayNG <strong>加锁 (下滑卡片)</strong>。做完这三步，隧道将全天候坚如磐石。</p>
 
-      <h2 id="qa-faq">3. 安卓高频报错与终极排障指南 (Q&A)</h2>
+      <h2 id="qa-faq">3. 安卓高频报错与排障指南 (Q&A)</h2>
       <p>在使用纯粹的 Xray 内核时，新手极易遇到由于底层环境限制带来的连接错误。以下是最权威的排障解法：</p>
 
       <div class="faq-item">
-        <h3>Q1: 我的鸿蒙/澎湃系统在安装 v2rayNG 时，疯狂提示“发现木马/高危病毒，禁止安装”，怎么办？</h3>
-        <p><strong>答：</strong>这是国产 ROM 特有的“纯净模式”误报机制，专门为了拦截没有上架国内应用商店的 VPN 类软件。<br><strong>解法：</strong><br>1. <strong>前提条件：</strong>你必须确保你下载的安装包 (apk) 来自 Github 作者 <code>2dust/v2rayNG</code> 的官方 Release 页面，而不是百度搜索来的野鸡下载站。<br>2. <strong>华为鸿蒙系统 (HarmonyOS)：</strong>前往手机设置 -> 系统和更新 -> <strong>纯净模式</strong>，将其强制关闭。安装完成后，再进入安全中心将 v2rayNG 加入风险应用白名单。<br>3. <strong>小米澎湃系统 (HyperOS)：</strong>在安装界面点击右上角设置，或者多次点击允许安装，忽略警告强制写入即可。只要是 Github 官方包，仍应核对发布者、签名和校验值，不能保证安装包无毒。</p>
+        <h3>Q1: 我的鸿蒙/澎湃系统在安装 v2rayNG 时，大量提示“发现木马/高危病毒，禁止安装”，怎么办？</h3>
+        <p><strong>答：</strong>这是国产 ROM 特有的“纯净模式”误报机制，专门为了拦截没有上架国内应用商店的 VPN 类软件。<br><strong>解法：</strong><br>1. <strong>前提条件：</strong>你必须确保你下载的安装包 (apk) 来自 Github 作者 <code>2dust/v2rayNG</code> 的官方 Release 页面，而不是百度搜索来的不可靠的下载站。<br>2. <strong>华为鸿蒙系统 (HarmonyOS)：</strong>前往手机设置 -> 系统和更新 -> <strong>纯净模式</strong>，将其强制关闭。安装完成后，再进入安全中心将 v2rayNG 加入风险应用白名单。<br>3. <strong>小米澎湃系统 (HyperOS)：</strong>在安装界面点击右上角设置，或者多次点击允许安装，忽略警告强制写入即可。只要是 Github 官方包，仍应核对发布者、签名和校验值，不能保证安装包无毒。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q2: 导入订阅并点击“测试全部配置真连接”后，为什么所有节点都显示“超时 (Timeout)” 或者 “-1ms”？</h3>
-        <p><strong>答：</strong>v2rayNG 的 <code>-1ms</code> 意味着底层网络握手彻底失败。通常有两大核心原因：<br><strong>原因一：系统时间未对齐。</strong> VLESS 和 VMess 等前沿协议利用时间戳防重放攻击。如果你的手机时间与真实世界偏差超过 30 秒，服务器会直接掐断你的连接。<strong>解法：在手机设置里，将日期与时间设为“自动获取 (网络同步)”。</strong><br><strong>原因二：机场 DNS 被国内运营商污染。</strong> 你的移动/电信宽带把机场配置文件的解析 IP 给屏蔽了。<strong>解法：</strong>切到 5G 手机流量再试一次；或者在 v2rayNG 设置中，将“订阅设置”里的“启用代理更新订阅”打开，借助还有残余流量的节点强制刷新拉取。</p>
+        <p><strong>答：</strong>v2rayNG 的 <code>-1ms</code> 意味着底层网络握手失败。通常有两大核心原因：<br><strong>原因一：系统时间未对齐。</strong> VLESS 和 VMess 等前沿协议利用时间戳防重放攻击。如果你的手机时间与真实世界偏差超过 30 秒，服务器会直接掐断你的连接。<strong>解法：在手机设置里，将日期与时间设为“自动获取 (网络同步)”。</strong><br><strong>原因二：机场 DNS 被国内运营商污染。</strong> 你的移动/电信宽带把机场配置文件的解析 IP 给屏蔽了。<strong>解法：</strong>切到 5G 手机流量再试一次；或者在 v2rayNG 设置中，将“订阅设置”里的“启用代理更新订阅”打开，借助还有残余流量的节点强制刷新拉取。</p>
       </div>
 
       <div class="faq-item">
-        <h3>Q3: 手机连上了 v2rayNG，Chrome 浏览器能开 Google，但为什么 Telegram (电报) 还是疯狂转圈连不上？</h3>
-        <p><strong>答：</strong>Telegram 由于其极度特殊的隐私协议，采用的是自定义的 MTProto 隧道，国内很多运营商会对特定端口进行封锁。<br><strong>解法：</strong><br>1. 确保 v2rayNG 首页右上角的 <strong>“全局路由”选项</strong>不是“直连”，必须是“代理”或者“绕过局域网及大陆地址”。<br>2. 确保在系统层级，你没有开启任何会导致 VPN 冲突的应用（例如开了其他的加速器软件）。<br>3. 终极一招：进入 Telegram 设置 -> Data and Storage -> Proxy，确保所有的代理设置都被设为 <strong>Use System Proxy (使用系统代理)</strong>，切勿乱填其他 IP，让 v2rayNG 完整接管底层的 TCP 流量。</p>
+        <h3>Q3: 手机连上了 v2rayNG，Chrome 浏览器能开 Google，但为什么 Telegram (电报) 还是大量转圈连不上？</h3>
+        <p><strong>答：</strong>Telegram 由于其特殊的隐私协议，采用的是自定义的 MTProto 隧道，国内很多运营商会对特定端口进行封锁。<br><strong>解法：</strong><br>1. 确保 v2rayNG 首页右上角的 <strong>“全局路由”选项</strong>不是“直连”，必须是“代理”或者“绕过局域网及大陆地址”。<br>2. 确保在系统层级，你没有开启任何会导致 VPN 冲突的应用（例如开了其他的加速器软件）。<br>3. 一招：进入 Telegram 设置 -> Data and Storage -> Proxy，确保所有的代理设置都被设为 <strong>Use System Proxy (使用系统代理)</strong>，切勿乱填其他 IP，让 v2rayNG 完整接管底层的 TCP 流量。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q4: v2rayNG 和 Clash 到底哪个好？我该怎么选？</h3>
-        <p><strong>答：</strong>没有最好的工具，只有最适合的场景。<br>如果你极度 <strong>厌烦复杂的代码配置</strong>，只想要最基础的“一键导入，点击连接，国内直连，国外走代理”，并且你的手机 <strong>电池容量较小，对续航极其敏感</strong>，那么采用原生 C/Go 核心的极简工具 <strong>v2rayNG</strong> 是你绝对的首选。<br>但如果你是拥有多条备用专线的 <strong>“大户玩家”</strong>，需要实现“Netflix 走台湾节点，ChatGPT 走原生美国节点，晚高峰自动进行负载均衡测速切换”，那么你需要极其复杂的策略组支持，此时就必须转投 <strong>Clash Meta for Android (CMFA)</strong> 的怀抱了。</p>
+        <p><strong>答：</strong>没有最好的工具，只有最适合的场景。<br>如果你 <strong>厌烦复杂的代码配置</strong>，只想要最基础的“一键导入，点击连接，国内直连，国外走代理”，并且你的手机 <strong>电池容量较小，对续航敏感</strong>，那么采用原生 C/Go 核心的极简工具 <strong>v2rayNG</strong> 是你的候选。<br>但如果你是拥有多条备用专线的 <strong>“大户玩家”</strong>，需要实现“Netflix 走台湾节点，ChatGPT 走原生美国节点，晚高峰自动进行负载均衡测速切换”，那么你需要复杂的策略组支持，此时就必须转投 <strong>Clash Meta for Android (CMFA)</strong> 的怀抱了。</p>
       </div>
 
-      <h2 id="conclusion">4. 结语：给最快的引擎，加最纯正的燃油</h2>
+      <h2 id="conclusion">4. 结语：给最快的引擎，加最燃油</h2>
       <p>恭喜你，当你熟练掌握了 v2rayNG 的“绕过大陆路由”、“分应用代理”和“GeoData 匹配”机制后，你手中的这台安卓手机已经化身为一架毫无冗余、电量零损耗的超级战机。</p>
       <p>但是请牢记：<strong>v2rayNG 仅仅是目前世界上最轻量、最锋利的“引擎 (Engine)”。</strong></p>
       <p>如果你的引擎里，加的是那种几十块钱一年、天天被 GFW 审查限速的劣质直连“汽油”。那么无论 Xray 内核怎么帮你优化握手延迟，一旦到了晚高峰，海底光缆物理层面的大拥堵，依然会让你刷图片都卡顿。</p>
-      <p>想要真正释放 v2rayNG 的全屏实力，体验 1080P/4K 视频进度条随便拖拽的极致丝滑，你必须搭配 <strong>底层干净、原生 IP 极速解锁流媒体的高端 IPLC 专线</strong>。</p>
-      <p>强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>，为你的极致轻量化引擎，挑选一家配得上它的全链路企业级顶级专线。告别无谓的折腾，把时间留给享受毫无阻碍的赛博世界！</p>
+      <p>想要释放 v2rayNG 的全屏实力，体验 1080P/4K 视频进度条随便拖拽的流畅，你必须搭配 <strong>底层干净、原生 IP 极速解锁流媒体的 IPLC 专线</strong>。</p>
+      <p>建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>，为你的轻量化引擎，挑选一家配得上它的全链路企业级专线。告别无谓的折腾，把时间留给享受毫无阻碍的赛博世界！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

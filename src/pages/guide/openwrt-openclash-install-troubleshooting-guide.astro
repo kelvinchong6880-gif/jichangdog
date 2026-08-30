@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "软路由 OpenWrt 安装 OpenClash 图文教程与排错指南";
-const description = "OpenClash 核心下载失败？深度解析软路由 OpenWrt 安装 OpenClash、手动赋予内核权限、旁路由全屋科学上网配置及 Fake-IP 模式终极排错。";
+const description = "OpenClash 核心下载失败？解析软路由 OpenWrt 安装 OpenClash、手动赋予内核权限、旁路由全屋科学上网配置及 Fake-IP 模式排错。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,10 +9,10 @@ const description = "OpenClash 核心下载失败？深度解析软路由 OpenWr
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：搞定 OpenClash，核心是“补齐依赖”与“手动装内核”！</strong><br><br>很多新手在 OpenWrt 上安装 OpenClash 时频繁遇到启动失败，90% 是因为官方固件缺少底层依赖包，或是路由器的 GitHub 连通性极差导致“内核自动下载失败”。别慌，只要掌握以下核心逻辑，你就能打造一台完美的<strong>全屋科学上网</strong>网关。<br><strong>小白标准化 4 步通关流程：</strong><br>1. <strong>安装依赖与 IPK：</strong> 在 OpenWrt 软件包后台先安装必备依赖（<code>luci-compat</code>、<code>libcap-bin</code> 等），再上传安装最新的 <code>luci-app-openclash.ipk</code>。<br>2. <strong>手动置入 Meta 内核：</strong> 通过 WinSCP 或 SSH，将对应 CPU 架构（如 <code>x86_64</code> 或 <code>aarch64</code>）的 <code>clash_meta</code> 内核手动上传至 <code>/etc/openclash/core/</code> 目录并赋予 755 运行权限。<br>3. <strong>导入机场订阅：</strong> 在“配置文件订阅”中粘贴标准 Clash 订阅链接，点击更新。<br>4. <strong>启动与分流模式：</strong> 运行模式首选 “Fake-IP (混合模式)”，勾选“绕过中国大陆 IP”，点击“应用配置”即可实现全屋无感翻墙。</p>
+      <p class="lead-paragraph"><strong>结论先行：搞定 OpenClash，核心是“补齐依赖”与“手动装内核”！</strong><br><br>很多新手在 OpenWrt 上安装 OpenClash 时频繁遇到启动失败，90% 是因为官方固件缺少底层依赖包，或是路由器的 GitHub 连通性极差导致“内核自动下载失败”。别慌，只要掌握以下核心逻辑，你就能打造一台的<strong>全屋科学上网</strong>网关。<br><strong>小白标准化 4 步通关流程：</strong><br>1. <strong>安装依赖与 IPK：</strong> 在 OpenWrt 软件包后台先安装必备依赖（<code>luci-compat</code>、<code>libcap-bin</code> 等），再上传安装最新的 <code>luci-app-openclash.ipk</code>。<br>2. <strong>手动置入 Meta 内核：</strong> 通过 WinSCP 或 SSH，将对应 CPU 架构（如 <code>x86_64</code> 或 <code>aarch64</code>）的 <code>clash_meta</code> 内核手动上传至 <code>/etc/openclash/core/</code> 目录并赋予 755 运行权限。<br>3. <strong>导入机场订阅：</strong> 在“配置文件订阅”中粘贴标准 Clash 订阅链接，点击更新。<br>4. <strong>启动与分流模式：</strong> 运行模式候选 “Fake-IP (混合模式)”，勾选“绕过中国大陆 IP”，点击“应用配置”即可实现全屋无感翻墙。</p>
 
       <h2 id="mode-comparison">1. 一图看懂：OpenClash 运行模式对比与选型表</h2>
-      <p>安装前，最重要的一步是明确你的网络需求。OpenClash 提供了极其复杂的路由机制，选错模式会导致国内打不开网页或游戏疯狂掉线：</p>
+      <p>安装前，最重要的一步是明确你的网络需求。OpenClash 提供了复杂的路由机制，选错模式会导致国内打不开网页或游戏大量掉线：</p>
       
       <div class="table-responsive">
         <table>
@@ -27,34 +27,34 @@ const description = "OpenClash 核心下载失败？深度解析软路由 OpenWr
           <tbody>
             <tr>
               <td><strong>Fake-IP (增强/混合模式)</strong></td>
-              <td><strong>速度最快。</strong> 毫秒级返回虚拟 IP (198.18.x.x)，彻底根绝国内 DNS 污染，网页首屏秒开。</td>
-              <td>对部分内网穿透（如 NAS DDNS）和部分主机联机 (Nintendo Switch) 极其不友好，可能导致无网络。</td>
-              <td>🌟 <strong>90% 家庭首选。</strong> 追剧、看网页、看 YouTube 4K 速度极佳。</td>
+              <td><strong>速度最快。</strong> 毫秒级返回虚拟 IP (198.18.x.x)，根绝国内 DNS 污染，网页首屏加载。</td>
+              <td>对部分内网穿透（如 NAS DDNS）和部分主机联机 (Nintendo Switch) 不友好，可能导致无网络。</td>
+              <td>🌟 <strong>90% 家庭候选。</strong> 追剧、看网页、看 YouTube 4K 速度极佳。</td>
             </tr>
             <tr>
               <td><strong>Redir-Host (兼容模式)</strong></td>
               <td><strong>兼容性最好。</strong> 不修改本地真实解析，发出的全都是真实的国外 IP，主机游戏 NAT 类型良好。</td>
-              <td>本地依然存在 DNS 污染的风险，海外首次解析略慢 (首包延迟较高)。</td>
+              <td>本地依然存在 DNS 污染的风险，海外首次解析略慢 (首包延迟)。</td>
               <td>🎮 <strong>主机游戏玩家 (PS5/Xbox)、企业内网复杂环境、家里有重度 NAS 需求者。</strong></td>
             </tr>
             <tr>
               <td><strong>TUN 虚拟网卡模式</strong></td>
               <td>强制在软路由系统底层建立虚拟网卡，<strong>100% 接管所有 TCP/UDP 协议流量</strong>。</td>
-              <td>极其吃软路由 CPU 性能 (加解密损耗大)，极易与 <code>Turbo ACC</code> 等硬件加速防火墙插件产生恶性冲突。</td>
-              <td>🚀 软路由作为<strong>纯粹的旁路由网关</strong>、且需要绝对无死角接管一切异端流量时。</td>
+              <td>吃软路由 CPU 性能 (加解密损耗大)，极易与 <code>Turbo ACC</code> 等硬件加速防火墙插件产生恶性冲突。</td>
+              <td>🚀 软路由作为<strong>纯粹的旁路由网关</strong>、且需要无死角接管一切异端流量时。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <h2 id="tech-deep-dive">2. 极客实操：OpenClash 底层安装与配置排障</h2>
-      <p>相比于在手机上点几下，软路由 (Linux 系统) 对权限和依赖极其敏感。以下是最高效、最不易出错的纯手工安装流程：</p>
+      <p>相比于在手机上点几下，软路由 (Linux 系统) 对权限和依赖敏感。以下是最高效、最不易出错的纯手工安装流程：</p>
       
       <h3>IPK 依赖包地狱：libcap-bin 与 coreutils-nohup</h3>
       <p>在安装 <code>luci-app-openclash.ipk</code> 之前，请务必前往 OpenWrt 的 【系统】 -> 【软件包】，点击“更新列表”，并手动搜索安装以下核心依赖（缺一不可）：<br><code>coreutils-nohup</code> (用于后台守护进程)、<code>bash</code>、<code>dnsmasq-full</code> (注意：卸载普通的 dnsmasq 后才能装 full 版本)、<code>curl</code>、<code>ca-certificates</code>、<code>ipset</code>、<code>ip-full</code>、<code>libcap-bin</code>。<br>缺少任何一个，都会导致你在安装 IPK 时看到满屏的红色 <code>postinst script returned status 255</code> 致命报错。</p>
 
-      <h3>硬核拯救：Clash Meta (Mihomo) 内核手动上传与权限赋予</h3>
-      <p>这是 99% 的新手翻车的地方：点击启动 OpenClash，系统提示“正在下载内核”，然后永远卡在“检查内核更新”或者提示“核心下载失败”。因为软路由在没翻墙之前，是连不上 GitHub 下载内核的！<br><strong>手动离线安装大法：</strong><br>1. 去 PC 浏览器下载最新的 Clash Meta 内核压缩包，解压得到无后缀名的二进制文件，改名为 <code>clash_meta</code>。<br>2. 打开 <strong>WinSCP</strong>，连接软路由 IP (如 192.168.1.1)，账号密码与网页端一致。<br>3. 将 <code>clash_meta</code> 文件拖入 <code>/etc/openclash/core/</code> 目录。<br>4. <strong>最致命的一步（赋予可执行权限）：</strong>打开 SSH 终端 (如 PuTTY)，输入以下指令：</p>
+      <h3>详细拯救：Clash Meta (Mihomo) 内核手动上传与权限赋予</h3>
+      <p>这是 99% 的新手翻车的地方：点击启动 OpenClash，系统提示“正在下载内核”，然后长期卡在“检查内核更新”或者提示“核心下载失败”。因为软路由在没翻墙之前，是连不上 GitHub 下载内核的！<br><strong>手动离线安装大法：</strong><br>1. 去 PC 浏览器下载最新的 Clash Meta 内核压缩包，解压得到无后缀名的二进制文件，改名为 <code>clash_meta</code>。<br>2. 打开 <strong>WinSCP</strong>，连接软路由 IP (如 192.168.1.1)，账号密码与网页端一致。<br>3. 将 <code>clash_meta</code> 文件拖入 <code>/etc/openclash/core/</code> 目录。<br>4. <strong>最致命的一步（赋予可执行权限）：</strong>打开 SSH 终端 (如 PuTTY)，输入以下指令：</p>
       <pre is:raw><code># 必须给所有内核文件赋予 755 权限，否则 Linux 拒绝运行
 chmod +x /etc/openclash/core/clash
 chmod +x /etc/openclash/core/clash_tun
@@ -62,12 +62,12 @@ chmod +x /etc/openclash/core/clash_meta</code></pre>
       <p>做完这一步，回到 OpenClash 页面，你会发现它瞬间秒启动！</p>
 
       <h3>旁路由翻墙设置：主路由与旁路由网关 (Gateway) 转发设置</h3>
-      <p>如果你是用 N1 盒子或者软路由做<strong>旁路由 (单臂路由)</strong>，请务必进行以下网络层设置，否则全屋设备必定无法上网：<br>1. <strong>旁路由端：</strong> 进入 OpenWrt 【网络】 -> 【接口】 -> 【LAN】，将 <strong>IPv4 网关</strong> 和 <strong>自定义 DNS 服务器</strong> 强制指向 <strong>主路由的 IP (如 192.168.1.1)</strong>。同时<strong>关闭旁路由的 DHCP 桥接</strong>。<br>2. <strong>主路由端：</strong> 在主路由的 DHCP 设置中，将下发的 <strong>默认网关</strong> 和 <strong>DNS 服务器</strong> 修改为 <strong>旁路由的 IP (如 192.168.1.2)</strong>。<br>如此一来，家里所有设备的流量才会形成完美的闭环：<code>设备 -> 旁路由 (OpenClash 解密) -> 主路由 -> 光猫 -> 国外节点</code>。</p>
+      <p>如果你是用 N1 盒子或者软路由做<strong>旁路由 (单臂路由)</strong>，请务必进行以下网络层设置，否则全屋设备必定无法上网：<br>1. <strong>旁路由端：</strong> 进入 OpenWrt 【网络】 -> 【接口】 -> 【LAN】，将 <strong>IPv4 网关</strong> 和 <strong>自定义 DNS 服务器</strong> 强制指向 <strong>主路由的 IP (如 192.168.1.1)</strong>。同时<strong>关闭旁路由的 DHCP 桥接</strong>。<br>2. <strong>主路由端：</strong> 在主路由的 DHCP 设置中，将下发的 <strong>默认网关</strong> 和 <strong>DNS 服务器</strong> 修改为 <strong>旁路由的 IP (如 192.168.1.2)</strong>。<br>如此一来，家里所有设备的流量才会形成的闭环：<code>设备 -> 旁路由 (OpenClash 解密) -> 主路由 -> 光猫 -> 国外节点</code>。</p>
 
       <h3>防 DNS 泄漏机制：Dnsmasq 53 端口冲突与自定义上游 DNS</h3>
-      <p>如果你的软路由安装了多个去广告插件 (如 AdGuardHome)，它们都会疯狂抢占路由器的 <code>53</code> DNS 端口，导致 OpenClash 的 Fake-IP 彻底失效。<br>在 OpenClash 的 <strong>【全局设置】 -> 【DNS 设置】</strong> 中，请务必勾选 <strong>“本地 DNS 劫持”</strong>，并且建议将底层 NameServer 上游服务器修改为国外的 DoH (如 <code>https://cloudflare-dns.com/dns-query</code>)。这能确保 <code>dnsmasq</code> 的流量被 OpenClash 完全吞噬并加密，彻底解决国内网页打不开的 DNS 污染痛点。</p>
+      <p>如果你的软路由安装了多个去广告插件 (如 AdGuardHome)，它们都会大量抢占路由器的 <code>53</code> DNS 端口，导致 OpenClash 的 Fake-IP 失效。<br>在 OpenClash 的 <strong>【全局设置】 -> 【DNS 设置】</strong> 中，请务必勾选 <strong>“本地 DNS 劫持”</strong>，并且建议将底层 NameServer 上游服务器修改为国外的 DoH (如 <code>https://cloudflare-dns.com/dns-query</code>)。这能确保 <code>dnsmasq</code> 的流量被 OpenClash 完全吞噬并加密，解决国内网页打不开的 DNS 污染痛点。</p>
 
-      <h2 id="qa-faq">3. 高频排错与长尾报错终极排查 (Q&A)</h2>
+      <h2 id="qa-faq">3. 高频排错与长尾报错排查 (Q&A)</h2>
       
       <div class="faq-item">
         <h3>Q1: OpenWrt 安装 OpenClash 提示缺少依赖、架构不匹配怎么办？</h3>
@@ -81,25 +81,25 @@ chmod +x /etc/openclash/core/clash_meta</code></pre>
 
       <div class="faq-item">
         <h3>Q3: 为什么开启 OpenClash 后，我的 PS5 / Switch 联机 NAT 类型变成了 D (最差)？</h3>
-        <p><strong>答：</strong>因为你使用了 <strong>Fake-IP 模式</strong>。主机游戏的联机大厅会向外发送点对点的 UDP 探测包，而 Fake-IP 会强行塞给主机一个假的 198.18.x.x 的内网 IP，导致 NAT 穿透直接失败。<br><strong>解法：</strong>前往【全局设置】 -> 将运行模式切换为 <strong>Redir-Host (兼容模式)</strong>。同时，强烈建议在软路由的底层配置中，为 PS5 的静态 IP 设置一条 <strong>直连白名单 (或直接绕过局域网代理)</strong>，游戏联机必须走物理直连，挂代理只会增加延迟。</p>
+        <p><strong>答：</strong>因为你使用了 <strong>Fake-IP 模式</strong>。主机游戏的联机大厅会向外发送点对点的 UDP 探测包，而 Fake-IP 会强行塞给主机一个假的 198.18.x.x 的内网 IP，导致 NAT 穿透直接失败。<br><strong>解法：</strong>前往【全局设置】 -> 将运行模式切换为 <strong>Redir-Host (兼容模式)</strong>。同时，建议在软路由的底层配置中，为 PS5 的静态 IP 设置一条 <strong>直连白名单 (或直接绕过局域网代理)</strong>，游戏联机必须走物理直连，挂代理只会增加延迟。</p>
       </div>
       
       <div class="faq-item">
-        <h3>Q4: 怎么彻底卸载 OpenClash 并清理残余配置文件？</h3>
-        <p><strong>答：</strong>如果你把底层路由表玩坏了，直接在网页点击“卸载”是没用的，它的防火墙表还会残留在系统里。<br><strong>终极清理法：</strong>打开 SSH 终端，依次输入：<br><code>opkg remove luci-app-openclash</code><br><code>rm -rf /etc/config/openclash</code><br><code>rm -rf /etc/openclash</code><br>清理完毕后，<strong>务必重启软路由 (reboot)</strong>，让 OpenWrt 的 iptables 防火墙恢复到最原始的出厂默认状态。</p>
+        <h3>Q4: 怎么卸载 OpenClash 并清理残余配置文件？</h3>
+        <p><strong>答：</strong>如果你把底层路由表玩坏了，直接在网页点击“卸载”是没用的，它的防火墙表还会残留在系统里。<br><strong>清理法：</strong>打开 SSH 终端，依次输入：<br><code>opkg remove luci-app-openclash</code><br><code>rm -rf /etc/config/openclash</code><br><code>rm -rf /etc/openclash</code><br>清理完毕后，<strong>务必重启软路由 (reboot)</strong>，让 OpenWrt 的 iptables 防火墙恢复到最原始的出厂默认状态。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q5: 软路由 CPU 占用过高，看 YouTube 4K 时温度飙升怎么解决？</h3>
-        <p><strong>答：</strong>如果你用的旁路由是低端 ARM 架构（如 N1 盒子或斐讯老机器），处理 VLESS 或 Trojan 这种极其消耗算力的 TLS 流量，CPU 会瞬间满载。<br><strong>解法：</strong>在 OpenClash 界面中勾选 <strong>“绕过中国大陆 IP (GeoIP / CN-IP)”</strong>。这一步极其关键，它能让占据家庭网络 80% 流量的抖音、B站、淘宝请求，在到达软路由 CPU 之前直接被防火墙放行，极大减轻了软路由加密引擎的处理压力。</p>
+        <p><strong>答：</strong>如果你用的旁路由是低端 ARM 架构（如 N1 盒子或斐讯老机器），处理 VLESS 或 Trojan 这种消耗算力的 TLS 流量，CPU 会瞬间满载。<br><strong>解法：</strong>在 OpenClash 界面中勾选 <strong>“绕过中国大陆 IP (GeoIP / CN-IP)”</strong>。这一步关键，它能让占据家庭网络 80% 流量的抖音、B站、淘宝请求，在到达软路由 CPU 之前直接被防火墙放行，极大减轻了软路由加密引擎的处理压力。</p>
       </div>
 
-      <h2 id="conclusion">4. 结语：顶级软路由网关，需要匹配顶级的 IPLC 专线</h2>
+      <h2 id="conclusion">4. 结语：软路由网关，需要匹配的 IPLC 专线</h2>
       <p>当你成功克服了“依赖地狱”、“内核没权限”以及“DNS 冲突”后，你的软路由已经化身为全屋网络的最强大脑。电视上的 Apple TV、手里的 iPhone、桌上的电脑，无需安装任何客户端，连接 Wi-Fi 即可瞬间漫游全球无墙网络。</p>
       <p><strong>但是，网关算力再强，如果底层的机场线路是劣质的公网中转，全屋翻墙只会变成“全屋灾难”。</strong></p>
-      <p>如果你的机场节点到了晚高峰就开始疯狂丢包 30%，不仅你自己看视频卡顿，家里其他人的设备（即使用了绕过大陆 IP 规则）也会因为软路由处理大量的拥塞重传包，导致整个局域网变得极其迟钝。</p>
-      <p>既然你已经投入了巨大的精力配置好了最极客的软路由系统，你必须为它配备一条 <strong>原生不挑墙、晚高峰 未观察到丢包的 IPLC / IEPL 顶级企业级物理专线</strong>。</p>
-      <p>强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些顶级供应商原生提供极度完善的 Clash 订阅源，节点稳定如基石，能让你的 OpenClash 在 365 天里稳定运行，彻底告别“天天重启路由器”的痛苦排障生活！</p>
+      <p>如果你的机场节点到了晚高峰就开始大量丢包 30%，不仅你自己看视频卡顿，家里其他人的设备（即使用了绕过大陆 IP 规则）也会因为软路由处理大量的拥塞重传包，导致整个局域网变得迟钝。</p>
+      <p>既然你已经投入了巨大的精力配置好了最极客的软路由系统，你必须为它配备一条 <strong>原生不挑墙、晚高峰 未观察到丢包的 IPLC / IEPL 企业级物理专线</strong>。</p>
+      <p>建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。这些供应商原生提供完善的 Clash 订阅源，节点稳定如基石，能让你的 OpenClash 在 365 天里稳定运行，告别“天天重启路由器”的痛苦排障生活！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

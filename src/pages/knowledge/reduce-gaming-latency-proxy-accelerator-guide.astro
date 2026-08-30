@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "翻墙状态下如何降低游戏延迟？游戏加速器与普通节点搭配技巧";
-const description = "翻墙打外服游戏为什么一直瞬移？深度解析 UDP 丢包原理，手把手教你解决 Clash 节点与 UU 游戏加速器冲突，实现低延迟与 Discord 并存。";
+const description = "翻墙打外服游戏为什么一直瞬移？解析 UDP 丢包原理，手把手教你解决 Clash 节点与 UU 游戏加速器冲突，实现低延迟与 Discord 并存。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,10 +9,10 @@ const description = "翻墙打外服游戏为什么一直瞬移？深度解析 U
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：为什么普通的翻墙节点打游戏总是卡顿、瞬移甚至掉线？因为翻墙代理（如 V2Ray、Trojan）是为网页浏览设计的，底层主要使用 TCP 协议，对丢包极其敏感，且非常不擅长处理游戏所需的 UDP 实时数据流。而专业的游戏加速器（如 UU、雷神）使用的是专门优化过的 UDP 专线。<br>要实现“边用 Discord 语音，边极低延迟打外服游戏”，最完美的方案是利用代理软件的分流规则（或 TUN 模式的严格路由）将游戏进程的流量强行让给游戏加速器接管，而网页和语音流量继续走机场节点。</strong> 这是一门高级的流量调度艺术，掌握它，你将彻底告别在游戏大厅里转圈的噩梦。</p>
+      <p class="lead-paragraph"><strong>结论先行：为什么普通的翻墙节点打游戏总是卡顿、瞬移甚至掉线？因为翻墙代理（如 V2Ray、Trojan）是为网页浏览设计的，底层主要使用 TCP 协议，对丢包敏感，且不擅长处理游戏所需的 UDP 实时数据流。而专业的游戏加速器（如 UU、雷神）使用的是专门优化过的 UDP 专线。<br>要实现“边用 Discord 语音，边低延迟打外服游戏”，较合适的方案是利用代理软件的分流规则（或 TUN 模式的严格路由）将游戏进程的流量强行让给游戏加速器接管，而网页和语音流量继续走机场节点。</strong> 这是一门高级的流量调度艺术，掌握它，你将告别在游戏大厅里转圈的噩梦。</p>
 
-      <h2 id="core-comparison">1. 深度拆解：普通代理节点 vs 游戏加速器 核心机制对比</h2>
-      <p>当你向机场客服抱怨 <strong>“为什么开了机场节点打游戏一直瞬移”</strong> 时，他们往往会告诉你：“我们不保证游戏体验。” 为了让你彻底明白 <strong>机场代理与游戏加速器冲突</strong> 的本质，我们整理了下方的底层机制对比表：</p>
+      <h2 id="core-comparison">1. 拆解：普通代理节点 vs 游戏加速器 核心机制对比</h2>
+      <p>当你向机场客服抱怨 <strong>“为什么开了机场节点打游戏一直瞬移”</strong> 时，他们往往会告诉你：“我们不保证游戏体验。” 为了让你明白 <strong>机场代理与游戏加速器冲突</strong> 的本质，我们整理了下方的底层机制对比表：</p>
 
       <div class="table-responsive">
         <table>
@@ -28,8 +28,8 @@ const description = "翻墙打外服游戏为什么一直瞬移？深度解析 U
             <tr>
               <td><strong>普通机场节点</strong></td>
               <td><strong>TCP (重传输、强加密)</strong></td>
-              <td>解锁流媒体，支持网页秒开，价格相对便宜，能隐藏真实 IP。</td>
-              <td><strong>UDP 转发极不稳定。一旦晚高峰丢包，游戏绝对疯狂瞬移、掉线。</strong></td>
+              <td>解锁流媒体，支持网页加载，价格相对便宜，能隐藏真实 IP。</td>
+              <td><strong>UDP 转发极不稳定。一旦晚高峰丢包，游戏大量瞬移、掉线。</strong></td>
             </tr>
             <tr>
               <td><strong>专业游戏加速器 (如 UU)</strong></td>
@@ -38,34 +38,34 @@ const description = "翻墙打外服游戏为什么一直瞬移？深度解析 U
               <td><strong>无法打开绝大多数被墙的普通网页、YouTube 和 Discord 等社交软件。</strong></td>
             </tr>
             <tr>
-              <td><strong>顶级游戏专线机场</strong></td>
+              <td><strong>游戏专线机场</strong></td>
               <td><strong>TCP + 优化 UDP (纯物理内网)</strong></td>
-              <td>既能秒开网页，又能兼顾极佳的外服游戏低延迟需求（一站式解决）。</td>
-              <td>价格极其昂贵，且需要在客户端配置高级的 TUN 模式门槛较高。</td>
+              <td>既能加载网页，又能兼顾极佳的外服游戏低延迟需求（一站式解决）。</td>
+              <td>价格高价，且需要在客户端配置高级的 TUN 模式门槛。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2 id="compatibility-guide">2. 终极兼容方案：UU 加速器可以和 Clash/v2ray 同时开吗？</h2>
+      <h2 id="compatibility-guide">2. 兼容方案：UU 加速器可以和 Clash/v2ray 同时开吗？</h2>
       <p>很多重度玩家的痛点在于：<strong>我既要挂着 UU 加速器打 Valorant（瓦罗兰特），又要挂着 Clash 在后台和老外用 Discord 语音聊天。</strong> 但是两者一旦同时打开，电脑直接断网！</p>
       
       <p><strong>UU 加速器可以和 Clash 同时开吗？会不会冲突？</strong><br>
-      答案是：<strong>绝对可以，但必须严格遵守启动顺序和分流策略。</strong></p>
+      答案是：<strong>可以，但必须严格遵守启动顺序和分流策略。</strong></p>
       
       <ol>
         <li><strong>先开加速器，后开代理：</strong> 这是铁律。先启动 UU 加速器并给游戏加速成功（让 UU 先修改 Windows 的底层路由表），然后再启动 Clash 等代理软件。如果反过来，Clash 的虚拟网卡会把 UU 的流量全给劫持了，导致加速失败。</li>
-        <li><strong>坚决关闭 Clash 的“全局模式 (Global)”：</strong> 永远保持在 <strong>规则模式 (Rule)</strong>。全局模式会无脑强抢所有流量，瞬间导致你游戏断线。</li>
+        <li><strong>坚决关闭 Clash 的“全局模式 (Global)”：</strong> 长期保持在 <strong>规则模式 (Rule)</strong>。全局模式会无需复杂判断强抢所有流量，瞬间导致你游戏断线。</li>
         <li><strong>不要在 Clash 中开启“TUN 模式”：</strong> TUN 模式会强制在系统底层创建虚拟网卡接管所有流量，这与游戏加速器的工作原理完全冲突，两者必定打架。如果你非要用加速器，Clash 请老老实实呆在 <code>系统代理 (System Proxy)</code> 模式下。</li>
       </ol>
 
       <h2 id="advanced-routing">3. 高阶实操：怎么设置 Discord 走代理，而游戏直连加速器？</h2>
-      <p>如果你不想买游戏加速器，就想用手头极其昂贵的专线机场“一发入魂”，通过 <strong>Clash TUN 模式</strong> 同时搞定游戏和 Discord，那你必须学会写“进程直连规则”。</p>
+      <p>如果你不想买游戏加速器，就想用手头高价的专线机场“一发入魂”，通过 <strong>Clash TUN 模式</strong> 同时搞定游戏和 Discord，那你必须学会写“进程直连规则”。</p>
       
       <p>在 Clash Verge Rev 中，为了防止 Clash 把国服游戏（或你不想走代理的游戏）的流量也给吸走导致延迟飙升，你需要添加 <strong>PROCESS-NAME</strong> 分流规则：</p>
       
 <pre><code>rules:
-  # 让国服英雄联盟的客户端彻底直连（绕过 Clash，走本地物理宽带）
+  # 让国服英雄联盟的客户端直连（绕过 Clash，走本地物理宽带）
   - PROCESS-NAME,LeagueClient.exe,DIRECT
   - PROCESS-NAME,League of Legends.exe,DIRECT
   
@@ -82,29 +82,29 @@ const description = "翻墙打外服游戏为什么一直瞬移？深度解析 U
       
       <div class="faq-item">
         <h3>Q: 为什么我用标榜“低延迟专线”的机场打游戏，Ping 还是很飘？</h3>
-        <p><strong>A: 机场阉割了 UDP 转发。</strong> 很多机场所谓的“专线”只保证了 TCP（网页）流量的稳定。大部分机场主为了防止节点被大流量 BT 下载或黑客攻击滥用，会在服务器端严格限制甚至直接封杀 UDP 流量。而 90% 的实时对战游戏必须依赖 UDP 通信。用被阉割了 UDP 的专线打游戏，就如同在烂泥地里开跑车，Ping 绝对飘到你怀疑人生。打游戏必须使用明确支持并专门优化了 UDP 转发 (UDP Forwarding) 的顶级专线。</p>
+        <p><strong>A: 机场阉割了 UDP 转发。</strong> 很多机场所谓的“专线”只保证了 TCP（网页）流量的稳定。大部分机场主为了防止节点被大流量 BT 下载或黑客攻击滥用，会在服务器端严格限制甚至直接封杀 UDP 流量。而 90% 的实时对战游戏必须依赖 UDP 通信。用被阉割了 UDP 的专线打游戏，就如同在烂泥地里开跑车，Ping 飘到你怀疑人生。打游戏必须使用明确支持并专门优化了 UDP 转发 (UDP Forwarding) 的专线。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q: 有没有不需要买两份服务，一个机场就能搞定游戏和翻墙的方案？</h3>
-        <p><strong>A: 有，购买纯正的 IPLC/IEPL 物理内网专线。</strong> 如果你选择的机场底层是纯物理专线（确保跨国传输不经过 GFW 的任何审查，绝对不丢包），并且机场主没有封禁 UDP 转发。你在电脑端开启 Clash Verge 的 TUN (虚拟网卡) 模式，彻底接管游戏大厅和对战服务器的流量。其实际的游戏延迟体验，甚至能超越市面上 80% 的专业游戏加速器。</p>
+        <p><strong>A: 有，购买 IPLC/IEPL 物理内网专线。</strong> 如果你选择的机场底层是纯物理专线（确保跨国传输不经过 GFW 的任何审查，不丢包），并且机场主没有封禁 UDP 转发。你在电脑端开启 Clash Verge 的 TUN (虚拟网卡) 模式，接管游戏大厅和对战服务器的流量。其实际的游戏延迟体验，甚至能超越市面上 80% 的专业游戏加速器。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q: 怎么测试机场节点的真实 UDP 丢包率？</h3>
-        <p><strong>A: 使用专门的网络诊断工具 (如 Nping 或 iPerf3)。</strong> 普通的网页测速软件（如 Speedtest）主要测试的是 TCP 大文件下载。如果你想测试游戏性能，必须使用支持发 UDP 探针的工具，对着机场节点的 IP 进行连续发包测试。如果 UDP 丢包率 > 1%，这个节点就绝对不适合用来打 FPS 对战游戏。</p>
+        <p><strong>A: 使用专门的网络诊断工具 (如 Nping 或 iPerf3)。</strong> 普通的网页测速软件（如 Speedtest）主要测试的是 TCP 大文件下载。如果你想测试游戏性能，必须使用支持发 UDP 探针的工具，对着机场节点的 IP 进行连续发包测试。如果 UDP 丢包率 > 1%，这个节点就不适合用来打 FPS 对战游戏。</p>
       </div>
 
-      <h2 id="recommendation">5. 终极选购建议：一站式解决翻墙与游戏的高端 IPLC 专线</h2>
-      <p>看完这篇硬核排障文章，你肯定会觉得心累：“我只是想下班后一边在 Discord 里和朋友吹水，一边打把 Valorant，为什么要设置这么多复杂的规则？”</p>
+      <h2 id="recommendation">5. 选购建议：一站式解决翻墙与游戏的 IPLC 专线</h2>
+      <p>看完这篇详细排障文章，你肯定会觉得心累：“我只是想下班后一边在 Discord 里和朋友吹水，一边打把 Valorant，为什么要设置这么多复杂的规则？”</p>
       
-      <p>👉 <strong>告别冲突，用金钱换取时间的终极答案：</strong><br>
-      与其每月花 30 块买个劣质机场，再花 30 块买个 UU 加速器，每天还要小心翼翼地搞启动顺序和防冲突规则，不如 <strong>直接购买一条顶级的高端游戏专线</strong>。<br>
-      真正顶级的专线机场，拥有极度富裕的 IPLC 物理带宽资源，它们不仅提供超大流量供你看 4K 视频，更针对市面上主流外服游戏节点开放了全端口的 <strong>原生 UDP 优化转发</strong>。只要开启 TUN 模式，网页秒开、语音清晰、外服游戏 30ms 极低延迟，全部一气呵成！</p>
+      <p>👉 <strong>告别冲突，用金钱换取时间的备选方案：</strong><br>
+      与其每月花 30 块买个劣质机场，再花 30 块买个 UU 加速器，每天还要小心翼翼地搞启动顺序和防冲突规则，不如 <strong>先短期试用一条的游戏专线</strong>。<br>
+      专线机场，拥有富裕的 IPLC 物理带宽资源，它们不仅提供超大流量供你看 4K 视频，更针对市面上主流外服游戏节点开放了全端口的 <strong>原生 UDP 优化转发</strong>。只要开启 TUN 模式，网页加载、语音清晰、外服游戏 30ms 低延迟，全部一气呵成！</p>
       
-      <p>为了让大家能拥有最省心、最电竞级的网络体验，我们团队为您精选了目前市面上 <strong>明确支持原生 UDP 转发、晚高峰 未观察到丢包、能完美替代游戏加速器的高端纯 IPLC 专线梯子</strong>：</p>
+      <p>为了让大家能拥有最省心、最电竞级的网络体验，我们团队为您精选了目前市面上 <strong>明确支持原生 UDP 转发、晚高峰 未观察到丢包、能替代游戏加速器的纯 IPLC 专线梯子</strong>：</p>
       
-      <p>👉 <strong><a href="/recommend/">2026 电竞级网络首选！原生支持 UDP 转发、一站式解决翻墙与游戏的高端专线排行</a></strong></p>
+      <p>👉 <strong><a href="/recommend/">2026 电竞级网络候选！原生支持 UDP 转发、一站式解决翻墙与游戏的专线排行</a></strong></p>
       
       <p>在这个毫秒必争的战场上，不要让糟糕的网络成为你上分的阻碍。选对专线，让你的每一次击杀都如丝般顺滑！</p>
     
@@ -113,7 +113,7 @@ const description = "翻墙打外服游戏为什么一直瞬移？深度解析 U
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/knowledge/proxy-airport-audit-rules-explained/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">什么是审计规则？为什么很多机场会屏蔽 BT 下载和特定网站？ ↗</a></li>
             <li><a href="/knowledge/1yuan-airport-business-model/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">为什么有的叫“一元机场”？1元机场靠什么赚钱？【超低价机场盈利内幕与避坑指南】 ↗</a></li>

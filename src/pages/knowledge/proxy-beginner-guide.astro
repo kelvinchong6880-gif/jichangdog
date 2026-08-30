@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "科学上网新手必看：节点、订阅链接与客户端有什么用？【附通俗比喻】";
-const description = "如果你把科学上网看作一次出国旅行：节点是目的地，客户端是交通工具，而订阅链接是车票和导航。帮你彻底搞懂翻墙基础知识，快速上手。";
+const description = "如果你把科学上网看作一次出国旅行：节点是目的地，客户端是交通工具，而订阅链接是车票和导航。帮你搞懂翻墙基础知识，快速上手。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,18 +9,18 @@ const description = "如果你把科学上网看作一次出国旅行：节点�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>如果你把科学上网看作一次出国旅行：节点（Node）是你的目的地服务器，客户端（Client）是你乘坐的交通工具（如飞机、高铁），而订阅链接（Subscription Link）就是你的车票和导航地图。三者缺一不可。</strong> 对于刚接触翻墙的新手来说，最让人头疼的就是这三个概念。这篇文章将通过通俗易懂的比喻和真实的配置步骤，带你快速掌握<strong>科学上网基础知识</strong>，彻底弄懂买了机场之后到底该怎么用。</p>
+      <p class="lead-paragraph"><strong>如果你把科学上网看作一次出国旅行：节点（Node）是你的目的地服务器，客户端（Client）是你乘坐的交通工具（如飞机、高铁），而订阅链接（Subscription Link）就是你的车票和导航地图。三者缺一不可。</strong> 对于刚接触翻墙的新手来说，最让人头疼的就是这三个概念。这篇文章将通过通俗易懂的比喻和真实的配置步骤，带你快速掌握<strong>科学上网基础知识</strong>，弄懂买了机场之后到底该怎么用。</p>
 
       <h2 id="what-is-node">1. 翻墙节点是什么？（你的目的地）</h2>
       <p>首先解答：<strong>机场节点是什么？</strong> 在科学上网的语境下，所谓“节点”，就是部署在海外（如香港、日本、美国）的一台真实服务器。当你想访问 Google 时，你的数据并不是直接发给 Google，而是先发送给这台“节点服务器”，再由它代你访问，最后把结果传回给你。</p>
       <p><strong>翻墙节点原理</strong>其实就是代理（Proxy）。你买机场，本质上就是花钱租用服务商在世界各地搭建的这一堆代理服务器。</p>
       
       <h3>翻墙节点和 VPN 服务器有什么区别？</h3>
-      <p>虽然它们都是海外服务器，但机场节点运行的是 Shadowsocks、V2Ray、Trojan 等现代轻量级代理协议，专门用于伪装流量、绕过 GFW（防火长城）的审查；而传统的 VPN 服务器运行的是 OpenVPN 等强加密协议，特征明显，极易被封锁。这也就是为什么目前国内主要依赖机场节点来科学上网。</p>
+      <p>虽然它们都是海外服务器，但机场节点运行的是 Shadowsocks、V2Ray、Trojan 等现代轻量级代理协议，专门用于伪装流量、绕过 GFW（防火长城）的审查；而传统的 VPN 服务器运行的是 OpenVPN 等强加密协议，特征，极易被封锁。这也就是为什么目前国内主要依赖机场节点来科学上网。</p>
 
       <h3>怎么选择节点？节点超时是什么意思？</h3>
       <p>在你的客户端列表中，你会看到一长串节点，比如“香港 01 | IPLC”、“日本 02 | BGP”。
-      <br>• <strong>怎么选择节点：</strong> 追求极速体验（如打外服游戏、看高清直播），请首选 <strong>香港或日本的 IPLC/IEPL 专线节点</strong>，延迟最低。如果只是日常查资料，普通的 BGP 节点也完全够用。
+      <br>• <strong>怎么选择节点：</strong> 追求极速体验（如打外服游戏、看高清直播），请候选 <strong>香港或日本的 IPLC/IEPL 专线节点</strong>，延迟最低。如果只是日常查资料，普通的 BGP 节点也完全够用。
       <br>• <strong>节点超时是什么意思：</strong> 如果软件提示“节点超时 (Timeout)”，意味着你的电脑无法和这台海外服务器建立联系。这可能是因为你的网络环境波动，或者是该服务器的 IP 被封锁，也可能是机场的服务器正在维护。遇到这种情况，直接切换到下一个节点即可。</p>
 
       <h2 id="what-is-sub-link">2. 机场订阅链接怎么用？（你的车票与地图）</h2>
@@ -40,8 +40,8 @@ const description = "如果你把科学上网看作一次出国旅行：节点�
       <h3>翻墙工具哪个好？各大平台客户端推荐：</h3>
       <ul>
         <li><strong>Windows 电脑：</strong> 强烈推荐 <strong>Clash Verge</strong> 或 Clash for Windows。这是目前最强大、支持分流规则最完善的客户端。如果需要更老牌的选择，v2rayN 也是不错的 V2ray 客户端。</li>
-        <li><strong>苹果 iOS 手机：</strong> 首推 <strong>Shadowrocket（俗称小火箭）</strong>。虽然需要美区 Apple ID 购买（约 $2.99），但它是生态最好、最省电、支持协议最全的神器。<strong>Clash vs Shadowrocket</strong> 怎么选？手机用小火箭，电脑用 Clash，这是目前的标配。</li>
-        <li><strong>Mac 电脑：</strong> Mac 科学上网客户端怎么选？首选 <strong>ClashX Pro</strong> 或 Clash Verge Mac 版，或者高级玩家可选 Surge（较贵）。</li>
+        <li><strong>苹果 iOS 手机：</strong> 首推 <strong>Shadowrocket（俗称小火箭）</strong>。虽然需要美区 Apple ID 购买（约 $2.99），但它是生态最好、最省电、支持协议最全的工具。<strong>Clash vs Shadowrocket</strong> 怎么选？手机用小火箭，电脑用 Clash，这是目前的标配。</li>
+        <li><strong>Mac 电脑：</strong> Mac 科学上网客户端怎么选？候选 <strong>ClashX Pro</strong> 或 Clash Verge Mac 版，或者高级玩家可选 Surge（较贵）。</li>
         <li><strong>Android 手机：</strong> 推荐 <strong>v2rayNG</strong> 或 Clash for Android。免费且开源。</li>
       </ul>
 
@@ -101,7 +101,7 @@ const description = "如果你把科学上网看作一次出国旅行：节点�
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/knowledge/fix-lan-access-issue-while-using-proxy/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">翻墙后无法访问本地局域网设备 (如打印机、NAS) 怎么解决？ ↗</a></li>
             <li><a href="/knowledge/proxy-airport-audit-rules-explained/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">什么是审计规则？为什么很多机场会屏蔽 BT 下载和特定网站？ ↗</a></li>

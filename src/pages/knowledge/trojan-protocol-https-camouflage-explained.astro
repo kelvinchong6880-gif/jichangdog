@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const title = "Trojan 协议原理解析：为什么它能完美伪装成正常 HTTPS？";
-const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议是如何通过 TLS 加密和防主动探测机制完美伪装成正常 HTTPS 网站的，彻底骗过 GFW 实现稳定翻墙。";
+const title = "Trojan 协议原理解析：为什么它能伪装成正常 HTTPS？";
+const description = "什么是 Trojan 翻墙？本文解析 Trojan 协议是如何通过 TLS 加密和防主动探测机制伪装成正常 HTTPS 网站的，骗过 GFW 实现稳定翻墙。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,24 +9,24 @@ const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：Trojan（特洛伊木马）协议之所以能完美伪装成正常 HTTPS，是因为它“顺应规则，不造特征”。传统的翻墙协议（如早期 SS）是给流量穿上奇装异服（自定义加密），这在 GFW 看来极其可疑；而 Trojan 则完全按照互联网标准，将代理流量伪装成合法的 HTTPS 网页访问（443 端口 + 真实 TLS 证书）。当 GFW 主动探测或普通用户试图访问时，Trojan 服务端会展现一个真实合法的普通网站；只有当输入正确密码时，它才会作为代理通道运作。</strong> 搞懂了 Trojan 的伪装哲学，你就掌握了在这场猫鼠游戏中立于不败之地的核心机密。</p>
+      <p class="lead-paragraph"><strong>结论先行：Trojan（特洛伊木马）协议之所以能伪装成正常 HTTPS，是因为它“顺应规则，不造特征”。传统的翻墙协议（如早期 SS）是给流量穿上奇装异服（自定义加密），这在 GFW 看来可疑；而 Trojan 则完全按照互联网标准，将代理流量伪装成合法的 HTTPS 网页访问（443 端口 + 真实 TLS 证书）。当 GFW 主动探测或普通用户试图访问时，Trojan 服务端会展现一个真实合法的普通网站；只有当输入正确密码时，它才会作为代理通道运作。</strong> 搞懂了 Trojan 的伪装哲学，你就掌握了在这场猫鼠游戏中立于不败之地的技术原因。</p>
 
       <h2 id="what-is-trojan">1. 一分钟读懂：什么是 Trojan 翻墙？它为什么叫“特洛伊木马”？</h2>
-      <p>如果你经常购买翻墙机场，或者喜欢自己折腾 VPS 自建节点，你绝对见过 <strong>Trojan 协议</strong> 这个词。<strong>为什么科学上网协议叫 Trojan（特洛伊木马）？</strong></p>
+      <p>如果你经常购买翻墙机场，或者喜欢自己折腾 VPS 自建节点，你见过 <strong>Trojan 协议</strong> 这个词。<strong>为什么科学上网协议叫 Trojan（特洛伊木马）？</strong></p>
       
-      <p>在古希腊神话里，希腊联军把士兵藏在一只巨大的木马肚子里，特洛伊人以为这是神圣的战利品，毫无防备地将它拉进了城，最终导致城池失守。<br>
-      这正是 <strong>Trojan 伪装 HTTPS</strong> 的核心隐喻：它把你的翻墙数据（士兵）藏在了一段极其标准的 HTTPS 网页加密流量（木马）里。GFW（防火长城）作为守城卫兵，看到这段数据时，检查了它的证书、它的端口、它的握手协议，发现“咦，这就是一个人在正常访问境外的某个加密网站”，于是直接放行。GFW 根本不知道，这层看似无害的外壳之下，隐藏着正在疯狂穿梭的 YouTube 4K 视频数据。</p>
+      <p>在古希腊宣传案例里，希腊联军把士兵藏在一只巨大的木马肚子里，特洛伊人以为这是神圣的战利品，毫无防备地将它拉进了城，导致城池失守。<br>
+      这正是 <strong>Trojan 伪装 HTTPS</strong> 的核心隐喻：它把你的翻墙数据（士兵）藏在了一段标准的 HTTPS 网页加密流量（木马）里。GFW（防火长城）作为守城卫兵，看到这段数据时，检查了它的证书、它的端口、它的握手协议，发现“咦，这就是一个人在正常访问境外的某个加密网站”，于是直接放行。GFW 根本不知道，这层看似无害的外壳之下，隐藏着正在大量穿梭的 YouTube 4K 视频数据。</p>
 
-      <h2 id="core-mechanism">2. 核心揭秘：Trojan 是怎么骗过 GFW 防火墙的？（三大绝招）</h2>
+      <h2 id="core-mechanism">2. 核心说明：Trojan 是怎么骗过 GFW 防火墙的？（三大绝招）</h2>
       <p>那么，<strong>Trojan 协议是怎么骗过 GFW 防火墙的？</strong> 它的 <strong>Trojan 原理</strong> 究竟有何神奇之处？主要归功于以下三大绝招：</p>
       
       <ul>
-        <li><strong>真实的 TLS 证书与 443 端口：</strong> Trojan 不发明任何新的加密协议，它直接借用全球互联网公认的最安全标准——<strong>TLS / SSL 证书加密</strong>。<strong>Trojan 流量和正常浏览网页有什么区别？</strong> 答案是：在 GFW 眼里，<strong>毫无区别！</strong> 数据包从握手到传输，与你访问招商银行或苹果官网一模一样，GFW 无法通过任何特征库进行识别阻断。</li>
-        <li><strong>防主动探测（Active Probing Defense）与回落机制：</strong> 当 GFW 怀疑你这是一个翻墙节点时，它会假装成一个普通的访客，主动发包探测你的服务器。此时，Trojan 展现了极其聪明的 <strong>Trojan 回落机制（Fallback）</strong>。Trojan 发现来者并没有携带正确的翻墙密码，它不会断开连接（那样就暴露了自己是代理），而是悄悄把请求转发给后端的 Nginx/Caddy，返回一个真实的个人博客或网页（Fake Website）。GFW 探测完得出结论：“这确实只是个合法的个人博客”，于是将你加入白名单。</li>
-        <li><strong>极简轻量、拒绝双重加密：</strong> 与 VMess 等老一代协议不同，Trojan 不在 TLS 内部再套一层复杂的自有加密。它把所有的加密工作都交给外层的 TLS 负责。这使得 <strong>Trojan 协议玩游戏延迟高不高</strong> 这个问题的答案非常明确：极低！因为它性能损耗极小，速度极快，同时大大减轻了手机的耗电量。</li>
+        <li><strong>真实的 TLS 证书与 443 端口：</strong> Trojan 不发明任何新的加密协议，它直接借用全球互联网部分用户评价为的最安全标准——<strong>TLS / SSL 证书加密</strong>。<strong>Trojan 流量和正常浏览网页有什么区别？</strong> 答案是：在 GFW 眼里，<strong>毫无区别！</strong> 数据包从握手到传输，与你访问招商银行或苹果官网一模一样，GFW 无法通过任何特征库进行识别阻断。</li>
+        <li><strong>防主动探测（Active Probing Defense）与回落机制：</strong> 当 GFW 怀疑你这是一个翻墙节点时，它会假装成一个普通的访客，主动发包探测你的服务器。此时，Trojan 展现了聪明的 <strong>Trojan 回落机制（Fallback）</strong>。Trojan 发现来者并没有携带正确的翻墙密码，它不会断开连接（那样就暴露了自己是代理），而是悄悄把请求转发给后端的 Nginx/Caddy，返回一个真实的个人博客或网页（Fake Website）。GFW 探测完得出结论：“这确实只是个合法的个人博客”，于是将你加入白名单。</li>
+        <li><strong>极简轻量、拒绝双重加密：</strong> 与 VMess 等老一代协议不同，Trojan 不在 TLS 内部再套一层复杂的自有加密。它把所有的加密工作都交给外层的 TLS 负责。这使得 <strong>Trojan 协议玩游戏延迟高不高</strong> 这个问题的答案明确：低！因为它性能损耗极小，速度极快，同时大大减轻了手机的耗电量。</li>
       </ul>
 
-      <h2 id="protocol-comparison">3. 降维打击对比表：Trojan vs Shadowsocks vs VLESS-Reality</h2>
+      <h2 id="protocol-comparison">3. 形成差异对比表：Trojan vs Shadowsocks vs VLESS-Reality</h2>
       <p>为了让极客玩家清晰地了解 <strong>Trojan 和 Shadowsocks 哪个防封锁能力更强</strong>，以及 <strong>VLESS Reality 和 Trojan 相比谁更好</strong>，我们制作了以下对比表：</p>
 
       <div class="table-responsive">
@@ -42,7 +42,7 @@ const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议�
           <tbody>
             <tr>
               <td><strong>伪装手段</strong></td>
-              <td>无伪装 (纯自定义密文，特征明显)</td>
+              <td>无伪装 (纯自定义密文，特征)</td>
               <td><strong>伪装成标准 HTTPS 网站</strong></td>
               <td>借用别人的大厂证书伪装 (如微软)</td>
             </tr>
@@ -60,7 +60,7 @@ const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议�
             </tr>
             <tr>
               <td><strong>手机耗电量</strong></td>
-              <td>极低</td>
+              <td>低</td>
               <td><strong>较低 (仅 TLS 正常消耗)</strong></td>
               <td>较低 (仅 TLS 正常消耗)</td>
             </tr>
@@ -84,7 +84,7 @@ const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议�
       
       <div class="faq-item">
         <h3>Q1: 为什么说 Trojan 是“顺应规则”而不是对抗规则？</h3>
-        <p><strong>答：对抗规则（如 SS/VMess）</strong> 的思路是发明越来越复杂的加密算法，跟 GFW 硬碰硬，最终导致流量特征越来越怪异，被一抓一个准；而 <strong>顺应规则（Trojan）</strong> 的思路是打不过就加入。GFW 允许正常的 HTTPS（如网银、电商）通过，Trojan 就把自己 100% 变成 HTTPS。这也是为什么 Trojan 能在一次次敏感时期存活下来的原因。</p>
+        <p><strong>答：对抗规则（如 SS/VMess）</strong> 的思路是发明越来越复杂的加密算法，跟 GFW 硬碰硬，导致流量特征越来越怪异，被一抓一个准；而 <strong>顺应规则（Trojan）</strong> 的思路是打不过就加入。GFW 允许正常的 HTTPS（如网银、电商）通过，Trojan 就把自己 100% 变成 HTTPS。这也是为什么 Trojan 能在一次次敏感时期存活下来的原因。</p>
       </div>
 
       <div class="faq-item">
@@ -94,28 +94,28 @@ const description = "什么是 Trojan 翻墙？本文深度解析 Trojan 协议�
       
       <div class="faq-item">
         <h3>Q3: Trojan-Go 与原版 Trojan 区别是什么？</h3>
-        <p><strong>答：Trojan-Go 是原版 Trojan 的强化升级版。</strong> 原版是用 C++ 写的，而 Trojan-Go 是用 Go 语言重写的，并且它加入了对 <strong>WebSocket (WS)</strong> 协议的支持。这意味着如果你用 Trojan-Go，你不仅可以伪装成网站，甚至还可以把节点接入 Cloudflare CDN 来拯救那些已经被墙掉 IP 的垃圾线路。</p>
+        <p><strong>答：Trojan-Go 是原版 Trojan 的强化升级版。</strong> 原版是用 C++ 写的，而 Trojan-Go 是用 Go 语言重写的，并且它加入了对 <strong>WebSocket (WS)</strong> 协议的支持。这意味着如果你用 Trojan-Go，你不仅可以伪装成网站，甚至还可以把节点接入 Cloudflare CDN 来拯救那些已经被墙掉 IP 的低质量线路。</p>
       </div>
 
-      <h2 id="recommendation">6. 终极选购建议：敏感时期最稳的 Trojan 翻墙机场推荐</h2>
-      <p>看到这里，你一定明白了 Trojan 协议在“抗封锁”上的恐怖实力。<strong>Trojan 节点为什么不容易被 GFW 封 IP</strong>？因为它彻底融入了互联网的汪洋大海。</p>
+      <h2 id="recommendation">6. 选购建议：敏感时期最稳的 Trojan 翻墙机场推荐</h2>
+      <p>看到这里，你一定明白了 Trojan 协议在“抗封锁”上的实力。<strong>Trojan 节点为什么不容易被 GFW 封 IP</strong>？因为它融入了互联网的汪洋大海。</p>
       
       <p>👉 <strong>如果你是极客：</strong> 我们强烈推荐您购买一台国外 VPS，自己申请域名，利用 Trojan 或 VLESS 搭建自己的专属防封锁节点，享受折腾的乐趣。</p>
       
-      <p>👉 <strong>如果你是普通用户：</strong> 维护域名和证书过期是非常痛苦的事情。市面上有很多优质机场，不仅提供极致低延迟的 <strong>专线 (SS)</strong>，为了防止意外，还会提供大量 <strong>全节点支持 Trojan 协议的备用防封节点</strong>，以确保在敏感时期万无一失。</p>
+      <p>👉 <strong>如果你是普通用户：</strong> 维护域名和证书过期是痛苦的事情。市面上有很多优质机场，不仅提供较低延迟的 <strong>专线 (SS)</strong>，为了防止意外，还会提供大量 <strong>全节点支持 Trojan 协议的备用防封节点</strong>，以确保在敏感时期万无一失。</p>
       
       <p>为了让您在每年的敏感时期依然保持网络通畅，我们为您精选了目前市面上 <strong>技术实力最强、敏感时期最稳的 Trojan 翻墙机场</strong>：</p>
       
-      <p>👉 <strong><a href="/recommend/">2026年敏感时期最稳的高端机场推荐 (全面支持 Trojan / VLESS 防封锁)</a></strong></p>
+      <p>👉 <strong><a href="/recommend/">2026年敏感时期最稳的机场推荐 (全面支持 Trojan / VLESS 防封锁)</a></strong></p>
       
-      <p>专业的事交给专业的人，选对机场，彻底告别证书过期和断网红节点的焦虑吧！</p>
+      <p>专业的事交给专业的人，选对机场，告别证书过期和断网红节点的焦虑吧！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #8b5cf6; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.05);">
           <h4 style="margin-top: 0; color: #6d28d9; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/knowledge/sing-box-tutorial-import-sub-tun-mode/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Sing-box 新手配置指南：如何导入订阅并开启 TUN 模式 ↗</a></li>
             <li><a href="/knowledge/proxy-airport-logging-privacy-risks/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">录日志 (Logging)：你的机场会出卖你的浏览记录吗？ ↗</a></li>

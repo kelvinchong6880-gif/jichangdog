@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const title = "Surfboard (冲浪板) 安卓端使用指南：完美兼容 Surge 的翻墙利器";
-const description = "寻找安卓 Surge 替代软件？深度解析 Surfboard 冲浪板官方下载、Surge 配置导入、解决解析失败与节点 Timeout 超时报错，打造最高颜值的翻墙体验。";
+const title = "Surfboard (冲浪板) 安卓端使用指南：兼容 Surge 的翻墙利器";
+const description = "寻找安卓 Surge 替代软件？解析 Surfboard 冲浪板官方下载、Surge 配置导入、解决解析失败与节点 Timeout 超时报错，打造最高颜值的翻墙体验。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,10 +9,10 @@ const description = "寻找安卓 Surge 替代软件？深度解析 Surfboard �
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：Surfboard 是安卓生态中独树一帜的“网络调试艺术品”。</strong><br><br>对于厌倦了 Clash 繁杂面板和 v2rayNG 简陋界面的玩家而言，Surfboard (冲浪板) 的杀手锏在于：<strong>它完美兼容苹果顶奢神器 Surge 的 <code>.conf</code> 托管配置文件</strong>。作为安卓端最强 Surge 替代软件，它拥有极其现代化的 UI、原生的网络测速仪表盘以及媲美 Surge 的强大策略组分流算法。<br><strong>新手避坑铁律：</strong>Surfboard 原生 <strong>不识别</strong> 普通的 Base64 (V2ray) 或 Clash (YAML) 订阅格式。强行导入普通的机场链接会直接引发“解析失败”报错。你必须在机场后台获取 <strong>“Surge 专属配置”</strong> 或利用第三方订阅转换器（Subconverter）生成兼容配置。</p>
+      <p class="lead-paragraph"><strong>结论先行：Surfboard 是安卓生态中独树一帜的“网络调试艺术品”。</strong><br><br>对于厌倦了 Clash 繁杂面板和 v2rayNG 简陋界面的玩家而言，Surfboard (冲浪板) 的杀手锏在于：<strong>它兼容苹果顶奢工具 Surge 的 <code>.conf</code> 托管配置文件</strong>。作为安卓端最强 Surge 替代软件，它拥有现代化的 UI、原生的网络测速仪表盘以及媲美 Surge 的强大策略组分流算法。<br><strong>新手避坑铁律：</strong>Surfboard 原生 <strong>不识别</strong> 普通的 Base64 (V2ray) 或 Clash (YAML) 订阅格式。强行导入普通的机场链接会直接引发“解析失败”报错。你必须在机场后台获取 <strong>“Surge 专属配置”</strong> 或利用第三方订阅转换器（Subconverter）生成兼容配置。</p>
 
       <h2 id="client-comparison">1. 阵营对决：安卓翻墙三大生态对比表</h2>
-      <p>安卓端的翻墙软件已经形成了泾渭分明的三大底层生态。帮助小白快速理清 Surfboard 在其中的独特生态位，是彻底玩转它的第一步：</p>
+      <p>安卓端的翻墙软件已经形成了泾渭分明的三大底层生态。帮助小白快速理清 Surfboard 在其中的独特生态位，是玩转它的第一步：</p>
       
       <div class="table-responsive">
         <table>
@@ -34,24 +34,24 @@ const description = "寻找安卓 Surge 替代软件？深度解析 Surfboard �
             <tr>
               <td><strong>CMFA / FlClash</strong></td>
               <td>Clash 生态 (<strong>.yaml</strong> 格式)</td>
-              <td>功能极其繁杂，UI 硬核极客向。</td>
+              <td>功能繁杂，UI 详细极客向。</td>
               <td>🛠️ 习惯电脑端 Clash 逻辑、重度折腾策略组与规则预处理的老鸟。</td>
             </tr>
             <tr>
               <td><strong>v2rayNG</strong></td>
               <td>Xray 生态 (<strong>纯净节点链接列表</strong>)</td>
-              <td>复古简陋，没有花哨面板，极致省电。</td>
-              <td>🔋 追求极低内存占用、只在乎节点能不能连通的纯实用主义者。</td>
+              <td>复古简陋，没有花哨面板，省电。</td>
+              <td>🔋 追求低内存占用、只在乎节点能不能连通的纯实用主义者。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <h2 id="tech-deep-dive">2. 安卓极客进阶：榨干 Surfboard 底层的 Surge 引擎</h2>
-      <p>下载好 Surfboard 并成功安装后，不要止步于简单的代理开关。这款软件的底层网络引擎几乎复刻了 Surge 3/4 的标准，你完全可以把它当成一个免费的安卓版 Surge 来使用。以下是彻底压榨其潜力的硬核改造方案：</p>
+      <p>下载好 Surfboard 并成功安装后，不要止步于简单的代理开关。这款软件的底层网络引擎几乎复刻了 Surge 3/4 的标准，你完全可以把它当成一个免费的安卓版 Surge 来使用。以下是压榨其潜力的详细改造方案：</p>
       
       <h3>突破格式壁垒：Subconverter 订阅转换强制注入</h3>
-      <p>由于极其苛刻的配置要求，90% 的新手会在第一步“导入机场链接”时因为“Config Parse Error”直接放弃。<br>如果你购买的平价机场没有提供“Surge 订阅”，你可以使用极客圈广泛使用的 <strong>Subconverter (订阅转换 API)</strong> 进行云端强转。<br>找一个可靠的转换前端，或者直接手动构造 URL 注入。Surfboard 在底层会完整解析 Surge 的 <code>[Proxy]</code> 和 <code>[Proxy Group]</code> 语法：</p>
+      <p>由于严格的配置要求，90% 的新手会在第一步“导入机场链接”时因为“Config Parse Error”直接放弃。<br>如果你购买的平价机场没有提供“Surge 订阅”，你可以使用极客圈广泛使用的 <strong>Subconverter (订阅转换 API)</strong> 进行云端强转。<br>找一个可靠的转换前端，或者直接手动构造 URL 注入。Surfboard 在底层会完整解析 Surge 的 <code>[Proxy]</code> 和 <code>[Proxy Group]</code> 语法：</p>
       <pre is:raw><code>// 这是一个 Surge/Surfboard 标准配置文件的底层结构片段
 [Proxy]
 🇭🇰 HK-01 = ss, 198.18.0.1, 1080, encrypt-method=chacha20-ietf-poly1305, password=xxx
@@ -65,10 +65,10 @@ const description = "寻找安卓 Surge 替代软件？深度解析 Surfboard �
 DOMAIN-SUFFIX,google.com,🌐 代理模式
 DOMAIN-KEYWORD,netflix,🎬 流媒体
 FINAL,DIRECT</code></pre>
-      <p>如上所示，Surfboard 能完美识别并渲染出漂亮的测速组 (url-test) 与选择组 (select)。将机场链接强转为 <code>.conf</code> 格式后，导入 Surfboard 的 <strong>【配置 (Profiles)】</strong> 即可满血复活！</p>
+      <p>如上所示，Surfboard 能识别并渲染出漂亮的测速组 (url-test) 与选择组 (select)。将机场链接强转为 <code>.conf</code> 格式后，导入 Surfboard 的 <strong>【配置 (Profiles)】</strong> 即可满血复活！</p>
 
-      <h3>彻底关闭 MIUI/HyperOS 电池绞肉机：Surfboard 绕过局域网与耗电优化</h3>
-      <p>虽然 Surfboard 的功耗控制优于早期的原生 Clash，但在严苛的国产安卓系统（如小米 HyperOS、华为鸿蒙、ColorOS）面前，依然逃不过被“系统杀后台”导致频繁断流的命运。<br><strong>极限防断流保活 4 步曲：</strong><br>1. 在系统设置的应用管理中找到 Surfboard，将【电池优化 / 省电策略】强制改为 <strong>【无限制】</strong>。<br>2. 在【自启动权限】中，开启 <strong>自启动</strong> 与 <strong>关联启动</strong>。<br>3. 在多任务卡片界面，将 Surfboard 卡片 <strong>下拉加锁</strong>。<br>4. <strong>最重要的一步（耗电优化核心）：</strong>打开 Surfboard 侧边栏，进入【设置】 -> 【路由】，务必勾选 <strong>【绕过局域网 (Bypass LAN)】</strong> 和 <strong>【绕过中国大陆 IP】</strong>。这会让国内流量和局域网投屏流量直接绕过 VPN 隧道模块，大幅降低 CPU 发热与耗电量！</p>
+      <h3>关闭 MIUI/HyperOS 电池绞肉机：Surfboard 绕过局域网与耗电优化</h3>
+      <p>虽然 Surfboard 的功耗控制优于早期的原生 Clash，但在严格的国产安卓系统（如小米 HyperOS、华为鸿蒙、ColorOS）面前，依然逃不过被“系统杀后台”导致频繁断流的命运。<br><strong>极限防断流保活 4 步曲：</strong><br>1. 在系统设置的应用管理中找到 Surfboard，将【电池优化 / 省电策略】强制改为 <strong>【无限制】</strong>。<br>2. 在【自启动权限】中，开启 <strong>自启动</strong> 与 <strong>关联启动</strong>。<br>3. 在多任务卡片界面，将 Surfboard 卡片 <strong>下拉加锁</strong>。<br>4. <strong>最重要的一步（耗电优化核心）：</strong>打开 Surfboard 侧边栏，进入【设置】 -> 【路由】，务必勾选 <strong>【绕过局域网 (Bypass LAN)】</strong> 和 <strong>【绕过中国大陆 IP】</strong>。这会让国内流量和局域网投屏流量直接绕过 VPN 隧道模块，大幅降低 CPU 发热与耗电量！</p>
 
       <h3>Surge 模块平移：DNS 劫持与 MITM 局部重写</h3>
       <p>作为 Surge 的精神延续，Surfboard 同样支持本地模块覆盖。你可以利用底层的 <code>[Host]</code> 区域进行 DNS 劫持去广告，或者利用 <code>[URL Rewrite]</code> 进行 URL 302 重定向。<br>例如，为了防止国内 App 获取到精准的地理位置，极客会在配置的末尾加上如下重写规则：</p>
@@ -79,19 +79,19 @@ FINAL,DIRECT</code></pre>
 [MITM]
 skip-server-cert-verify = true
 tcp-connection = true</code></pre>
-      <p>这种纯正的 Surge 极客语法体验，是任何基于 yaml 的安卓客户端都无法提供的绝对优雅。</p>
+      <p>这种 Surge 极客语法体验，是任何基于 yaml 的安卓客户端都无法提供的优雅。</p>
 
-      <h2 id="qa-faq">3. 安卓高频报错与终极排障指南 (Q&A)</h2>
-      <p>在享受绝美 UI 和优雅的 Surge 生态时，新手极其容易踩到底层网络握手或订阅拉取的坑。以下是最核心的报错排障解法：</p>
+      <h2 id="qa-faq">3. 安卓高频报错与排障指南 (Q&A)</h2>
+      <p>在享受绝美 UI 和优雅的 Surge 生态时，新手容易踩到底层网络握手或订阅拉取的坑。以下是最核心的报错排障解法：</p>
 
       <div class="faq-item">
         <h3>Q1: Surfboard 导入订阅提示“解析失败 (Parse Error / Invalid Format)”怎么办？</h3>
-        <p><strong>答：</strong>这是 99% 的新手都会遇到的问题。Surfboard <strong>绝对不支持</strong> 直接粘贴 Vmess 的 Base64 乱码链接或者 Clash 的 Yaml 链接。<br><strong>解法：</strong>前往机场后台，寻找 <strong>“复制 Surge 3/4 订阅链接”</strong> 或 <strong>“一键导入 Surge”</strong>。如果机场太垃圾没有这个选项，请立刻在谷歌搜索“在线订阅转换 (Subconverter)”，将机场给你的任意链接放进去，目标客户端选择 <code>Surge 3/4</code>，生成一段全新的 URL，再粘贴进 Surfboard 即可瞬间解决。</p>
+        <p><strong>答：</strong>这是 99% 的新手都会遇到的问题。Surfboard <strong>不支持</strong> 直接粘贴 Vmess 的 Base64 乱码链接或者 Clash 的 Yaml 链接。<br><strong>解法：</strong>前往机场后台，寻找 <strong>“复制 Surge 3/4 订阅链接”</strong> 或 <strong>“一键导入 Surge”</strong>。如果机场太低质量没有这个选项，请立刻在谷歌搜索“在线订阅转换 (Subconverter)”，将机场给你的任意链接放进去，目标客户端选择 <code>Surge 3/4</code>，生成一段全新的 URL，再粘贴进 Surfboard 即可瞬间解决。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q2: 为什么导入成功后，Surfboard 节点全部显示超时 (Timeout)，国内 App 正常但打不开推特？</h3>
-        <p><strong>答：</strong>“Timeout”是底层加密协议握手失败的典型报错。在 Surfboard 中，通常有两大元凶：<br><strong>元凶一（时间不同步）：</strong> 你的手机系统时间与真实的北京时间相差了 30 秒以上。TLS 与 Trojan 加密对时间戳极其敏感。<strong>解法：去手机设置里开启“自动获取网络时间”。</strong><br><strong>元凶二（协议不支持）：</strong> 很多低端机场的“Surge 订阅”由于生成器陈旧，采用了极其古老的 Vmess 加密算法甚至早已被淘汰的混淆。而 Surfboard 底层引擎对这些旧协议的支持极为严苛。如果你反复超时，说明机场下发的底层配置参数有严重错误。</p>
+        <p><strong>答：</strong>“Timeout”是底层加密协议握手失败的典型报错。在 Surfboard 中，通常有两大元凶：<br><strong>元凶一（时间不同步）：</strong> 你的手机系统时间与真实的北京时间相差了 30 秒以上。TLS 与 Trojan 加密对时间戳敏感。<strong>解法：去手机设置里开启“自动获取网络时间”。</strong><br><strong>元凶二（协议不支持）：</strong> 很多低端机场的“Surge 订阅”由于生成器陈旧，采用了古老的 Vmess 加密算法甚至早已被淘汰的混淆。而 Surfboard 底层引擎对这些旧协议的支持严格。如果你反复超时，说明机场下发的底层配置参数有严重错误。</p>
       </div>
 
       <div class="faq-item">
@@ -101,15 +101,15 @@ tcp-connection = true</code></pre>
       
       <div class="faq-item">
         <h3>Q4: 安卓的 v2rayNG 和 Surfboard 到底该选哪个？</h3>
-        <p><strong>答：</strong>看你的设备性能和使用习惯。如果你的手机是 12GB+ 内存的顶级旗舰（骁龙 8 Gen 2 / Gen 3），且你同时也是一名 Mac / iPhone (Surge) 的重度使用者，想统一自己的多端配置文件规则，那么 <strong>Surfboard</strong> 是你跨端同步规则的完美利器。<br>但如果你只看重“绝对极致的低内存耗电”，或者你的机场节点全都采用了最新的 VLESS-Reality 协议（Surfboard 对极个别最新前沿协议的支持可能不如纯正的 Xray 核心客户端快），那么请老老实实用回 <strong>v2rayNG</strong>。</p>
+        <p><strong>答：</strong>看你的设备性能和使用习惯。如果你的手机是 12GB+ 内存的旗舰（骁龙 8 Gen 2 / Gen 3），且你同时也是一名 Mac / iPhone (Surge) 的重度使用者，想统一自己的多端配置文件规则，那么 <strong>Surfboard</strong> 是你跨端同步规则的利器。<br>但如果你只看重“较低的内存耗电”，或者你的机场节点全都采用了最新的 VLESS-Reality 协议（Surfboard 对极个别最新前沿协议的支持可能不如 Xray 核心客户端快），那么请老老实实用回 <strong>v2rayNG</strong>。</p>
       </div>
 
       <h2 id="conclusion">4. 结语：让优雅的浪板，冲刺在最纯净的海洋</h2>
-      <p>当你折腾完订阅转换，彻底搞懂了 <code>.conf</code> 的底层语法，你终于可以在安卓机上享受到丝滑流畅的测速仪表盘和极简的 Material Design 动画。</p>
-      <p>但是，<strong>再优雅的冲浪板 (Surfboard)，如果在泥泞和满是礁石的河沟里划水，也永远体验不到冲浪的快感。</strong></p>
-      <p>如果你给 Surfboard 导入的是那种几块钱一个月的低端直连万人骑机场。每逢晚高峰，GFW 墙的探测和海底公网光缆的疯狂丢包 QoS 会让你的所有节点全部变成红色的 <code>Timeout</code>。空有极其先进的 Surge 分流算法，却连一张 Netflix 的封面海报都刷不出来。</p>
-      <p>要想真正享受 0 延迟秒开网页的极客快感，你必须给这块优雅的冲浪板换上一片“波澜不惊”的纯净海域——那就是 <strong>端到端全链路不过墙的顶级 IPLC / IEPL 企业级物理专线</strong>。</p>
-      <p>如果你受够了低端线路的频繁断流与 DNS 污染，强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。榜单中的顶级供应商，100% 原生提供毫无语法错误的 Surge / Surfboard 专属订阅链接，彻底免去转换的烦恼，一键导入，直接起飞！</p>
+      <p>当你折腾完订阅转换，搞懂了 <code>.conf</code> 的底层语法，你终于可以在安卓机上享受到流畅流畅的测速仪表盘和极简的 Material Design 动画。</p>
+      <p>但是，<strong>再优雅的冲浪板 (Surfboard)，如果在泥泞和满是礁石的河沟里划水，也长期体验不到冲浪的快感。</strong></p>
+      <p>如果你给 Surfboard 导入的是那种几块钱一个月的低端直连万人骑机场。每逢晚高峰，GFW 墙的探测和海底公网光缆的大量丢包 QoS 会让你的所有节点全部变成红色的 <code>Timeout</code>。空有 Surge 分流算法，却连一张 Netflix 的封面海报都刷不出来。</p>
+      <p>要想享受 0 延迟加载网页的极客快感，你必须给这块优雅的冲浪板换上一片“波澜不惊”的纯净海域——那就是 <strong>端到端全链路不过墙的 IPLC / IEPL 企业级物理专线</strong>。</p>
+      <p>如果你受够了低端线路的频繁断流与 DNS 污染，建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。榜单中的供应商，100% 原生提供毫无语法错误的 Surge / Surfboard 专属订阅链接，免去转换的烦恼，一键导入，直接起飞！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

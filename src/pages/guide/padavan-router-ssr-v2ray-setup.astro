@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "华硕老毛子 (Padavan) 固件配置 SSR/V2Ray 节点教程";
-const description = "斐讯 K2P 还能翻墙吗？2026 最新华硕老毛子 Padavan 固件配置 V2Ray/SSR 指南。深度解析 MT7621 算力瓶颈、CPU 100% 满载与脚本更新失败排错。";
+const description = "斐讯 K2P 还能翻墙吗？2026 最新华硕老毛子 Padavan 固件配置 V2Ray/SSR 指南。解析 MT7621 算力瓶颈、CPU 100% 满载与脚本更新失败排错。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,9 +9,9 @@ const description = "斐讯 K2P 还能翻墙吗？2026 最新华硕老毛子 Pad
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：用老毛子跑 V2Ray，请务必关注 CPU 占用！</strong><br><br>在 2026 年，如果你还在用斐讯 K2P 刷的 Padavan（老毛子）固件翻墙，你必须面对一个残酷的现实：老路由的 MT7621 芯片算力太弱，面对复杂的 V2Ray 加密，CPU 动辄 100% 满载直接卡死。<br><strong>勉强够用的 3 步小白配置法：</strong><br>1. 登录路由器后台（通常是 <code>192.168.123.1</code>），在左侧菜单找到 <strong>【扩展功能】 ➔ 【搭建 Web 环境】 ➔ 【Shadowsocks】</strong> 或 <strong>【v2ray】</strong>。<br>2. 开启开关，在“服务器节点”栏目下，<strong>强烈建议手动填入节点信息</strong>（因为老毛子的订阅更新脚本在 2026 年大概率已因 Github 证书过期而失效报错）。<br>3. 运行模式选择 <strong>【GFWList 模式】</strong>（仅被墙网站走代理，降低 CPU 压力），点击底部的“应用本页面设置”。如果没网，请手动点击“更新 GFWList 规则库”。</p>
+      <p class="lead-paragraph"><strong>结论先行：用老毛子跑 V2Ray，请务必关注 CPU 占用！</strong><br><br>在 2026 年，如果你还在用斐讯 K2P 刷的 Padavan（老毛子）固件翻墙，你必须面对一个复杂的现实：老路由的 MT7621 芯片算力太弱，面对复杂的 V2Ray 加密，CPU 动辄 100% 满载直接卡死。<br><strong>勉强够用的 3 步小白配置法：</strong><br>1. 登录路由器后台（通常是 <code>192.168.123.1</code>），在左侧菜单找到 <strong>【扩展功能】 ➔ 【搭建 Web 环境】 ➔ 【Shadowsocks】</strong> 或 <strong>【v2ray】</strong>。<br>2. 开启开关，在“服务器节点”栏目下，<strong>建议手动填入节点信息</strong>（因为老毛子的订阅更新脚本在 2026 年大概率已因 Github 证书过期而失效报错）。<br>3. 运行模式选择 <strong>【GFWList 模式】</strong>（仅被墙网站走代理，降低 CPU 压力），点击底部的“应用本页面设置”。如果没网，请手动点击“更新 GFWList 规则库”。</p>
 
-      <h2 id="hardware-comparison">1. 残酷的现实：路由器翻墙方案算力与协议对比表</h2>
+      <h2 id="hardware-comparison">1. 复杂的现实：路由器翻墙方案算力与协议对比表</h2>
       <p>不要再对你抽屉里那台战损版的“斐讯 K2P”抱有不切实际的幻想。在 2026 年的宽带环境下，硬件底子决定了你的翻墙体验上限：</p>
       
       <div class="table-responsive">
@@ -29,32 +29,32 @@ const description = "斐讯 K2P 还能翻墙吗？2026 最新华硕老毛子 Pad
               <td><strong>老毛子 Padavan</strong><br><span style="font-size: 0.85em; color: #6b7280;">斐讯 K2P / 新路由 3</span></td>
               <td>约 <strong>30~50 Mbps</strong> 即卡死重启。</td>
               <td><strong>极差。</strong> 只支持老旧的 SSR/Vmess，甚至不支持 Xray 内核。</td>
-              <td>❌ <strong>性能严重落后，极其容易断流死机，建议关闭翻墙功能，仅做单纯的无线 AP 使用。</strong></td>
+              <td>❌ <strong>性能严重落后，容易断流死机，建议关闭翻墙功能，仅做单纯的无线 AP 使用。</strong></td>
             </tr>
             <tr>
               <td><strong>ARM 架构硬路由</strong><br><span style="font-size: 0.85em; color: #6b7280;">华硕 AX 系列 (刷梅林)</span></td>
               <td>约 <strong>200~500 Mbps</strong>。</td>
-              <td><strong>较好。</strong> 可安装 MerlinClash 支持主流节点。</td>
+              <td><strong>。</strong> 可安装 MerlinClash 支持主流节点。</td>
               <td>⚠️ 适合不想折腾 X86 软路由，且家里只有基础看剧需求的普通家庭。</td>
             </tr>
             <tr>
               <td><strong>X86 软路由</strong><br><span style="font-size: 0.85em; color: #6b7280;">J4125 / N100 迷你主机</span></td>
               <td><strong>轻松跑满 1000 Mbps 千兆。</strong></td>
-              <td><strong>完美。</strong> 支持 OpenClash/PassWall 与最新的 Reality 协议。</td>
-              <td>🌟 <strong>极客与重度玩家首选。</strong> 全屋千兆透明代理的终极归宿。</td>
+              <td><strong>。</strong> 支持 OpenClash/PassWall 与最新的 Reality 协议。</td>
+              <td>🌟 <strong>极客与重度玩家候选。</strong> 全屋千兆透明代理的归宿。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <h2 id="tech-deep-dive">2. 极客解构：老毛子的硬件硬伤与底层排错</h2>
-      <p>虽然我们极度不推荐用老毛子翻墙，但如果你因为各种原因必须用它，你必须要懂以下这些底层硬件瓶颈与硬核救机操作。</p>
+      <p>虽然我们不推荐用老毛子翻墙，但如果你因为各种原因必须用它，你必须要懂以下这些底层硬件瓶颈与详细救机操作。</p>
       
       <h3>MT7621 芯片算力极限与 AES 加密解密瓶颈</h3>
-      <p>Padavan 固件多运行于联发科 MT7621 芯片上。这颗 880MHz 的双核 CPU 应对普通的网页浏览绰绰有余，但致命伤是它 <strong>缺乏 AES-NI 硬件加密指令集加速</strong>。<br>当你运行 Vmess 或 Trojan 协议时，所有的 TLS 加密解密任务全靠这颗羸弱的 CPU 用纯软件“硬算”。一旦你打开 YouTube 4K 视频，路由器瞬间就会经历：<code>CPU 100% 满载 -> 内存耗尽 -> OOM (Out of Memory) 内核杀进程 -> 路由器死机断网重启</code>。<br><strong>保命设置：</strong>在节点配置中，如果你还在用 SSR (ShadowsocksR)，请将加密方式修改为对 CPU 最友好的 <code>chacha20-ietf</code>，绝对不要用 <code>aes-256-gcm</code>。同时，运行模式<strong>必须</strong>选【GFWList 绕过局域网】，绝不可开全局代理！</p>
+      <p>Padavan 固件多运行于联发科 MT7621 芯片上。这颗 880MHz 的双核 CPU 应对普通的网页浏览绰绰有余，但致命伤是它 <strong>缺乏 AES-NI 硬件加密指令集加速</strong>。<br>当你运行 Vmess 或 Trojan 协议时，所有的 TLS 加密解密任务全靠这颗羸弱的 CPU 用纯软件“硬算”。一旦你打开 YouTube 4K 视频，路由器瞬间就会经历：<code>CPU 100% 满载 -> 内存耗尽 -> OOM (Out of Memory) 内核杀进程 -> 路由器死机断网重启</code>。<br><strong>保命设置：</strong>在节点配置中，如果你还在用 SSR (ShadowsocksR)，请将加密方式修改为对 CPU 最友好的 <code>chacha20-ietf</code>，不要用 <code>aes-256-gcm</code>。同时，运行模式<strong>必须</strong>选【GFWList 绕过局域网】，通常不可开全局代理！</p>
 
       <h3>闪存空间不足 (No space left on device) 与脚本更新订阅失败</h3>
-      <p>斐讯 K2P 的闪存 (ROM) 只有可怜的 16MB，而一个最新的 V2Ray 核心二进制文件动辄 15MB 以上。这就导致了非常尴尬的局面：老毛子固件根本装不下最新的内核。<br>很多 hiboy 版本的固件，每次重启路由器，都会执行 <code>curl</code> 脚本去 Github 或者云端临时下载 <code>v2ray-core</code> 到内存里运行。但在 2026 年，由于 Github 经常被墙或者云端服务器早已失效，你会看到日志里疯狂报错 <code>curl error 6</code> 或 <code>脚本更新订阅失败</code>。<br><strong>SSH 手动注入核心法：</strong></p>
+      <p>斐讯 K2P 的闪存 (ROM) 只有可怜的 16MB，而一个最新的 V2Ray 核心二进制文件动辄 15MB 以上。这就导致了尴尬的局面：老毛子固件根本装不下最新的内核。<br>很多 hiboy 版本的固件，每次重启路由器，都会执行 <code>curl</code> 脚本去 Github 或者云端临时下载 <code>v2ray-core</code> 到内存里运行。但在 2026 年，由于 Github 经常被墙或者云端服务器早已失效，你会看到日志里大量报错 <code>curl error 6</code> 或 <code>脚本更新订阅失败</code>。<br><strong>SSH 手动注入核心法：</strong></p>
       <pre is:raw><code># 通过 SSH 登录路由器后，将旧版核心备份，手动上传新核心到 /opt/bin
 mv /opt/bin/v2ray /opt/bin/v2ray_bak
 # 使用 WinSCP 将你下载的适合 MIPS 架构的 v2ray 内核拖入 /opt/bin
@@ -64,13 +64,13 @@ chmod 755 /opt/bin/v2ctl
 /etc/storage/v2ray_script.sh restart</code></pre>
       <p>注意，下载内核时必须认准 <code>mipsle</code> (小端序) 架构，x86 的核心扔进去是不可能跑起来的。</p>
 
-      <h3>老毛子固件不支持 Xray / Reality 协议的终极死局</h3>
-      <p>目前市面上最顶级的机场，为了对抗 GFW 极其先进的深度包检测 (DPI)，已经全面抛弃了老旧的 Vmess，转向了 <strong>VLESS-Reality</strong> 协议。<br>由于 Padavan 系统内核古老，且第三方开发者早已停更，老毛子的 UI 界面中根本没有 Xray 和 Reality 的设置选项（它也不支持 Clash 或 PassWall 这种先进插件）。这就造成了一个死局：<strong>就算你手里捏着最顶级的机场订阅，在老毛子路由器上也只是一堆无法解析的废代码。</strong></p>
+      <h3>老毛子固件不支持 Xray / Reality 协议的死局</h3>
+      <p>目前市面上最的机场，为了对抗 GFW 深度包检测 (DPI)，已经全面抛弃了老旧的 Vmess，转向了 <strong>VLESS-Reality</strong> 协议。<br>由于 Padavan 系统内核古老，且第三方开发者早已停更，老毛子的 UI 界面中根本没有 Xray 和 Reality 的设置选项（它也不支持 Clash 或 PassWall 这种插件）。这就造成了一个死局：<strong>就算你手里捏着最的机场订阅，在老毛子路由器上也只是一堆无法解析的废代码。</strong></p>
 
       <h3>iptables 防火墙透明劫持与 KCP 协议的 CPU 毁灭打击</h3>
-      <p>很多老玩家在 2026 年依然不信邪，非要在 K2P 上尝试使用 <code>mKCP</code> (基于 UDP 的多路复用协议) 来拯救晚高峰的丢包。这是一种极其自杀的行为。<br><strong>底层机制揭秘：</strong> 当你开启老毛子的“全局”或“GFWList”透明代理时，系统会在底层的 iptables 写入 <code>REDIRECT</code> 规则。这意味着所有局域网设备发出的 TCP 报文，都会被系统的 netfilter 防火墙强行拆包，然后重定向到 V2Ray 的 <code>1080</code> 监听端口。<br>而 KCP 协议本身为了降低延迟，会疯狂发送海量的冗余 UDP 包 (FEC 前向纠错)。<br>对于缺乏硬件加速的 MT7621 来说：<strong>iptables 频繁的上下文切换 (Context Switch) + 海量 UDP 软件加解密 + 16MB 的可怜内存</strong> = 路由器温度瞬间飙升至 80 度以上，系统看门狗 (Watchdog) 直接强制触发硬件重启。</p>
+      <p>很多老玩家在 2026 年依然不信邪，非要在 K2P 上尝试使用 <code>mKCP</code> (基于 UDP 的多路复用协议) 来拯救晚高峰的丢包。这是一种自杀的行为。<br><strong>底层机制说明：</strong> 当你开启老毛子的“全局”或“GFWList”透明代理时，系统会在底层的 iptables 写入 <code>REDIRECT</code> 规则。这意味着所有局域网设备发出的 TCP 报文，都会被系统的 netfilter 防火墙强行拆包，然后重定向到 V2Ray 的 <code>1080</code> 监听端口。<br>而 KCP 协议本身为了降低延迟，会大量发送海量的冗余 UDP 包 (FEC 前向纠错)。<br>对于缺乏硬件加速的 MT7621 来说：<strong>iptables 频繁的上下文切换 (Context Switch) + 海量 UDP 软件加解密 + 16MB 的可怜内存</strong> = 路由器温度瞬间飙升至 80 度以上，系统看门狗 (Watchdog) 直接强制触发硬件重启。</p>
 
-      <h2 id="qa-faq">3. 高频排错与长尾硬件焦虑终极解析 (Q&A)</h2>
+      <h2 id="qa-faq">3. 高频排错与长尾硬件焦虑解析 (Q&A)</h2>
       <p>如果你还在用老毛子苦苦支撑，以下这些现象一定每天都在折磨着你：</p>
 
       <div class="faq-item">
@@ -97,7 +97,7 @@ chmod 755 /opt/bin/v2ctl
       <p>看完这篇教程，你应该明白：强行在 2026 年用斐讯 K2P 刷老毛子翻墙，无异于给一台老年代步车强行绑上喷气式发动机，结果必然是车毁人亡（频繁死机断流）。</p>
       <p>如果你仅仅是想在手机上看看外网，老老实实关掉老毛子后台的那个 V2Ray 开关，在手机上安装 <strong>NekoBox</strong> 或 <strong>v2rayNG</strong> 客户端，体验会比让路由器强行跑解密好一万倍。</p>
       <p>如果你家里有大量设备（电视、PS5）必须实现全屋网络接管，是时候让老旧的 MT7621 退休，或者把它降级成一台纯粹的无线发射器 (AP) 了。</p>
-      <p>花几百块钱买一台 X86 架构的 J4125/N100 软路由，搭配我们推荐的 <strong><a href="/recommend/">2026 高端专线机场榜单</a></strong>。那些原生支持 VLESS-Reality 的顶级专线，在千兆算力的软路由加持下，能让你瞬间拥有 0 延迟、全屋秒开 4K 的现代网络生活。放下对老物件的执念吧，外面的世界其实很流畅！</p>
+      <p>花几百块钱买一台 X86 架构的 J4125/N100 软路由，搭配我们推荐的 <strong><a href="/recommend/">2026 专线机场榜单</a></strong>。那些原生支持 VLESS-Reality 的专线，在千兆算力的软路由加持下，能让你瞬间拥有 0 延迟、全屋加载 4K 的现代网络生活。放下对老物件的执念吧，外面的世界其实很流畅！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "PassWall 详细配置指南：打造全家极速透明翻墙环境";
-const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理设置！教你切换 Sing-box 核心、配置 ChinaDNS-NG 防泄漏，彻底解决国内网站打不开与游戏 NAT 痛点。";
+const description = "剖析 OpenWrt PassWall 插件下载与透明代理设置！教你切换 Sing-box 核心、配置 ChinaDNS-NG 防泄漏，解决国内网站打不开与游戏 NAT 痛点。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,10 +9,10 @@ const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：打造极速全屋无感翻墙，PassWall 是轻量化首选！</strong><br><br>很多软路由新手抱怨 OpenClash 占用内存大、Fake-IP 设置繁琐。而在 2026 年，PassWall 凭借极低的 CPU 占用和对最新抗封锁协议（如 VLESS-Reality / Sing-box）的原生支持，成为了老旧路由器和极客玩家的心头好。<br><strong>透明代理仅需 3 步：</strong><br>1. 在“节点订阅”中粘贴机场链接并保存更新。<br>2. 在“基本设置”中将 TCP 和 UDP 均指向测速正常的节点（可分离配置）。<br>3. 勾选“开启 TCP/UDP 透明代理”与“中国列表外直连”，点击保存并应用，即可瞬间实现全屋无感翻墙。</p>
+      <p class="lead-paragraph"><strong>结论先行：打造极速全屋无感翻墙，PassWall 是轻量化候选！</strong><br><br>很多软路由新手抱怨 OpenClash 占用内存大、Fake-IP 设置繁琐。而在 2026 年，PassWall 凭借低的 CPU 占用和对最新抗封锁协议（如 VLESS-Reality / Sing-box）的原生支持，成为了老旧路由器和极客玩家的心头好。<br><strong>透明代理仅需 3 步：</strong><br>1. 在“节点订阅”中粘贴机场链接并保存更新。<br>2. 在“基本设置”中将 TCP 和 UDP 均指向测速正常的节点（可分离配置）。<br>3. 勾选“开启 TCP/UDP 透明代理”与“中国列表外直连”，点击保存并应用，即可瞬间实现全屋无感翻墙。</p>
 
       <h2 id="client-comparison">1. 瑜亮之争：软路由核心插件选型对比表</h2>
-      <p>在 OpenWrt 圈子里，PassWall 和 OpenClash 永远是被拿来对比的双雄。认清它们的底层差异，你才能挑选出最适合你家硬件的翻墙引擎：</p>
+      <p>在 OpenWrt 圈子里，PassWall 和 OpenClash 长期是被拿来对比的双雄。认清它们的底层差异，你才能挑选出最适合你家硬件的翻墙引擎：</p>
       
       <div class="table-responsive">
         <table>
@@ -27,40 +27,40 @@ const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理�
           <tbody>
             <tr>
               <td><strong>PassWall</strong></td>
-              <td><strong>极度轻量且迅捷。</strong> 原生调用 Xray/Sing-box 内核，不进行复杂的规则预处理，系统 CPU 负担极小。</td>
+              <td><strong>轻量且迅捷。</strong> 原生调用 Xray/Sing-box 内核，不进行复杂的规则预处理，系统 CPU 负担极小。</td>
               <td>依赖 <strong>ChinaDNS-NG</strong>，国内外域名简单粗暴地并发查询，干净高效。</td>
               <td>⚡ <strong>老旧软路由 (如 MT7621/低配 N1)、追求极速测速延迟的直男极客。</strong></td>
             </tr>
             <tr>
               <td><strong>OpenClash</strong></td>
-              <td>智能分流极其强大。 完美解析复杂的策略组，支持根据不同网站自动切换不同国家节点。</td>
+              <td>智能分流强大。 解析复杂的策略组，支持根据不同网站自动切换不同国家节点。</td>
               <td>高度依赖内核内置的 <strong>Fake-IP</strong> 映射，初学者极易遇到 DNS 端口冲突。</td>
-              <td>🛠️ 拥有高端 X86 软路由、重度依赖规则精细化分流的折腾党玩家。</td>
+              <td>🛠️ 拥有 X86 软路由、重度依赖规则精细化分流的折腾党玩家。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <h2 id="tech-deep-dive">2. 极客进阶：榨干 PassWall 的底层网络架构</h2>
-      <p>如果你只是把 PassWall 当个简单的代理开关，那可就太大材小用了。在 2026 年的复杂封锁环境下，你必须掌握以下几个底层技术，才能保证全屋网络的绝对纯净。</p>
+      <p>如果你只是把 PassWall 当个简单的代理开关，那可就太大材小用了。在 2026 年的复杂封锁环境下，你必须掌握以下几个底层技术，才能保证全屋网络的纯净。</p>
       
       <h3>双核驱动：Sing-box / Xray 核心自由切换</h3>
-      <p>PassWall 最强大的地方，在于它是一个“多内核前端调度器”。它不仅支持传统的 Xray 核心，在最新版本中还原生集成了大红大紫的 <strong>Sing-box 内核</strong>。<br>如果你的机场下发了最新基于 Hysteria2 或者 VLESS-Reality Vision 流控的节点，老旧的内核极易抛出 <code>unsupported protocol</code> 的致命错误。<br><strong>操作方法：</strong>在 PassWall 的【基本设置】最上方，找到 <strong>“TCP 代理方式”</strong> 和 <strong>“UDP 代理方式”</strong>。当你选择 Sing-box 核心后，PassWall 会在后台自动为你生成标准的 JSON 配置文件，彻底免去了你手搓命令行的痛苦，完美支持 2026 所有最前沿的防封锁黑科技。</p>
+      <p>PassWall 最强大的地方，在于它是一个“多内核前端调度器”。它不仅支持传统的 Xray 核心，在最新版本中还原生集成了大红大紫的 <strong>Sing-box 内核</strong>。<br>如果你的机场下发了最新基于 Hysteria2 或者 VLESS-Reality Vision 流控的节点，老旧的内核极易抛出 <code>unsupported protocol</code> 的致命错误。<br><strong>操作方法：</strong>在 PassWall 的【基本设置】最上方，找到 <strong>“TCP 代理方式”</strong> 和 <strong>“UDP 代理方式”</strong>。当你选择 Sing-box 核心后，PassWall 会在后台自动为你生成标准的 JSON 配置文件，免去了你手搓命令行的痛苦，支持 2026 所有最前沿的防封锁黑科技。</p>
 
-      <h3>彻底解决 DNS 泄漏：ChinaDNS-NG 分流原理</h3>
+      <h3>解决 DNS 泄漏：ChinaDNS-NG 分流原理</h3>
       <p>很多小白发现，明明开了 PassWall，但看 YouTube 就是卡，或者隔三差五被提示异地登录。这通常是因为你发生了 <strong>DNS 泄漏 (国内运营商看到了你在解析敏感域名)</strong>。<br>PassWall 解决这一痛点的秘密武器就是内置的 <strong>ChinaDNS-NG</strong>。<br>前往 PassWall 的 <strong>【DNS】</strong> 设置页：<br>1. <strong>过滤模式</strong> 推荐选择：<code>通过 UDP 请求 DNS</code> 或者 <code>ChinaDNS-NG</code>。<br>2. <strong>国内 DNS：</strong> 强制填写 <code>223.5.5.5</code>（阿里云）或 <code>119.29.29.29</code>（腾讯云）。<br>3. <strong>海外远端 DNS：</strong> 务必填写 <code>https://dns.google/dns-query</code> (DoH) 或 <code>8.8.8.8</code>，并勾选 <strong>“通过代理请求”</strong>。<br><strong>底层原理：</strong>当浏览器请求域名时，ChinaDNS-NG 会同时向国内外 DNS 发起查询。如果该域名包含在大陆白名单内，立刻采用阿里云的结果并直连；如果不包含，则强行丢弃国内被污染的假 IP，采用远端隧道发回的纯净 IP 进行海外代理访问！</p>
 
       <h3>主机玩家狂喜：TCP / UDP 节点分离技术</h3>
-      <p>如果你家里有 PS5 / Nintendo Switch，你一定遇到过这种折磨：香港节点的 TCP 网页测速极快，但一打《喷射战士》或者《使命召唤》，UDP 严重丢包导致疯狂掉线。<br>PassWall 独有极其简便的 <strong>节点分离机制</strong>：<br>在【基本设置】中，你可以将 <strong>TCP 节点</strong> 指定为 <code>香港 01</code>（用于网页和视频极速秒开），而将 <strong>UDP 节点</strong> 单独指定为 <code>日本 游戏优化专线</code>。<br>通过底层 <code>iptables</code> (或 nftables) 流量包的报头识别，PassWall 会在系统网卡层将游戏的数据报文精确切分，单独走游戏专线隧道，实现极致的 NAT 穿透体验！</p>
+      <p>如果你家里有 PS5 / Nintendo Switch，你一定遇到过这种折磨：香港节点的 TCP 网页测速极快，但一打《喷射战士》或者《使命召唤》，UDP 严重丢包导致大量掉线。<br>PassWall 独有简便的 <strong>节点分离机制</strong>：<br>在【基本设置】中，你可以将 <strong>TCP 节点</strong> 指定为 <code>香港 01</code>（用于网页和视频极速加载），而将 <strong>UDP 节点</strong> 单独指定为 <code>日本 游戏优化专线</code>。<br>通过底层 <code>iptables</code> (或 nftables) 流量包的报头识别，PassWall 会在系统网卡层将游戏的数据报文精确切分，单独走游戏专线隧道，实现的 NAT 穿透体验！</p>
 
       <h3>访问控制黑白名单 (Access Control)：为 NAS 与 BT 下载保驾护航</h3>
-      <p>在全屋透明翻墙的环境下，有一个致命的痛点：你的群晖 NAS 挂载了 BT / PT 下载，或者配置了 DDNS 动态域名解析。如果这些海量流量不小心被送进了加密隧道，不仅会瞬间耗光你的机场流量，还会导致你的机场账号因为“滥发 BT 种子”被直接封禁！<br>PassWall 提供了极其强大的 <strong>【访问控制】</strong> 功能：<br>1. 进入【访问控制】页面。<br>2. 找到 <strong>局域网 MAC / IP 黑名单</strong> (或不走代理的局域网设备)。<br>3. 将你家 NAS 的固定局域网 IP（例如 <code>192.168.1.100</code>），或者主板的 MAC 地址强行填入。<br><strong>底层机制：</strong>设置后，OpenWrt 的底层 iptables <code>PREROUTING</code> 链会在第一时间拦截这个 IP 发出的所有数据包，强行打上 <code>RETURN</code> 标签，使其绝对不经过 PassWall 的代理进程 (<code>fwmark</code>)。这样一来，NAS 的 BT 洪流直接通过光猫物理网卡奔向公网，彻底实现了家庭局域网的“按需翻墙”。</p>
+      <p>在全屋透明翻墙的环境下，有一个致命的痛点：你的群晖 NAS 挂载了 BT / PT 下载，或者配置了 DDNS 动态域名解析。如果这些海量流量不小心被送进了加密隧道，不仅会瞬间耗光你的机场流量，还会导致你的机场账号因为“滥发 BT 种子”被直接封禁！<br>PassWall 提供了强大的 <strong>【访问控制】</strong> 功能：<br>1. 进入【访问控制】页面。<br>2. 找到 <strong>局域网 MAC / IP 黑名单</strong> (或不走代理的局域网设备)。<br>3. 将你家 NAS 的固定局域网 IP（例如 <code>192.168.1.100</code>），或者主板的 MAC 地址强行填入。<br><strong>底层机制：</strong>设置后，OpenWrt 的底层 iptables <code>PREROUTING</code> 链会在第一时间拦截这个 IP 发出的所有数据包，强行打上 <code>RETURN</code> 标签，使其不经过 PassWall 的代理进程 (<code>fwmark</code>)。这样一来，NAS 的 BT 洪流直接通过光猫物理网卡奔向公网，实现了家庭局域网的“按需翻墙”。</p>
 
       <h3>Hysteria2 与 QUIC 协议暴走：端口跳跃 (Port Hopping) 解析</h3>
-      <p>2026 年，基于 QUIC 协议的 <strong>Hysteria2</strong> 由于其无视拥塞控制的“暴力抢网”特性，成为了软路由极客的新宠。但国内部分运营商（如泉州电信）会对持续大流量的单点 UDP 端口进行直接限速甚至封禁。<br>PassWall 在底层完美支持了 Hysteria2 的 <strong>Port Hopping (端口跳跃)</strong> 技术。当你在 PassWall 导入 Hysteria2 节点时，节点配置中会包含类似 <code>20000-50000</code> 的端口范围。<br>PassWall 启动后，底层 Sing-box 内核会每次随机挑选一个 UDP 端口与海外服务器握手，并在传输过程中不断无缝跳跃。在网警和运营商的 DPI (深度包检测) 雷达上，你的流量只是一堆毫无关联的随机 UDP 碎片，彻底粉碎了运营商的 QoS 封锁机制，让晚高峰依然跑满千兆带宽！</p>
+      <p>2026 年，基于 QUIC 协议的 <strong>Hysteria2</strong> 由于其不受部分拥塞控制的“暴力抢网”特性，成为了软路由极客的新宠。但国内部分运营商（如泉州电信）会对持续大流量的单点 UDP 端口进行直接限速甚至封禁。<br>PassWall 在底层支持了 Hysteria2 的 <strong>Port Hopping (端口跳跃)</strong> 技术。当你在 PassWall 导入 Hysteria2 节点时，节点配置中会包含类似 <code>20000-50000</code> 的端口范围。<br>PassWall 启动后，底层 Sing-box 内核会每次随机挑选一个 UDP 端口与海外服务器握手，并在传输过程中不断无缝跳跃。在网警和运营商的 DPI (深度包检测) 雷达上，你的流量只是一堆毫无关联的随机 UDP 碎片，粉碎了运营商的 QoS 封锁机制，让晚高峰依然跑满千兆带宽！</p>
 
       <h3>底层 Xray Routing JSON 解构</h3>
-      <p>PassWall 的“中国列表外直连”，本质上是在后台为你生成了一份庞大且精密的 <code>routing</code> 规则表。一个真正的极客应该明白这个路由表长什么样：</p>
+      <p>PassWall 的“中国列表外直连”，本质上是在后台为你生成了一份庞大且精密的 <code>routing</code> 规则表。一个极客应该明白这个路由表长什么样：</p>
       <pre is:raw><code>// PassWall 自动生成的 Xray 底层路由片段
 "routing": {
   "domainStrategy": "IPIfNonMatch",
@@ -78,7 +78,7 @@ const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理�
       "outboundTag": "direct",
       "ip": [
         "geoip:cn",              // 放行国内三大运营商 IP
-        "geoip:private"          // 绝对放行内网 192.168.x.x
+        "geoip:private"          // 放行内网 192.168.x.x
       ]
     },
     {
@@ -90,22 +90,22 @@ const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理�
 }</code></pre>
       <p>理解了这套逻辑，你就能在 PassWall 的高级设置中，手动加入自定义的 <code>geosite</code> 规则，实现像外科手术般精准的广告屏蔽和特殊网站放行。</p>
 
-      <h2 id="qa-faq">3. 高频排障与长尾痛点终极解析 (Q&A)</h2>
+      <h2 id="qa-faq">3. 高频排障与长尾痛点解析 (Q&A)</h2>
       <p>配置软路由往往伴随着一堆灵异报错。以下是我们为你整理的最具极客含金量的排雷指南：</p>
 
       <div class="faq-item">
-        <h3>Q1: 为什么 PassWall 开启后，国内网站完全打不开，但国外网站秒开？</h3>
+        <h3>Q1: 为什么 PassWall 开启后，国内网站完全打不开，但国外网站加载？</h3>
         <p><strong>答：</strong>典型的 <strong>DNS 死循环或防火墙未放行</strong> 问题。<br><strong>解法 1：</strong>前往 PassWall 的【规则管理】页面，点击底部的 <strong>“手动更新规则”</strong>。很多时候是因为路由器里的 <code>geoip.dat</code> 和 <code>geosite.dat</code> 数据库严重过期或为空，导致 PassWall 把国内网站也全部当成海外网站送出去了，而恰好你的节点屏蔽了回国流量。<br><strong>解法 2：</strong>进入 OpenWrt 的 【网络】->【防火墙】->【自定义规则】，确保 PassWall 的 iptables 规则没有被其他的流控软件（如 SQM 或 mwan3 多线多拨）给覆盖掉。</p>
       </div>
 
       <div class="faq-item">
-        <h3>Q2: 节点列表里明明显示导入成功了，为什么节点测试时全部 TCP 超时 (Timeout)？</h3>
+        <h3>Q2: 节点列表里明示导入成功了，为什么节点测试时全部 TCP 超时 (Timeout)？</h3>
         <p><strong>答：</strong>“TCP 超时”代表软路由根本无法与海外服务器建立最基础的加密握手。<br><strong>元凶一（时间戳异常）：</strong> 软路由的系统时间严重错误。VLESS 等新协议如果时间误差超过 1 分钟会直接拒绝连接。前往系统设置开启 NTP 网络时间同步。<br><strong>元凶二（内核不支持）：</strong> 你导入了基于 Reality 协议的节点，但你软路由里的 PassWall 版本太老，调用的依然是一年前的 Xray 核心。请通过 SSH 进入软路由，手动下载最新的 Xray 二进制文件替换进 <code>/usr/bin/xray</code> 并赋予 <code>chmod +x</code> 权限。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q3: 为什么 PassWall 软路由做网关，玩主机游戏联机 NAT 依然是类型 3 (Type C)？怎么优化？</h3>
-        <p><strong>答：</strong>NAT 变差是因为你的流量在软路由、光猫、机场服务器之间经历了太多层的网络地址转换 (NAT)。<br><strong>极限优化方案：</strong><br>1. 光猫必须改 <strong>桥接模式</strong>，让软路由直接 PPPoE 拨号获取公网 IP，消除光猫的一层 NAT。<br>2. 在 PassWall 中，千万别开“全全局模式”，必须确保路由规则是 <strong>“中国列表外”</strong>。<br>3. 终极大招：开启软路由的 <strong>UPnP</strong> 功能。并在 PassWall 节点列表里，挑选带有“原生 IP”或者“支持 FullCone NAT”后缀的高级游戏专线节点，将其指定为 UDP 出口。</p>
+        <p><strong>答：</strong>NAT 变差是因为你的流量在软路由、光猫、机场服务器之间经历了太多层的网络地址转换 (NAT)。<br><strong>极限优化方案：</strong><br>1. 光猫必须改 <strong>桥接模式</strong>，让软路由直接 PPPoE 拨号获取公网 IP，消除光猫的一层 NAT。<br>2. 在 PassWall 中，千万别开“全全局模式”，必须确保路由规则是 <strong>“中国列表外”</strong>。<br>3. 大招：开启软路由的 <strong>UPnP</strong> 功能。并在 PassWall 节点列表里，挑选带有“原生 IP”或者“支持 FullCone NAT”后缀的高级游戏专线节点，将其指定为 UDP 出口。</p>
       </div>
       
       <div class="faq-item">
@@ -116,9 +116,9 @@ const description = "深度剖析 OpenWrt PassWall 插件下载与透明代理�
       <h2 id="conclusion">4. 结语：轻量级的引擎，需要企业级的专线</h2>
       <p>当你利用 PassWall 和 ChinaDNS-NG 配置出了一个干净、轻量、毫无冗余的透明网关后，你的家里已经拥有了最纯净的网络环境。手机不用再挂 VPN 费电，电视打开 Netflix 瞬间出 4K 画质。</p>
       <p><strong>但是，你必须清楚：PassWall 仅仅是一个极限减重的赛车底盘。</strong></p>
-      <p>如果你给这个赛车底盘，装上了一台几块钱月租、晚高峰疯狂丢包限速的“拖拉机发动机”（劣质公网直连节点）。那么即使 PassWall 的 CPU 占用再低、解析再快，网页图片依然会疯狂转圈。</p>
-      <p>要想真正享受 0 延迟秒开的极客快感，匹配你辛辛苦苦配置的软路由网关，你必须拥有一条 <strong>端到端全链路不过墙的顶级 IPLC / IEPL 企业级物理专线</strong>。</p>
-      <p>如果受够了频繁掉线和 DNS 污染，强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。选择榜单中提供 FullCone NAT 与原生流媒体解锁的顶级供应商。给你的轻量化网关，注入最狂暴的专线动力吧！</p>
+      <p>如果你给这个赛车底盘，装上了一台几块钱月租、晚高峰大量丢包限速的“拖拉机发动机”（劣质公网直连节点）。那么即使 PassWall 的 CPU 占用再低、解析再快，网页图片依然会大量转圈。</p>
+      <p>要想享受 0 延迟加载的极客快感，匹配你辛辛苦苦配置的软路由网关，你必须拥有一条 <strong>端到端全链路不过墙的 IPLC / IEPL 企业级物理专线</strong>。</p>
+      <p>如果受够了频繁掉线和 DNS 污染，建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。选择榜单中提供 FullCone NAT 与原生流媒体解锁的供应商。给你的轻量化网关，注入最狂暴的专线动力吧！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

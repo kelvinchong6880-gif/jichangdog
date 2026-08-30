@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "Android TV / 安卓电视盒子安装 v2rayNG 翻墙看油管教程";
-const description = "小米/索尼电视怎么翻墙看油管？深度解析 Android TV 电视盒子安装 v2rayNG 与免谷歌版 SmartTube，完美解决遥控器操作与 4K 卡顿。";
+const description = "小米/索尼电视怎么翻墙看油管？解析 Android TV 电视盒子安装 v2rayNG 与免谷歌版 SmartTube，改善遥控器操作与 4K 卡顿。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "小米/索尼电视怎么翻墙看油管？深度解析 And
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：电视端翻墙看 YouTube，核心是“v2rayNG 后台代理 + SmartTube 免谷歌播放”！</strong><br><br>很多新手在电视上翻墙常遇到两大坑：一是没有外接鼠标导致遥控器无法操作梯子软件，二是安装官方 YouTube 时因缺少 Google 服务框架 (GMS) 而疯狂闪退报错。<br><strong>2026 年电视看油管的终极 3 步流程：</strong><br>1. <strong>U盘装软件：</strong> 将 <code>v2rayNG-arm64-v8a.apk</code> 和第三方免谷歌油管播放器 <code>SmartTube</code> 下载至 U 盘，插入电视完成安装。<br>2. <strong>扫码或局域网导入订阅：</strong> 在手机端 v2rayNG 中配置好机场节点，通过 <strong>“导出为二维码”</strong> 或利用电视浏览器输入订阅，一键拉取节点并更新。<br>3. <strong>开启分流与极速观影：</strong> 启动 v2rayNG 并开启系统代理（路由模式设为“绕过局域网及大陆”），随后打开 SmartTube，即可无需任何谷歌框架，秒开原生 4K 60帧无广告油管。</p>
+      <p class="lead-paragraph"><strong>结论先行：电视端翻墙看 YouTube，核心是“v2rayNG 后台代理 + SmartTube 免谷歌播放”！</strong><br><br>很多新手在电视上翻墙常遇到两大坑：一是没有外接鼠标导致遥控器无法操作梯子软件，二是安装官方 YouTube 时因缺少 Google 服务框架 (GMS) 而大量闪退报错。<br><strong>2026 年电视看油管的 3 步流程：</strong><br>1. <strong>U盘装软件：</strong> 将 <code>v2rayNG-arm64-v8a.apk</code> 和第三方免谷歌油管播放器 <code>SmartTube</code> 下载至 U 盘，插入电视完成安装。<br>2. <strong>扫码或局域网导入订阅：</strong> 在手机端 v2rayNG 中配置好机场节点，通过 <strong>“导出为二维码”</strong> 或利用电视浏览器输入订阅，一键拉取节点并更新。<br>3. <strong>开启分流与极速观影：</strong> 启动 v2rayNG 并开启系统代理（路由模式设为“绕过局域网及大陆”），随后打开 SmartTube，即可无需任何谷歌框架，加载原生 4K 60帧无广告油管。</p>
 
       <h2 id="client-comparison">1. 路线抉择：电视端科学上网方案横向对比表</h2>
       <p>想在客厅的大屏上享受全球流媒体，你有好几条路可以选。为了避免白花钱和时间，请直接看下方总结：</p>
@@ -28,46 +28,46 @@ const description = "小米/索尼电视怎么翻墙看油管？深度解析 And
           <tbody>
             <tr>
               <td><strong>电视直装 v2rayNG + SmartTube</strong></td>
-              <td><strong>极低。</strong> 家里普通的国产智能电视 / 电视盒子即可。</td>
+              <td><strong>低。</strong> 家里普通的国产智能电视 / 电视盒子即可。</td>
               <td>中等。首次配置 v2rayNG 需配合虚拟鼠标或扫码，后续全自动。</td>
-              <td><strong>极高。</strong> 完美支持 4K HDR 源码直出，彻底免谷歌框架，且全程无广告。</td>
-              <td>🌟 <strong>绝大多数家庭客厅娱乐的首选方案，省钱又高效。</strong></td>
+              <td><strong>高。</strong> 支持 4K HDR 源码直出，免谷歌框架，且全程无广告。</td>
+              <td>🌟 <strong>绝大多数家庭客厅娱乐的备选方案，省钱又高效。</strong></td>
             </tr>
             <tr>
               <td><strong>软路由 / 旁路由透明网关</strong></td>
               <td>高。需额外购置软路由硬件并折腾 OpenClash / PassWall。</td>
-              <td><strong>完美。</strong> 电视本身属于“透明”状态，无需安装任何翻墙软件。</td>
-              <td>巅峰。全屋设备无感直连，不存在任何 App 后台被杀断流问题。</td>
-              <td>🛠️ 预算充足、设备众多的重度极客家庭终极归宿。</td>
+              <td><strong>。</strong> 电视本身属于“透明”状态，无需安装任何翻墙软件。</td>
+              <td>水平。全屋设备无感直连，不存在任何 App 后台被杀断流问题。</td>
+              <td>🛠️ 预算充足、设备众多的重度极客家庭归宿。</td>
             </tr>
             <tr>
               <td><strong>手机投屏 (AirPlay / DLNA)</strong></td>
-              <td>极低。仅需手机翻墙。</td>
+              <td>低。仅需手机翻墙。</td>
               <td>差。手机屏幕必须常驻亮屏或后台播放，无法使用电视遥控器快进。</td>
               <td>较差。投屏画质严重受限，且手机锁屏极易引发断流和音画不同步。</td>
-              <td>❌ 仅适合临时看个短视频，绝对不要用来看电影。</td>
+              <td>❌ 仅适合临时看个短视频，不要用来看电影。</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2 id="tech-deep-dive">2. 极客硬核实操：搞定 Android TV 的恶劣生态</h2>
-      <p>Android TV（尤其是小米、海信、TCL 等深度定制的国产电视系统）的系统生态对翻墙极其不友好。你必须掌握以下这些专属于电视端的“特殊体位”操作：</p>
+      <h2 id="tech-deep-dive">2. 极客详细实操：搞定 Android TV 的恶劣生态</h2>
+      <p>Android TV（尤其是小米、海信、TCL 等定制的国产电视系统）的系统生态对翻墙不友好。你必须掌握以下这些专属于电视端的“特殊体位”操作：</p>
       
       <h3>破除封锁：U 盘离线安装 APK 与局域网传包 (Send Files to TV)</h3>
-      <p>电视上的应用商店是绝对搜不到梯子软件的。你必须在电脑上下载好 <code>v2rayNG</code> 的 APK 包。<br><strong>注意架构：</strong> 现代智能电视芯片（如联发科 MT9652）通常支持 64 位，请下载 <code>arm64-v8a</code> 版本；如果是非常老旧的外贸电视盒子（如魔百和），请下载 <code>armeabi-v7a</code> 版本。<br><strong>传输方式：</strong><br>1. <strong>U盘直插（最推荐）：</strong> 拷入 U 盘插入电视 USB 接口，进入“媒体中心”或“文件管理器”，在弹窗中必须<strong>“允许安装未知来源应用”</strong>，即可直接安装。<br>2. <strong>局域网无线互传：</strong> 如果电视没 USB 口，在手机和电视的应用商店里同时下载 <strong>Send Files to TV (SFTV)</strong>，连上同一个 Wi-Fi，手机直接把 APK 包推送到电视并安装。</p>
+      <p>电视上的应用商店是搜不到梯子软件的。你必须在电脑上下载好 <code>v2rayNG</code> 的 APK 包。<br><strong>注意架构：</strong> 现代智能电视芯片（如联发科 MT9652）通常支持 64 位，请下载 <code>arm64-v8a</code> 版本；如果是老旧的外贸电视盒子（如魔百和），请下载 <code>armeabi-v7a</code> 版本。<br><strong>传输方式：</strong><br>1. <strong>U盘直插（最推荐）：</strong> 拷入 U 盘插入电视 USB 接口，进入“媒体中心”或“文件管理器”，在弹窗中必须<strong>“允许安装未知来源应用”</strong>，即可直接安装。<br>2. <strong>局域网无线互传：</strong> 如果电视没 USB 口，在手机和电视的应用商店里同时下载 <strong>Send Files to TV (SFTV)</strong>，连上同一个 Wi-Fi，手机直接把 APK 包推送到电视并安装。</p>
 
       <h3>交互噩梦：电视端飞鼠模式与局域网剪贴板同步</h3>
       <p>安装完 v2rayNG 打开后，你会绝望地发现：<strong>电视遥控器的上下左右根本选不中右下角的“+”号来添加订阅！</strong><br>因为 v2rayNG 是为触屏手机设计的。这时候你需要两大法宝：<br>1. <strong>物理解决：</strong> 拿出一个普通的电脑 USB 鼠标插到电视上。屏幕上会出现鼠标指针，随便你怎么点。<br>2. <strong>软件飞鼠：</strong> 如果没有鼠标，在手机上下载一个电视品牌对应的“手机遥控器 App”（例如小米电视助手、海信聚好看），里面自带 <strong>“飞鼠模式 (鼠标模式)”</strong>，手机屏幕秒变触摸板。<br><strong>如何输入几百字的机场订阅链接？</strong> 别用遥控器傻傻地敲！利用手机端 v2rayNG 生成节点二维码，在电视端用摄像头扫码（如果有的话）；或者在手机版“电视助手”的输入法弹窗里，直接 <strong>粘贴</strong> 你复制好的机场链接推送到电视上。</p>
 
-      <h3>终极神器：免谷歌服务油管客户端 SmartTube (SmartTubeNext)</h3>
-      <p>这是整套方案的灵魂！如果你在小米电视上强行安装正版的 <code>YouTube.apk</code>，它会疯狂弹窗“您的设备不支持 Google Play 服务”并闪退。<br>请直接安装俄罗斯大神开发的 <strong>SmartTube (原 SmartTubeNext)</strong>。它是一款专为大屏安卓系统重写的第三方 YouTube 客户端：<br>1. <strong>无需 GMS (谷歌三件套)</strong>，完美兼容任何国产魔改电视系统。<br>2. <strong>原生 4K 60帧 HDR 硬件解码</strong>，只要你的机场节点给力，播放极致丝滑。<br>3. <strong>内嵌 SponsorBlock：</strong> 它甚至能自动跳过油管视频里创作者自己念的恰饭广告！</p>
+      <h3>实用工具：免谷歌服务油管客户端 SmartTube (SmartTubeNext)</h3>
+      <p>这是整套方案的灵魂！如果你在小米电视上强行安装正版的 <code>YouTube.apk</code>，它会大量弹窗“您的设备不支持 Google Play 服务”并闪退。<br>请直接安装俄罗斯大神开发的 <strong>SmartTube (原 SmartTubeNext)</strong>。它是一款专为大屏安卓系统重写的第三方 YouTube 客户端：<br>1. <strong>无需 GMS (谷歌三件套)</strong>，兼容任何国产魔改电视系统。<br>2. <strong>原生 4K 60帧 HDR 硬件解码</strong>，只要你的机场节点给力，播放流畅。<br>3. <strong>内嵌 SponsorBlock：</strong> 它甚至能自动跳过油管视频里创作者自己念的恰饭广告！</p>
 
       <h3>极限网速榨取：绕过局域网分流与 UDP 缓冲优化</h3>
-      <p>电视的 CPU 性能通常远不如手机。为了保证你看国内的爱优腾不卡顿，同时不把电视的 CPU 榨干：<br>1. <strong>设置路由规则：</strong> 打开 v2rayNG 电视版，进入【设置】，将【预定义规则】强制设定为 <strong>“绕过局域网及大陆地址 (Bypass CN)”</strong>。这样你在看腾讯视频 TV 版时，流量绝不会经过翻墙隧道。<br>2. <strong>开启 UDP 代理：</strong> 很多流媒体画质在加载时依赖 UDP 传输。在设置中确保开启“开启 UDP 转发”，这会大幅缩短 SmartTube 点击视频后的圈圈缓冲时间。</p>
+      <p>电视的 CPU 性能通常远不如手机。为了保证你看国内的爱优腾不卡顿，同时不把电视的 CPU 榨干：<br>1. <strong>设置路由规则：</strong> 打开 v2rayNG 电视版，进入【设置】，将【预定义规则】强制设定为 <strong>“绕过局域网及大陆地址 (Bypass CN)”</strong>。这样你在看腾讯视频 TV 版时，流量通常不会经过翻墙隧道。<br>2. <strong>开启 UDP 代理：</strong> 很多流媒体画质在加载时依赖 UDP 传输。在设置中确保开启“开启 UDP 转发”，这会大幅缩短 SmartTube 点击视频后的圈圈缓冲时间。</p>
 
       <h2 id="qa-faq">3. 高频报错与长尾痛点排查 (Q&A)</h2>
-      <p>电视端的翻墙排错因为没有触摸屏而显得格外让人暴躁。以下是我们在实战中总结的“救命药”：</p>
+      <p>电视端的翻墙排错因为没有触摸屏而显得格外让人暴躁。以下是我们在实战中总结的“备用药”：</p>
 
       <div class="faq-item">
         <h3>Q1: 电视安装 v2rayNG 提示“解析软件包时出现问题”怎么解决？</h3>
@@ -76,7 +76,7 @@ const description = "小米/索尼电视怎么翻墙看油管？深度解析 And
 
       <div class="faq-item">
         <h3>Q2: 为什么电视端 v2rayNG 测试延迟全红超时？YouTube 依然提示无网络？</h3>
-        <p><strong>答：时间戳致命错误。</strong> 电视在彻底断电重启后，系统时间经常会重置回 1970 年或者出厂时间。而 VLESS / Trojan 这些翻墙加密协议要求客户端时间与服务器时间相差不能超过 1 分钟，否则直接拒绝建立连接（导致超时）。<br><strong>解法：</strong>打开电视的【系统设置】 -> 【日期与时间】，开启“自动获取网络时间”，等时间同步到当下的北京时间后，再打开 v2rayNG 测试，瞬间变绿！</p>
+        <p><strong>答：时间戳致命错误。</strong> 电视在断电重启后，系统时间经常会重置回 1970 年或者出厂时间。而 VLESS / Trojan 这些翻墙加密协议要求客户端时间与服务器时间相差不能超过 1 分钟，否则直接拒绝建立连接（导致超时）。<br><strong>解法：</strong>打开电视的【系统设置】 -> 【日期与时间】，开启“自动获取网络时间”，等时间同步到当下的北京时间后，再打开 v2rayNG 测试，瞬间变绿！</p>
       </div>
 
       <div class="faq-item">
@@ -91,15 +91,15 @@ const description = "小米/索尼电视怎么翻墙看油管？深度解析 And
       
       <div class="faq-item">
         <h3>Q5: 电视盒子看 YouTube 4K 总是卡顿转圈是什么原因？</h3>
-        <p><strong>答：</strong>在排除了你家里 Wi-Fi 信号不好的情况后，这只有一种可能：<strong>你的机场节点太垃圾了。</strong><br>电视大屏的 4K 视频码率远远超过手机屏幕。手机上看 1080P 不卡的节点，一旦放到电视上跑 4K 60帧，需要节点具备至少持续 50Mbps 以上且毫无丢包的带宽吞吐量。那些宣称“10块钱1000G”的直连节点，在晚高峰可作为被挤爆的命。</p>
+        <p><strong>答：</strong>在排除了你家里 Wi-Fi 信号不好的情况后，这只有一种可能：<strong>你的机场节点太低质量了。</strong><br>电视大屏的 4K 视频码率远远超过手机屏幕。手机上看 1080P 不卡的节点，一旦放到电视上跑 4K 60帧，需要节点具备至少持续 50Mbps 以上且毫无丢包的带宽吞吐量。那些宣称“10块钱1000G”的直连节点，在晚高峰可作为被挤爆的命。</p>
       </div>
 
-      <h2 id="conclusion">4. 结语：顶级画质，绝不容忍劣质线路</h2>
-      <p>当你历经千辛万苦，接上鼠标、用飞鼠搞定了 v2rayNG 的订阅，装上了无广告的神器 SmartTube，你终于在客厅那块 65 英寸的巨幕上点亮了油管的原生 4K HDR 画质。</p>
-      <p><strong>但是，所有的硬件配置，最终都要向物理线路低头。</strong></p>
-      <p>电视不同于手机，你在沙发上看 4K 纪录片时，是绝对无法忍受每隔 3 分钟就转一次圈的。如果你还在用低端的直连机场，晚高峰 GFW 的丢包 QoS 会直接摧毁你所有的客厅娱乐体验。看着极度压缩的马赛克画质，你那上万块钱的电视机也就成了一个笑话。</p>
-      <p>要想真正释放 4K HDR 的震撼表现，实现点击进度条瞬间无缝秒播的极客快感，你必须拥有一条 <strong>端到端全链路不过墙的顶级 IPLC / IEPL 企业级物理内网专线</strong>。</p>
-      <p>强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些顶级供应商不仅提供纯净原生 IP，其极高的单线程带宽更使得电视端的多并发视频流极度稳定。给你的家庭影院，注入真正源源不断的超大管带宽引擎吧！</p>
+      <h2 id="conclusion">4. 结语：画质，通常不容忍劣质线路</h2>
+      <p>当你历经千辛万苦，接上鼠标、用飞鼠搞定了 v2rayNG 的订阅，装上了无广告的工具 SmartTube，你终于在客厅那块 65 英寸的巨幕上点亮了油管的原生 4K HDR 画质。</p>
+      <p><strong>但是，所有的硬件配置，都要向物理线路低头。</strong></p>
+      <p>电视不同于手机，你在沙发上看 4K 纪录片时，是无法忍受每隔 3 分钟就转一次圈的。如果你还在用低端的直连机场，晚高峰 GFW 的丢包 QoS 会直接摧毁你所有的客厅娱乐体验。看着压缩的马赛克画质，你那上万块钱的电视机也就成了一个笑话。</p>
+      <p>要想释放 4K HDR 的表现，实现点击进度条瞬间无缝秒播的极客快感，你必须拥有一条 <strong>端到端全链路不过墙的 IPLC / IEPL 企业级物理内网专线</strong>。</p>
+      <p>建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。这些供应商不仅提供纯净原生 IP，其高的单线程带宽更使得电视端的多并发视频流稳定。给你的家庭影院，注入源源不断的超大管带宽引擎吧！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

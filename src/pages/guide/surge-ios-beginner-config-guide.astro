@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "Surge iOS 版入门指南：如何导入配置与开启代理";
-const description = "花 50 美元买的 Surge 到底强在哪？带你深度解析 Surge iOS 托管配置文件导入、模块注入 (Modules) 与底层网络抓包排障，彻底玩转最强神器。";
+const description = "花 50 美元买的 Surge 到底强在哪？带你解析 Surge iOS 托管配置文件导入、模块注入 (Modules) 与底层网络抓包排障，玩转最强工具。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,17 +9,17 @@ const description = "花 50 美元买的 Surge 到底强在哪？带你深度解
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：Surge iOS 的核心逻辑是“接管一整个托管配置文件”！</strong><br><br>很多刚入坑的土豪玩家花了 $49.99 买了 Surge iOS，却拿着一长串 <code>vmess://</code> 节点链接到处找地方粘贴。请记住：Surge 不像普通翻墙软件那样简单地添加零散节点，而是通过 <strong>托管配置文件（Managed Profile）</strong> 将分流规则、策略组和节点合为一个整体。<br><br>新手 3 步快速上手教程：<br>1. 打开 Surge iOS，在首页顶部点击当前配置文件名称，选择 <strong>“从 URL 安装配置 (Install from URL)”</strong>。<br>2. 登录机场官网，复制“Surge 专属托管配置链接”，将其粘贴进去，点击下载并保存。<br>3. 返回首页，点击正中间的 <strong>“启动 (Start)”</strong> 大按钮（首次启动系统会要求验证 Face ID 以允许添加底层 VPN 配置），即可实现全天候无感智能分流。</p>
+      <p class="lead-paragraph"><strong>结论先行：Surge iOS 的核心逻辑是“接管一整个托管配置文件”！</strong><br><br>很多刚入坑的高预算用户玩家花了 $49.99 买了 Surge iOS，却拿着一长串 <code>vmess://</code> 节点链接到处找地方粘贴。请记住：Surge 不像普通翻墙软件那样简单地添加零散节点，而是通过 <strong>托管配置文件（Managed Profile）</strong> 将分流规则、策略组和节点合为一个整体。<br><br>新手 3 步快速上手教程：<br>1. 打开 Surge iOS，在首页顶部点击当前配置文件名称，选择 <strong>“从 URL 安装配置 (Install from URL)”</strong>。<br>2. 登录机场官网，复制“Surge 专属托管配置链接”，将其粘贴进去，点击下载并保存。<br>3. 返回首页，点击正中间的 <strong>“启动 (Start)”</strong> 大按钮（首次启动系统会要求验证 Face ID 以允许添加底层 VPN 配置），即可实现全天候无感智能分流。</p>
 
       <h2 id="client-comparison">1. 顶奢对决：iOS 顶尖网络工具横向对比表</h2>
-      <p>花 50 美元买一个工具到底是不是智商税？以下对比表将帮助你理清 Surge iOS 的真正定位，树立顶奢认同感：</p>
+      <p>花 50 美元买一个工具到底是不是智商税？以下对比表将帮助你理清 Surge iOS 的定位，树立顶奢认同感：</p>
       
       <div class="table-responsive">
         <table>
           <thead>
             <tr>
               <th>对比维度</th>
-              <th>Surge iOS (顶奢网络调试神器)</th>
+              <th>Surge iOS (顶奢网络调试工具)</th>
               <th>Shadowrocket (国民小火箭)</th>
               <th>Quantumult X (圈X)</th>
             </tr>
@@ -28,14 +28,14 @@ const description = "花 50 美元买的 Surge 到底强在哪？带你深度解
             <tr>
               <td><strong>官方售价</strong></td>
               <td><strong>$49.99 起</strong>（极贵，按设备席位收费，大版本需买断续费）。</td>
-              <td>$2.99（极高性价比）。</td>
+              <td>$2.99（高性价比）。</td>
               <td>$7.99（适中）。</td>
             </tr>
             <tr>
               <td><strong>底层架构与性能</strong></td>
-              <td><strong>天花板级别。</strong>自研企业级网络协议栈，功耗与内存占用控制极其苛刻。</td>
+              <td><strong>水平级别。</strong>自研企业级网络协议栈，功耗与内存占用控制严格。</td>
               <td>优秀。能满足绝大多数普通用户的日常发热控制需求。</td>
-              <td>极佳。脚本执行引擎极其强大，但偶尔会导致高发热。</td>
+              <td>极佳。脚本执行引擎强大，但偶尔会导致高发热。</td>
             </tr>
             <tr>
               <td><strong>协议支持理念</strong></td>
@@ -59,14 +59,14 @@ const description = "花 50 美元买的 Surge 到底强在哪？带你深度解
         </table>
       </div>
 
-      <h2 id="tech-deep-dive">2. 极客进阶：深入剖析 Surge iOS 的硬核企业级架构</h2>
-      <p>Surge 的原作者（刘总）最初是将其作为一款“企业级网络调试与流量嗅探工具”开发的，翻墙只是它庞大功能中的冰山一角。对于愿意支付 50 美元的你来说，仅仅把它当作一个“科学上网开关”是对它性能的极大浪费。要彻底驾驭它，你必须掌握以下核心底层逻辑。</p>
+      <h2 id="tech-deep-dive">2. 极客进阶：深入剖析 Surge iOS 的详细企业级架构</h2>
+      <p>Surge 的原作者（刘总）最初是将其作为一款“企业级网络调试与流量嗅探工具”开发的，翻墙只是它庞大功能中的冰山一角。对于愿意支付 50 美元的你来说，仅仅把它当作一个“科学上网开关”是对它性能的极大浪费。要驾驭它，你必须掌握以下核心底层逻辑。</p>
       
       <h3>网络底层：VIF 虚拟网卡与 Dummy IP 的防劫持魔法</h3>
-      <p>为什么 Surge 可以在 iOS 极其封闭的沙盒生态中，完美接管包括 App Store、iCloud 乃至底层系统推送在内的所有网络流量？因为 Surge 启动时，调用了苹果严格限制的 <code>NetworkExtension</code> 框架，在底层创建了一张真正的 <strong>VIF (Virtual Interface) 虚拟物理网卡 (utun)</strong>。这张网卡接管了整个 iOS 第三层（网络层）的路由表。<br>当你访问 <code>youtube.com</code> 时，Surge 根本不会去请求国内被污染的 DNS。它会瞬间分配一个 <strong>Dummy IP (通常是 198.18.x.x 伪装内网 IP)</strong> 返回给应用程序。然后 Surge 在底层使用加密隧道，将真实的 DNS 握手转移到国外的代理服务器上执行。这种极致的防 DNS 污染与防泄漏机制，使得它能在高强度并发连接下（比如多线程下载或大型团战手游），依然保持极高的吞吐量和极低的 CPU 开销，完美解决手机发烫和电量尿崩的问题。</p>
+      <p>为什么 Surge 可以在 iOS 封闭的沙盒生态中，接管包括 App Store、iCloud 乃至底层系统推送在内的所有网络流量？因为 Surge 启动时，调用了苹果严格限制的 <code>NetworkExtension</code> 框架，在底层创建了一张 <strong>VIF (Virtual Interface) 虚拟物理网卡 (utun)</strong>。这张网卡接管了整个 iOS 第三层（网络层）的路由表。<br>当你访问 <code>youtube.com</code> 时，Surge 根本不会去请求国内被污染的 DNS。它会瞬间分配一个 <strong>Dummy IP (通常是 198.18.x.x 伪装内网 IP)</strong> 返回给应用程序。然后 Surge 在底层使用加密隧道，将真实的 DNS 握手转移到国外的代理服务器上执行。这种的防 DNS 污染与防泄漏机制，使得它能在高强度并发连接下（比如多线程下载或大型团战手游），依然保持高的吞吐量和低的 CPU 开销，改善手机发烫和电量尿崩的问题。</p>
 
       <h3>生态革命：Surge 模块 (Modules) 与 JavaScriptCore 脚本注入</h3>
-      <p>在旧时代的翻墙软件中，想要屏蔽特定 App 的开屏广告，你必须在一长串配置文件里一行行手敲正则重写代码，一旦机场配置文件更新，你的辛苦劳动全被覆盖了。<br>Surge 引入了颠覆性的 <strong>模块 (Modules) 系统</strong>。极客开发者会将复杂的 JavaScriptCore 脚本（例如解锁 YouTube Premium 后台播放特性、去除知乎/微博时间线广告）打包成一个独立的 <code>.sgmodule</code> 文件。你只需要在 Surge 的“模块”页面粘贴这个 URL 安装。不管你的主配置文件怎么热更新，这些独立的挂载模块都会在底层网络流经过时被动态编译并注入，实现了机场节点更新与你私人重写逻辑的完美解耦！</p>
+      <p>在旧时代的翻墙软件中，想要屏蔽特定 App 的开屏广告，你必须在一长串配置文件里一行行手敲正则重写代码，一旦机场配置文件更新，你的辛苦劳动全被覆盖了。<br>Surge 引入了改变性的 <strong>模块 (Modules) 系统</strong>。极客开发者会将复杂的 JavaScriptCore 脚本（例如解锁 YouTube Premium 后台播放特性、去除知乎/微博时间线广告）打包成一个独立的 <code>.sgmodule</code> 文件。你只需要在 Surge 的“模块”页面粘贴这个 URL 安装。不管你的主配置文件怎么热更新，这些独立的挂载模块都会在底层网络流经过时被动态编译并注入，实现了机场节点更新与你私人重写逻辑的解耦！</p>
       
       <p>一个经典的 Surge Module 广告重写逻辑往往长这样：</p>
       <pre><code>#!name=去除 Bilibili 开屏广告
@@ -75,17 +75,17 @@ const description = "花 50 美元买的 Surge 到底强在哪？带你深度解
 bili_ad_block = type=http-response, pattern=^https://app\.bilibili\.com/x/v2/splash/show, requires-body=1, script-path=https://raw.githubusercontent.com/example/bili_ad.js</code></pre>
 
       <h3>Surge Ponte：无感知的内网穿透与异地组网</h3>
-      <p>这是 Surge 5 带来的跨时代功能。如果你家里有一台 Mac 也安装了 Surge Mac 版，你可以开启 <strong>Surge Ponte</strong> 功能。它利用苹果底层 iCloud 的端到端加密通道握手，让你的 iPhone 无论在世界哪个角落，都能通过极其底层的打洞技术 (NAT Traversal) 或 Surge 官方的中继节点，无缝访问你家里的 Mac 和内网 NAS。一切都是透明的，无需你配置任何 DDNS 或繁琐的公网 IP 映射，这简直是商务办公与极客玩家的神器！</p>
+      <p>这是 Surge 5 带来的跨时代功能。如果你家里有一台 Mac 也安装了 Surge Mac 版，你可以开启 <strong>Surge Ponte</strong> 功能。它利用苹果底层 iCloud 的端到端加密通道握手，让你的 iPhone 无论在世界哪个角落，都能通过底层的打洞技术 (NAT Traversal) 或 Surge 官方的中继节点，无缝访问你家里的 Mac 和内网 NAS。一切都是透明的，无需你配置任何 DDNS 或繁琐的公网 IP 映射，这简直是商务办公与极客玩家的工具！</p>
 
       <h3>企业级流量嗅探：Surge 仪表盘 (Dashboard) 与 DoQ</h3>
-      <p>在小火箭里，你最多只能看到节点是否超时。而在 Surge 中，点击下方的 <strong>“请求 (Requests)”</strong>，你仿佛开启了上帝视角的骇客帝国。你可以清晰地看到你的 iPhone 此刻正在向哪些服务器发送数据。<br>Surge 会拦截并展示每一次 HTTP 握手的 Header 头部、JSON 响应体 (Body) 以及极其详细的 TCP 时序图（DNS 解析耗时、TCP 握手耗时、TLS 握手耗时、首包耗时）。不仅如此，Surge 原生支持 <strong>DoH (DNS over HTTPS)</strong> 和 <strong>DoQ (DNS over QUIC)</strong>，能够让你用最高级的加密协议向 Cloudflare 等上游查询 DNS，彻底杜绝运营商的 DNS 劫持监听。</p>
+      <p>在小火箭里，你最多只能看到节点是否超时。而在 Surge 中，点击下方的 <strong>“请求 (Requests)”</strong>，你仿佛开启了上帝视角的骇客帝国。你可以清晰地看到你的 iPhone 此刻正在向哪些服务器发送数据。<br>Surge 会拦截并展示每一次 HTTP 握手的 Header 头部、JSON 响应体 (Body) 以及详细的 TCP 时序图（DNS 解析耗时、TCP 握手耗时、TLS 握手耗时、首包耗时）。不仅如此，Surge 原生支持 <strong>DoH (DNS over HTTPS)</strong> 和 <strong>DoQ (DNS over QUIC)</strong>，能够让你用最高级的加密协议向 Cloudflare 等上游查询 DNS，杜绝运营商的 DNS 劫持监听。</p>
 
-      <h2 id="qa-faq">3. 深度极客排障与高频报错解答 (Q&A)</h2>
-      <p>虽然 Surge 追求极致的无感体验，但在初次导入或使用底层技术不达标的劣质机场时，依然会出现各种报错。以下是终极排障指南：</p>
+      <h2 id="qa-faq">3. 极客排障与高频报错解答 (Q&A)</h2>
+      <p>虽然 Surge 追求的无感体验，但在初次导入或使用底层技术不达标的劣质机场时，依然会出现各种报错。以下是排障指南：</p>
 
       <div class="faq-item">
         <h3>Q1: Surge 提示 “Config parse error / Invalid keyword” 怎么解决？</h3>
-        <p><strong>答：</strong>“配置文件解析错误”。这百分百是因为你使用的机场客服极其不专业，给你下发了一个包含了 Surge 根本不支持的协议（比如老旧的 Vmess 伪装、复杂的 VLESS）或者含有语法错误（YAML 缩进错误/逗号缺失）的破烂配置文件。<br><strong>解法：</strong>登录你的机场，找客服索要一份 <strong>“纯 Trojan 或 Shadowsocks 的 Surge 专属托管文件”</strong>。如果机场不提供，你可以使用开源的第三方订阅转换工具 (Subconverter) 将通用链接强行转化为 Surge 标准的 <code>.conf</code> 格式。如果实在转不了，建议换一家技术在线的机场。</p>
+        <p><strong>答：</strong>“配置文件解析错误”。这百分百是因为你使用的机场客服不专业，给你下发了一个包含了 Surge 根本不支持的协议（比如老旧的 Vmess 伪装、复杂的 VLESS）或者含有语法错误（YAML 缩进错误/逗号缺失）的破烂配置文件。<br><strong>解法：</strong>登录你的机场，找客服索要一份 <strong>“纯 Trojan 或 Shadowsocks 的 Surge 专属托管文件”</strong>。如果机场不提供，你可以使用开源的第三方订阅转换工具 (Subconverter) 将通用链接强行转化为 Surge 标准的 <code>.conf</code> 格式。如果实在转不了，建议换一家技术在线的机场。</p>
       </div>
 
       <div class="faq-item">
@@ -95,20 +95,20 @@ bili_ad_block = type=http-response, pattern=^https://app\.bilibili\.com/x/v2/spl
 
       <div class="faq-item">
         <h3>Q3: Surge 导入托管配置后，为什么国内 App (如微信、小红书) 无法刷新，一直转圈？</h3>
-        <p><strong>答：</strong>这说明你机场提供的配置文件 (Profile) 中，<strong>规则引擎 (Rule-based)</strong> 的 <code>FINAL</code> (兜底策略) 写反了！<br>正规的极客配置，规则链的最后一行必定是 <code>FINAL, DIRECT</code>，即“匹配不到前面任何规则的不知名国内流量，全部直连放行”。如果这个机场的配置为了省事或者防逆向，写成了 <code>FINAL, Proxy</code>，所有的国内私有流量都会被强行塞进昂贵的国际专线，导致国内 App 异地登录被风控阻断。请在 Surge 的“规则”列表中滑到最底端，手动将最终兜底规则修改为 <code>DIRECT (直接连接)</code>，问题即可迎刃而解。</p>
+        <p><strong>答：</strong>这说明你机场提供的配置文件 (Profile) 中，<strong>规则引擎 (Rule-based)</strong> 的 <code>FINAL</code> (兜底策略) 写反了！<br>正规的极客配置，规则链的最后一行必定是 <code>FINAL, DIRECT</code>，即“匹配不到前面任何规则的不知名国内流量，全部直连放行”。如果这个机场的配置为了省事或者防逆向，写成了 <code>FINAL, Proxy</code>，所有的国内私有流量都会被强行塞进高价的国际专线，导致国内 App 异地登录被风控阻断。请在 Surge 的“规则”列表中滑到最底端，手动将兜底规则修改为 <code>DIRECT (直接连接)</code>，问题即可迎刃而解。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q4: 花 50 美元买的 Surge，为什么有些机场的链接粘贴进去直接报错说“非有效配置”，连导都导不进？</h3>
-        <p><strong>答：</strong>Surge 的高傲之处就在于它极其遵守网络协议栈的安全规范。它的作者公开拒绝支持 VLESS、Reality 等基于 TLS 伪装的协议，认为其代码不够干净且增加了底层无谓的开销。Surge 官方推崇的是自家的 <strong>Snell</strong> 协议，以及 <strong>Trojan / Hysteria 2</strong> 这种高并发的现代协议。<br>如果你买了一个全部由 Reality 节点组成的低端机场，Surge 的内核解析器是不可能屈尊降贵去解析它的。这是软件理念的鸿沟，不是 Surge 坏了，而是你的机场跟不上顶奢生态了。</p>
+        <p><strong>答：</strong>Surge 的高傲之处就在于它遵守网络协议栈的安全规范。它的作者公开拒绝支持 VLESS、Reality 等基于 TLS 伪装的协议，认为其代码不够干净且增加了底层无谓的开销。Surge 官方推崇的是自家的 <strong>Snell</strong> 协议，以及 <strong>Trojan / Hysteria 2</strong> 这种高并发的现代协议。<br>如果你买了一个全部由 Reality 节点组成的低端机场，Surge 的内核解析器是不可能屈尊降贵去解析它的。这是软件理念的鸿沟，不是 Surge 坏了，而是你的机场跟不上顶奢生态了。</p>
       </div>
 
-      <h2 id="conclusion-and-recommendation">4. 结语：千万别让廉价机场砸了 50 刀神器的招牌</h2>
-      <p>当你斥资 $49.99 买下了 Surge iOS，这说明你是一个对数字生活质量有极高追求、绝不妥协的玩家。你拥有了地表最强的分流规则引擎、极客级别的 JS 模块注入能力，以及永远冰凉不发热的底层虚拟网卡调度。</p>
+      <h2 id="conclusion-and-recommendation">4. 结语：千万别让廉价机场砸了 50 刀工具的招牌</h2>
+      <p>当你斥资 $49.99 买下了 Surge iOS，这说明你是一个对数字生活质量有高追求、通常不妥协的玩家。你拥有了地表最强的分流规则引擎、别的 JS 模块注入能力，以及长期冰凉不发热的底层虚拟网卡调度。</p>
       <p><strong>但是，引擎再强大，也掩盖不住劣质网络燃料的缺陷。</strong></p>
-      <p>如果你给 Surge 配置的是一个月十几块钱、晚高峰疯狂丢包的公网直连机场，那么你的 Surge 策略组再怎么自动测速 (url-test)，也选不出一个能顺畅播放 4K 视频的节点。这就好比你买了一辆几百万的劳斯莱斯，却给它加了掺水的工业汽油。</p>
-      <p>想要真正释放 Surge 在 iOS 上的企业级并发性能，你必须搭配 <strong>全链路底层干净、第三方记录中未观察到丢包，且原生提供纯正 Trojan/SS 协议的顶级 IPLC/IEPL 国际专线</strong>。</p>
-      <p>强烈建议您直接访问我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些经过我们严苛测试的高端供应商，均提供完美的 Surge 专属无错托管配置，让你的一键导入体验如同丝滑的苹果官方服务。配合 Surge 独步天下的自动策略组，让你的 iPhone 真正享受全天候零等待、无感智能切换的极限冲浪体验！</p>
+      <p>如果你给 Surge 配置的是一个月十几块钱、晚高峰大量丢包的公网直连机场，那么你的 Surge 策略组再怎么自动测速 (url-test)，也选不出一个能顺畅播放 4K 视频的节点。这就好比你买了一辆几百万的劳斯莱斯，却给它加了掺水的工业汽油。</p>
+      <p>想要释放 Surge 在 iOS 上的企业级并发性能，你必须搭配 <strong>全链路底层干净、第三方记录中未观察到丢包，且原生提供 Trojan/SS 协议的 IPLC/IEPL 国际专线</strong>。</p>
+      <p>建议您直接访问我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。这些经过我们严格测试的供应商，均提供的 Surge 专属无错托管配置，让你的一键导入体验如同流畅的苹果官方服务。配合 Surge 独步天下的自动策略组，让你的 iPhone 享受全天候零等待、无感智能切换的极限冲浪体验！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

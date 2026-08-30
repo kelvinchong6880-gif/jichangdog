@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "NekoRay Windows 版小白配置教程（支持多协议）";
-const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载与详细配置教程。全面解析 Xray 与 sing-box 双内核切换，完美支持 Hysteria 2 与 VLESS-Reality，附带 TUN 模式排障指南。";
+const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载与详细配置教程。全面解析 Xray 与 sing-box 双内核切换，支持 Hysteria 2 与 VLESS-Reality，附带 TUN 模式排障指南。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：为什么 2026 年大家都开始换用 NekoRay？</strong><br><br>传统的翻墙软件往往只能“单打独斗”，比如经典的 v2rayN 极度擅长 Xray 内核，但对于 2026 年爆火的新型 Hysteria 2 协议支持较为繁琐。而 <strong>NekoRay</strong> 则是目前 Windows 平台上真正的“全能六边形战士”。<br><br>它破天荒地内置了 <strong>Xray 和 sing-box 双引擎</strong>，无论你购买的机场使用的是古老的 Shadowsocks，还是最新抗封锁的 VLESS-Reality 和基于 UDP 的 Hysteria 2，它都能一键完美解析。<strong>小白配置只需三步：</strong> <br>1. 下载解压并运行（基于 Qt 的便携极速版）；<br>2. 粘贴机场订阅链接并点击“更新”；<br>3. 勾选“系统代理”并在底部将路由切换为“绕过局域网和大陆”，即可瞬间开启极速翻墙体验。</p>
+      <p class="lead-paragraph"><strong>结论先行：为什么 2026 年大家都开始换用 NekoRay？</strong><br><br>传统的翻墙软件往往只能“单打独斗”，比如经典的 v2rayN 擅长 Xray 内核，但对于 2026 年爆火的新型 Hysteria 2 协议支持较为繁琐。而 <strong>NekoRay</strong> 则是目前 Windows 平台上“全能六边形战士”。<br><br>它破天荒地内置了 <strong>Xray 和 sing-box 双引擎</strong>，无论你购买的机场使用的是古老的 Shadowsocks，还是最新抗封锁的 VLESS-Reality 和基于 UDP 的 Hysteria 2，它都能一键解析。<strong>小白配置只需三步：</strong> <br>1. 下载解压并运行（基于 Qt 的便携极速版）；<br>2. 粘贴机场订阅链接并点击“更新”；<br>3. 勾选“系统代理”并在底部将路由切换为“绕过局域网和大陆”，即可瞬间开启极速翻墙体验。</p>
 
       <h2 id="client-comparison">1. 2026 核心 Windows 客户端横向对比表</h2>
       <p>在寻找 <strong>电脑翻墙万能客户端</strong> 时，很多新手都会问 <strong>NekoRay 和 v2rayN 哪个好用</strong>？为了降低你的试错成本，请参考这份 Bing 高权重的核心数据对比图：</p>
@@ -33,62 +33,62 @@ const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载�
             </tr>
             <tr>
               <td><strong>新协议支持</strong></td>
-              <td><strong>完美</strong> (原生直连 Hysteria 2 等)</td>
+              <td><strong></strong> (原生直连 Hysteria 2 等)</td>
               <td>需手动折腾自定义配置</td>
               <td>极佳</td>
             </tr>
             <tr>
               <td><strong>上手难度</strong></td>
-              <td><strong>极低</strong> (界面清爽，直观的节点列表)</td>
-              <td>中等 (界面略显硬核繁杂)</td>
+              <td><strong>低</strong> (界面清爽，直观的节点列表)</td>
+              <td>中等 (界面略显详细繁杂)</td>
               <td>中等 (需理解策略组概念)</td>
             </tr>
             <tr>
               <td><strong>资源占用</strong></td>
-              <td><strong>极低</strong> (Qt 轻量框架，几十MB内存)</td>
-              <td>极低</td>
+              <td><strong>低</strong> (Qt 轻量框架，几十MB内存)</td>
+              <td>低</td>
               <td>中等偏高</td>
             </tr>
             <tr>
               <td><strong>最适合人群</strong></td>
               <td><strong>想要一键连网、不挑协议的小白与性能党</strong></td>
               <td>习惯老客户端界面的老用户</td>
-              <td>追求极致自定义分流的折腾党</td>
+              <td>追求自定义分流的折腾党</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2 id="core-mechanisms">2. 技术进阶与内核机制：双核架构的降维打击</h2>
-      <p>NekoRay 之所以被誉为 <strong>科学上网多核客户端推荐</strong> 的榜首，绝不仅仅是因为界面好看，而是完全归功于其极其狂野的底层技术栈与协议兼容能力。</p>
+      <h2 id="core-mechanisms">2. 技术进阶与内核机制：双核架构的形成差异</h2>
+      <p>NekoRay 之所以被誉为 <strong>科学上网多核客户端推荐</strong> 的榜首，通常不仅仅是因为界面好看，而是完全归功于其狂野的底层技术栈与协议兼容能力。</p>
       
       <h3>Xray 内核与 sing-box 内核无缝切换：底层原理</h3>
       <p>早期的翻墙客户端通常被死死绑定在一种内核上，比如 v2rayN 绑定 Xray，Clash 绑定 Mihomo。但 NekoRay 破天荒地允许你在“基本设置”中一键完成 <strong>Xray 内核与 sing-box 内核的无缝切换</strong>。它是怎么做到的？<br>实际上，NekoRay 在底层充当了一个“配置翻译官”。当你导入标准的机场 vmess/vless 链接时，NekoRay 会在内存中动态将其转换为 Xray 的 JSON 格式或 sing-box 的 JSON 格式，然后按需拉起对应的底层守护进程 (Daemon)。</p>
-      <p><strong>该怎么选？</strong> Xray 作为久经考验的元老，在处理传统 VLESS/Vmess 节点时拥有极高的稳定性，尤其是在处理 XTLS 握手时极其成熟；而基于 Go 1.20+ 语言重写的 sing-box 则是次世代的性能怪兽，它利用了最新的 <code>Memory Arenas</code> 内存分配机制，大幅减少了垃圾回收 (GC) 时的卡顿，在处理高并发连接（如同时加载成百上千张网页图片的场景）时，延迟更低，是 2026 年极客圈的绝对新宠。</p>
+      <p><strong>该怎么选？</strong> Xray 作为久经考验的元老，在处理传统 VLESS/Vmess 节点时拥有高的稳定性，尤其是在处理 XTLS 握手时成熟；而基于 Go 1.20+ 语言重写的 sing-box 则是次世代的性能怪兽，它利用了最新的 <code>Memory Arenas</code> 内存分配机制，大幅减少了低质量回收 (GC) 时的卡顿，在处理高并发连接（如同时加载成百上千张网页图片的场景）时，延迟更低，是 2026 年极客圈的新宠。</p>
 
-      <h3>Hysteria 2 UDP 端口跳跃配置与 Reality 完美解析</h3>
-      <p>很多小白发现，自己刚买的 Hysteria 2 节点在旧版 Clash 或 v2rayN 里全是报错。这是因为 Hysteria 2 抛弃了传统的 TCP 协议，采用了暴力的 QUIC 拥塞控制算法（纯 UDP 传输）。为了防止国内三大运营商对 UDP 进行 QoS 限速和封杀，高端机场通常会开启 <strong>UDP 端口跳跃 (Port Hopping)</strong>，即每隔几秒钟，连接的目标端口就会从 443 随机跳跃到 40000+ 的冷门端口。</p>
-      <p>传统的客户端根本无法理解这种跳跃逻辑，而 NekoRay 内置的 sing-box 引擎能够原生、完美地解析 <code>mport</code> 跳跃参数，完全不需要你手动去修改底层的 JSON 代码。同时，对于依赖 uTLS 伪装的 VLESS-Reality 协议，NekoRay 也能完美展示出其底层的 SNI 嗅探 (Sni Sniffing) 和 <code>pbk</code> 指纹配置，真正做到了对新协议的降维打击。</p>
+      <h3>Hysteria 2 UDP 端口跳跃配置与 Reality 解析</h3>
+      <p>很多小白发现，自己刚买的 Hysteria 2 节点在旧版 Clash 或 v2rayN 里全是报错。这是因为 Hysteria 2 抛弃了传统的 TCP 协议，采用了暴力的 QUIC 拥塞控制算法（纯 UDP 传输）。为了防止国内三大运营商对 UDP 进行 QoS 限速和封杀，机场通常会开启 <strong>UDP 端口跳跃 (Port Hopping)</strong>，即每隔几秒钟，连接的目标端口就会从 443 随机跳跃到 40000+ 的冷门端口。</p>
+      <p>传统的客户端根本无法理解这种跳跃逻辑，而 NekoRay 内置的 sing-box 引擎能够原生、解析 <code>mport</code> 跳跃参数，完全不需要你手动去修改底层的 JSON 代码。同时，对于依赖 uTLS 伪装的 VLESS-Reality 协议，NekoRay 也能展示出其底层的 SNI 嗅探 (Sni Sniffing) 和 <code>pbk</code> 指纹配置，做到了对新协议的形成差异。</p>
 
       <h2 id="installation-and-tun">3. 实操配置：从便携版到全局 TUN 虚拟网卡接管</h2>
       <p>抛开复杂的底层原理，NekoRay 的日常使用可以说是对小白最友好的，甚至比 v2rayN 更加直观。</p>
 
       <h3>NekoRay 便携版 (Portable) 安装与全中文设置</h3>
-      <p>在 GitHub 的官方 Releases 页面，请认准下载以 <code>windows64.zip</code> 结尾的压缩包，这就是 <strong>NekoRay 便携版 (Portable)</strong>。（注：部分新版本可能更名为 <code>nekobox.exe</code>，属于同一个项目）。解压后即可直接双击运行，它绝不会在你的 C 盘注册表里乱写垃圾文件，所有的节点数据和配置都安静地躺在解压目录的 <code>config</code> 文件夹中。重装系统时，只需把整个文件夹拷走即可完美备份。<br>初次打开若为英文，请点击顶部菜单栏的 <code>Preferences -> Basic Settings</code>，将语言切换为 <code>zh_CN</code>，重启软件即可拥抱全中文界面。</p>
+      <p>在 GitHub 的官方 Releases 页面，请认准下载以 <code>windows64.zip</code> 结尾的压缩包，这就是 <strong>NekoRay 便携版 (Portable)</strong>。（注：部分新版本可能更名为 <code>nekobox.exe</code>，属于同一个项目）。解压后即可直接双击运行，它通常不会在你的 C 盘注册表里乱写低质量文件，所有的节点数据和配置都安静地躺在解压目录的 <code>config</code> 文件夹中。重装系统时，只需把整个文件夹拷走即可备份。<br>初次打开若为英文，请点击顶部菜单栏的 <code>Preferences -> Basic Settings</code>，将语言切换为 <code>zh_CN</code>，重启软件即可拥抱全中文界面。</p>
 
       <h3>导入订阅与高阶自定义路由分流 (Bypass CN)</h3>
-      <p><strong>NekoRay 怎么导入订阅？</strong> 点击顶部菜单栏的“程序” -> “首选项” -> “分组 (Groups)”，新建一个分组，在“订阅链接”处粘贴你购买的机场链接，点击“更新”。节点瞬间拉取完毕后，按 <code>Enter</code> 键激活任意一个节点。<br>重点来了：在主界面的上方，务必勾选 <strong>“系统代理 (System Proxy)”</strong>，并确保“路由 (Routing)”模式被设置为 <strong>“绕过局域网与大陆 (Bypass LAN and Mainland China)”</strong>。底层的 <code>geosite</code> 规则会自动将 <code>baidu.com</code> 等国内流量直连放行。</p>
+      <p><strong>NekoRay 怎么导入订阅？</strong> 点击顶部菜单栏的“程序” -> “候选项” -> “分组 (Groups)”，新建一个分组，在“订阅链接”处粘贴你购买的机场链接，点击“更新”。节点瞬间拉取完毕后，按 <code>Enter</code> 键激活任意一个节点。<br>重点来了：在主界面的上方，务必勾选 <strong>“系统代理 (System Proxy)”</strong>，并确保“路由 (Routing)”模式被设置为 <strong>“绕过局域网与大陆 (Bypass LAN and Mainland China)”</strong>。底层的 <code>geosite</code> 规则会自动将 <code>baidu.com</code> 等国内流量直连放行。</p>
 
       <h3>NekoRay TUN 虚拟网卡模式与 Fake-IP 劫持机制</h3>
       <p>如果你玩《绝地求生》等外服游戏，或者使用的是不支持系统代理的 UWP 微软商店软件，那么 <strong>NekoRay TUN 虚拟网卡模式开启</strong> 是你的必修课。</p>
-      <p>关闭“系统代理”，在软件顶部勾选 <strong>“VPN 模式”</strong>。此时，NekoRay 会在操作系统底层拉起一张 Wintun 虚拟网卡。最硬核的是，它同时会在底层开启 <strong>Fake-IP 机制</strong>：当你电脑里的游戏试图解析 <code>google.com</code> 时，NekoRay 的内置 DNS 会直接返回一个虚假的 IP (如 <code>198.18.0.5</code>) 骗过游戏客户端，然后 NekoRay 再在底层把这股流量无损封装进节点隧道。这彻底消除了 DNS 泄露问题，实现了真正意义上的 <strong>VPN 模式全局接管</strong>，让所有顽固软件都乖乖走出国节点。</p>
+      <p>关闭“系统代理”，在软件顶部勾选 <strong>“VPN 模式”</strong>。此时，NekoRay 会在操作系统底层拉起一张 Wintun 虚拟网卡。最详细的是，它同时会在底层开启 <strong>Fake-IP 机制</strong>：当你电脑里的游戏试图解析 <code>google.com</code> 时，NekoRay 的内置 DNS 会直接返回一个虚假的 IP (如 <code>198.18.0.5</code>) 骗过游戏客户端，然后 NekoRay 再在底层把这股流量无损封装进节点隧道。这消除了 DNS 泄露问题，实现了意义上的 <strong>VPN 模式全局接管</strong>，让所有顽固软件都乖乖走出国节点。</p>
 
-      <h2 id="qa-faq">4. 深度极客排障与高频疑问解答 (Q&A)</h2>
+      <h2 id="qa-faq">4. 极客排障与高频疑问解答 (Q&A)</h2>
       <p>针对从其他客户端迁移过来的新手，我们汇编了在 Bing 上热度最高的长尾报错排查指南：</p>
 
       <div class="faq-item">
         <h3>Q1: NekoRay 顶部的“基本设置”中，核心到底选 Xray 还是 sing-box？</h3>
-        <p><strong>答：</strong>对于 95% 的用户，强烈建议直接选择 <strong>sing-box 核心</strong>。除非你的机场还在使用极其古老的 Vmess 协议（这种情况下 Xray 可能更稳），否则对于现今的 Vless-Reality 和 Hysteria 2，sing-box 的内存控制和首屏加载速度（0-RTT 握手）有着绝对优势。如果切换核心后无法连网，请检查是否是节点协议在旧版本核心中不被支持。</p>
+        <p><strong>答：</strong>对于 95% 的用户，建议直接选择 <strong>sing-box 核心</strong>。除非你的机场还在使用古老的 Vmess 协议（这种情况下 Xray 可能更稳），否则对于现今的 Vless-Reality 和 Hysteria 2，sing-box 的内存控制和首屏加载速度（0-RTT 握手）有着优势。如果切换核心后无法连网，请检查是否是节点协议在旧版本核心中不被支持。</p>
       </div>
 
       <div class="faq-item">
@@ -97,7 +97,7 @@ const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载�
       </div>
 
       <div class="faq-item">
-        <h3>Q3: 勾选 VPN 模式 (TUN) 时，左下角疯狂报错“缺少管理员权限或驱动加载失败”？</h3>
+        <h3>Q3: 勾选 VPN 模式 (TUN) 时，左下角大量报错“缺少管理员权限或驱动加载失败”？</h3>
         <p><strong>答：</strong>因为 TUN 模式需要调用 Windows 的 <code>wintun.sys</code> 驱动，在网络堆栈最底层安装虚拟网卡，这是最高级别的 Ring 0 系统权限。想要开启 TUN 模式，你每次启动前必须 <strong>右键点击 NekoRay.exe (或 nekobox.exe) 图标，选择“以管理员身份运行”</strong>。一劳永逸的方法是：右键图标 -> 属性 -> 兼容性，永久勾选“以管理员身份运行此程序”。</p>
       </div>
       
@@ -108,13 +108,13 @@ const description = "寻找电脑翻墙万能客户端？NekoRay Windows 下载�
       
       <div class="faq-item">
         <h3>Q5: NekoRay 真连接测试一直显示 Timeout (-1)，甚至连 UDP 协议也被阻断？</h3>
-        <p><strong>答：</strong>NekoRay 的真连接测试会发送一个实际的 HTTP GET 请求去访问 Google。如果显示 Timeout (-1)，排除了上面所有的端口冲突和路由设置问题后，真相往往只有一个：<strong>你的机场节点 IP 已经被 GFW 封锁，或者其使用的 UDP 协议线路被运营商高强度 QoS 丢包了</strong>。再神级的多核客户端，也救不活一条随时会暴毙的劣质线路。</p>
+        <p><strong>答：</strong>NekoRay 的真连接测试会发送一个实际的 HTTP GET 请求去访问 Google。如果显示 Timeout (-1)，排除了上面所有的端口冲突和路由设置问题后，真相往往只有一个：<strong>你的机场节点 IP 已经被 GFW 封锁，或者其使用的 UDP 协议线路被运营商高强度 QoS 丢包了</strong>。再较少见的的多核客户端，也救不活一条随时会暴毙的劣质线路。</p>
       </div>
 
-      <h2 id="conclusion-and-recommendation">5. 结语：拒绝 Timeout，给全能多核客户端配上顶级专线</h2>
-      <p>NekoRay 作为 2026 年 Windows 平台最纯粹、最轻量且技术最超前（双内核引擎）的万能客户端，它几乎做到了客户端能做的一切。但就像我们常说的，软件只是这台跑车的控制面板，真正决定你能在晚高峰飙多快、刷 YouTube 8K 视频会不会疯狂转圈的，永远是底层的网络传输线路。</p>
-      <p>如果你在 NekoRay 中配置好了一切，却依然饱受节点 Timeout、Hysteria 2 疯狂断流的折磨，那是时候抛弃那些采用公网中转的劣质节点了。想要真正发挥 sing-box 内核与底层 TUN 模式的极限威力，强烈建议搭配全系支持最新协议的纯正 <strong>IPLC 物理专线</strong>。</p>
-      <p>高端专线机场能提供极其纯净的底层带宽，数据直接穿透物理专网直达海外，彻底屏蔽 GFW 干扰，无视任何敏感时期的墙体加高。如果你想知道哪些机场完美支持 NekoRay 并提供专线体验，欢迎查阅我们的 <strong><a href="/recommend/">2026 顶级专线机场测速排行榜</a></strong>。配上 NekoRay 这个新世代多核神器，让你的 Windows 电脑彻底告别网络焦虑，开启毫无死角的极致极客出海之旅！</p>
+      <h2 id="conclusion-and-recommendation">5. 结语：拒绝 Timeout，给全能多核客户端配上专线</h2>
+      <p>NekoRay 作为 2026 年 Windows 平台最纯粹、最轻量且技术最超前（双内核引擎）的万能客户端，它几乎做到了客户端能做的一切。但就像我们常说的，软件只是这台跑车的控制面板，决定你能在晚高峰飙多快、刷 YouTube 8K 视频会不会大量转圈的，长期是底层的网络传输线路。</p>
+      <p>如果你在 NekoRay 中配置好了一切，却依然饱受节点 Timeout、Hysteria 2 大量断流的折磨，那是时候抛弃那些采用公网中转的劣质节点了。想要发挥 sing-box 内核与底层 TUN 模式的极限威力，建议搭配全系支持最新协议的 <strong>IPLC 物理专线</strong>。</p>
+      <p>专线机场能提供纯净的底层带宽，数据直接穿透物理专网直达海外，屏蔽 GFW 干扰，不受部分任何敏感时期的墙体加高。如果你想知道哪些机场支持 NekoRay 并提供专线体验，欢迎查阅我们的 <strong><a href="/recommend/">2026 专线机场测速排行榜</a></strong>。配上 NekoRay 这个新世代多核工具，让你的 Windows 电脑告别网络焦虑，开启的极客出海之旅！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

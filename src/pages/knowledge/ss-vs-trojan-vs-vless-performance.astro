@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "机场协议大比拼：SS、Trojan、VLESS 哪个更省电、更快速？";
-const description = "手机翻墙耗电快怎么办？本文深度横向评测 SS、Trojan、VLESS 三大主流翻墙协议的性能、耗电量与连接延迟，帮你挑选最适合自己线路的科学上网协议。";
+const description = "手机翻墙耗电快怎么办？本文横向评测 SS、Trojan、VLESS 三大主流翻墙协议的性能、耗电量与连接延迟，帮你挑选最适合自己线路的科学上网协议。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "手机翻墙耗电快怎么办？本文深度横向评测 S
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：在翻墙协议的较量中，没有绝对的王者，只有最适合的场景。<br>论省电与绝对速度：SS（Shadowsocks）是永远的神。因为它没有复杂的 TLS 握手和多重加密，对手机 CPU 压力极小，最适合搭配不过墙的 IPLC 专线使用。<br>论全能与抗封锁：VLESS（配合 XTLS）是当前的版本答案。它去除了自带加密，性能损耗极低，既能完美伪装，又比 VMess 省电得多，适合公网直连与中转。<br>Trojan 表现中规中矩：它的伪装极佳，但由于完全依赖标准 HTTPS 的 TLS 加密，握手时间稍长，在手机上的耗电量相比 SS 会略高一点。</strong><br>搞懂这三者的底层逻辑，你就能在面对琳琅满目的机场节点时，精准挑出最省电、最适合打游戏或者看视频的线路。</p>
+      <p class="lead-paragraph"><strong>结论先行：在翻墙协议的较量中，没有的代表性产品，只有最适合的场景。<br>论省电与速度：SS（Shadowsocks）是长期的神。因为它没有复杂的 TLS 握手和多重加密，对手机 CPU 压力极小，最适合搭配不过墙的 IPLC 专线使用。<br>论全能与抗封锁：VLESS（配合 XTLS）是当前的版本答案。它去除了自带加密，性能损耗低，既能伪装，又比 VMess 省电得多，适合公网直连与中转。<br>Trojan 表现中规中矩：它的伪装极佳，但由于完全依赖标准 HTTPS 的 TLS 加密，握手时间稍长，在手机上的耗电量相比 SS 会略高一点。</strong><br>搞懂这三者的底层逻辑，你就能在面对琳琅满目的机场节点时，精准挑出最省电、最适合打游戏或者看视频的线路。</p>
 
       <h2 id="core-comparison">1. 核心硬评测：四大主流翻墙协议性能对比表</h2>
       <p>小白在买机场时最头疼的问题就是：<strong>SS、Trojan、VLESS 哪个好？翻墙协议怎么选？</strong> 为了让大家一目了然，我们在同等服务器环境下，对目前市面上的四大主流协议进行了极限跑分和耗电测试，得出了以下 <strong>主流机场协议优缺点</strong> 对比表：</p>
@@ -28,17 +28,17 @@ const description = "手机翻墙耗电快怎么办？本文深度横向评测 S
           <tbody>
             <tr>
               <td><strong>Shadowsocks (SS)</strong></td>
-              <td><strong>极低（最快，即点即开）</strong></td>
-              <td><strong>极低（毫无多余发热，最省电）</strong></td>
-              <td>极弱（公网特征明显，极易被封杀）</td>
+              <td><strong>低（最快，即点即开）</strong></td>
+              <td><strong>低（毫无多余发热，最省电）</strong></td>
+              <td>极弱（公网特征，极易被封杀）</td>
               <td><strong>纯 IPLC/IEPL 内网专线</strong></td>
             </tr>
             <tr>
               <td><strong>VLESS (+XTLS)</strong></td>
-              <td><strong>极低（消除 TLS 套娃）</strong></td>
-              <td><strong>极低（轻量化，性能极佳）</strong></td>
+              <td><strong>低（消除 TLS 套娃）</strong></td>
+              <td><strong>低（轻量化，性能极佳）</strong></td>
               <td><strong>极强（结合 Reality 抗主动探测）</strong></td>
-              <td>高端公网直连、个人自建 VPS</td>
+              <td>公网直连、个人自建 VPS</td>
             </tr>
             <tr>
               <td><strong>Trojan</strong></td>
@@ -61,28 +61,28 @@ const description = "手机翻墙耗电快怎么办？本文深度横向评测 S
       <h2 id="battery-drain">2. 耗电元凶：为什么开着小火箭手机掉电特别快？</h2>
       <p>很多人都会抱怨：<strong>为什么开着小火箭 (Shadowrocket) 或者 Clash，手机掉电特别快？</strong> 尤其是苹果手机，挂着梯子在外面用大半天，电量就见底了。这其实很大程度上取决于你选了什么 <strong>翻墙协议</strong>。</p>
       
-      <p><strong>手机翻墙耗电原因</strong> 的核心在于 <strong>CPU 的加密解密负荷</strong>。你的手机每次发出一条微信、请求一张图片，梯子软件都要在后台对这些数据进行实时加密（把明文变成密文骗过 GFW），收到数据后再解密。这种庞大的数学运算是非常吃 CPU 性能的。<br>
+      <p><strong>手机翻墙耗电原因</strong> 的核心在于 <strong>CPU 的加密解密负荷</strong>。你的手机每次发出一条微信、请求一张图片，梯子软件都要在后台对这些数据进行实时加密（把明文变成密文骗过 GFW），收到数据后再解密。这种庞大的数学运算是吃 CPU 性能的。<br>
       如果你使用的是 <strong>VMess 协议</strong>（特别是在外面套了 WebSocket + TLS 的情况下），你的手机等于在做 <strong>双重加密（TLS 套娃）</strong>，CPU 满负荷运转，手机必然发烫、电量狂掉。<br>
-      相比之下，<strong>苹果手机用哪个协议翻墙最省电？</strong> 毫无疑问是 <strong>SS（搭配 chacha20-ietf-poly1305 加密）</strong> 或者 <strong>VLESS (XTLS-Vision)</strong>。前者没有繁重的 TLS 握手，后者极其聪明地剥离了多余的加密，只做最基础的搬运工。它们挂在后台几乎等同于微信的耗电量。</p>
+      相比之下，<strong>苹果手机用哪个协议翻墙最省电？</strong> 毫无疑问是 <strong>SS（搭配 chacha20-ietf-poly1305 加密）</strong> 或者 <strong>VLESS (XTLS-Vision)</strong>。前者没有繁重的 TLS 握手，后者聪明地剥离了多余的加密，只做最基础的搬运工。它们挂在后台几乎等同于微信的耗电量。</p>
 
       <h2 id="latency-truth">3. 延迟真相：Trojan 为什么连通延迟比 SS 高？</h2>
       <p>经常有游戏玩家问：<strong>Trojan 节点为什么连通延迟比 SS 高？玩外服游戏（低延迟）选 SS 还是 VLESS？</strong></p>
       
       <p>我们要明白一个概念：Ping 值（物理距离） ≠ 真实网页打开速度。<br>
       当你点击一个网页时，底层协议需要先和服务器“握手确认身份”，才能开始传数据。<br>
-      <strong>Trojan 协议 CPU 占用</strong> 虽然不高，但它为了把你的流量完美伪装成 HTTPS，必须完全遵守标准的 TLS 握手流程。这意味着在传输真实数据前，它要在你的手机和国外服务器之间来回交互好几次。这不可避免地带来了额外的 <strong>TLS 握手延迟损耗</strong>（也就是你点开网页时那一瞬间的滞后感）。<br>
+      <strong>Trojan 协议 CPU 占用</strong> 虽然不高，但它为了把你的流量伪装成 HTTPS，必须完全遵守标准的 TLS 握手流程。这意味着在传输真实数据前，它要在你的手机和国外服务器之间来回交互好几次。这不可避免地带来了额外的 <strong>TLS 握手延迟损耗</strong>（也就是你点开网页时那一瞬间的滞后感）。<br>
       而 <strong>SS 加密解密性能</strong> 之所以被奉为神明，是因为它是 <strong>AEAD 极简加密</strong>，没有任何啰嗦的伪装过程。你一点开，数据瞬间就发出去了。这就是为什么 <strong>专线机场为什么只用 SS 协议</strong>。在安全性仍需评估（不过墙）的内网环境里，丢掉伪装的 SS 能跑出极限的电竞级超低延迟。</p>
 
-      <h2 id="faq">4. 常见问题解答 (FAQ)：关于翻墙耗电与速度的硬核排障</h2>
+      <h2 id="faq">4. 常见问题解答 (FAQ)：关于翻墙耗电与速度的详细排障</h2>
       
       <div class="faq-item">
         <h3>Q1: 晚高峰看 4K 视频哪个协议速度最稳定？</h3>
-        <p><strong>答：这取决于你的线路质量，而不是协议。</strong> 协议只决定了“握手快慢和耗电量”。如果你的机场走的是物理内网专线（IPLC），哪怕用最简陋的 SS 也能秒开 4K；如果你的机场是垃圾直连线路，那么你用 VLESS 还是 Trojan 在晚高峰都会卡顿。对于烂线路，我们建议尝试使用基于 UDP 暴力发包的 <strong>Hysteria 2 协议</strong> 来强行抢占带宽。</p>
+        <p><strong>答：这取决于你的线路质量，而不是协议。</strong> 协议只决定了“握手快慢和耗电量”。如果你的机场走的是物理内网专线（IPLC），哪怕用最简陋的 SS 也能加载 4K；如果你的机场是低质量直连线路，那么你用 VLESS 还是 Trojan 在晚高峰都会卡顿。对于烂线路，我们建议尝试使用基于 UDP 暴力发包的 <strong>Hysteria 2 协议</strong> 来强行抢占带宽。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q2: 路由器翻墙哪个协议对 CPU 压力最小？</h3>
-        <p><strong>答：SS 和 VLESS。</strong> 便宜的软路由（如 J1900 或 ARM 架构芯片）算力有限。如果在上面跑套娃加密的 VMess，一旦宽带跑到 300M 以上，CPU 就会直接 100% 满载，导致网络卡死。此时换成极其轻量化的 SS 或 VLESS（无加密），能轻松跑满千兆宽带且不发热。</p>
+        <p><strong>答：SS 和 VLESS。</strong> 便宜的软路由（如 J1900 或 ARM 架构芯片）算力有限。如果在上面跑套娃加密的 VMess，一旦宽带跑到 300M 以上，CPU 就会直接 100% 满载，导致网络卡死。此时换成轻量化的 SS 或 VLESS（无加密），能轻松跑满千兆宽带且不发热。</p>
       </div>
       
       <div class="faq-item">
@@ -90,18 +90,18 @@ const description = "手机翻墙耗电快怎么办？本文深度横向评测 S
         <p><strong>答：SS 最快，基于 QUIC 的 TUIC 协议最猛。</strong> 地铁里网络经常在 4G/5G 之间切换导致 IP 变动。SS 因为没有状态记录，只要有网就能瞬间继续发包。而现代化的 TUIC 协议甚至支持 0-RTT（零延迟连接），在弱网环境下的恢复速度远超传统且需要冗长握手的 Trojan。</p>
       </div>
 
-      <h2 id="recommendation">5. 终极选购指南：如何根据你的需求挑选合适的机场套餐？</h2>
+      <h2 id="recommendation">5. 选购指南：如何根据你的需求挑选合适的机场套餐？</h2>
       <p>看到这里，你一定明白了 <strong>翻墙协议哪个最省电、哪个速度最快</strong>，也懂得了“没有废物的协议，只有选错的场景”这个道理。</p>
       
-      <p>👉 <strong>如果你是追求极限体验的高净值用户、重度游戏玩家，或是极度在意手机续航的人：</strong><br>
-      请毫不犹豫地购买 <strong>纯 SS 协议的顶级 IPLC/IEPL 专线机场</strong>。花最贵的钱，享受剥离一切伪装后，那极致的低延迟与冰凉的手机手感。</p>
+      <p>👉 <strong>如果你是追求极限体验的高净值用户、重度游戏玩家，或是在意手机续航的人：</strong><br>
+      请谨慎评估后地购买 <strong>纯 SS 协议的 IPLC/IEPL 专线机场</strong>。花最贵的钱，享受剥离一切伪装后，那较低的延迟与冰凉的手机手感。</p>
       
       <p>👉 <strong>如果你是追求性价比、想花少量的钱享受稳定防封锁体验的用户：</strong><br>
-      请购买 <strong>全面支持 VLESS Reality 或 Trojan 的优质中转/直连机场</strong>。它们用稍稍牺牲一点点握手速度的代价，换来了在敏感时期极度坚挺的抗封锁能力。</p>
+      请购买 <strong>全面支持 VLESS Reality 或 Trojan 的优质中转/直连机场</strong>。它们用稍稍牺牲一点点握手速度的代价，换来了在敏感时期坚挺的抗封锁能力。</p>
       
       <p>为了免去大家选择困难，我们团队测试了市面上上百家梯子，为您分别挑选了代表这两大极限流派的优质服务商：</p>
       
-      <p>👉 <strong><a href="/recommend/">2026 极致速度与省电！全面支持 SS 专线与 VLESS Reality 的顶级机场推荐榜单</a></strong></p>
+      <p>👉 <strong><a href="/recommend/">2026 速度与省电！全面支持 SS 专线与 VLESS Reality 的机场推荐榜单</a></strong></p>
       
       <p>告别手机发烫尿崩，告别游戏跳 Ping 断流，选对属于你的最佳协议与机场组合吧！</p>
     
@@ -110,7 +110,7 @@ const description = "手机翻墙耗电快怎么办？本文深度横向评测 S
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/knowledge/airport-node-connection-failed/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">买了机场节点连不上？【新手必看】常见错误与 5 步排查指南 ↗</a></li>
             <li><a href="/knowledge/reduce-gaming-latency-proxy-accelerator-guide/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">翻墙状态下如何降低游戏延迟？游戏加速器与普通节点搭配技巧 ↗</a></li>

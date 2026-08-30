@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "v2rayN 详细使用教程：从下载到添加机场订阅链接";
-const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提供最详尽的 Windows 电脑翻墙图文教程，从下载带有 Xray 内核的完整包，到一键导入订阅链接，全面解决端口被占用与节点超时等所有排障痛点。";
+const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提供最详细的 Windows 电脑翻墙图文教程，从下载带有 Xray 内核的完整包，到一键导入订阅链接，全面解决端口被占用与节点超时等所有排障痛点。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：v2rayN 核心配置只需三步！</strong><br><br>很多新手觉得 v2rayN 界面全是文字和代码，看起来极其复杂。但实际上，只要掌握了核心逻辑，配置过程不到 1 分钟。<br><br><strong>第一步：下载对的版本。</strong> 务必下载带有 <code>With-Core</code> 后缀的压缩包，解压后双击蓝色 V 字图标运行。<br><strong>第二步：导入订阅链接。</strong> 点击顶部菜单栏的“订阅” -> “订阅设置”，粘贴你购买的机场订阅链接，然后点击“更新订阅”。<br><strong>第三步：开启系统代理与路由。</strong> 选中一个测速有数值的节点，敲击回车键（设为活动节点）。在软件底部，将路由设为<strong>“绕过局域网及大陆”</strong>，系统代理设为<strong>“自动配置系统代理”</strong>，即可成功翻墙。</p>
+      <p class="lead-paragraph"><strong>结论先行：v2rayN 核心配置只需三步！</strong><br><br>很多新手觉得 v2rayN 界面全是文字和代码，看起来复杂。但实际上，只要掌握了核心逻辑，配置过程不到 1 分钟。<br><br><strong>第一步：下载对的版本。</strong> 务必下载带有 <code>With-Core</code> 后缀的压缩包，解压后双击蓝色 V 字图标运行。<br><strong>第二步：导入订阅链接。</strong> 点击顶部菜单栏的“订阅” -> “订阅设置”，粘贴你购买的机场订阅链接，然后点击“更新订阅”。<br><strong>第三步：开启系统代理与路由。</strong> 选中一个测速有数值的节点，敲击回车键（设为活动节点）。在软件底部，将路由设为<strong>“绕过局域网及大陆”</strong>，系统代理设为<strong>“自动配置系统代理”</strong>，即可成功翻墙。</p>
 
       <h2 id="version-and-troubleshooting">1. 核心排障与版本选择对照表</h2>
       <p>绝大多数的新手翻车，不是因为节点不行，而是倒在了下载空壳软件和选错运行模式上。请务必对照下表解决你初次运行时的痛点：</p>
@@ -20,13 +20,13 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
             <tr>
               <th>新手常见卡点</th>
               <th>错误表现与原因</th>
-              <th>Antigravity 博客终极解决办法</th>
+              <th>Antigravity 博客解决办法</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>下载版本选错</strong></td>
-              <td>导入节点后全红，底部日志疯狂报错。因为下载了不带内核的空壳版。</td>
+              <td>导入节点后全红，底部日志大量报错。因为下载了不带内核的空壳版。</td>
               <td>前往 GitHub，务必下载命名为 <strong>v2rayN-With-Core.zip</strong> 的完整包。</td>
             </tr>
             <tr>
@@ -48,29 +48,29 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
         </table>
       </div>
 
-      <h2 id="core-mechanisms">2. 内核机制与底层技术详解：压榨 V2Ray 极致性能</h2>
+      <h2 id="core-mechanisms">2. 内核机制与底层技术详解：压榨 V2Ray 性能</h2>
       <p>对于进阶玩家来说，想要让 <strong>V2Ray 客户端配置</strong> 达到跑满宽带的极限速度，你必须了解它底层的几项杀手锏功能，而不是像小白一样只会点“更新订阅”。</p>
       
       <h3>v2rayN-Core.zip 与 v2rayN-With-Core 区别</h3>
-      <p>在 GitHub 的官方 Releases 页面，通常会有十几个不同后缀的文件。新手极容易下错：<code>v2rayN.zip</code> 是纯纯的 C# 空壳 UI 界面，没有任何网络通信功能；而 <code>v2rayN-With-Core.zip</code> 则内置了 Xray、V2Ray、Sing-box 等众多神级底层网络驱动（Core）。如果你下载了不带 Core 的版本，导入节点后虽然列表里有显示，但底层根本没有“发动机”去发起代理请求，这也是为什么很多小白一测试就全红报错的原因。</p>
+      <p>在 GitHub 的官方 Releases 页面，通常会有十几个不同后缀的文件。新手极容易下错：<code>v2rayN.zip</code> 是纯纯的 C# 空壳 UI 界面，没有任何网络通信功能；而 <code>v2rayN-With-Core.zip</code> 则内置了 Xray、V2Ray、Sing-box 等众多较少见的底层网络驱动（Core）。如果你下载了不带 Core 的版本，导入节点后虽然列表里有显示，但底层根本没有“发动机”去发起代理请求，这也是为什么很多小白一测试就全红报错的原因。</p>
 
       <h3>Xray 内核更新与 XTLS-Reality 协议适配</h3>
-      <p>2026 年的 GFW 防火长城封锁环境极其险恶，传统的 Vmess 协议由于握手特征明显，已经被精准识别并大规模封锁。现在各大高端机场的主流协议是 <strong>Vless + XTLS-Reality</strong>。</p>
-      <p>Reality 协议通过底层的 uTLS 技术伪装客户端的 Client Hello (TLS 握手特征)，让 GFW 以为你是在正常访问微软或苹果的官网。要跑满这种协议的速度，你需要进入 v2rayN 顶部的“设置” -> “参数设置” -> “v2rayN 设置”，确保你的“Core类型”默认选中了 <strong>Xray</strong>，而不是老旧的 v2rayCore。如果你的节点疯狂超时，请在主界面的“检查更新”中，点击“更新 Xray Core”到最新版本，以获取最新的反封锁指纹库。</p>
+      <p>2026 年的 GFW 防火长城封锁环境险恶，传统的 Vmess 协议由于握手特征，已经被精准识别并大规模封锁。现在各大机场的主流协议是 <strong>Vless + XTLS-Reality</strong>。</p>
+      <p>Reality 协议通过底层的 uTLS 技术伪装客户端的 Client Hello (TLS 握手特征)，让 GFW 以为你是在正常访问微软或苹果的官网。要跑满这种协议的速度，你需要进入 v2rayN 顶部的“设置” -> “参数设置” -> “v2rayN 设置”，确保你的“Core类型”默认选中了 <strong>Xray</strong>，而不是老旧的 v2rayCore。如果你的节点大量超时，请在主界面的“检查更新”中，点击“更新 Xray Core”到最新版本，以获取最新的反封锁指纹库。</p>
 
       <h3>底层路由规则：绕过局域网及大陆 (Bypass CN)</h3>
-      <p>为什么开启代理后，挂着微信和国内淘宝依然丝滑，且不消耗机场流量？因为 v2rayN 在底层加载了 <code>geoip.dat</code> 和 <code>geosite.dat</code> 两个庞大的数据库。当你将底部的路由选项设为 <strong>“绕过局域网及大陆”</strong> 时，所有发往国内 IP 频段 (IP-CIDR) 和国内域名（如 <code>.cn</code> 或 <code>baidu.com</code>）的数据包，都会被直接放行（Direct）；只有匹配到国外 IP 的数据包，才会被封装并发送给机场节点。这就是分流的奥秘所在。</p>
+      <p>为什么开启代理后，挂着微信和国内淘宝依然流畅，且不消耗机场流量？因为 v2rayN 在底层加载了 <code>geoip.dat</code> 和 <code>geosite.dat</code> 两个庞大的数据库。当你将底部的路由选项设为 <strong>“绕过局域网及大陆”</strong> 时，所有发往国内 IP 频段 (IP-CIDR) 和国内域名（如 <code>.cn</code> 或 <code>baidu.com</code>）的数据包，都会被直接放行（Direct）；只有匹配到国外 IP 的数据包，才会被封装并发送给机场节点。这就是分流的奥秘所在。</p>
 
       <h3>自动开启系统代理与局域网共享代理</h3>
       <p>当你勾选<strong>“自动配置系统代理”</strong>时，v2rayN 实际上是在悄悄修改 Windows 系统的注册表 (<code>Internet Settings -> ProxyEnable = 1</code>)，强制让 Chrome 和 Edge 浏览器将流量发送给本地的 <code>127.0.0.1:10808</code> 端口。</p>
-      <p>而底部的<strong>“局域网共享”</strong>选项则是主机玩家的神器。如果你家里有一台不能装翻墙软件的 Apple TV 或者是游戏主机 (PS5 / Switch)，你可以勾选此项。软件会开放一个监听全网段的本地端口。此时，只需进入 PS5 的网络设置 -> 手动设置代理 -> 填入你这台电脑的局域网 IP（例如 <code>192.168.1.100</code>），端口填 <code>10808</code>，你的游戏主机就能瞬间起飞，畅玩外服联机游戏！（注意：第一次开启时，Windows Defender 防火墙会弹窗警告，务必勾选“允许专用网络和公用网络访问”）。</p>
+      <p>而底部的<strong>“局域网共享”</strong>选项则是主机玩家的工具。如果你家里有一台不能装翻墙软件的 Apple TV 或者是游戏主机 (PS5 / Switch)，你可以勾选此项。软件会开放一个监听市场上段的本地端口。此时，只需进入 PS5 的网络设置 -> 手动设置代理 -> 填入你这台电脑的局域网 IP（例如 <code>192.168.1.100</code>），端口填 <code>10808</code>，你的游戏主机就能瞬间起飞，畅玩外服联机游戏！（注意：第一次开启时，Windows Defender 防火墙会弹窗警告，务必勾选“允许专用网络和公用网络访问”）。</p>
 
       <h3>开启 TUN 虚拟网卡模式 (接管 UWP 与 Telegram)</h3>
       <p>很多电脑小白发现，开启了系统代理后，浏览器能翻墙，但 Telegram (电报) 客户端或者微软应用商店 (UWP 应用) 却依然连不上网。这是因为这些软件不走系统代理通道。此时，你需要 <strong>开启 TUN 虚拟网卡模式</strong>。</p>
-      <p>点击顶部的“设置” -> “开启 TUN 模式”，v2rayN 会在后台悄悄安装一张基于 Wintun 驱动的虚拟网卡。TUN 模式会在操作系统的最底层 (OSI 网络层) 强行截获所有的 TCP 和 UDP 流量，将其无死角地塞入代理通道。这实现了真正意义上的“全局 VPN 级”代理，彻底解决某些顽固软件无法翻墙的痛点。</p>
+      <p>点击顶部的“设置” -> “开启 TUN 模式”，v2rayN 会在后台悄悄安装一张基于 Wintun 驱动的虚拟网卡。TUN 模式会在操作系统的最底层 (OSI 网络层) 强行截获所有的 TCP 和 UDP 流量，将其无死角地塞入代理通道。这实现了意义上的“全局 VPN 级”代理，解决某些顽固软件无法翻墙的痛点。</p>
 
-      <h2 id="qa-faq">3. 实操与高频报错深度排查 (Q&A)</h2>
-      <p>在这个板块，我们针对 Bing 问答摘要中最常见的高频崩溃痛点，给出了极客级的保姆排障方案：</p>
+      <h2 id="qa-faq">3. 实操与高频报错排查 (Q&A)</h2>
+      <p>在这个板块，我们针对 Bing 问答摘要中最常见的高频崩溃痛点，给出了的保姆排障方案：</p>
 
       <div class="faq-item">
         <h3>Q1: 点击“更新订阅”时，提示“基础连接已经关闭 / 获取失败”？</h3>
@@ -79,28 +79,28 @@ const description = "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提�
 
       <div class="faq-item">
         <h3>Q2: 测试节点时，“测试延迟(Ping)”和“测试真连接延迟”有什么区别？</h3>
-        <p><strong>答：</strong>这是 <strong>v2rayN 真连接测试 (TCP Ping)</strong> 最核心的功能也是最大的认知误区。普通“Ping（Ctrl+P）”只是发送 ICMP 包测试你的电脑到机场国内入口中转服务器的物理距离，就算显示极低的 20ms 全绿，也绝对不代表节点能翻过 GFW（中转机可能已经断网了）。<br>“真连接延迟（Ctrl+O）”则是让节点实际去发起一次 HTTP GET 请求，访问 <code>clients3.google.com/generate_204</code>。只有这个数值有显示（通常在几百毫秒），才代表该节点真正突破了封锁且具备数据传输能力。日常排障，请永远只看“真连接”。</p>
+        <p><strong>答：</strong>这是 <strong>v2rayN 真连接测试 (TCP Ping)</strong> 最核心的功能也是最大的认知误区。普通“Ping（Ctrl+P）”只是发送 ICMP 包测试你的电脑到机场国内入口中转服务器的物理距离，就算显示低的 20ms 全绿，也不代表节点能翻过 GFW（中转机可能已经断网了）。<br>“真连接延迟（Ctrl+O）”则是让节点实际去发起一次 HTTP GET 请求，访问 <code>clients3.google.com/generate_204</code>。只有这个数值有显示（通常在几百毫秒），才代表该节点突破了封锁且具备数据传输能力。日常排障，请长期只看“真连接”。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q3: 每次电脑关机重启后，微信能用但浏览器全部打不开网页？</h3>
-        <p><strong>答：</strong>这通常是 v2rayN 非正常关闭（如死机或强制关机）导致的“系统代理劫持残留”。Windows 系统的代理开关被永远卡在了“打开”状态，浏览器傻傻地把流量发给 10808 端口，但 v2rayN 并没有运行，导致流量进入了死胡同。解决办法非常简单：重新打开一次 v2rayN 软件，然后在右下角托盘图标处，右键选择正常“退出”一次，它就会自动在注销前清理掉代理残留，网络瞬间恢复正常。</p>
+        <p><strong>答：</strong>这通常是 v2rayN 非正常关闭（如死机或强制关机）导致的“系统代理劫持残留”。Windows 系统的代理开关被长期卡在了“打开”状态，浏览器傻傻地把流量发给 10808 端口，但 v2rayN 并没有运行，导致流量进入了死胡同。解决办法简单：重新打开一次 v2rayN 软件，然后在右下角托盘图标处，右键选择正常“退出”一次，它就会自动在注销前清理掉代理残留，网络瞬间恢复正常。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q4: 怎么解决 v2rayN 底部红字报错端口被占用 (Port in use)？</h3>
-        <p><strong>答：</strong>如果在底部的黑色日志框中疯狂跳出“Port 10808 already in use”，说明这个默认端口被电脑里的其他流氓软件（或者你开了另一个代理客户端、杀毒软件）霸占了。极客的查杀方法是打开 CMD 输入 <code>netstat -ano | findstr 10808</code> 找出 PID 然后杀掉进程。但对小白来说，最简单的办法是：点击顶部的“设置” -> “参数设置”，将“本地 HTTP 端口”修改为一个没人用的冷门端口（比如 <code>12345</code>），然后点击确定重启软件即可完美解决。</p>
+        <p><strong>答：</strong>如果在底部的黑色日志框中大量跳出“Port 10808 already in use”，说明这个默认端口被电脑里的其他流氓软件（或者你开了另一个代理客户端、杀毒软件）霸占了。极客的查杀方法是打开 CMD 输入 <code>netstat -ano | findstr 10808</code> 找出 PID 然后杀掉进程。但对小白来说，最简单的办法是：点击顶部的“设置” -> “参数设置”，将“本地 HTTP 端口”修改为一个没人用的冷门端口（比如 <code>12345</code>），然后点击确定重启软件即可改善。</p>
       </div>
       
       <div class="faq-item">
         <h3>Q5: v2rayN 和现代化的 Clash Verge 哪个更好用、更省内存？</h3>
-        <p><strong>答：</strong>如果你追求界面的美观度和需要极其复杂的脚本分流，Clash Verge Rev 更好用。但如果你的电脑是性能较弱的老旧轻薄本，或者你想把客户端放在软路由/服务器上 7x24 小时常驻，<strong>v2rayN 是绝对的内存控制王者</strong>。它原生使用 C# 编写，不包含任何庞大臃肿的 Electron/Tauri 网页前端框架，在后台待机时，常驻内存极其变态地控制在 15MB - 25MB 之间，几乎做到了对系统资源的零压榨。</p>
+        <p><strong>答：</strong>如果你追求界面的美观度和需要复杂的脚本分流，Clash Verge Rev 更好用。但如果你的电脑是性能较弱的老旧轻薄本，或者你想把客户端放在软路由/服务器上 7x24 小时常驻，<strong>v2rayN 是的内存控制代表性产品</strong>。它原生使用 C# 编写，不包含任何庞大臃肿的 Electron/Tauri 网页前端框架，在后台待机时，常驻内存严格地控制在 15MB - 25MB 之间，几乎做到了对系统资源的零压榨。</p>
       </div>
 
-      <h2 id="conclusion-and-recommendation">4. 好马配好鞍：发挥 Xray 极限性能的高端 IPLC 专线</h2>
-      <p>v2rayN 是一款极其出色的性能怪兽，它的 Xray 内核对底层网络传输协议的压榨到了极致，可以说在客户端层面你已经做到了 100 分。但请记住一个残酷的木桶效应：<strong>如果你的机场节点本身就是晚高峰动辄丢包 30%、带宽极其拥挤的劣质月抛线路，那再神级的客户端也无能为力，真连接测试依然会是一片刺眼的红字超时（-1）。</strong></p>
-      <p>想要真正发挥 v2rayN 和 Vless/Reality 最新协议的强悍性能，你需要一条底层干净、纯物理级防封锁的优质专线（即彻底绕过 GFW 的 Layer 2 专线）。强烈建议搭配全面支持 Xray 最新内核、提供纯 IPLC (国际私有驻地网) 内网直连的高端机场。这里我们首推 <strong><a href="https://vip02.fireflyaff.com/#/?code=8nDg6OEY" target="_blank" rel="nofollow sponsored noopener noreferrer">Firefly 萤火虫专线机场</a></strong>。</p>
-      <p>作为 2026 年备受赞誉的老牌大厂，Firefly 萤火虫不仅完美兼容 v2rayN 的订阅格式，更拥有全系 IPLC 物理专线加持，数据全程走内网传输，无视任何敏感时期的墙体干扰。配合 v2rayN 的极低资源占用优势，真正让你的 Windows 电脑享受点击即开、晚高峰秒开 8K 视频的极客级丝滑体验！</p>
+      <h2 id="conclusion-and-recommendation">4. 好马配好鞍：发挥 Xray 极限性能的 IPLC 专线</h2>
+      <p>v2rayN 是一款出色的性能怪兽，它的 Xray 内核对底层网络传输协议的压榨到了，可以说在客户端层面你已经做到了 100 分。但请记住一个复杂的木桶效应：<strong>如果你的机场节点本身就是晚高峰动辄丢包 30%、带宽拥挤的劣质月抛线路，那再较少见的的客户端也无能为力，真连接测试依然会是一片刺眼的红字超时（-1）。</strong></p>
+      <p>想要发挥 v2rayN 和 Vless/Reality 最新协议的较强性能，你需要一条底层干净、纯物理级防封锁的优质专线（即绕过 GFW 的 Layer 2 专线）。建议搭配全面支持 Xray 最新内核、提供纯 IPLC (国际私有驻地网) 内网直连的机场。这里我们首推 <strong><a href="https://vip02.fireflyaff.com/#/?code=8nDg6OEY" target="_blank" rel="nofollow sponsored noopener noreferrer">Firefly 萤火虫专线机场</a></strong>。</p>
+      <p>作为 2026 年备受赞誉的老牌大厂，Firefly 萤火虫不仅兼容 v2rayN 的订阅格式，更拥有全系 IPLC 物理专线加持，数据全程走内网传输，不受部分任何敏感时期的墙体干扰。配合 v2rayN 的低资源占用优势，让你的 Windows 电脑享受点击即开、晚高峰加载 8K 视频的流畅体验！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

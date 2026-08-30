@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "什么是 DNS 泄露？如何测试并防止真实 IP 泄露？";
-const description = "翻墙后 IP 归属地依然显示中国？深度解析 DNS 泄露原理、WebRTC 暴露与 Fake-IP 机制，教你利用 TUN 虚拟网卡彻底防止真实身份与 IP 泄露。";
+const description = "翻墙后 IP 归属地依然显示中国？解析 DNS 泄露原理、WebRTC 暴露与 Fake-IP 机制，教你利用 TUN 虚拟网卡防止真实身份与 IP 泄露。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "翻墙后 IP 归属地依然显示中国？深度解析 DNS
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：DNS 泄露会直接导致你的真实身份曝光与流媒体解锁失败！</strong><br><br>很多新手以为，只要连上了机场节点，电脑的 IP 变成了“美国”，自己就在互联网上彻底隐身了。但在极其严苛的流媒体风控（如 Netflix、ChatGPT）面前，这只是掩耳盗铃。<br><strong>什么是 DNS 泄露？</strong> 当你开启代理访问海外网站时，虽然你的网页数据走了加密隧道，但“域名解析请求”却意外绕过了代理软件，直接发送给了国内的运营商（如中国电信/联通 DNS）。这就是 DNS 泄露。<br><strong>核心致命危害：</strong> 目标网站会发现一个极其诡异的现象——你的 IP 节点显示在美国，但你的 DNS 查询请求却来自中国广东！网站会立刻判定你使用了代理工具（Proxy），从而强制封锁你的账号或拒绝提供服务。<br><strong>如何测试与解决？</strong> 保持代理开启，立刻访问 <a href="https://dnsleaktest.com" target="_blank" rel="nofollow sponsored noopener noreferrer">dnsleaktest.com</a> 进行 Standard Test。如果结果列表中出现了中国节点（如 China Telecom），请立刻在客户端（如 Clash / v2rayN）中开启 <strong>“TUN 虚拟网卡模式”</strong> 接管底层所有流量。</p>
+      <p class="lead-paragraph"><strong>结论先行：DNS 泄露会直接导致你的真实身份曝光与流媒体解锁失败！</strong><br><br>很多新手以为，只要连上了机场节点，电脑的 IP 变成了“美国”，自己就在互联网上隐身了。但在严格的流媒体风控（如 Netflix、ChatGPT）面前，这只是掩耳盗铃。<br><strong>什么是 DNS 泄露？</strong> 当你开启代理访问海外网站时，虽然你的网页数据走了加密隧道，但“域名解析请求”却意外绕过了代理软件，直接发送给了国内的运营商（如中国电信/联通 DNS）。这就是 DNS 泄露。<br><strong>核心致命危害：</strong> 目标网站会发现一个诡异的现象——你的 IP 节点显示在美国，但你的 DNS 查询请求却来自中国广东！网站会立刻判定你使用了代理工具（Proxy），从而强制封锁你的账号或拒绝提供服务。<br><strong>如何测试与解决？</strong> 保持代理开启，立刻访问 <a href="https://dnsleaktest.com" target="_blank" rel="nofollow sponsored noopener noreferrer">dnsleaktest.com</a> 进行 Standard Test。如果结果列表中出现了中国节点（如 China Telecom），请立刻在客户端（如 Clash / v2rayN）中开启 <strong>“TUN 虚拟网卡模式”</strong> 接管底层所有流量。</p>
 
       <h2 id="symptoms-table">1. 主流防泄露方案与效果对比表</h2>
       <p>要防止真实 IP 暴露，不仅需要工具，更需要正确的网络配置层级。请参考下方的防泄露方案评级：</p>
@@ -49,18 +49,18 @@ const description = "翻墙后 IP 归属地依然显示中国？深度解析 DNS
       </div>
 
       <h2 id="tech-deep-dive">2. 极客解码：DNS 是怎么偷偷把你“卖”掉的？</h2>
-      <p>想要做到绝对的网络隐身，我们必须下潜到 OSI 模型的网络层，拆解计算机请求网页的物理全过程。</p>
+      <p>想要做到的网络隐身，我们必须下潜到 OSI 模型的网络层，拆解计算机请求网页的物理全过程。</p>
       
       <h3>系统代理 (System Proxy) 的先天残疾</h3>
-      <p>绝大多数小白在使用 Clash 或 v2rayN 时，只是简单地勾选了“开启系统代理”。<br>这种模式的本质，是往 Windows/Mac 的系统注册表中写入了一句话：“请把 <strong>HTTP 和 HTTPS (网页)</strong> 流量发给本机的 7890 端口”。<br>但致命的漏洞在于：<strong>DNS 查询通常走的是 UDP 53 端口！</strong><br>系统代理根本管不住 UDP 流量。于是，当你在浏览器输入 <code>netflix.com</code> 时，Windows 会越过代理软件，直接向国内的 <code>114.114.114.114</code> 大喊：“奈飞的 IP 是多少？”<br>这一喊，不仅国内运营商（GFW）立刻知道了你在看什么网站，海外的奈飞服务器也会通过追踪 DNS 请求的源头，瞬间查出你的真实国籍。这不仅是流媒体风控的重灾区，更是极其危险的隐私“裸奔”行为。</p>
+      <p>绝大多数小白在使用 Clash 或 v2rayN 时，只是简单地勾选了“开启系统代理”。<br>这种模式的本质，是往 Windows/Mac 的系统注册表中写入了一句话：“请把 <strong>HTTP 和 HTTPS (网页)</strong> 流量发给本机的 7890 端口”。<br>但致命的漏洞在于：<strong>DNS 查询通常走的是 UDP 53 端口！</strong><br>系统代理根本管不住 UDP 流量。于是，当你在浏览器输入 <code>netflix.com</code> 时，Windows 会越过代理软件，直接向国内的 <code>114.114.114.114</code> 大喊：“奈飞的 IP 是多少？”<br>这一喊，不仅国内运营商（GFW）立刻知道了你在看什么网站，海外的奈飞服务器也会通过追踪 DNS 请求的源头，瞬间查出你的真实国籍。这不仅是流媒体风控的重灾区，更是危险的隐私“裸奔”行为。</p>
 
-      <h3>Fake-IP 的降维打击与本地污染</h3>
-      <p>为了解决上述漏洞，极客们发明了 <strong>Fake-IP (伪造 IP) 模式</strong>。<br>当开启 Fake-IP 后，Clash 客户端会在底层化身为一个流氓 DNS 服务器。<br>1. 你的电脑大喊：“奈飞的 IP 是多少？”<br>2. Clash 立刻捂住电脑的嘴，不让声音传到外网，并毫秒级回答：“奈飞的 IP 是 <code>198.18.0.5</code>（这是一个瞎编的内网假 IP）”。<br>3. 电脑信以为真，向这个假 IP 发送流量。Clash 截获流量后，将其打包进加密隧道，让海外的代理节点去进行真正的 DNS 解析。<br><strong>这就是物理阻断 DNS 泄露的最完美形态。</strong> 但代价是，如果你没配置好国内直连规则，访问百度也会被返回假 IP，导致国内网页图片加载全部碎裂。</p>
+      <h3>Fake-IP 的形成差异与本地污染</h3>
+      <p>为了解决上述漏洞，极客们发明了 <strong>Fake-IP (伪造 IP) 模式</strong>。<br>当开启 Fake-IP 后，Clash 客户端会在底层化身为一个流氓 DNS 服务器。<br>1. 你的电脑大喊：“奈飞的 IP 是多少？”<br>2. Clash 立刻捂住电脑的嘴，不让声音传到外网，并毫秒级回答：“奈飞的 IP 是 <code>198.18.0.5</code>（这是一个瞎编的内网假 IP）”。<br>3. 电脑信以为真，向这个假 IP 发送流量。Clash 截获流量后，将其打包进加密隧道，让海外的代理节点去进行 DNS 解析。<br><strong>这就是物理阻断 DNS 泄露的较合适形态。</strong> 但代价是，如果你没配置好国内直连规则，访问百度也会被返回假 IP，导致国内网页图片加载全部碎裂。</p>
 
       <h3>WebRTC 暴露：连 TUN 都挡不住的底裤泄露</h3>
-      <p>有时候你开启了 TUN 虚拟网卡，DNS leak test 也显示 100% 干净，但依然被某些高安防网站封杀，这就属于 <strong>WebRTC 漏洞</strong>。<br>WebRTC 是浏览器底层用于网页视频通话（如 Google Meet、网页版 Zoom）的技术。为了追求极低延迟，浏览器会赋予 WebRTC 极高的系统权限，允许它直接穿透虚拟网卡，读取你电脑主板上网卡真实的物理 IP（甚至是 IPv6 地址），然后将这个真实 IP 强行发送给目标网站。<br><strong>唯一解法：</strong> 在 Chrome 或 Edge 浏览器中，安装 <code>WebRTC Control</code> 或 <code>WebRTC Leak Prevent</code> 扩展插件，彻底阉割浏览器的这项高级功能。</p>
+      <p>有时候你开启了 TUN 虚拟网卡，DNS leak test 也显示 100% 干净，但依然被某些高安防网站封杀，这就属于 <strong>WebRTC 漏洞</strong>。<br>WebRTC 是浏览器底层用于网页视频通话（如 Google Meet、网页版 Zoom）的技术。为了追求低延迟，浏览器会赋予 WebRTC 高的系统权限，允许它直接穿透虚拟网卡，读取你电脑主板上网卡真实的物理 IP（甚至是 IPv6 地址），然后将这个真实 IP 强行发送给目标网站。<br><strong>唯一解法：</strong> 在 Chrome 或 Edge 浏览器中，安装 <code>WebRTC Control</code> 或 <code>WebRTC Leak Prevent</code> 扩展插件，阉割浏览器的这项高级功能。</p>
 
-      <h2 id="qa-faq">3. 高频隐私焦虑排错与长尾报错终极解析 (Q&A)</h2>
+      <h2 id="qa-faq">3. 高频隐私焦虑排错与长尾报错解析 (Q&A)</h2>
 
       <div class="faq-item">
         <h3>Q1: 为什么我的电脑已经开了全局代理，IP 归属地查询依然显示“中国”？</h3>
@@ -69,25 +69,25 @@ const description = "翻墙后 IP 归属地依然显示中国？深度解析 DNS
 
       <div class="faq-item">
         <h3>Q2: 怎么在 Clash 中正确开启 TUN 虚拟网卡模式防泄露？</h3>
-        <p><strong>答：以管理员权限接管路由。</strong><br>在 Clash Verge Rev 中：<br>1. 前往【设置】->【系统设置】，点击“服务模式 (Service Mode)”，安装虚拟网卡驱动（盾牌图标会变绿）。<br>2. 回到主界面，开启【TUN 模式】。<br>3. <strong>极其重要：</strong> 进入【TUN 模式设置】，确保勾选了 <strong>“严格路由 (Strict Route)”</strong>。这样所有绕过 7890 端口的野流量（如各种 App 的后台 DNS 嗅探）都会被强行吸入黑洞并走代理发送。</p>
+        <p><strong>答：以管理员权限接管路由。</strong><br>在 Clash Verge Rev 中：<br>1. 前往【设置】->【系统设置】，点击“服务模式 (Service Mode)”，安装虚拟网卡驱动（盾牌图标会变绿）。<br>2. 回到主界面，开启【TUN 模式】。<br>3. <strong>重要：</strong> 进入【TUN 模式设置】，确保勾选了 <strong>“严格路由 (Strict Route)”</strong>。这样所有绕过 7890 端口的野流量（如各种 App 的后台 DNS 嗅探）都会被强行吸入黑洞并走代理发送。</p>
       </div>
 
       <div class="faq-item">
         <h3>Q3: 手机上如何防止 DNS 泄露？</h3>
-        <p><strong>答：移动端先天优势。</strong><br>不论是苹果的 iOS (小火箭/Surge) 还是安卓系统 (v2rayNG)，它们在底层创建的 <code>VPN Configuration</code> 本质上就是极其严格的系统级 TUN 虚拟网卡。只要你成功连上并在顶部状态栏出现了 <strong>[VPN]</strong> 图标，手机的所有 DNS 流量默认就已经被全盘接管了，极少出现像 Windows 那样千疮百孔的系统代理泄露问题。</p>
+        <p><strong>答：移动端先天优势。</strong><br>不论是苹果的 iOS (小火箭/Surge) 还是安卓系统 (v2rayNG)，它们在底层创建的 <code>VPN Configuration</code> 本质上就是严格的系统级 TUN 虚拟网卡。只要你成功连上并在顶部状态栏出现了 <strong>[VPN]</strong> 图标，手机的所有 DNS 流量默认就已经被全盘接管了，极少出现像 Windows 那样千疮百孔的系统代理泄露问题。</p>
       </div>
       
       <div class="faq-item">
-        <h3>Q4: 使用 DoH (DNS over HTTPS) 就能彻底防止泄露吗？</h3>
-        <p><strong>答：治标不治本。</strong><br>虽然 DoH 会把你的 DNS 查询伪装成 HTTPS 网页流量（加密查询），让你家的宽带运营商看不懂你访问了什么。但如果这个加密查询最终没有走代理节点，而是直接从本地网卡发向了国外的 <code>1.1.1.1</code>，Netflix 等网站依然能看到：发起这个加密 DNS 请求的源头，是一个属于中国大陆的 IP！这依然会被判定为代理使用。</p>
+        <h3>Q4: 使用 DoH (DNS over HTTPS) 就能防止泄露吗？</h3>
+        <p><strong>答：治标不治本。</strong><br>虽然 DoH 会把你的 DNS 查询伪装成 HTTPS 网页流量（加密查询），让你家的宽带运营商看不懂你访问了什么。但如果这个加密查询没有走代理节点，而是直接从本地网卡发向了国外的 <code>1.1.1.1</code>，Netflix 等网站依然能看到：发起这个加密 DNS 请求的源头，是一个属于中国大陆的 IP！这依然会被判定为代理使用。</p>
       </div>
 
-      <h2 id="conclusion">4. 结语：隐身术的最后一环，是顶级的网络伪装</h2>
-      <p>当你搞懂了系统代理的先天残疾、Fake-IP 的降维打击、以及 WebRTC 的底层漏洞后，你就已经拥有了在赛博空间中彻底隐形的极客能力。通过配置严格的 TUN 路由与 WebRTC 阻断，你已经无懈可击。</p>
+      <h2 id="conclusion">4. 结语：隐身术的最后一环，是的网络伪装</h2>
+      <p>当你搞懂了系统代理的先天残疾、Fake-IP 的形成差异、以及 WebRTC 的底层漏洞后，你就已经拥有了在赛博空间中隐形的极客能力。通过配置严格的 TUN 路由与 WebRTC 阻断，你已经无懈可击。</p>
       <p>但是，<strong>你的伪装技术再高超，也掩盖不了你的机场 IP 早就进入了黑名单的事实。</strong></p>
-      <p>如果你耗费了巨大精力配置好了所有的防泄露措施，去测试时依然打不开 ChatGPT 或 Netflix，这说明问题根本不在于“你泄露了真实身份”，而是你所使用的这个节点 IP，早已经被成千上万的免费白嫖党、或者发垃圾邮件的黑客给“污染”彻底拉黑了。</p>
-      <p>要想真正战胜流媒体风控，在不泄露国内身份的前提下，获得一个干干净净、如同海外当地居民一样的“纯净数字身份”，你必须拥有一条 <strong>提供原生 IP (Native IP) 与住宅代理 (Residential Proxy) 的企业级专线</strong>。</p>
-      <p>既然最底层的防泄漏大坝已经筑起，是时候给你的网络注入最纯净的血液了。强烈建议你移步前往我们的 <strong><a href="/recommend/">2026 高端专线机场推荐榜单</a></strong>。这些榜单里的顶级服务商，不仅提供极致的 IPLC 专线，更拥有重金维护的“全解锁纯净 IP 池”。让你的每一次跨国访问，都如同真正的海外高知精英一样，尊贵且畅通无阻！</p>
+      <p>如果你耗费了巨大精力配置好了所有的防泄露措施，去测试时依然打不开 ChatGPT 或 Netflix，这说明问题根本不在于“你泄露了真实身份”，而是你所使用的这个节点 IP，早已经被成千上万的免费白嫖党、或者发低质量邮件的黑客给“污染”拉黑了。</p>
+      <p>要想战胜流媒体风控，在不泄露国内身份的前提下，获得一个干干净净、如同海外当地居民一样的“纯净数字身份”，你必须拥有一条 <strong>提供原生 IP (Native IP) 与住宅代理 (Residential Proxy) 的企业级专线</strong>。</p>
+      <p>既然最底层的防泄漏大坝已经筑起，是时候给你的网络注入最纯净的血液了。建议你移步前往我们的 <strong><a href="/recommend/">2026 专线机场推荐榜单</a></strong>。这些榜单里的服务商，不仅提供的 IPLC 专线，更拥有投入维护的“全解锁纯净 IP 池”。让你的每一次跨国访问，都如同海外高知精英一样，且畅通无阻！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);">
           <h4 style="margin-top: 0; color: #047857; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">

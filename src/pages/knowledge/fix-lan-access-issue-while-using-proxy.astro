@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "翻墙后无法访问本地局域网设备 (如打印机、NAS) 怎么解决？";
-const description = "为什么开了梯子就找不到公司打印机和家里NAS了？深度图解代理绕过局域网 (Bypass LAN) 的核心机制，手把手教你配置 Clash / TUN 模式局域网直连。";
+const description = "为什么开了梯子就找不到公司打印机和家里NAS了？图解代理绕过局域网 (Bypass LAN) 的核心机制，手把手教你配置 Clash / TUN 模式局域网直连。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "为什么开了梯子就找不到公司打印机和家里NA
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：为什么开了代理后，你的 NAS 和网络打印机就“失踪”了？这是因为代理软件（尤其是开启了“全局模式”或“TUN 虚拟网卡模式”后）非常“敬业”。它会拦截你电脑发出的所有网络请求，并将它们打包发送到了海外的代理节点。你的 NAS、打印机明明就在你家路由器下面（比如内网 IP 是 192.168.1.10），但你的电脑却跑去美国的服务器上寻找这个地址，自然死活连不上。<br>解决这个问题的唯一核心机制叫做：“绕过局域网 (Bypass LAN)”。你只需要在客户端设置或分流规则中声明：让所有发往“局域网私有 IP 段”的请求直接通过本地物理网卡发出，绝不走代理。这就完美解决了翻墙与本地办公冲突的痛点。</strong></p>
+      <p class="lead-paragraph"><strong>结论先行：为什么开了代理后，你的 NAS 和网络打印机就“失踪”了？这是因为代理软件（尤其是开启了“全局模式”或“TUN 虚拟网卡模式”后）“敬业”。它会拦截你电脑发出的所有网络请求，并将它们打包发送到了海外的代理节点。你的 NAS、打印机明明就在你家路由器下面（比如内网 IP 是 192.168.1.10），但你的电脑却跑去美国的服务器上寻找这个地址，自然死活连不上。<br>解决这个问题的唯一核心机制叫做：“绕过局域网 (Bypass LAN)”。你只需要在客户端设置或分流规则中声明：让所有发往“局域网私有 IP 段”的请求直接通过本地物理网卡发出，通常不走代理。这就改善了翻墙与本地办公冲突的痛点。</strong></p>
 
       <h2 id="core-comparison">1. 秒懂排障：各客户端“绕过局域网”一键修复指南表</h2>
       <p>当你遇到 <strong>翻墙后局域网连不上</strong> 的窘境时，别慌着重装打印机驱动。根据你使用的软件模式，对照下方这张 <strong>代理绕过局域网 (Bypass LAN)</strong> 修复排障表，基本上 10 秒钟就能解决问题：</p>
@@ -48,7 +48,7 @@ const description = "为什么开了梯子就找不到公司打印机和家里NA
         </table>
       </div>
 
-      <h2 id="tun-mode-conflict">2. 极客硬核解析：TUN 模式与私有 IP 段 (192.168.x.x) 的冲突</h2>
+      <h2 id="tun-mode-conflict">2. 极客详细解析：TUN 模式与私有 IP 段 (192.168.x.x) 的冲突</h2>
       <p>很多重度玩家会问：<strong>为什么我开系统代理时 NAS 是好好的，一开启 Clash TUN 模式，Plex/Emby 本地视频库就打不开了？</strong></p>
       
       <p>答案在于 <strong>TUN 模式严格路由 (Strict Route)</strong> 的底层接管机制。<br>
@@ -69,10 +69,10 @@ const description = "为什么开了梯子就找不到公司打印机和家里NA
   # 优先放行本地局域网 IPv6 段
   - IP-CIDR6,fe80::/10,DIRECT,no-resolve
 </code></pre>
-      <p><em>注：<code>no-resolve</code> 参数非常重要，它告诉 Clash 直接看 IP 即可，不用去解析域名，极大地提高了内网访问速度。</em></p>
+      <p><em>注：<code>no-resolve</code> 参数重要，它告诉 Clash 直接看 IP 即可，不用去解析域名，极大地提高了内网访问速度。</em></p>
 
       <p><strong>方法二：v2rayN 路由设置 (绕过局域网及大陆)</strong><br>
-      对于 v2rayN 用户，完全不需要写代码。直接在系统右下角托盘图标上右键 -> 点击 <strong>“路由 (Routing)”</strong> -> 勾选 <strong>“绕过局域网及大陆 (Bypass LAN and Mainland China)”</strong> 即可完美解决。</p>
+      对于 v2rayN 用户，完全不需要写代码。直接在系统右下角托盘图标上右键 -> 点击 <strong>“路由 (Routing)”</strong> -> 勾选 <strong>“绕过局域网及大陆 (Bypass LAN and Mainland China)”</strong> 即可改善。</p>
 
       <h2 id="faq">4. 常见问题解答 (FAQ)：AirDrop 变慢与局域网域名 (mDNS) 解析</h2>
       
@@ -88,31 +88,31 @@ const description = "为什么开了梯子就找不到公司打印机和家里NA
       
       <div class="faq-item">
         <h3>Q3: 路由器翻墙会影响家里的米家智能家居掉线吗？</h3>
-        <p><strong>答：大概率会，除非配置了分流。</strong> 路由器（如 OpenWrt 软路由）作为全家的总网关，如果翻墙插件配置不当，会把智能家居连接国内服务器的微量数据也发往国外，导致极高的延迟甚至掉线。建议在软路由插件中，给智能家居设备的内网 IP 强制设定为“不走代理（全局直连）”。</p>
+        <p><strong>答：大概率会，除非配置了分流。</strong> 路由器（如 OpenWrt 软路由）作为全家的总网关，如果翻墙插件配置不当，会把智能家居连接国内服务器的微量数据也发往国外，导致高的延迟甚至掉线。建议在软路由插件中，给智能家居设备的内网 IP 强制设定为“不走代理（全局直连）”。</p>
       </div>
 
-      <h2 id="recommendation">5. 终极选购建议：告别手写代码，拥抱自带完美路由规则的高端机场</h2>
-      <p>看完了以上极其复杂的局域网直连代码与内网域名劫持原理，很多非程序员用户肯定觉得头大如斗。<strong>“我只是想上个外网顺便用一下公司的打印机，为什么非要折磨自己去改 YAML 代码？”</strong></p>
+      <h2 id="recommendation">5. 选购建议：告别手写代码，拥抱自带路由规则的机场</h2>
+      <p>看完了以上复杂的局域网直连代码与内网域名劫持原理，很多非程序员用户肯定觉得头大如斗。<strong>“我只是想上个外网顺便用一下公司的打印机，为什么非要折磨自己去改 YAML 代码？”</strong></p>
       
-      <p>👉 <strong>小白玩家的终极答案：购买订阅自带完美规则库的高端机场！</strong><br>
-      那些几十块钱的廉价劣质机场，下发的订阅规则极其简陋，根本没有顾及内网用户的死活。而真正专业的顶级大厂机场，其专属的运维团队会在订阅配置中，为你完美预置好：<strong>本地 IP 绕过、Fake-IP 过滤器、mDNS 白名单。</strong><br>
+      <p>👉 <strong>小白玩家的备选方案：购买订阅自带规则库的机场！</strong><br>
+      那些几十块钱的廉价劣质机场，下发的订阅规则简陋，根本没有顾及内网用户的死活。而专业的大厂机场，其专属的运维团队会在订阅配置中，为你预置好：<strong>本地 IP 绕过、Fake-IP 过滤器、mDNS 白名单。</strong><br>
       你只需要把订阅链接导进软件，选择“规则模式”，所有内外网的冲突瞬间灰飞烟灭。办公打印、NAS 观影、外网冲浪，三管齐下，互不干扰。</p>
       
-      <p>为了让大家能拥有最省心、完全不影响本地办公体验的翻墙生活，我们团队为您精选了目前市面上 <strong>后台自带极其完善的“绕过局域网规则”、完美兼容 NAS 与智能家居的高端稳定专线机场</strong>：</p>
+      <p>为了让大家能拥有最省心、完全不影响本地办公体验的翻墙生活，我们团队为您精选了目前市面上 <strong>后台自带完善的“绕过局域网规则”、兼容 NAS 与智能家居的稳定专线机场</strong>：</p>
       
-      <p>👉 <strong><a href="/recommend/">2026 办公局域网无忧！自带完美直连规则、开箱即用的高端低延迟专线梯子推荐</a></strong></p>
+      <p>👉 <strong><a href="/recommend/">2026 办公局域网无忧！自带直连规则、开箱即用的低延迟专线梯子推荐</a></strong></p>
       
-      <p>翻墙是为了更好地连接世界，而不是切断你与身边的联系。选对机场，享受丝滑无感的内外网穿梭体验！</p>
+      <p>翻墙是为了更好地连接世界，而不是切断你与身边的联系。选对机场，享受流畅无感的内外网穿梭体验！</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #8b5cf6; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.05);">
           <h4 style="margin-top: 0; color: #6d28d9; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
           </h4>
-          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库硬核解析：</p>
+          <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
-            <li style="margin-bottom: 8px;"><a href="/knowledge/trojan-protocol-https-camouflage-explained/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Trojan 协议原理解析：为什么它能完美伪装成正常 HTTPS？ ↗</a></li>
-            <li><a href="/knowledge/free-airport-nodes-security-risks/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">免费机场节点能用吗？揭秘免费翻墙背后的隐私与安全风险 ↗</a></li>
+            <li style="margin-bottom: 8px;"><a href="/knowledge/trojan-protocol-https-camouflage-explained/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Trojan 协议原理解析：为什么它能伪装成正常 HTTPS？ ↗</a></li>
+            <li><a href="/knowledge/free-airport-nodes-security-risks/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">免费机场节点能用吗？说明免费翻墙背后的隐私与安全风险 ↗</a></li>
           </ul>
         </blockquote>
 
