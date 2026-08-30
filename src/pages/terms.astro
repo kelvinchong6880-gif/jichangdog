@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="使用条款 (Terms of Use) | 机场狗"
+  description="了解机场狗（JiChangDog）的使用条款。请在继续浏览本站前仔细阅读这些条款。"
+>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <div class="document-header">
+        <p class="eyebrow">法律条款</p>
+        <h1>使用条款 (Terms of Use)</h1>
+        <p class="lead-paragraph">访问或使用本网站即表示您同意受以下条款和条件的约束。如果您不同意这些条款的任何部分，请停止使用本站。</p>
+      </div>
+
+      <h2 id="content-usage">内容使用</h2>
+      <p>本站（机场狗，JiChangDog）提供的所有评测数据、文章和指南仅供参考。我们努力确保信息的准确性和及时性，但不对任何信息的绝对准确性提供担保。用户应自行承担基于本站信息作出的任何决策或行动的风险。</p>
+
+      <h2 id="copyright">知识产权与版权</h2>
+      <p>本网站上的所有原创内容（包括文章、图表、排版设计）的版权均归机场狗所有。未经事先书面许可，您不得以商业目的复制、转载或重新分发本站的任何内容。若需转载，请务必联系我们获取授权，并注明来源。</p>
+
+      <h2 id="third-party-services">第三方服务</h2>
+      <p>本站提供的信息涉及众多第三方网络服务商。我们与这些服务商是独立的实体。我们对第三方服务商提供的服务质量、稳定性、安全性或合法性不承担任何直接或间接责任。</p>
+
+      <h2 id="compliance">合法合规</h2>
+      <p>请确保您在使用科学上网服务时，遵守您所在国家或地区的法律法规。本站仅从技术评测的角度讨论网络代理技术，不鼓励、不支持任何非法用途。用户因违反当地法律所产生的一切后果由用户自行承担。</p>
+    </div>
+
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .knowledge-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  .article-content {
+    flex: 1 1 0%;
+    min-width: 0;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .document-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .document-header .eyebrow {
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+  .document-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+  }
+  
+  .prose .lead-paragraph {
+    font-size: 1.1rem;
+    color: #374151;
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .prose h2 {
+    font-size: 1.6rem;
+    color: var(--blue);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eff4ff;
+    padding-bottom: 8px;
+  }
+  .prose h3 {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .prose p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 20px;
+  }
+  .prose a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  .prose ul, .prose ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  .prose ul li, .prose ol li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+  
+  /* TOC Sidebar Styles */
+  .toc-sidebar {
+    width: 280px !important;
+    flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 100px !important;
+  }
+  .toc-container {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .toc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .toc-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: block;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    margin-left: 2px;
+  }
+  .toc-link:hover, .toc-link.active {
+    color: var(--blue) !important;
+    font-weight: 600;
+    border-left-color: var(--blue) !important;
+  }
+  
+  @media (max-width: 992px) {
+    .knowledge-layout {
+      flex-direction: column !important;
+    }
+    .toc-sidebar {
+      display: none !important;
+    }
+    .article-content {
+      padding: 24px;
+    }
+    .document-header h1 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.article-content');
+    const tocList = document.getElementById('toc-list');
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2');
+    
+    headings.forEach((heading) => {
+      if(!heading.id) return;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.className = 'toc-link';
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+  });
+</script>

@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="内容更正与纠错机制 | 机场狗"
+  description="了解机场狗（JiChangDog）的更正机制。如果您发现我们的测速数据或机场评测信息存在错误，欢迎向我们提交更正请求。"
+>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <div class="document-header">
+        <p class="eyebrow">数据纠错</p>
+        <h1>更正机制</h1>
+        <p class="lead-paragraph">我们深知网络环境的复杂性和多变性，因此我们建立了完善的更正机制，以确保评测数据的长期准确性。</p>
+      </div>
+
+      <h2 id="why-correct">为什么需要更正？</h2>
+      <p>机场节点的网络状态是动态变化的。一篇评测文章发布后，可能会因为以下原因导致数据与用户实际体验不符：</p>
+      <ul>
+        <li><strong>上游线路变更：</strong> 机场突然更换了专线供应商，导致延迟大幅改变。</li>
+        <li><strong>流媒体解锁失效：</strong> IP 被 Netflix、Disney+ 等流媒体平台大规模封锁。</li>
+        <li><strong>特殊时期干扰：</strong> 在网络封锁严格的时期，节点存活率和连通性受到严重影响。</li>
+        <li><strong>套餐或价格调整：</strong> 官方修改了套餐内容或价格，导致我们记录的信息过时。</li>
+      </ul>
+
+      <h2 id="how-to-submit">如何提交更正？</h2>
+      <p>如果您发现我们的评测数据与实际情况存在严重偏差，请通过我们的 <a href="/contact/">联系方式</a> 向我们反馈。在反馈时，请尽可能提供以下信息，以便我们快速核实：</p>
+      <ul>
+        <li>您所使用的<strong>宽带运营商</strong>（如：电信、联通、移动）及所在地区。</li>
+        <li>您使用的<strong>测试工具和客户端</strong>（如：Clash Verge, v2rayN, Speedtest）。</li>
+        <li>具体的<strong>偏差情况</strong>（例如：文章说解锁 Netflix，但实际节点已全部失效）。</li>
+        <li>（可选）附带测速截图或节点日志截图。</li>
+      </ul>
+
+      <h2 id="our-response">我们的处理流程</h2>
+      <p>在收到您的更正请求后，我们将执行以下步骤：</p>
+      <ol>
+        <li><strong>内部复测：</strong> 我们会在 48 小时内，使用同类网络环境重新对该机场进行测试。</li>
+        <li><strong>文章更新：</strong> 如果复测结果证实了您的反馈，我们将立即更新对应的评测文章，并在文章开头或结尾注明更新时间与更正说明。</li>
+        <li><strong>状态警告：</strong> 如果问题严重（如机场大面积掉线且客服失联），我们会在文章显著位置添加高风险警告，并将其标记为潜在的“跑路”机场。</li>
+      </ol>
+      <p>感谢每一位为本站数据准确性提供帮助的读者！</p>
+    </div>
+
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .knowledge-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  .article-content {
+    flex: 1 1 0%;
+    min-width: 0;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .document-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .document-header .eyebrow {
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+  .document-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+  }
+  
+  .prose .lead-paragraph {
+    font-size: 1.1rem;
+    color: #374151;
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .prose h2 {
+    font-size: 1.6rem;
+    color: var(--blue);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eff4ff;
+    padding-bottom: 8px;
+  }
+  .prose h3 {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .prose p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 20px;
+  }
+  .prose a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  .prose ul, .prose ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  .prose ul li, .prose ol li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+  
+  /* TOC Sidebar Styles */
+  .toc-sidebar {
+    width: 280px !important;
+    flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 100px !important;
+  }
+  .toc-container {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .toc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .toc-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: block;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    margin-left: 2px;
+  }
+  .toc-link:hover, .toc-link.active {
+    color: var(--blue) !important;
+    font-weight: 600;
+    border-left-color: var(--blue) !important;
+  }
+  
+  @media (max-width: 992px) {
+    .knowledge-layout {
+      flex-direction: column !important;
+    }
+    .toc-sidebar {
+      display: none !important;
+    }
+    .article-content {
+      padding: 24px;
+    }
+    .document-header h1 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.article-content');
+    const tocList = document.getElementById('toc-list');
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2');
+    
+    headings.forEach((heading) => {
+      if(!heading.id) return;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.className = 'toc-link';
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+  });
+</script>

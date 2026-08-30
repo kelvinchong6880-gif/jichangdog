@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="联系我们：商务合作与意见反馈 | 机场狗"
+  description="有商务合作、意见反馈或文章更正需求？欢迎通过 Telegram 或邮箱与机场狗（JiChangDog）团队联系。"
+>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <div class="document-header">
+        <p class="eyebrow">与我们交流</p>
+        <h1>联系我们</h1>
+        <p class="lead-paragraph">无论是关于评测文章的疑问、数据更正请求，还是相关的商务合作，我们都非常期待听到您的声音。</p>
+      </div>
+
+      <h2 id="contact-methods">联系方式</h2>
+      <p>你可以通过以下方式与我们取得联系。为了提高沟通效率，请在信息中注明您的来意。</p>
+      
+      <div style="background: #f8fafc; padding: 24px; border-radius: 12px; margin-bottom: 32px; border: 1px solid #e2e8f0;">
+        <h3 style="margin-top: 0; color: #0f172a; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"></path><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"></path></svg>
+          电子邮箱
+        </h3>
+        <p style="margin-bottom: 0; font-size: 1.1rem;">
+          <strong><a href="mailto:kelvinchong6880@gmail.com" style="color: #2563eb;">kelvinchong6880@gmail.com</a></strong>
+        </p>
+      </div>
+
+      <div style="background: #f8fafc; padding: 24px; border-radius: 12px; margin-bottom: 32px; border: 1px solid #e2e8f0;">
+        <h3 style="margin-top: 0; color: #0f172a; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0088cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2 2 11.5l6.5 2 11-8.5-8.5 9.5 7 2.5 3.5-15Z"></path></svg>
+          Telegram (电报)
+        </h3>
+        <p style="margin-bottom: 0; font-size: 1.1rem;">
+          <strong><a href="https://t.me/kelvin8chong" target="_blank" rel="noopener noreferrer" style="color: #0088cc;">@kelvin8chong</a></strong>
+        </p>
+      </div>
+
+      <h2 id="business-cooperation">商务合作</h2>
+      <p>我们对以下类型的商务合作持开放态度：</p>
+      <ul>
+        <li><strong>机场收录与评测：</strong> 如果您的机场服务质量优秀、线路稳定，并希望被本站收录，请主动提供测试账号或测试条件。注意：我们不接受付费刷好评，所有评测依然遵循客观公正原则。</li>
+        <li><strong>内容合作与授权：</strong> 如果您希望转载本站文章或进行内容层面的合作，请务必提前与我们联系获取授权。</li>
+      </ul>
+
+      <h2 id="response-time">响应时间</h2>
+      <p>通常情况下，我们会在收到您的邮件或 Telegram 消息后的 <strong>24至48小时</strong> 内给予回复。由于时差或节假日等因素，回复可能会有延迟，感谢您的耐心等待。</p>
+    </div>
+
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .knowledge-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  .article-content {
+    flex: 1 1 0%;
+    min-width: 0;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .document-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .document-header .eyebrow {
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+  .document-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+  }
+  
+  .prose .lead-paragraph {
+    font-size: 1.1rem;
+    color: #374151;
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .prose h2 {
+    font-size: 1.6rem;
+    color: var(--blue);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eff4ff;
+    padding-bottom: 8px;
+  }
+  .prose h3 {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .prose p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 20px;
+  }
+  .prose a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  .prose ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  .prose ul li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+  
+  /* TOC Sidebar Styles */
+  .toc-sidebar {
+    width: 280px !important;
+    flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 100px !important;
+  }
+  .toc-container {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .toc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .toc-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: block;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    margin-left: 2px;
+  }
+  .toc-link:hover, .toc-link.active {
+    color: var(--blue) !important;
+    font-weight: 600;
+    border-left-color: var(--blue) !important;
+  }
+  
+  @media (max-width: 992px) {
+    .knowledge-layout {
+      flex-direction: column !important;
+    }
+    .toc-sidebar {
+      display: none !important;
+    }
+    .article-content {
+      padding: 24px;
+    }
+    .document-header h1 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.article-content');
+    const tocList = document.getElementById('toc-list');
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2');
+    
+    headings.forEach((heading) => {
+      if(!heading.id) return;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.className = 'toc-link';
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+  });
+</script>
