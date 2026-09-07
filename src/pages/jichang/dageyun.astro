@@ -298,8 +298,8 @@ const description = "全面拆解其 Trojan 协议节点的晚高峰抗压能力
     headings.forEach((heading) => {
       // Create ID if missing for the sticky nav to work
       if (!heading.id) {
-        const textStr = heading.textContent || '';
-        heading.id = 'heading-' + Math.random().toString(36).substr(2, 9);
+        
+        heading.id = 'heading-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('box-title')) return; // Skip pros/cons titles

@@ -19,14 +19,14 @@ files.forEach(f => {
   let content = fs.readFileSync(f, 'utf8');
   let hasModified = false;
 
-  const replaceTitle = (match, prefix, title, suffix) => {
+  const replaceTitle = (_match, prefix, title, suffix) => {
     // Remove the mechanical truncation we did previously
     let newTitle = cleanTitle(title.replace(/\.\.\.$/, ''));
     if (newTitle !== title) hasModified = true;
     return prefix + newTitle + suffix;
   };
 
-  const replaceDesc = (match, prefix, desc, suffix) => {
+  const replaceDesc = (_match, prefix, desc, suffix) => {
     let newDesc = cleanDescription(desc.replace(/\.\.\.$/, ''));
     if (newDesc !== desc) hasModified = true;
     return prefix + newDesc + suffix;

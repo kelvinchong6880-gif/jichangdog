@@ -359,7 +359,7 @@ const description = "XSUS机场怎么样？寻找 梯子软件推荐 与 电脑�
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'xs-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'xs-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

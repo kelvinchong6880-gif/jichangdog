@@ -385,7 +385,7 @@ const description = "Adgenova (edgenova 边缘节点) 怎么样？全系标配 I
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'edn-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'edn-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

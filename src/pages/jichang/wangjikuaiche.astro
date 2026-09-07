@@ -368,7 +368,7 @@ const description = "网际快车机场怎么样？寻找 梯子工具推荐 与
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'wjk-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'wjk-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

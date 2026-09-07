@@ -463,7 +463,7 @@ const description = "测评光年梯 (Lightyear) 机场。每月 18元起享 IPL
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'gn-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'gn-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

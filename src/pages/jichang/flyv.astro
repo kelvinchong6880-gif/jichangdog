@@ -428,7 +428,7 @@ const description = "剖析飞V (FlyV) 机场。全节点物理专线，提供�
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'flyv-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'flyv-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

@@ -405,7 +405,7 @@ const description = "老猫云机场怎么样？寻找稳定 圈X机场推荐 �
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'lm-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'lm-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

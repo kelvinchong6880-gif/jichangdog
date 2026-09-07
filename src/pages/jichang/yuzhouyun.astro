@@ -362,7 +362,7 @@ const description = "宇宙云机场怎么样？寻找 翻墙梯子推荐 与 �
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'yzy-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'yzy-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

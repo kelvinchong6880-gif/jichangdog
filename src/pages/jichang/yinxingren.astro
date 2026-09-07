@@ -375,7 +375,7 @@ const description = "隐形人机场怎么样？寻找 Hiddify机场推荐 与 H
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'yxr-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'yxr-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

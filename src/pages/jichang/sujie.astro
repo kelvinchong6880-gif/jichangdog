@@ -405,7 +405,7 @@ const description = "速界机场怎么样？寻找 原生IP机场推荐 与 住
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'sj-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'sj-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

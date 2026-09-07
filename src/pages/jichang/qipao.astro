@@ -398,7 +398,7 @@ const description = "气泡云机场怎么样？寻找稳定 手机梯子推荐 
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'qp-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'qp-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

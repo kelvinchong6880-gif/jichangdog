@@ -255,7 +255,7 @@ const description = "灵动机场 (Lingdong) 测速资料整理，涵盖 Surge 5
       
       headings.forEach((heading) => {
         if(!heading.id) {
-          heading.id = 'h-' + Math.random().toString(36).substr(2, 9);
+          heading.id = 'h-' + Math.random().toString(36).substring(2, 11);
         }
         
         const li = document.createElement('li');

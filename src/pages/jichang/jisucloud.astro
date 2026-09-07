@@ -230,7 +230,7 @@ const description = "极速cloud怎么样？本站为您带来年最新极速clo
     const headings = content.querySelectorAll('h2, h3');
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'h-' + Math.random().toString(36).substring(2, 11);
       }
       if(heading.classList.contains('box-title')) return;
       const li = document.createElement('li');

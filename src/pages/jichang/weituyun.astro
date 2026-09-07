@@ -408,7 +408,7 @@ const description = "唯兔云机场怎么样？寻找 低延迟机场推荐 与
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'wt-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'wt-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

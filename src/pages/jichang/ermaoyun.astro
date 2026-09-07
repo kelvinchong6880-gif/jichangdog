@@ -481,8 +481,8 @@ const description = "解密 2.5Gbps 峰值口径下的白猫、橘猫、黑猫�
     headings.forEach((heading) => {
       // Create ID if missing for the sticky nav to work
       if (!heading.id) {
-        const textStr = heading.textContent || '';
-        heading.id = 'heading-' + Math.random().toString(36).substr(2, 9);
+        
+        heading.id = 'heading-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('box-title') || heading.classList.contains('ignore-toc')) return; // Skip pros/cons and CTA titles

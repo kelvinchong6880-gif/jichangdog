@@ -424,7 +424,7 @@ const description = "解构快速云 (Guangsu Cloud) 机场。月付 23元起享
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'gs-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'gs-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

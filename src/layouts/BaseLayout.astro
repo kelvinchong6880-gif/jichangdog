@@ -106,7 +106,7 @@ const displayModified = dateModified?.slice(0, 10);
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={fullImageUrl}>
   
-  {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+  {structuredData && <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />}
 </head>
 <body>
   <div class="flex min-h-screen flex-col">

@@ -411,7 +411,7 @@ const description = "可信云机场怎么样？寻找稳定 Clash 科学上网�
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'kx-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'kx-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

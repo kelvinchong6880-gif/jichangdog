@@ -386,7 +386,7 @@ const description = "一翻云机场怎么样？寻找 Quantumult X 圈X机场�
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'yfy-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'yfy-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;

@@ -382,7 +382,7 @@ const description = "Sogo云机场评测涵盖IEPL/IPLC线路、晚高峰测速�
     
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = 'sgo-h-' + Math.random().toString(36).substr(2, 9);
+        heading.id = 'sgo-h-' + Math.random().toString(36).substring(2, 11);
       }
       
       if(heading.classList.contains('ignore-toc')) return;
