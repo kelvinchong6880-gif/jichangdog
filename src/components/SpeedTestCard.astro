@@ -1,0 +1,39 @@
+---
+import type { Airport } from '../data/airports';
+
+export interface Props {
+  airport: Airport;
+}
+
+const { airport } = Astro.props;
+
+// Determine colors based on tag to match previous layout broadly
+const tagColors = {
+  '本站测速': { bg: '#eef2ff', color: '#4338ca' },
+  '极限测速': { bg: '#fffbeb', color: '#f59e0b' },
+  '高性价比': { bg: '#fffbeb', color: '#f59e0b' },
+  '平价中转极速': { bg: '#eef2ff', color: '#4338ca' },
+  '专线': { bg: '#fef2f2', color: '#ef4444' },
+  'Clash 适配': { bg: '#e0e7ff', color: '#4338ca' },
+  '老牌 V2ray': { bg: '#fdf4ff', color: '#a21caf' },
+  '极简免折腾': { bg: '#fff1f2', color: '#be123c' },
+  '低价产品': { bg: '#f0fdfa', color: '#0d9488' },
+  '底价大带宽': { bg: '#eef2ff', color: '#4338ca' },
+  '千兆老牌': { bg: '#fdf4ff', color: '#a21caf' },
+  'IEPL 物理专线': { bg: '#e0f2fe', color: '#0284c7' },
+  '1.8TB / 原生 IP': { bg: '#e2e8f0', color: '#0f172a' },
+  '18元极客专线': { bg: '#e0e7ff', color: '#4338ca' },
+  '无限设备大并发': { bg: '#e0f2fe', color: '#0284c7' },
+  'Clash 生态兼容': { bg: '#ede9fe', color: '#6d28d9' },
+  '极客小白双修护体': { bg: '#d1fae5', color: '#047857' },
+  '苹果 iOS 极客候选': { bg: '#ffedd5', color: '#c2410c' }
+};
+
+const colors = tagColors[airport.speedTag as keyof typeof tagColors] || { bg: '#f8fafc', color: '#475569' };
+---
+<a href={`/speed-test/${airport.speedId || airport.id}/`} class="article-card">
+  <div class="card-tag" style={`background: ${colors.bg}; color: ${colors.color};`}>{airport.speedTag || '测速报告'}</div>
+  <h3>{airport.speedTitle || `【2026本站】${airport.name} 测速报告`}</h3>
+  <p>{airport.speedDesc}</p>
+  <span class="read-more">查看测速报告 <span>→</span></span>
+</a>

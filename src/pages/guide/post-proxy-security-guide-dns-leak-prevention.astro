@@ -68,7 +68,7 @@ const description = "翻墙连上节点就安全了吗？本文解析翻墙安�
 
       <h3>Clash Verge 怎么开启 DoH 与 Fake-IP 解决 DNS 污染</h3>
       <p>什么是运营商 DNS 劫持与日志记录？DNS 就像是互联网的“电话簿”，当你输入 <code>youtube.com</code> 时，电脑必须先查询这个域名对应的数字 IP 地址。如果没有正确配置防泄漏机制，你的查询请求会以明文（UDP 53 端口）的形式发给国内的电信或联通宽带服务器。这不仅意味着运营商能够清晰地记录下“某年某月某日，该宽带用户试图访问禁网”，更致命的是，GFW 会进行 <strong>DNS 污染</strong>——即故意给你返回一个错误的、甚至带有木马的假 IP 地址，导致网页一直转圈打不开，甚至弹出虚假的安全警告页面。</p>
-      <p>为了解决这个问题，在 <strong>Clash Verge Rev</strong> 或 v2rayN 等现代客户端中，你需要进入“设置 (Settings)”，找到 DNS 模块，确保开启了 <strong>Fake-IP 模式</strong>。Fake-IP 的黑科技在于：当你输入域名时，Clash 会直接拦截查询，并瞬间返回一个保留的虚拟 IP（如 <code>198.18.0.1</code>）欺骗浏览器。随后，真实的 DNS 查询将被完全加密打包，送到海外的节点服务器上进行解析。这种“狸猫换太子”的机制不仅切断了国内运营商的视线，还极大地加快了网页的加载速度。</p>
+      <p>为了解决这个问题，在 <strong>Clash Verge Rev</strong> 或 v2rayN 等现代客户端中，你需要进入“设置 (Settings)”，找到 DNS 模块，确保开启了 <strong>Fake-IP 模式</strong>。Fake-IP 的核心技术在于：当你输入域名时，Clash 会直接拦截查询，并瞬间返回一个保留的虚拟 IP（如 <code>198.18.0.1</code>）欺骗浏览器。随后，真实的 DNS 查询将被完全加密打包，送到海外的节点服务器上进行解析。这种“狸猫换太子”的机制不仅切断了国内运营商的视线，还极大地加快了网页的加载速度。</p>
       <p>此外，你还必须在浏览器的“隐私和安全”设置中，开启“使用安全的 DNS (DNS-over-HTTPS, 简称 DoH)”，并手动选择 Cloudflare (<code>https://chrome.cloudflare-dns.com/dns-query</code>) 或 Google，实现浏览器层面的双重加密保险。</p>
 
       <h3>翻墙软件隔离与隐私防护：怎么搭建独立的海外工作环境</h3>

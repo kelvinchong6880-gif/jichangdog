@@ -45,7 +45,7 @@ const description = "剖析 OpenWrt PassWall 插件下载与透明代理设置�
       <p>如果你只是把 PassWall 当个简单的代理开关，那可就太大材小用了。在 2026 年的复杂封锁环境下，你必须掌握以下几个底层技术，才能保证全屋网络的纯净。</p>
       
       <h3>双核驱动：Sing-box / Xray 核心自由切换</h3>
-      <p>PassWall 最强大的地方，在于它是一个“多内核前端调度器”。它不仅支持传统的 Xray 核心，在最新版本中还原生集成了大红大紫的 <strong>Sing-box 内核</strong>。<br>如果你的机场下发了最新基于 Hysteria2 或者 VLESS-Reality Vision 流控的节点，老旧的内核极易抛出 <code>unsupported protocol</code> 的致命错误。<br><strong>操作方法：</strong>在 PassWall 的【基本设置】最上方，找到 <strong>“TCP 代理方式”</strong> 和 <strong>“UDP 代理方式”</strong>。当你选择 Sing-box 核心后，PassWall 会在后台自动为你生成标准的 JSON 配置文件，免去了你手搓命令行的痛苦，支持 2026 所有最前沿的防封锁黑科技。</p>
+      <p>PassWall 最强大的地方，在于它是一个“多内核前端调度器”。它不仅支持传统的 Xray 核心，在最新版本中还原生集成了大红大紫的 <strong>Sing-box 内核</strong>。<br>如果你的机场下发了最新基于 Hysteria2 或者 VLESS-Reality Vision 流控的节点，老旧的内核极易抛出 <code>unsupported protocol</code> 的致命错误。<br><strong>操作方法：</strong>在 PassWall 的【基本设置】最上方，找到 <strong>“TCP 代理方式”</strong> 和 <strong>“UDP 代理方式”</strong>。当你选择 Sing-box 核心后，PassWall 会在后台自动为你生成标准的 JSON 配置文件，免去了你手搓命令行的痛苦，支持 2026 所有最前沿的防封锁核心技术。</p>
 
       <h3>解决 DNS 泄漏：ChinaDNS-NG 分流原理</h3>
       <p>很多小白发现，明明开了 PassWall，但看 YouTube 就是卡，或者隔三差五被提示异地登录。这通常是因为你发生了 <strong>DNS 泄漏 (国内运营商看到了你在解析敏感域名)</strong>。<br>PassWall 解决这一痛点的秘密武器就是内置的 <strong>ChinaDNS-NG</strong>。<br>前往 PassWall 的 <strong>【DNS】</strong> 设置页：<br>1. <strong>过滤模式</strong> 推荐选择：<code>通过 UDP 请求 DNS</code> 或者 <code>ChinaDNS-NG</code>。<br>2. <strong>国内 DNS：</strong> 强制填写 <code>223.5.5.5</code>（阿里云）或 <code>119.29.29.29</code>（腾讯云）。<br>3. <strong>海外远端 DNS：</strong> 务必填写 <code>https://dns.google/dns-query</code> (DoH) 或 <code>8.8.8.8</code>，并勾选 <strong>“通过代理请求”</strong>。<br><strong>底层原理：</strong>当浏览器请求域名时，ChinaDNS-NG 会同时向国内外 DNS 发起查询。如果该域名包含在大陆白名单内，立刻采用阿里云的结果并直连；如果不包含，则强行丢弃国内被污染的假 IP，采用远端隧道发回的纯净 IP 进行海外代理访问！</p>

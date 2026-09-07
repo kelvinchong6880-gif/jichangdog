@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = "XTLS 与 Reality：目前最强大的抗封锁技术原理解析";
-const description = "什么是 VLESS Reality 协议？本文解析 Xray 团队推出的 XTLS-Vision 与 Reality 黑科技，说明其如何通过“偷取真实网站证书”实现免域名建站，成为当下最强的抗封锁翻墙协议。";
+const description = "什么是 VLESS Reality 协议？本文解析 Xray 团队推出的 XTLS-Vision 与 Reality 核心技术，说明其如何通过“偷取真实网站证书”实现免域名建站，成为当下最强的抗封锁翻墙协议。";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -9,7 +9,7 @@ const description = "什么是 VLESS Reality 协议？本文解析 Xray 团队�
     <div class="article-content prose">
       <h1>{title}</h1>
       
-      <p class="lead-paragraph"><strong>结论先行：Reality 是 Xray-core 团队推出的目前最抗 GFW 封锁协议。传统的翻墙协议（如 Trojan 或 Vmess+TLS）必须自己花钱购买域名并申请真实证书，这不仅门槛高，而且极易被 GFW 顺藤摸瓜识破；而 Reality 的核心黑科技是“偷别人的真实证书”（SNI 伪装）。它可以直接借用微软、苹果、亚马逊等大厂的真实网站证书来伪装你的翻墙流量。结合 XTLS-Vision 技术消除了“TLS 套娃”的双重加密性能损耗，它不仅实现了免域名建站，还在隐蔽性、速度和手机省电表现上，全面高于了上一代协议，成为了当之无愧的“科学上网最强协议”。</strong> 搞懂这项能够直接白嫖大厂域名的黑科技，你就能在每一次的敏感时期中保持稳定。</p>
+      <p class="lead-paragraph"><strong>结论先行：Reality 是 Xray-core 团队推出的目前最抗 GFW 封锁协议。传统的翻墙协议（如 Trojan 或 Vmess+TLS）必须自己花钱购买域名并申请真实证书，这不仅门槛高，而且极易被 GFW 顺藤摸瓜识破；而 Reality 的核心核心技术是“偷别人的真实证书”（SNI 伪装）。它可以直接借用微软、苹果、亚马逊等大厂的真实网站证书来伪装你的翻墙流量。结合 XTLS-Vision 技术消除了“TLS 套娃”的双重加密性能损耗，它不仅实现了免域名建站，还在隐蔽性、速度和手机省电表现上，全面高于了上一代协议，成为了当之无愧的“科学上网最强协议”。</strong> 搞懂这项能够直接白嫖大厂域名的核心技术，你就能在每一次的敏感时期中保持稳定。</p>
 
       <h2 id="what-is-reality">1. 灵魂拷问：什么是 Reality 协议？它为什么被称为最强？</h2>
       <p>如果你在 2026 年去网上搜 <strong>Xray Reality 教程</strong>，你会发现无数的自建节点大佬都在狂欢。因为在 Reality 出现之前，翻墙的门槛被无限拉高了。</p>
@@ -18,7 +18,7 @@ const description = "什么是 VLESS Reality 协议？本文解析 Xray 团队�
       而 <strong>Reality 协议原理</strong> 就是为了打破这个僵局而生的。Xray 团队脑洞大开：“既然 GFW 只认真实的大厂证书，那我为什么自己还要花钱去买？我直接去‘偷’微软或者苹果的证书来给自己用不就行了？”<br>
       这就诞生了当下防封锁界的神作：<strong>免域名建节点</strong>。它改变了自建翻墙节点的游戏规则。</p>
 
-      <h2 id="core-comparison">2. 形成差异对比表：Trojan 伪装 vs VLESS-Reality 免域名黑科技</h2>
+      <h2 id="core-comparison">2. 形成差异对比表：Trojan 伪装 vs VLESS-Reality 免域名核心技术</h2>
       <p>为了让大家直观感受到 <strong>VLESS Reality 和 Trojan 哪个防封锁更强</strong>，我们制作了以下详细协议对比表，看看 Reality 是如何把老一代协议按在地上摩擦的：</p>
 
       <div class="table-responsive">
@@ -71,7 +71,7 @@ const description = "什么是 VLESS Reality 协议？本文解析 Xray 团队�
       <p>这就是 Reality 最的地方：<strong>它连用来伪装的网站和证书都是真实的。GFW 根本无从下手，除非它敢把整个微软或苹果的官网给封了。</strong></p>
 
       <h2 id="xtls-vision">4. 消除双重加密：翻墙节点上的 XTLS-Vision 是什么意思？</h2>
-      <p>除了 Reality，你还会在节点名称上看到另一个形影不离的黑科技词汇：<strong>XTLS-Vision</strong>。</p>
+      <p>除了 Reality，你还会在节点名称上看到另一个形影不离的核心技术词汇：<strong>XTLS-Vision</strong>。</p>
       
       <p><strong>翻墙节点上的 XTLS-Vision 是什么意思？</strong> 它是用来拯救你手机电池和路由器 CPU 的救星。<br>
       在传统的 Vmess 或 VLESS 配合外层 TLS（如 WebSocket）翻墙时，存在严重的 <strong>TLS in TLS 性能损耗</strong>（即“套娃加密”）。你的数据先被 V2Ray 核心加密一次，再被外面的 TLS 隧道加密一次。这种双重加密会导致手机发烫、耗电剧增，且极大拖慢网速。<br>
