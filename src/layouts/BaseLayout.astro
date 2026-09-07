@@ -6,9 +6,10 @@ import pageModified from '../data/sitemap-lastmod.json';
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 const siteUrl = (Astro.site ? Astro.site.toString() : Astro.url.origin).replace(/\/$/, '');
 const pathname = Astro.url.pathname;
@@ -16,6 +17,20 @@ const isHomePage = pathname === '/';
 const isArticle = /^\/(guide|knowledge|jichang|speed-test|recommend)\/[^/]+\/$/.test(pathname);
 const datePublished = (pagePublished as Record<string, string>)[pathname];
 const dateModified = (pageModified as Record<string, string>)[pathname];
+
+const segments = pathname.split('/').filter(Boolean);
+let resolvedImage = image || '/images/home-cover.webp';
+if (!image) {
+  if (segments[0] === 'jichang' && segments[1]) {
+    resolvedImage = `/images/brands/${segments[1]}.webp`;
+  } else if (segments[0] === 'speed-test' && segments[1]) {
+    resolvedImage = `/images/reviews/${segments[1]}/speedtest.webp`;
+  } else if (segments[0] === 'knowledge' || segments[0] === 'guide' || segments[0] === 'recommend') {
+    resolvedImage = '/images/article-cover.webp';
+  }
+}
+const fullImageUrl = resolvedImage.startsWith('http') ? resolvedImage : `${siteUrl}${resolvedImage}`;
+
 const organizationDescription = '机场狗提供机场测评、测速资料、线路知识和客户端使用教程，并说明测试条件、信息来源与推广关系。';
 const organization = {
   '@type': 'Organization',
@@ -61,7 +76,7 @@ const structuredData = isHomePage
           url: `${siteUrl}/author/#kelvin-chong`,
         },
         publisher: organization,
-        image: `${siteUrl}/images/logo.png`,
+        image: fullImageUrl,
       }
     : undefined;
 const displayPublished = datePublished?.slice(0, 10);
@@ -84,12 +99,12 @@ const displayModified = dateModified?.slice(0, 10);
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonicalURL}>
-  <meta property="og:image" content={`${siteUrl}/images/logo.png`}>
+  <meta property="og:image" content={fullImageUrl}>
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={`${siteUrl}/images/logo.png`}>
+  <meta name="twitter:image" content={fullImageUrl}>
   
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 </head>
