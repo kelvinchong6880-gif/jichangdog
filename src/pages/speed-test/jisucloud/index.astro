@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestEvidenceCard from '../../../components/TestEvidenceCard.astro';
+const title = "2026 极速cloud 测速报告：晚高峰 2.4Gbps 节点狂飙与原生IP全解析";
+const description = "极速cloud测速结果如何？本站带来 2026 年最新极速cloud (JisuCloud) 独立测速分析。深度解读其 VLESS 协议下的真实跑分、高达 2.4Gbps 的极限吞吐量、丰富的原生IP节点库，以及三网（电信、联通、移动）全天候的稳定表现。";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="page-shell knowledge-layout">
+    <div class="article-content prose">
+      <h1>{title}</h1>
+      <TestEvidenceCard />
+      
+      <p class="lead-paragraph">在挑选优质机场时，除了看商家的宣传文案，最核心的硬指标永远是<strong>真实环境下的测速跑分</strong>。近期，主打“三网优化精品线路”和高性价比的<strong>极速cloud (JisuCloud)</strong> 在圈内引起了广泛讨论。不少用户好奇：这家起步价仅需 8.9 元，甚至提供 2500GB 长期有效大流量包的机场，它的节点到底能不能打？晚高峰会不会卡顿？为此，我们收集了针对极速cloud的最新多环境独立测速报告（涵盖北京联通 2Gbps、上海移动 2Gbps 以及北京电信 1Gbps），并在此为您进行深度的测速解析。</p>
+      
+      <p>通过本次详尽的跑分分析，我们将直观地向您展示极速cloud在不同运营商环境下的极速表现、其背后庞大的多重落地出口（涵盖大量珍稀原生 IP），以及它为何被称为 2026 年最具性价比的 VLESS 协议机场之一。</p>
+
+      <blockquote style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 24px; border-radius: 8px; margin: 36px 0 44px; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);">
+        <h4 style="margin-top: 0; color: #1d4ed8; font-size: 1.2rem; margin-bottom: 16px; font-weight: 800;">🚀 极速cloud 专属直通车与限时大额折扣</h4>
+        <p style="margin-bottom: 16px; color: #334155; line-height: 1.7;">在阅读惊艳的测速数据之前，您可以先领取本站为您争取的专属福利。目前极速cloud官网提供了极具吸引力的“长期有效”套餐组合。</p>
+        <p style="margin: 0; color: #1e293b;">
+        🎁 <strong>全网最高折扣优惠码（结算时输入即可立减）：</strong><span style="display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; padding:2px 8px; border-radius:6px; border:1px solid #e2e8f0; transform:translateY(2px);"><code style="background:transparent; padding:0; border:none; color:#2563eb; font-weight:bold;">ikds88</code><button class="copy-code-btn" data-code="ikds88" title="点击一键复制" style="background:none; border:none; cursor:pointer; padding:2px; display:flex; align-items:center; color:#64748b; transition:color 0.2s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span><br>
+        👉 <a href="https://kelvin.jsjc456789.com" rel="nofollow sponsored noopener noreferrer" target="_blank" style="display: inline-block; background: #2563eb; color: #fff; padding: 12px 32px; border-radius: 8px; margin-top: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3); transition: all 0.2s ease;">点击此处，立即前往 极速cloud 官网注册 ↗</a></p>
+      </blockquote>
+
+      <h2 id="topology">1. 节点拓扑分析：硬核底座与豪华的落地网络</h2>
+      <p>任何优秀的测速成绩，都离不开强大的基础设施支撑。从极速cloud的节点拓扑分析报告来看，这绝不是一家普通的“小作坊”机场，其在上游资源采购上投入了巨大的成本。</p>
+      
+      <ul>
+        <li><strong>豪华的国际入口矩阵：</strong> 极速cloud 采用了包括 Neburst (AS8143)、NetLab Global (AS979)、xTom GmbH (AS3214)、GoMami Networks (AS36002) 以及 DMIT 等在内的顶级国际入口链路。这种多线 BGP 接入策略，确保了无论用户身处国内哪个省份，都能自动匹配到延迟最低、最稳定的跨境路由通道。</li>
+        <li><strong>极为丰富的国家与地区覆盖：</strong> 出口节点涵盖了香港、台湾、美国、日本、新加坡等热门核心区域，还延伸至土耳其、英国、德国、加拿大、俄罗斯、西班牙、荷兰、阿联酋、南非、澳大利亚、韩国等几十个地区，满足各类特殊出海业务需求。</li>
+        <li><strong>满屏的“原生IP”节点：</strong> 这是极速cloud最为亮眼的特色。其配置了大量的“美国原生x15”、“台湾原生x15”、“日本原生x15”等节点。这些极高纯净度的原生IP，是轻松解锁 Netflix 非自制剧、TikTok 本地推流以及安全使用 ChatGPT 的最强保障。</li>
+      </ul>
+
+      <h2 id="unicom-speed">2. 北京联通 2Gbps 极限测速：轻松突破 2Gbps，性能怪兽</h2>
+      <p>我们首先来看在<strong>北京联通 2Gbps (2000兆)</strong> 带宽环境下的暴力测速表现。联通线路一向以出海质量好著称，而极速cloud也没有辜负这条好线路，交出了一份堪称“性能怪兽”的答卷。</p>
+      
+      <p><strong>测速亮点解析：</strong></p>
+      <ul>
+        <li><strong>多区域跨越 1Gbps 大关：</strong> 测试图中，超过半数的节点速度直接跑成了极其亮眼的“深红色”。美国 04、香港 02、日本 01/02、新加坡 03 等常规节点的极限吞吐量均稳定在 1.1Gbps ~ 1.5Gbps 之间。</li>
+        <li><strong>原生节点爆发力惊人：</strong> 最令人震撼的是“香港原生-x15”和“马来西亚”节点，其最高速度竟然分别飙升至了不可思议的 <strong>2.22Gbps 和 2.39Gbps</strong>！这意味着您在使用这些节点下载海外大文件或加载 8K 蓝光流媒体时，瓶颈完全不在机场，而是在您自己的本地宽带。</li>
+        <li><strong>延迟 (RTT) 表现优异：</strong> 香港节点的延迟低至 57ms，日本节点保持在 79ms-82ms，即便是在高负载的吞吐下，HTTP 延迟依然保持在非常健康的范围内。</li>
+      </ul>
+
+      <h2 id="mobile-speed">3. 上海移动 2Gbps 测速：无惧移动墙，日本节点狂飙 2.8Gbps</h2>
+      <p>众所周知，中国移动宽带由于其极其严格的国际出口策略和复杂的路由墙，经常被称为“机场照妖镜”。很多在电信和联通下表现不错的梯子，到了移动宽带下就会直接歇菜。那么极速cloud在上海移动下的极速跑分如何呢？</p>
+
+      <p><strong>测速亮点解析：</strong></p>
+      <ul>
+        <li><strong>完美克服移动墙：</strong> 极速cloud 的三网优化路由在这里发挥了巨大威力。在移动 2Gbps 环境下，几乎所有的核心节点不仅没有掉速，反而跑出了比联通更高的极限峰值。</li>
+        <li><strong>逆天的日本节点群：</strong> “日本 01” 和 “日本 02” 节点在上海移动下，分别跑出了惊世骇俗的 <strong>2.45Gbps 和 2.84Gbps</strong> 的最高速度，甚至连“日本原生x15”这种主打解锁的节点，也跑到了接近 1Gbps，秒级测速条全线爆红！</li>
+        <li><strong>亚太区全面开花：</strong> 台湾、香港、新加坡等节点均能轻松将速度维持在 1.3Gbps - 2.2Gbps 的高位区间。这对于使用移动宽带，并且重度依赖亚洲节点进行游戏或影音娱乐的用户来说，绝对是一个巨大的福音。</li>
+      </ul>
+
+      <h2 id="telecom-speed">4. 北京电信 1Gbps 测速：千兆跑满，稳如泰山</h2>
+      <p>最后，我们来看国内用户基数最大的<strong>中国电信</strong>宽带环境。本次测试环境为北京电信 1000兆 (1Gbps) 旗舰家宽。对于电信网络晚高峰容易遭遇 QOS 限速的痛点，极速cloud 再次展现了其底层优化的深厚功力。</p>
+
+      <p><strong>测速亮点解析：</strong></p>
+      <ul>
+        <li><strong>千兆带宽轻松跑满：</strong> 在 1Gbps 的物理带宽上限下，极速cloud 的美国、香港、台湾、新加坡等主流节点，其平均速度大多稳定在 800Mbps 到 900Mbps，最大速度则全部撞上了 1.3Gbps 到 1.7Gbps 的测试仪天花板，实现了对电信千兆宽带的完美榨干。</li>
+        <li><strong>稳定的 VLESS 协议：</strong> 从全部测速图可以看出，极速cloud 采用了抗封锁能力极强的 <strong>VLESS</strong> 协议。即使在电信严格的特征审查下，依然保持了极高的连接成功率和持续的高速吞吐，未出现大面积的红叉断流现象。</li>
+      </ul>
+
+      <h2 id="summary">5. 评测总结：流量焦虑终结者，2026年黑马级机场</h2>
+      <p>综合以上三份涵盖三大运营商的极限测速图表，我们可以清晰地得出极速cloud (JisuCloud) 测速文章的核心结论：</p>
+      
+      <p>这是一家具备 <strong>“大流量（2500GB套餐）、长周期、超高速、多原生”</strong> 特性的黑马级服务商。它完全打破了“便宜没好货”的刻板印象，在提供低至 8.9 元/月入门价的同时，其服务器集群在 1000M 甚至 2000M 的骨干网压力测试下，展现出了 2.4Gbps+ 级别的碾压式性能表现。</p>
+
+      <p>无论您是移动、电信还是联通用户，无论您是追求 4K/8K 极致秒开的影音发烧友，还是需要大量纯净原生 IP 来支持跨境出海业务的工作室，极速cloud 目前展现出的网络素质都完全有资格成为您的主力或核心备用选项。别忘了在下单时使用专属优惠码 <code>ikds88</code>，将性价比进行到底！</p>
+      
+      <div class="declaration-box" style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 16px 20px; border-radius: 4px; margin-top: 48px; margin-bottom: 24px;">
+        <p style="margin: 0; color: #92400e; font-size: 0.95rem; line-height: 1.65;"><strong>免责声明与测速说明：</strong> 本文使用的极速cloud测速图表来源于第三方 Impart 测速节点拓扑与速度测试数据。测速环境分别为北京联通 2Gbps、上海移动 2Gbps 及北京电信 1Gbps。需要注意的是，跑分图仅代表该次特定时间、特定网络环境下的极致表现，受限于用户本地光猫性能、路由器的 Wi-Fi 损耗以及高峰时段的具体波动，您的实际日常体验速度可能无法时刻保持在数 Gbps 的峰值，但满足流畅观影与极速网页加载绰绰有余。</p>
+      </div>
+
+    </div>
+    
+    <aside class="toc-sidebar">
+      <div class="toc-container">
+        <h3 class="toc-title">本文目录</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
+    </aside>
+  </article>
+
+  <style>
+    .knowledge-layout {
+      display: flex;
+      gap: 40px;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .article-content {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      padding: 56px;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+    }
+    
+    .prose h1 { font-size: 2.4rem; color: var(--ink); line-height: 1.4; margin-bottom: 32px; font-weight: 800; }
+    .prose .lead-paragraph { font-size: 1.15rem; color: #374151; background: #f0fdf4; border-left: 4px solid #10b981; padding: 24px; margin-bottom: 36px; border-radius: 0 8px 8px 0; line-height: 1.8; }
+    .prose h2 { font-size: 1.7rem; color: var(--blue); margin-top: 64px; margin-bottom: 28px; border-bottom: 2px solid #eff4ff; padding-bottom: 12px; font-weight: 700; }
+    .prose h3 { font-size: 1.35rem; color: #1f2937; margin-top: 40px; margin-bottom: 20px; font-weight: 600; }
+    .prose p { font-size: 1.1rem; line-height: 1.85; color: #475569; margin-bottom: 24px; }
+    .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .prose a:hover { text-decoration: underline; }
+    .prose ul, .prose ol { margin-bottom: 28px; padding-left: 28px; font-size: 1.1rem; line-height: 1.85; color: #475569; }
+    .prose ul li, .prose ol li { margin-bottom: 14px; }
+    .prose code { background: #f1f5f9; color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.9em; font-family: monospace; display: inline-block;}
+    
+    .toc-sidebar { width: 300px; flex-shrink: 0; position: sticky; top: 120px; }
+    .toc-container { background: #fff; padding: 28px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
+    .toc-title { font-size: 1.15rem; font-weight: 800; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .toc-link { color: var(--muted); text-decoration: none; font-size: 0.95rem; transition: all 0.2s; display: block; line-height: 1.5; border-left: 2px solid transparent; padding-left: 12px; margin-left: 2px; }
+    .toc-link:hover, .toc-link.active { color: var(--blue); font-weight: 700; border-left-color: var(--blue); }
+
+    @media (max-width: 992px) {
+      .knowledge-layout { flex-direction: column; padding-top: 100px; }
+      .toc-sidebar { display: none; }
+      .article-content { padding: 32px 24px; border-radius: 12px; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.article-content');
+      const tocList = document.getElementById('toc-list');
+      if (!content || !tocList) return;
+
+      const headings = content.querySelectorAll('h2, h3');
+      
+      headings.forEach((heading) => {
+        if(!heading.id) return;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.className = 'toc-link';
+        if(heading.tagName.toLowerCase() === 'h3') {
+           a.style.paddingLeft = '24px';
+           a.style.fontSize = '0.9rem';
+        }
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observerOptions = { root: null, rootMargin: '-100px 0px -60% 0px', threshold: 0 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(heading => observer.observe(heading));
+    });
+  </script>
+</BaseLayout>
