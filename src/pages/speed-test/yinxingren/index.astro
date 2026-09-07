@@ -43,7 +43,7 @@ const description = "近 4000 字本站测速评测隐形人机场 (Yinxingren)�
           <h2 id="speedtest">2. 晚高峰抗阻实测：Hy2 协议与 BGP 专线的狂暴飙车</h2>
           <p>协议再新，没有物理线路的支撑也只是空中楼阁。隐形人采用的是“BGP 三网智能优化入口 + 纯物理专线出口”的豪华架构。为了测试其在新协议加持下的真实表现，我们在晚上 21:30 这个长城防火墙干扰最严重、公网最拥堵的“炼狱时段”，挂载了其主打的 Hysteria 2 节点进行了并发压测。</p>
 
-          <img src="/images/reviews/yinxingren/speedtest.png" alt="隐形人机场晚高峰BGP专线结合Hysteria2协议Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/yinxingren/speedtest.webp" alt="隐形人机场晚高峰BGP专线结合Hysteria2协议Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - Hysteria 2 协议基于 UDP 的暴力抢速特性，结合 BGP 专线的物理隔离，使得 Ping 值曲线死寂般平滑。即使在高强度的吞吐测试中，Jitter 抖动也被死死压制，展现了的抗丢包能力。）</p>
 
           <p>在连续上万个探测包的严格拉锯战中，隐形人的香港和日本专线丢包率详细地咬死在 0.00%。而当启动测速下载时，Hy2 的优势爆发：首字节响应 (TTFB) 几乎为零，无需缓慢爬坡，带宽瞬间打满本地宽带极限，这种物理形成差异的体验，让传统 TCP 协议黯然失色。</p>
@@ -92,7 +92,7 @@ const description = "近 4000 字本站测速评测隐形人机场 (Yinxingren)�
           <h2 id="streaming-experience">3. 流媒体与 AI 解锁：原生 IP 下的极净生产力</h2>
           <p>协议再强大，如果 IP 质量被污染也是徒劳。隐形人深知内容创作者与极客的痛点，在其庞大的节点库中部署了高比例的家庭双 ISP 原生 IP。</p>
 
-          <img src="/images/reviews/yinxingren/youtube4k.png" alt="隐形人机场晚高峰BGP原生节点满速解锁YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/yinxingren/youtube4k.webp" alt="隐形人机场晚高峰BGP原生节点满速解锁YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：商用原生解锁实测 - 在 Hiddify 原生的 Sing-box 分流引擎下，YouTube 4K 流不仅加载免缓冲，更是无缝解锁了网飞非自制剧等严格的流媒体平台，展现了原生 IP 的实力。）</p>
 
           <p>对于重度依赖 AI 的极客来说，隐形人订阅内置了 <code>AI Services</code> 独立策略组。无论你是在高频调用 Claude 3.5 Sonnet 的商业 API，还是与 ChatGPT o1 模型进行对弈，流量都会被精准路由到高权重的原生 IP 节点上。在我们的长周期压测中，全程未遇到任何 <code>Access Denied</code> 或者烦人的 Cloudflare 人机验证弹窗，保卫了宝贵的生产力。</p>

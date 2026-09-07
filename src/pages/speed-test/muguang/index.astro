@@ -43,7 +43,7 @@ const description = "近 4000 字本站测速评测暮光机场 (Muguang)。针�
           <h2 id="speedtest">2. 晚高峰抗压实测：家庭千兆环境下的极限并发压榨</h2>
           <p>“是骡子是马，晚高峰拉出来遛遛。” 为了验证暮光的并发实力，我们在周六晚间 21:30 的家庭千兆局域网内，通过 Mac 端的 Stash 对其主力节点发起了一波暴力的 Stair Speedtest 并发测试。</p>
 
-          <img src="/images/reviews/muguang/speedtest.png" alt="暮光机场晚高峰Stair Speedtest较强的BGP多线测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/muguang/speedtest.webp" alt="暮光机场晚高峰Stair Speedtest较强的BGP多线测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：详细网络节点测速直出 - 在拥堵的晚高峰，暮光的下行测试几乎呈现出平整的矩形色块。其 BGP 智能调度确保了海量的数据包毫无阻塞地冲进了本地网卡。）</p>
 
           <p>测试结果。其香港与新加坡等核心亚太节点的瞬时并发吞吐量轻松地撕开了 <strong>700 Mbps</strong> 的大关。值得注意的是其物理丢包率（Packet Loss）数据，在持续高压狂轰滥炸数分钟后，依然锁定在 0%。这意味着，即使您家里有三台设备同时在看 4K 流媒体，暮光的隧道也能将其稳妥地承载下来。</p>
@@ -92,7 +92,7 @@ const description = "近 4000 字本站测速评测暮光机场 (Muguang)。针�
           <h2 id="stash-apple-tv">3. Apple TV 与 Stash 原生适配：客厅流媒体的无感体验</h2>
           <p>很多机场提供的订阅链接，仅仅是一个粗糙的节点列表（Base64）。如果直接导入到 Apple TV 的 Stash 应用中，你会发现国内的视频（如爱奇艺、腾讯）也会全部走海外代理，导致国内视频卡顿。而暮光在这方面展现出了的专业度。</p>
 
-          <img src="/images/reviews/muguang/youtube4k.png" alt="暮光机场晚高峰Apple TV端Stash原生配置解锁YouTube 4K播放实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/muguang/youtube4k.webp" alt="暮光机场晚高峰Apple TV端Stash原生配置解锁YouTube 4K播放实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：Apple TV 电视端测速实录 - 依靠暮光下发的智能策略组，YouTube 4K 流瞬间被精准分配至专线通道。加载条的预留量充沛到足以抵抗任何家庭网络波动。）</p>
 
           <p>暮光的云端完全兼容了最新的 Clash Meta 语法架构。在官网点击导入后，它下发的是一份包含了数百条精细路由规则的 <code>Rule-Set</code> 配置文件。它聪明地将国内直连（Direct）、流媒体解锁（Media Proxy）、以及广告拦截（Reject）做了清晰的策略组划分。对于客厅玩家而言，这就是“设置一次，终身无感”的体验，融合了国内局域网与海外广域网的边界。</p>

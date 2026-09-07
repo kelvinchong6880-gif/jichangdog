@@ -44,7 +44,7 @@ const description = "近 4000 字本站测速评测一翻云机场 (Yifanyun)。
           <h2 id="speedtest">2. 晚高峰抗阻实测：全 IEPL 专线的 未观察到丢包统治力</h2>
           <p>当然，再华丽的界面配置，如果没有较强的底层网络支撑也是海市蜃楼。一翻云向外宣称全系套餐（哪怕是 98 元的年付版）全部跑在 <strong>IEPL 国际以太网专线</strong> 上。为了验证其真实含金量，我们在晚间 21:00 至 23:00 的公网晚高峰炼狱期，使用软路由对其核心骨干网进行了高强度的并发压测。</p>
 
-          <img src="/images/reviews/yifanyun/speedtest.png" alt="一翻云机场晚高峰全IEPL专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/yifanyun/speedtest.webp" alt="一翻云机场晚高峰全IEPL专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请关注图表中的 Ping 值与 Jitter 曲线。在二层内网的保护下，数据包在该次记录中较少受到公网干扰，连接香港机房的延迟平滑如死机，未产生任何锯齿状的丢包波动。）</p>
 
           <p>测试结果令人信服。在连续发送五千个探测包的严格测试中，一翻云的香港和日本 IEPL 节点丢包率死死咬在 0.00%。由于数据直接在国内 BGP 入口就被封装进了跨国光缆内网，绕开了国际出口网关的拥堵。在进行千兆并发下载测试时，首字节响应 (TTFB) 极短，速度峰值瞬间突破了带宽瓶颈。</p>
@@ -93,7 +93,7 @@ const description = "近 4000 字本站测速评测一翻云机场 (Yifanyun)。
           <h2 id="tiktok-unlock">3. 商业级黑科技：内置 TikTok 免拔卡解锁生态</h2>
           <p>在这个短视频出海的时代，无数的跨境电商团队与自媒体从业者被 TikTok 严格的风控墙折磨得死去活来。传统的方案痛苦：你要么准备一台废旧手机且不能插国内 SIM 卡，要么忍受频繁的重置设备。一旦代理节点 IP 不纯，账号就会立刻陷入 0 播放的死局。</p>
 
-          <img src="/images/reviews/yifanyun/youtube4k.png" alt="一翻云机场晚高峰纯净住宅IP满速解锁TikTok与YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/yifanyun/youtube4k.webp" alt="一翻云机场晚高峰纯净住宅IP满速解锁TikTok与YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：商业解锁实录 - 圈X 内置的 MitM 重写脚本配合一翻云的原生高权重节点，骗过了风控检测，实现了在插着国内手机卡的环境下流畅畅刷 4K 原画质。）</p>
 
           <p>一翻云的研发团队针对这一刚需拿出了杀手锏。其圈X 配置中原生地嵌入了专为最新版 TikTok 客户端编写的 Rewrite (重写) 脚本，从底层巧妙伪造了移动网络代码 (MCC/MNC)。更详细的是，一翻云为其匹配了双 ISP 住宅 IP 节点库。您只需在圈X 中开启 MitM 抓包并安装信任证书，即可直接在主力 iPhone 上打开 TikTok 畅游，无需拔卡。这套方案对于 TikTok 矩阵运营团队而言，无疑是价值千金的效率核武。</p>

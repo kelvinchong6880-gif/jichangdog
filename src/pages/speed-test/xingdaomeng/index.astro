@@ -43,7 +43,7 @@ const description = "近 4000 字本站测速评测星岛梦机场 (Xingdaomeng 
           <h2 id="speedtest">2. 晚高峰抗阻实测：IEPL 物理专线与新协议的飙车现场</h2>
           <p>脱离了协议空谈速度是没有意义的。为了验证新架构的实战能力，我们在周末晚 21:30（跨洋出口公网最拥堵的时刻），挂载了星岛梦的“沪日 IEPL”节点，并强制开启了基于 UDP 的高速传输机制，进行了一场复杂的长连接拉扯测试。</p>
 
-          <img src="/images/reviews/xingdaomeng/speedtest.png" alt="星岛梦机场晚高峰IEPL专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/xingdaomeng/speedtest.webp" alt="星岛梦机场晚高峰IEPL专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 在新协议的加持下，其延迟曲线宛如死机般水平。即便是针对大流量的突发下载测试，其 Jitter 抖动值也死死控制在 2-4ms 之间，展现了物理二层专线的吞吐力。）</p>
 
           <p>测试数据给出了的答卷。由于底层是不过墙的 IEPL (国际以太网专线)，数据包根本不走拥堵的公网。在连续一万个 ICMP 探测包的轰炸下，丢包率始终为 0%。而当进行单线程文件下载时，新协议的握手优势显现，首字节响应 (TTFB) 极快，速度瞬间拉满至数百兆，毫无传统协议那种缓慢爬坡的顿挫感。</p>
@@ -92,7 +92,7 @@ const description = "近 4000 字本站测速评测星岛梦机场 (Xingdaomeng 
           <h2 id="streaming-experience">3. 流媒体与 AI 双修：原生 IP 下的 4K 视觉自由</h2>
           <p>很多纯技术的机场容易在“IP 质量”上翻车，导致虽然连接快，但一打开 Netflix 只能看自制剧，甚至打不开 ChatGPT 的网页。星岛梦在这一点上做到了高的兼顾性。</p>
 
-          <img src="/images/reviews/xingdaomeng/youtube4k.png" alt="星岛梦机场晚高峰IEPL节点满速解锁YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/xingdaomeng/youtube4k.webp" alt="星岛梦机场晚高峰IEPL节点满速解锁YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：商用原生解锁实测 - 在 Meta 内核 GeoSite 分流规则的辅助下，其原生节点不仅加载了 YouTube 4K 视频流，更是骗过了各大流媒体的风控墙，实现了沉浸式观影。）</p>
 
           <p>在日常使用中，你完全可以将星岛梦的节点托管给 Clash 的自动测速（Url-test）策略组。在长达一周的实测中，无论节点在后台如何智能切换，我们的网页版 ChatGPT Plus 以及 Claude 3.5 Sonnet 均未弹出任何验证码或报错警告。这证明了其节点库中沉淀了大量原生 IP 资源，为重度 AI 用户提供了坚实的生产力保障。</p>

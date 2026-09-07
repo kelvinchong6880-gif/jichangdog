@@ -43,7 +43,7 @@ const description = "近 4000 字本站测速评测全球云机场 (Quanqiu Clou
           <h2 id="speedtest">2. 晚高峰抗流实测：该次记录未观察到丢包与低抖动的心电图表现</h2>
           <p>检验一条 IPLC 专线是不是血统，不需要看它极值跑得多快，而是要看它在拥挤的晚 21:00 时段，Ping 值的波动到底有多小。我们通过软路由挂载全球云的主力深港节点，发起了一轮复杂的长连接高压测速。</p>
 
-          <img src="/images/reviews/quanqiu/speedtest.png" alt="全球云机场晚高峰IPLC专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/quanqiu/speedtest.webp" alt="全球云机场晚高峰IPLC专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请仔细地观察右上角的 Jitter(抖动) 与 Packet Loss(丢包率) 两个参数。在全球云的纯内网环境里，丢包率被钉在了 0.00%，吞吐曲线呈现的水平矩形。）</p>
 
           <p>测试结果让所有普通公网机场汗颜。在连续十分钟的高并发下载中，其香港节点的网络抖动（Jitter）始终地维持在 5ms 以内。这意味着数据包的到达时间均匀，完全没有公网那种频繁的“堵车再放行”的顿挫感。这正是跨国视频会议（UDP协议）最依赖的网络环境。</p>
@@ -92,7 +92,7 @@ const description = "近 4000 字本站测速评测全球云机场 (Quanqiu Clou
           <h2 id="enterprise-usage">3. 跨国团队协同与视频会议：UDP 低抖动的心跳保障</h2>
           <p>很多外贸公司每天要进行大量的 Zoom、Teams 跨国视频会议，或者是高频地在 Google Workspace 进行文档协作。在这个严肃的场景中，只要代理节点发生一次超过 1 秒钟的掉线，屏幕那头的老外就会看到你频繁的静止画面。</p>
 
-          <img src="/images/reviews/quanqiu/youtube4k.png" alt="全球云机场晚高峰软路由网关下解锁YouTube 4K无感播放实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/quanqiu/youtube4k.webp" alt="全球云机场晚高峰软路由网关下解锁YouTube 4K无感播放实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：商用环境实录 -  IPLC 专线，让一切视频流媒体（哪怕是 4K/8K 级别）都变得像局域网一样瞬间加载，完全摆脱了对公网宽带的依赖。）</p>
 
           <p>全球云的物理专线对 UDP 协议（语音与视频流的核心协议）友好。由于整个传输链路完全掌控在服务商购买的物理内网中，它避开了国内运营商在晚高峰喜欢实行的“UDP 恶意限速丢包”策略。在长达两小时的跨洋连线压测中，全球云的语音包连贯得令人发指，这可作为 <strong>企业级高维防失联网络</strong> 的标准答案。</p>

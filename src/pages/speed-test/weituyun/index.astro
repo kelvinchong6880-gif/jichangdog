@@ -43,7 +43,7 @@ const description = "近 4000 字测速评测唯兔云机场 (Weituyun)。详细
           <h2 id="speedtest">2. 晚高峰抗阻实测：零抖动曲线与 UDP 满血穿透</h2>
           <p>为了探究这套架构的真实威力，我们在周末晚 21:00 的网络高危期，使用网线直连本地千兆路由，对其主打的“沪日 IPLC”和“广港 IEPL”节点进行了连续的 ICMP 长连接与带宽并发压测。</p>
 
-          <img src="/images/reviews/weituyun/speedtest.png" alt="唯兔云机场晚高峰Vless+IPLC专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/weituyun/speedtest.webp" alt="唯兔云机场晚高峰Vless+IPLC专线Stair Speedtest该次记录未观察到丢包平滑的测速实况" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：专业路由压测直出 - 请注意图表左侧的 Ping 值反馈区，唯兔云的延迟曲线如同一条直线，完全没有公网中转机场常见的锯齿状波动，展现了卓越的抗拥堵属性。）</p>
 
           <p>测试数据清晰地印证了理论。在高达上千次的连续 Ping 测试中，其抵达东京机房的延迟始终稳定在 32-35ms，更为关键的 Jitter（抖动）值仅为 1ms。这意味着你的游戏数据包几乎能以完全一致的间隔排队抵达服务器。丢包率稳稳地锁死在 0.00%，从根本上杜绝了联机游戏中的断线重连悲剧。</p>
@@ -92,7 +92,7 @@ const description = "近 4000 字测速评测唯兔云机场 (Weituyun)。详细
           <h2 id="gaming-experience">3. 沉浸式外服实战：Valorant 与英雄联盟的毫秒级对决</h2>
           <p>数据只是冰冷的参考，实战才是检验真理的唯一标准。我们将唯兔云通过 Netch 和 SSTap 工具进行全局路由代理，直接杀入《英雄联盟》(LOL) 日服以及《Valorant》港服。</p>
 
-          <img src="/images/reviews/weituyun/youtube4k.png" alt="唯兔云机场晚高峰满速解锁Netflix与YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;">
+          <img src="/images/reviews/weituyun/youtube4k.webp" alt="唯兔云机场晚高峰满速解锁Netflix与YouTube 4K无感播放实录" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 36px 0; max-width: 100%;" width="850" height="450">
           <p style="text-align: center; color: #64748b; font-size: 0.95rem; margin-bottom: 24px;">（图：影音娱乐附加值 - 尽管主打低延迟电竞，但其原生 IP 配置依然能够轻松解锁 Netflix 4K 非自制剧，兼具了强大的流媒体播放实力。）</p>
 
           <p>得益于节点对 UDP FullCone 的支持，我们在《Valorant》游戏内的延迟指示器稳稳保持在 30ms。在激烈的交火中，切枪、甩狙的动作反馈毫无滞后感，更没有出现恼人的网络回滚（走一步退半步）。对于厌倦了每月花几十块钱购买单一用途网易 UU 加速器的主机和 PC 玩家而言，唯兔云是一款形成差异的全能型武器。</p>
