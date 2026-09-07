@@ -1,0 +1,1374 @@
+[
+  {
+    "file": "src\\pages\\about.astro",
+    "title": "关于机场狗：致力于透明、客观的机场评测 | 机场狗",
+    "titleLength": 25,
+    "description": "了解机场狗（JiChangDog）的创立初衷、核心价值观以及我们如何为您提供真实、可靠的翻墙机场评测数据。",
+    "descLength": 53
+  },
+  {
+    "file": "src\\pages\\affiliate-disclosure.astro",
+    "title": "推广与返利 (Affiliate Disclosure) | 机场狗",
+    "titleLength": 34,
+    "description": "了解机场狗（JiChangDog）的推广与返利声明。我们承诺返利链接通常不会影响我们的客观评测与排名标准。",
+    "descLength": 53
+  },
+  {
+    "file": "src\\pages\\author.astro",
+    "title": "作者与编辑：机场狗的幕后团队 | 机场狗",
+    "titleLength": 20,
+    "description": "了解机场狗（JiChangDog）的编辑团队。我们的作者均具备丰富的网络测试经验与多年的翻墙实战经验。",
+    "descLength": 51
+  },
+  {
+    "file": "src\\pages\\brands\\index.astro",
+    "title": "品牌库 - 36家机场品牌推荐｜机场狗",
+    "titleLength": 19,
+    "description": "机场狗品牌库汇总36家机场的套餐价格、线路类型、设备限制、优惠信息和测评入口，方便按需求筛选并核对服务状态。",
+    "descLength": 54
+  },
+  {
+    "file": "src\\pages\\compare\\index.astro",
+    "title": "36家主力机场横向对比表 - 价格与线路全景图｜机场狗",
+    "titleLength": 27,
+    "description": "市场上本站36家主力机场横向对比表。按价格、专线类型、优惠码全面呈现，帮您最快锁定高性价比翻墙节点。",
+    "descLength": 50
+  },
+  {
+    "file": "src\\pages\\contact.astro",
+    "title": "联系我们：商务合作与意见反馈 | 机场狗",
+    "titleLength": 20,
+    "description": "有商务合作、意见反馈或文章更正需求？欢迎通过 Telegram 或邮箱与机场狗（JiChangDog）团队联系。",
+    "descLength": 56
+  },
+  {
+    "file": "src\\pages\\corrections.astro",
+    "title": "内容更正与纠错机制 | 机场狗",
+    "titleLength": 15,
+    "description": "了解机场狗（JiChangDog）的更正机制。如果您发现我们的测速数据或机场评测信息存在错误，欢迎向我们提交更正请求。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\disclaimer.astro",
+    "title": "免责声明 (Disclaimer) | 机场狗",
+    "titleLength": 23,
+    "description": "了解机场狗（JiChangDog）的免责声明。本站提供的信息与数据仅供参考，不构成任何服务可用性保证。",
+    "descLength": 51
+  },
+  {
+    "file": "src\\pages\\guide\\airport-exit-scam-backup-guide.astro",
+    "title": "遇到机场跑路怎么办？如何提前备份你的节点与分流规则",
+    "titleLength": 25,
+    "description": "买的翻墙机场官网打不开、节点全红怎么办？解析机场跑路前兆，教你如何利用 Clash/v2rayN 在本地备份分流规则，并搭建双机场容灾切换策略组。",
+    "descLength": 73
+  },
+  {
+    "file": "src\\pages\\guide\\airport-nodes-timeout-troubleshooting.astro",
+    "title": "机场节点全部超时 (Timeout) 怎么排查解决？",
+    "titleLength": 26,
+    "description": "翻墙软件节点全红、测试真连接超时怎么办？解析 Clash Timeout、TLS 握手失败、系统时间报错，提供本站所列产品中较强 3 步排障自救指南。",
+    "descLength": 75
+  },
+  {
+    "file": "src\\pages\\guide\\airport-subscription-update-failed-guide.astro",
+    "title": "订阅链接更新失败/无法更新？常见原因与5种解决办法",
+    "titleLength": 25,
+    "description": "机场订阅链接更新失败、报错 Network Error 怎么恢复？解析 DNS 污染、TLS 阻断与内核兼容性问题，提供 5 种极客排障自救方案，告别断网。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\android-tv-v2rayng-youtube-setup-guide.astro",
+    "title": "Android TV / 安卓电视盒子安装 v2rayNG 翻墙看油管教程",
+    "titleLength": 37,
+    "description": "小米/索尼电视怎么翻墙看油管？解析 Android TV 电视盒子安装 v2rayNG 与免谷歌版 SmartTube，改善遥控器操作与 4K 卡顿。",
+    "descLength": 75
+  },
+  {
+    "file": "src\\pages\\guide\\android-vpn-proxy-split-tunneling-guide.astro",
+    "title": "安卓手机连上机场后，如何开启/关闭 VPN 代理分流？",
+    "titleLength": 27,
+    "description": "解析安卓科学上网分流技巧！告别淘宝加载慢与微信断流。详解绕过局域网及大陆、分应用代理配置，支持 Clash/v2rayNG/NekoBox 极客排障。",
+    "descLength": 75
+  },
+  {
+    "file": "src\\pages\\guide\\apple-tv-tvos17-vpn-stash-surge.astro",
+    "title": "Apple TV tvOS 17+ 翻墙教程：直接安装代理软件 (Stash/Surge)",
+    "titleLength": 45,
+    "description": "解析 Apple TV tvOS 17 VPN 推荐与原生网络接管。教你安装 Stash/Surge，配置 iCloud 同步，改善奈飞解锁与节点超时报错。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\buy-us-app-store-gift-card-for-shadowrocket.astro",
+    "title": "如何购买美区 App Store 礼品卡充值下载 Shadowrocket 小火箭？",
+    "titleLength": 42,
+    "description": "想在国内买正版小火箭？教程教你用支付宝合法购买美区 Apple 礼品卡，附送 3 美元直充免税州避坑指南，告别淘宝黑卡封号风险。",
+    "descLength": 64
+  },
+  {
+    "file": "src\\pages\\guide\\chatgpt-signup-anti-ban-network-guide.astro",
+    "title": "ChatGPT 注册教程与防封号网络配置建议",
+    "titleLength": 22,
+    "description": "解析 OpenAI 风控机制，教你配置纯净原生 IP、无痕浏览器与防封号网络，5 分钟一次性成功注册。",
+    "descLength": 51
+  },
+  {
+    "file": "src\\pages\\guide\\clash-for-android-cfa-beginner-guide.astro",
+    "title": "Clash for Android (CFA) 下载与订阅配置教程",
+    "titleLength": 33,
+    "description": "下载 Clash Meta for Android (CMFA) 与 FlClash，掌握安卓系统防杀后台、VLESS 协议解析与 4K 加载教程。",
+    "descLength": 74
+  },
+  {
+    "file": "src\\pages\\guide\\clash-for-windows-download-and-setup.astro",
+    "title": "Clash for Windows (CFW) 下载、汉化与配置教程",
+    "titleLength": 34,
+    "description": "寻找 Clash for Windows 下载与 CFW 汉化版？由于 CFW 删库停更事件，网上充斥着假冒安装包木马。本文为你提供无缝迁移至 Clash Verge Rev 的电脑图文教程，解决节点超时连不上等排障问题。",
+    "descLength": 111
+  },
+  {
+    "file": "src\\pages\\guide\\clash-port-already-in-use-troubleshooting.astro",
+    "title": "Clash 提示 \\",
+    "titleLength": 10,
+    "description": "一打开 Clash 就提示 Port Already in Use？解析 Windows 10808/7890 端口冲突，教你利用 CMD 解除 Hyper-V 保留端口，以及解决 TIME_WAIT 幽灵占用。",
+    "descLength": 106
+  },
+  {
+    "file": "src\\pages\\guide\\clash-verge-alternatives-windows-guide.astro",
+    "title": "Clash Verge 最新替代方案：Windows 端下载与使用指南",
+    "titleLength": 35,
+    "description": "原版 Clash Verge 已停更！寻找 Clash Verge 替代品？本文为你推荐 年最新 Windows 电脑翻墙软件：Clash Verge Rev、Mihomo Party 与 GUI.for.SingBox，附带图文教程与 TUN 模式排障指南。",
+    "descLength": 130
+  },
+  {
+    "file": "src\\pages\\guide\\clash-verge-rev-mac-tutorial.astro",
+    "title": "Clash Verge Mac 端使用教程：界面更现代的翻墙利器",
+    "titleLength": 32,
+    "description": "Mac 翻墙客户端最新推荐！解析 Clash Verge Rev 配置方法、TUN 虚拟网卡修复以及 M 芯片安装报错解决指南。告别老旧的 ClashX。",
+    "descLength": 77
+  },
+  {
+    "file": "src\\pages\\guide\\direct-vs-relay-vs-iplc-airport-guide.astro",
+    "title": "专线机场 vs 中转机场 vs 直连机场：有什么区别？该怎么选？",
+    "titleLength": 32,
+    "description": "专线机场与中转机场区别在哪？IPLC / IEPL 物理专线和 BGP 隧道中转节点怎么选？本文剖析直连节点劣势、机场 QoS 限速与丢包，带你弄懂翻墙晚高峰卡顿原因，告别盲目购买。",
+    "descLength": 91
+  },
+  {
+    "file": "src\\pages\\guide\\discord-signup-and-voice-channel-unstable-fix.astro",
+    "title": "Discord 注册与语音频道连线不稳定的解决办法",
+    "titleLength": 25,
+    "description": "Discord 语音一直卡 RTC Connecting 或 No Route？解析代理客户端 UDP 转发与原生节点拦截机制，教你解决纸飞机语音卡死与注册收不到验证码难题。",
+    "descLength": 87
+  },
+  {
+    "file": "src\\pages\\guide\\dns-leak-test-and-prevention.astro",
+    "title": "什么是 DNS 泄露？如何测试并防止真实 IP 泄露？",
+    "titleLength": 27,
+    "description": "翻墙后 IP 归属地依然显示中国？解析 DNS 泄露原理、WebRTC 暴露与 Fake-IP 机制，教你利用 TUN 虚拟网卡防止真实身份与 IP 泄露。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\fix-chatgpt-netflix-proxy-blocked.astro",
+    "title": "为什么开了代理还是打不开 ChatGPT / Netflix？解决办法",
+    "titleLength": 35,
+    "description": "翻墙能上 Google 却打不开 ChatGPT 和奈飞？解析 OpenAI Access Denied 报错、Netflix 代理检测风控原理，说明如何识别原生 IP，并验证流媒体与 AI 在对应时点的可用性。",
+    "descLength": 106
+  },
+  {
+    "file": "src\\pages\\guide\\fix-domestic-websites-slow-with-vpn.astro",
+    "title": "为什么连上机场后，国内网站（淘宝/百度）打开很慢或打不开？",
+    "titleLength": 29,
+    "description": "挂代理后微信连不上、淘宝打不开？解析全局代理与规则分流区别，教你在 Clash/v2rayN 中正确开启绕过局域网及大陆，实现国内外分流加载。",
+    "descLength": 71
+  },
+  {
+    "file": "src\\pages\\guide\\fix-windows-proxy-offline-after-sleep.astro",
+    "title": "电脑休眠后代理失效/断网怎么办？Windows 网络代理排障",
+    "titleLength": 30,
+    "description": "电脑休眠后断网、Clash 睡眠后连不上网、浏览器提示 ERR_PROXY_CONNECTION_FAILED？本文剖析 Windows 唤醒后的系统代理残留机制与网卡电源管理问题，并提供排障方案。",
+    "descLength": 99
+  },
+  {
+    "file": "src\\pages\\guide\\free-vpn-vs-paid-airport-risks.astro",
+    "title": "免费 VPN 与付费机场的本质区别：为什么不建议用免费翻墙软件？",
+    "titleLength": 32,
+    "description": "免费 VPN 安全吗？本文解析免费翻墙软件与付费机场的区别，说明流量劫持、隐私倒卖与钓鱼 VPN 等黑色产业链，为你提供安全避坑指南及平价免费试用梯子推荐。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\how-to-create-us-apple-id-without-credit-card.astro",
+    "title": "最新美区 Apple ID 注册教程（免信用卡，附步骤）",
+    "titleLength": 28,
+    "description": "想下载 Shadowrocket (小火箭) 却没有美区账号？ 最新免信用卡注册美区 Apple ID 教程，支持中国手机号，教你填免税州地址与支付宝充值礼品卡。",
+    "descLength": 81
+  },
+  {
+    "file": "src\\pages\\guide\\how-to-spot-airport-exit-scams.astro",
+    "title": "如何判断一个机场是否会跑路？购买前的 5 个重要考察点",
+    "titleLength": 27,
+    "description": "如何判断机场跑路？本文带你解析机场跑路前兆与灵车机场特征，说明终身套餐骗局与域名查询技巧。这是一份必看的翻墙机场避坑指南，教你告别资金损失，并附上靠谱老牌机场推荐。",
+    "descLength": 82
+  },
+  {
+    "file": "src\\pages\\guide\\index.astro",
+    "title": "使用教程 | 新手科学上网指南",
+    "titleLength": 15,
+    "description": "机场狗使用教程涵盖Windows、macOS、iOS、Android和路由器客户端配置，并整理订阅导入、连接故障、账号注册及常见安全问题。",
+    "descLength": 69
+  },
+  {
+    "file": "src\\pages\\guide\\loon-ios-beginner-tutorial-guide.astro",
+    "title": "Loon 使用教程：轻量且强大的 iOS 翻墙代理工具",
+    "titleLength": 27,
+    "description": "抛弃难用的圈X！带你解析 iOS 颜值水平 Loon 代理工具，掌握一键插件 (Plugin) 安装、MITM HTTPS 抓包去广告与流媒体智能分流策略。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\mac-clashx-pro-download-and-alternatives.astro",
+    "title": "Mac 翻墙候选：ClashX / ClashX Pro 下载与使用教程",
+    "titleLength": 36,
+    "description": "寻找 Mac 苹果电脑翻墙软件？别再搜 ClashX 官网了！解析 macOS 翻墙内核演进，教你解决“已损坏，无法打开”报错，并推荐 最强 Apple Silicon 原生替代方案。",
+    "descLength": 92
+  },
+  {
+    "file": "src\\pages\\guide\\mobile-vpn-proxy-battery-drain-fix.astro",
+    "title": "手机端代理软件耗电过快发热怎么办？如何优化分流规则",
+    "titleLength": 25,
+    "description": "手机挂 VPN 代理掉电快、小火箭/Clash 发热严重怎么办？解析 TCP 唤醒、全局加密与规则冗余导致的发热，教你配置 24 小时无感省电规则。",
+    "descLength": 74
+  },
+  {
+    "file": "src\\pages\\guide\\nekoray-windows-beginner-setup-guide.astro",
+    "title": "NekoRay Windows 版小白配置教程（支持多协议）",
+    "titleLength": 30,
+    "description": "寻找电脑翻墙万能客户端？NekoRay Windows 下载与详细配置教程。全面解析 Xray 与 sing-box 双内核切换，支持 Hysteria 2 与 VLESS-Reality，附带 TUN 模式排障指南。",
+    "descLength": 109
+  },
+  {
+    "file": "src\\pages\\guide\\netflix-signup-and-full-unlock-guide.astro",
+    "title": "Netflix 奈飞账号注册与机场节点解锁指南（如何看非自制剧）",
+    "titleLength": 32,
+    "description": "Netflix 搜不到绝命毒师？解析奈飞“仅限自制剧”与原生 IP 解锁机制，教你绕过同户家庭限制，提供 最新低价注册与拼车合租防坑教程。",
+    "descLength": 69
+  },
+  {
+    "file": "src\\pages\\guide\\openwrt-openclash-install-troubleshooting-guide.astro",
+    "title": "软路由 OpenWrt 安装 OpenClash 教程与排错指南",
+    "titleLength": 32,
+    "description": "OpenClash 核心下载失败？解析软路由 OpenWrt 安装 OpenClash、手动赋予内核权限、旁路由全屋科学上网配置及 Fake-IP 模式排错。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\guide\\padavan-router-ssr-v2ray-setup.astro",
+    "title": "华硕老毛子 (Padavan) 固件配置 SSR/V2Ray 节点教程",
+    "titleLength": 35,
+    "description": "斐讯 K2P 还能翻墙吗？ 最新华硕老毛子 Padavan 固件配置 V2Ray/SSR 指南。解析 MT7621 算力瓶颈、CPU 100% 满载与脚本更新失败排错。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\guide\\passwall-openwrt-transparent-proxy-guide.astro",
+    "title": "PassWall 配置指南：打造全家极速透明翻墙环境",
+    "titleLength": 26,
+    "description": "剖析 OpenWrt PassWall 插件下载与透明代理设置！教你切换 Sing-box 核心、配置 ChinaDNS-NG 防泄漏，解决国内网站打不开与游戏 NAT 痛点。",
+    "descLength": 88
+  },
+  {
+    "file": "src\\pages\\guide\\post-proxy-security-guide-dns-leak-prevention.astro",
+    "title": "翻墙后必须知道的安全常识：防止隐私泄露与 DNS 污染",
+    "titleLength": 27,
+    "description": "翻墙连上节点就安全了吗？本文解析翻墙安全常识与翻墙后注意事项，手把手教你防止隐私泄露、解决 DNS 污染、屏蔽 WebRTC 真实 IP 泄露，并提供最专业的科学上网安全防喝茶指南。",
+    "descLength": 91
+  },
+  {
+    "file": "src\\pages\\guide\\quantumult-x-beginner-subscription-guide.astro",
+    "title": "Quantumult X (圈X) 新手小白添加机场订阅教程",
+    "titleLength": 30,
+    "description": "花 7.99 美金买了圈X却不会用？带你解析 Quantumult X 节点资源导入、资源解析器 (Parser) 原理及 MITM 配置，解决节点全空报错。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\guide\\sagernet-android-tutorial-and-alternatives.astro",
+    "title": "SagerNet 安卓端配置与使用教程（支持 Trojan/V2Ray）",
+    "titleLength": 36,
+    "description": "请立刻停止折腾 SagerNet！说明 SagerNet 插件地狱报错、删库停更真相。带你平移配置到最新版安卓万能客户端 NekoBox，掌握代理链与最新防封锁协议。",
+    "descLength": 83
+  },
+  {
+    "file": "src\\pages\\guide\\shadowrocket-ios-download-purchase-guide.astro",
+    "title": "小火箭 Shadowrocket 下载、购买与机场节点配置全教程",
+    "titleLength": 32,
+    "description": "年最新苹果手机 iOS 翻墙指南。教你合规注册美区 Apple ID、支付宝购买礼品卡，避开淘宝共享账号锁机骗局，玩转小火箭配置！",
+    "descLength": 65
+  },
+  {
+    "file": "src\\pages\\guide\\shadowrocket-mac-m-chip-download-guide.astro",
+    "title": "Shadowrocket (小火箭) Mac 版安装与配置指南（支持 M芯片）",
+    "titleLength": 39,
+    "description": "M1/M2/M3 Mac 怎么下载小火箭电脑版？解析 Apple Silicon 跨端运行机制，教你免费白嫖 Shadowrocket Mac 版并解决 App Store 搜不到的报错，附带原生替代方案。",
+    "descLength": 103
+  },
+  {
+    "file": "src\\pages\\guide\\shadowsocks-vs-v2ray-vs-trojan-security.astro",
+    "title": "常见代理协议解析：Shadowsocks、V2Ray、Trojan 哪个更安全？",
+    "titleLength": 40,
+    "description": "代理协议对比：Shadowsocks、V2Ray、Trojan 区别在哪？翻墙协议哪个最安全？本文拆解流量特征识别与 GFW 主动探测机制，解析 Vmess 和 Vless 的区别、Trojan 密码学原理及最新 XTLS / Reality 协议，教你怎么防止节点被墙。",
+    "descLength": 136
+  },
+  {
+    "file": "src\\pages\\guide\\spotify-cross-region-premium-family-guide.astro",
+    "title": "Spotify 跨区注册与 Premium 家庭组购买防封指南",
+    "titleLength": 31,
+    "description": "Spotify 用了 14 天被强制退出？解密 14 天漫游限制与家庭组地址验证风控。教你 最新低价区 Premium 合租防掉车技巧，并无损迁移网易云歌单。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\guide\\stash-ios-clash-beginner-tutorial.astro",
+    "title": "Stash (iOS 版 Clash) 配置与使用教程",
+    "titleLength": 27,
+    "description": "苹果手机怎么下载 Clash？带你解析 iOS 端最强 Clash 核心客户端 Stash，掌握 Fake-IP、覆写脚本与模块去广告的极客玩法。",
+    "descLength": 73
+  },
+  {
+    "file": "src\\pages\\guide\\surfboard-android-surge-alternative-guide.astro",
+    "title": "Surfboard (冲浪板) 安卓端使用指南：兼容 Surge 的翻墙利器",
+    "titleLength": 38,
+    "description": "寻找安卓 Surge 替代软件？解析 Surfboard 冲浪板官方下载、Surge 配置导入、解决解析失败与节点 Timeout 超时报错，打造最高颜值的翻墙体验。",
+    "descLength": 83
+  },
+  {
+    "file": "src\\pages\\guide\\surge-ios-beginner-config-guide.astro",
+    "title": "Surge iOS 版入门指南：如何导入配置与开启代理",
+    "titleLength": 27,
+    "description": "花 50 美元买的 Surge 到底强在哪？带你解析 Surge iOS 托管配置文件导入、模块注入 (Modules) 与底层网络抓包排障，玩转最强工具。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\guide\\surge-mac-setup-and-subscription-guide.astro",
+    "title": "Surge Mac 基础配置与机场订阅添加教程",
+    "titleLength": 23,
+    "description": "花了几百块买的 Surge Mac 不会用？拆解 Surge 托管配置、增强模式 (TUN) 与中间人攻击 (MITM) 模块。教你改善 Surge 不支持 VLESS/Reality 的 最新痛点！",
+    "descLength": 100
+  },
+  {
+    "file": "src\\pages\\guide\\telegram-signup-and-unblock-private-chat-guide.astro",
+    "title": "Telegram (纸飞机) 注册与解除 +86 手机号私聊限制教程",
+    "titleLength": 34,
+    "description": "Telegram 收不到验证码？解析纸飞机 DC 数据中心分配、API 劫持木马与 P2P 物理 IP 泄露漏洞，教你用 @SpamBot 一键解除私聊限制与极客防封。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\guide\\tiktok-no-sim-card-removal-guide-ios-android.astro",
+    "title": "TikTok 国际版免拔卡翻墙观看教程 (iOS & Android)",
+    "titleLength": 35,
+    "description": "连了梯子打开 TikTok 还是黑屏？拆解 TikTok 运营商 MCC 封锁与 0 播放量风控。附 最新 iOS 小火箭 MITM 证书重写与安卓 Mod 免拔卡极客教程。",
+    "descLength": 87
+  },
+  {
+    "file": "src\\pages\\guide\\v2rayn-download-and-setup-guide.astro",
+    "title": "v2rayN 使用教程：从下载到添加机场订阅链接",
+    "titleLength": 24,
+    "description": "v2rayN 怎么用？寻找 v2rayN 下载官网？本文提供最详细的 Windows 电脑翻墙图文教程，从下载带有 Xray 内核的完整包，到一键导入订阅链接，全面解决端口被占用与节点超时等所有排障痛点。",
+    "descLength": 102
+  },
+  {
+    "file": "src\\pages\\guide\\v2rayng-android-download-and-setup-guide.astro",
+    "title": "v2rayNG 安卓版最新下载、安装与图文配置指南",
+    "titleLength": 25,
+    "description": "年安卓端最轻量省电的 Xray 原生利器！解析 v2rayNG 官方下载防木马、VLESS-Reality 极速配置、分应用代理与鸿蒙系统报毒排障。",
+    "descLength": 74
+  },
+  {
+    "file": "src\\pages\\guide\\v2rayu-mac-download-and-fatal-errors.astro",
+    "title": "V2rayU Mac 下载与图文配置教程：为什么你的 Core 总是未运行？",
+    "titleLength": 38,
+    "description": "还在寻找 V2rayU Mac 版下载教程？ 年了，尽早放弃这款时代眼泪吧！剖析 V2rayU",
+    "descLength": 47
+  },
+  {
+    "file": "src\\pages\\guide\\what-is-airport-subscription-link-how-to-use.astro",
+    "title": "机场订阅链接是什么？怎么用？（附全平台图文解析）",
+    "titleLength": 24,
+    "description": "机场订阅链接是什么？订阅链接怎么用？本文提供最详细的翻墙订阅地址获取与一键导入教程，涵盖 Clash 订阅链接导入、小火箭等全平台科学上网节点配置，帮你轻松解决获取订阅内容失败的各种痛点。",
+    "descLength": 94
+  },
+  {
+    "file": "src\\pages\\guide\\what-is-proxy-airport-2026-guide.astro",
+    "title": "什么是翻墙机场？年新手科学上网防坑指南",
+    "titleLength": 19,
+    "description": "你想知道什么是翻墙机场？本文带你深入了解机场和 VPN 的区别，提供最详细的 科学上网新手指南，解答苹果手机怎么翻墙、电脑翻墙软件推荐、翻墙节点怎么买，并附上新手科学上网防坑法则，让你少走弯路。",
+    "descLength": 97
+  },
+  {
+    "file": "src\\pages\\guide\\x-twitter-sensitive-content-unlock-guide.astro",
+    "title": "X (原 Twitter) 敏感内容如何解锁查看？全平台设置教程",
+    "titleLength": 32,
+    "description": "推特一直提示包含敏感内容无法点击？解析 X (Twitter) 隐藏设置逻辑与年龄风控机制。手把手教你 iOS/安卓免 App 解锁 NSFW 内容，附防封号节点选择建议。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\guide\\youtube-premium-cross-region-subscription-guide.astro",
+    "title": "YouTube Premium 跨区订阅全攻略 (尼日利亚/阿根廷/土耳其)",
+    "titleLength": 38,
+    "description": "想白嫖低价 YouTube Premium？解密 谷歌跨区锁卡风控。手把手教你利用原生 IP 订阅尼日利亚区，提供虚拟信用卡防拒付与家庭组防封备选方案。",
+    "descLength": 76
+  },
+  {
+    "file": "src\\pages\\index.astro",
+    "title": "机场狗｜机场测评、测速资料与新手教程",
+    "titleLength": 18,
+    "description": "机场狗汇总机场测评、节点测速、套餐价格、线路资料和客户端使用教程，并标注测试条件与信息来源，帮助你在注册前比较服务表现和潜在风险。",
+    "descLength": 65
+  },
+  {
+    "file": "src\\pages\\jichang\\dageyun.astro",
+    "title": "大哥云 (Dageyun) 测评：主打 Trojan 协议的千兆大带宽机场表现",
+    "titleLength": 39,
+    "description": "全面拆解其 Trojan 协议节点的晚高峰抗压能力、1000Mbps 千兆测速数据以及 9折优惠券。附优缺点分析。",
+    "descLength": 57
+  },
+  {
+    "file": "src\\pages\\jichang\\edgenova.astro",
+    "title": "Adgenova (边缘节点) 评测：配置解析",
+    "titleLength": 23,
+    "description": "Adgenova (edgenova 边缘节点) 怎么样？全系标配 IPLC 2.5Gbps 物理专线与边缘计算加速节点，不限制设备数量。实测晚高峰 4K 零抖动，原生 IP 在对应记录时点显示可解锁 ChatGPT 与全球流媒体。",
+    "descLength": 116
+  },
+  {
+    "file": "src\\pages\\jichang\\ermaoyun.astro",
+    "title": "二猫云 (Ermaoyun) 架构解析：2.5Gbps 物理专线与猫系套餐的化学反应",
+    "titleLength": 42,
+    "description": "解密 2.5Gbps 峰值口径下的白猫、橘猫、黑猫套餐性价比，以及详细的 99元/100G 不限时备用套餐的底层逻辑。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\jichang\\feimaoyun\\index.astro",
+    "title": "飞猫云机场测评：便宜稳定 IPLC 专线，高性价比翻墙候选",
+    "titleLength": 29,
+    "description": "评测 年常见套餐“飞猫云机场” (Feimaoyun)。说明其以低价格提供 IPLC 专线背后的技术实力，实测晚高峰 该次记录未观察到丢包与 Netflix/TikTok 原生解锁能力。",
+    "descLength": 93
+  },
+  {
+    "file": "src\\pages\\jichang\\firefly\\index.astro",
+    "title": "Firefly机场测评：全专线优质机场推荐，外贸与流媒体的备选方案",
+    "titleLength": 33,
+    "description": "评测优质专线机场 Firefly。作为 年备受推崇的机场推荐，Firefly 提供 BGP+IPLC 全专线架构，实测晚高峰稳定不卡顿梯子体验。",
+    "descLength": 72
+  },
+  {
+    "file": "src\\pages\\jichang\\flybit.astro",
+    "title": "Flybit 机场性价比评测：价格低至 15 元，晚高峰速度与解锁表现能打吗？",
+    "titleLength": 39,
+    "description": "Flybit机场怎么样？评测这款主打表现性价比与不限时按量计费包的老牌机场。从晚高峰 4K 测速、ChatGPT 原生解锁到学生党高性价比套餐全面解析。",
+    "descLength": 76
+  },
+  {
+    "file": "src\\pages\\jichang\\flyv.astro",
+    "title": "飞V (FlyV) 机场测评：市场上罕见的独享原生 IP 与超大流量池的性能怪兽",
+    "titleLength": 40,
+    "description": "剖析飞V (FlyV) 机场。全节点物理专线，提供高达 1.8TB 甚至纯独享 500GB 常见原生IP专线的资深流媒体/跨境电商极客机场，不限设备数，晚高峰 8K 加载。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\jichang\\guangnian.astro",
+    "title": "光年梯 (Lightyear) 机场测评：全线 IPLC 专线与 2.5Gbps 带宽的高性价比之选",
+    "titleLength": 50,
+    "description": "测评光年梯 (Lightyear) 机场。每月 18元起享 IPLC 专线，最高 2.5Gbps 速率，自带云端去广告分流规则。",
+    "descLength": 64
+  },
+  {
+    "file": "src\\pages\\jichang\\guangsu.astro",
+    "title": "快速云 (Guangsu Cloud) 机场：全线 IPLC 物理专线与原生 IP 矩阵的重工业数字基建",
+    "titleLength": 52,
+    "description": "解构快速云 (Guangsu Cloud) 机场。月付 23元起享 2.5Gbps 全球 IPLC 专线，提供商家目前标注的“不限时” 1TB 流量包。",
+    "descLength": 76
+  },
+  {
+    "file": "src\\pages\\jichang\\index.astro",
+    "title": "全部37家机场品牌推荐｜机场狗",
+    "titleLength": 15,
+    "description": "机场狗机场测评库整理37家服务商的套餐价格、线路类型、节点覆盖、设备限制和风险提示，并提供对应测速记录与详细评测入口。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\jichang\\jilian.astro",
+    "title": "极连云机场评测：Clash 节点推荐候选？晚高峰速度与一键导入全解析",
+    "titleLength": 34,
+    "description": "极连云机场怎么样？寻找稳定 Clash 节点推荐的必看评测。全线 IPLC 专线 2.5Gbps 高速节点，在对应记录时点显示可解锁 Netflix 流媒体与 ChatGPT。",
+    "descLength": 88
+  },
+  {
+    "file": "src\\pages\\jichang\\jisucloud.astro",
+    "title": "极速cloud (JisuCloud) 年最新评测：三网优化精品线路与冷门原生IP的高性价比之选",
+    "titleLength": 48,
+    "description": "极速cloud怎么样？本站为您带来年最新极速cloud机场评测。详细拆解其三网优化精品线路、原生IP解锁能力、8.9元超低月付套餐及专属优惠码ikds88，助您全面了解这家极具性价比的翻墙利器。",
+    "descLength": 97
+  },
+  {
+    "file": "src\\pages\\jichang\\jiuyun.astro",
+    "title": "九云机场评测：高性价比海外中转，6元起步流媒体解锁与抗封锁表现",
+    "titleLength": 31,
+    "description": "九云机场怎么样？本文带您评测九云机场，验证其海外中转架构。全面测试晚高峰测速、流媒体与ChatGPT解锁表现，并附上详细九云套餐价格，为您寻找靠谱高性价比机场提供最佳参考。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\jichang\\kexin.astro",
+    "title": "可信云机场评测：Clash 科学上网候选？晚高峰速度、流媒体解锁与一键配置全解析",
+    "titleLength": 40,
+    "description": "可信云机场怎么样？寻找稳定 Clash 科学上网机场推荐的必看评测。全线 IEPL 专线，不限设备，在对应记录时点显示可解锁 Netflix 流媒体与 ChatGPT。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\jichang\\kuaili.astro",
+    "title": "快狸机场评测：Shadowrocket 小火箭候选？晚高峰速度、TikTok解锁与一键导入教程",
+    "titleLength": 47,
+    "description": "快狸机场怎么样？寻找稳定 Shadowrocket机场推荐的必看评测。全线 IEPL 专线 2.5Gbps 满配，在对应记录时点显示可解锁 TikTok 与 Netflix。",
+    "descLength": 87
+  },
+  {
+    "file": "src\\pages\\jichang\\kuajie.astro",
+    "title": "跨界机场 Clash 评测：一键导入体验、节点分流规则与晚高峰测速全解析",
+    "titleLength": 36,
+    "description": "跨界机场怎么样？本文带您评测跨界机场，作为一款好用的 Clash 机场，测试其在 Clash Verge 与 Mihomo 内核下的分流规则、晚高峰测速及原生 IP 解锁表现，并附详细套餐价格。",
+    "descLength": 97
+  },
+  {
+    "file": "src\\pages\\jichang\\langwang.astro",
+    "title": "浪网机场评测：小火箭订阅推荐候选？晚高峰测速、TikTok解锁与导入指南",
+    "titleLength": 36,
+    "description": "浪网(Langwang)机场怎么样？寻找稳定 小火箭订阅购买 的必看评测。主打 BGP 多线融合与专线级出口，更有 640元/月定制独享专线与不限时流量包。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\jichang\\laomao.astro",
+    "title": "老猫云机场评测：Quantumult X (圈X) 推荐候选？晚高峰速度与解锁导入指南",
+    "titleLength": 43,
+    "description": "老猫云机场怎么样？寻找稳定 圈X机场推荐 的必看评测。全线 IEPL 企业级专线，提供适配 Quantumult X 的原生订阅与分流策略，在对应记录时点显示可解锁 Netflix/TikTok 与 ChatGPT。",
+    "descLength": 108
+  },
+  {
+    "file": "src\\pages\\jichang\\lingdong.astro",
+    "title": "灵动机场评测：Surge 5 托管候选？晚高峰速度与商家目前标注为“不限时”专线全解析",
+    "titleLength": 43,
+    "description": "灵动机场怎么样？寻找 Surge机场推荐 的必看评测。全线 BGP 专线，提供适配 Surge 5 的原生托管配置与策略组，解锁 Netflix/TikTok 与 ChatGPT 原生IP。",
+    "descLength": 95
+  },
+  {
+    "file": "src\\pages\\jichang\\lingmao.astro",
+    "title": "灵猫机场评测：V2ray/VMess 节点速度、晚高峰抗压与客户端配置指南",
+    "titleLength": 37,
+    "description": "灵猫机场怎么样？评测这款主打高稳定性与 IPLC 专线的 V2ray/VMess 机场，详解 V2rayN 与小火箭订阅配置、抗封锁能力及晚高峰 4K 测速表现。",
+    "descLength": 81
+  },
+  {
+    "file": "src\\pages\\jichang\\muguang.astro",
+    "title": "暮光机场评测：iOS / Apple TV 端 Stash 推荐候选？晚高峰速度与解锁配置指南",
+    "titleLength": 47,
+    "description": "暮光机场怎么样？寻找稳定 Stash机场推荐 的必看评测。全线 BGP 专线，原生兼容 Clash 规则集，是 Apple TV 电视端与 iOS 高阶玩家的科学上网候选。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\jichang\\qipao.astro",
+    "title": "气泡云机场评测：手机梯子推荐候选？iOS/安卓配置、4G抗断连与一键解锁全解析",
+    "titleLength": 39,
+    "description": "气泡云机场怎么样？寻找稳定 手机梯子推荐 的必看评测。针对中国大陆线路优化，兼容苹果 iOS 与安卓手机的一键翻墙梯子。",
+    "descLength": 60
+  },
+  {
+    "file": "src\\pages\\jichang\\quanqiu.astro",
+    "title": "全球云机场评测：纯内网 IPLC 专线表现如何？晚高峰速度、延迟丢包与抗封全解析",
+    "titleLength": 40,
+    "description": "全球云机场怎么样？寻找稳定 IPLC机场推荐 的详细评测。全系采用 BGP 多线接入与纯内网 IPLC/IEPL 专线出口，对应晚高峰记录中未观察到丢包；低抖动表现仅供参考。",
+    "descLength": 87
+  },
+  {
+    "file": "src\\pages\\jichang\\shanshui.astro",
+    "title": "山水云机场评测：BGP 隧道中转表现如何？晚高峰速度、流媒体解锁与性价比全解析",
+    "titleLength": 39,
+    "description": "山水云机场怎么样？寻找稳定 中转机场推荐 的极客候选。解析其 BGP 多入口国内中转与三网优化线路，月付低至 15元起。",
+    "descLength": 60
+  },
+  {
+    "file": "src\\pages\\jichang\\shanyue.astro",
+    "title": "闪跃机场好用吗？从新手易用性、晚高峰速度到流媒体解锁评测",
+    "titleLength": 28,
+    "description": "闪跃机场到底好不好用？评测这款主打小白友好与傻瓜式一键连接的稳定好用机场。涵盖晚高峰 4K 测速、ChatGPT/Netflix 原生解锁及高性价比套餐分析。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\jichang\\sogoyun.astro",
+    "title": "Sogo云机场评测：稳定梯子推荐候选？晚高峰丢包率、特殊时期抗封与性价比全解析",
+    "titleLength": 39,
+    "description": "Sogo云机场评测涵盖IEPL/IPLC线路、晚高峰测速、套餐期限、设备限制及IP解锁记录。测试结果仅对应文中注明的时间与网络条件，价格和服务状态请以商家页面为准。",
+    "descLength": 82
+  },
+  {
+    "file": "src\\pages\\jichang\\sujie.astro",
+    "title": "速界机场评测：原生IP、流媒体解锁与节点表现",
+    "titleLength": 22,
+    "description": "速界机场怎么样？寻找 原生IP机场推荐 与 住宅IP机场 的极客备选方案。全系采用全 IPLC 专线网络与最高 2.5Gbps 稳定速率，搭载纯净度高的原生 IP，改善 ChatGPT 封号、TikTok 限流与 Netflix 非自制剧解锁难题。",
+    "descLength": 124
+  },
+  {
+    "file": "src\\pages\\jichang\\tiziyun.astro",
+    "title": "梯子云机场评测：纯内网 IEPL 专线表现如何？晚高峰速度、延迟丢包与特殊时期稳定性全解析",
+    "titleLength": 45,
+    "description": "梯子云机场怎么样？寻找 企业级IEPL机场 的备选方案。解析其 BGP 多线接入与 IEPL 内网专线过境架构，晚高峰 未观察到丢包低抖动。",
+    "descLength": 70
+  },
+  {
+    "file": "src\\pages\\jichang\\u1s1.astro",
+    "title": "U1S1机场评测：便宜梯子推荐候选？月付几元起、晚高峰测速与避坑指南",
+    "titleLength": 34,
+    "description": "U1S1机场怎么样？寻找 便宜梯子推荐 与 平价好用的梯子 必看实测。全系标配 BGP 三网优化 + IEPL 专线，不限速不限设备。",
+    "descLength": 67
+  },
+  {
+    "file": "src\\pages\\jichang\\wangjikuaiche.astro",
+    "title": "网际快车机场评测：好用的梯子工具推荐？全平台客户端支持、晚高峰测速与流媒体解锁全解析",
+    "titleLength": 42,
+    "description": "网际快车机场怎么样？寻找 梯子工具推荐 与 好用的梯子工具 的详细防失联评测。主打商家标注的“不限时”包（商家目前标注的“不限时”流量套餐）与日享大流量包。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\jichang\\weifeng\\index.astro",
+    "title": "微风机场测评：高性价比 IPLC 稳定专线推荐",
+    "titleLength": 23,
+    "description": "本站评测微风机场（Weifeng）：说明其全 IPLC 专线配置、不限制设备同时接入数背后的技术实力。提供多节点晚高峰真实测速数据、流媒体/AI 解锁详情、新手购买指南与专属优惠码。",
+    "descLength": 91
+  },
+  {
+    "file": "src\\pages\\jichang\\weituyun.astro",
+    "title": "唯兔云机场评测：低延迟节点表现如何？晚高峰Ping值、丢包率与游戏联机解析",
+    "titleLength": 37,
+    "description": "唯兔云机场怎么样？寻找 低延迟机场推荐 与 游戏加速机场 的必看详细评测。全系采用全 IPLC/IEPL 专线与 Vless 协议，实测 LOL 日服与 Steam 联机 未观察到丢包。",
+    "descLength": 93
+  },
+  {
+    "file": "src\\pages\\jichang\\wuyou.astro",
+    "title": "无忧机场评测：真IPLC专线还是普通中转？晚高峰速度、延迟与稳定性解析",
+    "titleLength": 35,
+    "description": "无忧机场怎么样？本文带您评测无忧机场，验证其是否为真IPLC内网专线。全面测试晚高峰测速、流媒体与ChatGPT解锁表现，并附上详细无忧套餐价格，为您寻找靠谱专线机场提供最佳参考。",
+    "descLength": 90
+  },
+  {
+    "file": "src\\pages\\jichang\\xingdaomeng.astro",
+    "title": "星岛梦机场评测：新协议支持、晚高峰测速与配置指南",
+    "titleLength": 24,
+    "description": "星梦机场怎么样？寻找 Clash Meta 机场推荐 与 Mihomo 内核机场 的极客必看详细评测。支持 Hysteria2 与 VLESS-Reality 新协议。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\jichang\\xsus.astro",
+    "title": "XSUS 机场评测：梯子软件推荐候选？全平台客户端支持、晚高峰测速与流媒体解锁全解析",
+    "titleLength": 42,
+    "description": "XSUS机场怎么样？寻找 梯子软件推荐 与 电脑梯子软件推荐 的小白与详细玩家必看测评。提供高性价比的 12元基础包、不限时流量包以及 IEPL 企业专线。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\jichang\\xxyun.astro",
+    "title": "XXYUN 机场测评：月付 9.99 元的 BGP 中转大带宽平价套餐，究竟有多能打？",
+    "titleLength": 43,
+    "description": "XXYUN 机场到底怎么样？详细测评这款主打 9.99元低门槛、BGP+中转架构的高带宽便宜机场。不限制设备数，原生解锁 Netflix 与 ChatGPT。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\jichang\\yifanyun.astro",
+    "title": "一翻云机场评测：Quantumult X (圈X) 推荐候选？晚高峰速度、TikTok解锁与原生订阅指南",
+    "titleLength": 52,
+    "description": "一翻云机场怎么样？寻找 Quantumult X 圈X机场推荐 与 稳定圈X节点 的苹果 iOS 用户必看详细评测。自带完善分流规则，全线 IEPL 专线，原生 IP 在对应记录时点显示可解锁 TikTok 免拔卡与 ChatGPT。",
+    "descLength": 117
+  },
+  {
+    "file": "src\\pages\\jichang\\yinxingren.astro",
+    "title": "隐形人机场评测：Hiddify 推荐候选？Hy2/VLESS新协议支持、晚高峰测速与全平台配置指南",
+    "titleLength": 49,
+    "description": "隐形人机场怎么样？寻找 Hiddify机场推荐 与 Hiddify Next 节点 的详细极客必看评测。原生支持 Hysteria2 (Hy2)、TUIC 与 VLESS-Reality 新协议。",
+    "descLength": 98
+  },
+  {
+    "file": "src\\pages\\jichang\\yuzhouyun.astro",
+    "title": "宇宙云机场评测：翻墙梯子推荐候选？晚高峰速度、流媒体/AI 解锁与性价比解析",
+    "titleLength": 38,
+    "description": "宇宙云机场怎么样？寻找 翻墙梯子推荐 与 稳定科学上网梯子 的小白与极客必看评测。全系标配 70+ 专线节点，不限制设备数量。",
+    "descLength": 63
+  },
+  {
+    "file": "src\\pages\\knowledge\\1yuan-airport-business-model.astro",
+    "title": "为什么有的叫“一元机场”？1元机场靠什么赚钱？",
+    "titleLength": 23,
+    "description": "一元机场是真的能用还是骗局？1元机场靠什么赚钱？本文起底超低价机场的盈利模式：从超卖、沉睡用户红利到跑路套路，为你揭开廉价翻墙梯子的行业黑幕。",
+    "descLength": 71
+  },
+  {
+    "file": "src\\pages\\knowledge\\airport-exit-nodes-comparison-hk-jp-sg.astro",
+    "title": "机场落地机怎么选？香港、日本、新加坡节点速度与延迟对比",
+    "titleLength": 27,
+    "description": "翻墙机场节点怎么选？本文测评香港(HK)、日本(JP)、新加坡(SG)三大亚太落地机的速度与延迟差异，解答玩外服游戏、看奈飞和使用ChatGPT时究竟该连哪个节点最稳定。",
+    "descLength": 85
+  },
+  {
+    "file": "src\\pages\\knowledge\\airport-node-bulk-speedtest-tools-guide.astro",
+    "title": "机场测速软件推荐：如何自己给节点做真实的批量测速？",
+    "titleLength": 25,
+    "description": "别再被商家的假测速图忽悠了！解析机场批量测速工具 Stair Speedtest 教程，手把手教你如何进行节点真实延迟与晚高峰丢包率测试。",
+    "descLength": 69
+  },
+  {
+    "file": "src\\pages\\knowledge\\airport-node-connection-failed.astro",
+    "title": "买了机场节点连不上？常见错误与 5 步排查指南",
+    "titleLength": 23,
+    "description": "买了机场节点连不上怎么办？Clash节点全部超时、v2rayN测试延迟-1怎么解决？本文教你用5个步骤快速排查翻墙断网原因，解决梯子连不上的问题。",
+    "descLength": 73
+  },
+  {
+    "file": "src\\pages\\knowledge\\are-ss-and-ssr-outdated.astro",
+    "title": "Shadowsocks (SS) 和 SSR 过时了吗？为什么机场还在用？",
+    "titleLength": 37,
+    "description": "年用 SSR 翻墙还安全吗？本文解析 SS 与 V2Ray 协议的区别，打破你的常规认知，为你说明为什么越是高价的专线机场，反而越喜欢使用看似“过时”的 Shadowsocks 协议。",
+    "descLength": 92
+  },
+  {
+    "file": "src\\pages\\knowledge\\clash-verge-custom-routing-rules-guide.astro",
+    "title": "Clash/Clash Verge 分流规则怎么写？实现国内外流量精准分流",
+    "titleLength": 37,
+    "description": "Clash分流规则怎么写？为什么开了代理淘宝变慢？解析Clash Verge Rev国内外精准分流教程与语法大全，教你让ChatGPT单独走美国节点。",
+    "descLength": 75
+  },
+  {
+    "file": "src\\pages\\knowledge\\direct-vs-transit-airport.astro",
+    "title": "直连机场和中转机场有什么区别？新手翻墙怎么选？",
+    "titleLength": 23,
+    "description": "直连机场和中转机场哪个速度快？BGP中转和IPLC专线有什么区别？本文用最通俗的比喻为你拆解翻墙线路原理，并附上详细的优缺点对比表格，教你如何选择最适合自己的科学上网机场。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\knowledge\\fix-lan-access-issue-while-using-proxy.astro",
+    "title": "翻墙后无法访问本地局域网设备 (如打印机、NAS) 怎么解决？",
+    "titleLength": 31,
+    "description": "为什么开了梯子就找不到公司打印机和家里NAS了？图解代理绕过局域网 (Bypass LAN) 的核心机制，手把手教你配置 Clash / TUN 模式局域网直连。",
+    "descLength": 81
+  },
+  {
+    "file": "src\\pages\\knowledge\\free-airport-nodes-security-risks.astro",
+    "title": "免费机场节点能用吗？说明免费翻墙背后的隐私与安全风险",
+    "titleLength": 26,
+    "description": "免费 VPN 安全吗？电报群里的免费 SSR/V2Ray 订阅链接能用吗？本文说明免费翻墙背后的流量劫持、挖矿木马与钓鱼蜜罐等黑产盈利模式。",
+    "descLength": 70
+  },
+  {
+    "file": "src\\pages\\knowledge\\how-to-choose-chatgpt-native-ip-nodes.astro",
+    "title": "选购 ChatGPT 专用节点：怎么判断机场是否原生解锁 OpenAI？",
+    "titleLength": 36,
+    "description": "怎么看节点支不支持 ChatGPT？说明机场 DNS 伪解锁导致的封号风险，教你测试 IP 纯净度，选购稳定不封号的 ChatGPT 原生节点。",
+    "descLength": 72
+  },
+  {
+    "file": "src\\pages\\knowledge\\how-to-read-airport-speedtest.astro",
+    "title": "机场测速图怎么看？看懂 Speedtest 结果与实际体验的差距",
+    "titleLength": 32,
+    "description": "买机场别只看全绿测速图！说明机场速度虚标与多线程跑分套路，教你通过 Ping 延迟和抖动看懂节点的真实质量。",
+    "descLength": 54
+  },
+  {
+    "file": "src\\pages\\knowledge\\index.astro",
+    "title": "机场知识库 | 科普与选购指南",
+    "titleLength": 15,
+    "description": "机场狗知识库整理代理协议、线路类型、节点倍率、IP属性、DNS泄漏和网络安全等基础知识，帮助新手理解机场与VPN的区别及常见风险。",
+    "descLength": 65
+  },
+  {
+    "file": "src\\pages\\knowledge\\iplc-vs-enterprise-broadband.astro",
+    "title": "防坑指南：机场的“专线”和“企业宽带”有什么区别？",
+    "titleLength": 25,
+    "description": "机场节点上写的“商宽”是什么意思？本文解析 IPLC/IEPL 专线与跨境企业宽带的本质区别，教你如何鉴别黑心机场用商宽冒充假专线，避免在敏感时期被封锁断网。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\knowledge\\iplc-vs-iepl-guide.astro",
+    "title": "机场线路解析：IPLC 与 IEPL 专线有什么区别？玩外服游戏选哪个？",
+    "titleLength": 36,
+    "description": "翻墙必看！一文剖析 IPLC 与 IEPL 专线的区别，说明专线不过墙的物理防封锁原理。打瓦/吃鸡选哪个延迟更低？教你如何鉴别真假专线机场。",
+    "descLength": 70
+  },
+  {
+    "file": "src\\pages\\knowledge\\native-vs-broadcast-ip.astro",
+    "title": "原生 IP 和广播 IP 有什么区别？对翻墙看奈飞与用 ChatGPT 有什么影响？",
+    "titleLength": 42,
+    "description": "机场老板说的原生 IP 是什么意思？为什么用了节点还是无法解锁 ChatGPT 和奈飞？本文解析原生 IP 与广播 IP 的区别，并教你如何检测机场节点 IP 的纯净度。",
+    "descLength": 85
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-airport-audit-rules-explained.astro",
+    "title": "什么是审计规则？为什么很多机场会屏蔽 BT 下载和特定网站？",
+    "titleLength": 30,
+    "description": "翻墙为什么不能用迅雷？解析机场审计规则背后的 DMCA 版权投诉风险与流量保护机制，教你如何避免因违规下载被机场封号。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-airport-co-renting-risks.astro",
+    "title": "什么是机场合租？和别人拼车买高级机场靠谱吗？",
+    "titleLength": 22,
+    "description": "想和朋友合租高级专线机场？本文说明翻墙拼车背后的设备数限制、异地登录风控与跑路骗局，教你告别合租翻车带来的困扰。",
+    "descLength": 56
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-airport-exit-scam-warning-signs.astro",
+    "title": "机场跑路前兆有哪些？教你识别“灵车”避免财产损失",
+    "titleLength": 24,
+    "description": "翻墙圈说的“灵车机场”是什么意思？本文拆解机场跑路前的“死亡三部曲”，教你识破终身套餐陷阱，远离随时卷款跑路的无良翻墙服务商。",
+    "descLength": 63
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-airport-logging-privacy-risks.astro",
+    "title": "录日志 (Logging)：你的机场会出卖你的浏览记录吗？",
+    "titleLength": 29,
+    "description": "机场主能看到我的浏览记录和密码吗？解析翻墙背后的节点审计、HTTPS 加密与无日志政策，教你如何防止机场隐私泄露。",
+    "descLength": 57
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-beginner-guide.astro",
+    "title": "科学上网新手：节点、订阅链接与客户端有什么用？",
+    "titleLength": 23,
+    "description": "如果你把科学上网看作一次出国旅行：节点是目的地，客户端是交通工具，而订阅链接是车票和导航。帮你搞懂翻墙基础知识，快速上手。",
+    "descLength": 61
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-clients-guide.astro",
+    "title": "翻墙客户端推荐：Clash、v2rayN、小火箭 (Shadowrocket) 怎么选？",
+    "titleLength": 44,
+    "description": "科学上网软件下载不知道怎么选？本文评测 Windows、Mac、iOS 和安卓平台的翻墙客户端，为你对比 Clash、v2rayN 和小火箭的优缺点，并提供详细的常见报错解决方案。",
+    "descLength": 90
+  },
+  {
+    "file": "src\\pages\\knowledge\\proxy-global-vs-rule-mode-guide.astro",
+    "title": "什么是“全局模式”与“规则模式”？何时应该使用哪一个？",
+    "titleLength": 27,
+    "description": "翻墙后淘宝变卡怎么办？图解 Clash/小火箭全局模式和规则模式区别，教你正确设置智能分流，告别耗费流量与国内网站打不开。",
+    "descLength": 61
+  },
+  {
+    "file": "src\\pages\\knowledge\\public-tunnel-relay-vs-iplc.astro",
+    "title": "公网隧道中转是什么？与 IPLC 内网专线差距有多大？",
+    "titleLength": 27,
+    "description": "机场的公网中转是什么意思？公网隧道中转会经过 GFW 防火墙吗？本文对比公网隧道中转与 IPLC 内网专线在过墙原理、晚高峰丢包率和游戏延迟上的巨大差距，教你鉴别假专线。",
+    "descLength": 85
+  },
+  {
+    "file": "src\\pages\\knowledge\\reduce-gaming-latency-proxy-accelerator-guide.astro",
+    "title": "翻墙状态下如何降低游戏延迟？游戏加速器与普通节点搭配技巧",
+    "titleLength": 28,
+    "description": "翻墙打外服游戏为什么一直瞬移？解析 UDP 丢包原理，手把手教你解决 Clash 节点与 UU 游戏加速器冲突，实现低延迟与 Discord 并存。",
+    "descLength": 74
+  },
+  {
+    "file": "src\\pages\\knowledge\\sing-box-tutorial-import-sub-tun-mode.astro",
+    "title": "Sing-box 新手配置指南：如何导入订阅并开启 TUN 模式",
+    "titleLength": 32,
+    "description": "Sing-box怎么用？解析系统代理与TUN模式的区别，手把手教你导入机场订阅、开启虚拟网卡实现电脑全局翻墙与游戏加速。",
+    "descLength": 60
+  },
+  {
+    "file": "src\\pages\\knowledge\\ss-vs-trojan-vs-vless-performance.astro",
+    "title": "机场协议大比拼：SS、Trojan、VLESS 哪个更省电、更快速？",
+    "titleLength": 34,
+    "description": "手机翻墙耗电快怎么办？本文横向评测 SS、Trojan、VLESS 三大主流翻墙协议的性能、耗电量与连接延迟，帮你挑选最适合自己线路的科学上网协议。",
+    "descLength": 74
+  },
+  {
+    "file": "src\\pages\\knowledge\\subconverter-security-risks.astro",
+    "title": "机场订阅转换 (Subconverter) 是什么？免费在线转换安全吗？",
+    "titleLength": 36,
+    "description": "结论先行：免费在线订阅转换存在极大安全风险。你的订阅链接在转换中可能被窃取，导致流量被偷跑。",
+    "descLength": 46
+  },
+  {
+    "file": "src\\pages\\knowledge\\taobao-pinduoduo-vpn-scam-guide.astro",
+    "title": "淘宝或拼多多上卖的翻墙节点能买吗？电商买梯子防骗指南",
+    "titleLength": 26,
+    "description": "淘宝买几十块钱一年的VPN能用吗？说明淘宝、拼多多上“学习资料加速”等灰产店铺跑路套路，教你避开电商平台买梯子的陷阱。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\knowledge\\trojan-protocol-https-camouflage-explained.astro",
+    "title": "Trojan 协议原理解析：为什么它能伪装成正常 HTTPS？",
+    "titleLength": 31,
+    "description": "什么是 Trojan 翻墙？本文解析 Trojan 协议是如何通过 TLS 加密和防主动探测机制伪装成正常 HTTPS 网站的，骗过 GFW 实现稳定翻墙。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\knowledge\\troubleshoot-connection-timeout-proxy.astro",
+    "title": "遇到“连接超时”怎么排查？从本地网络到节点端诊断",
+    "titleLength": 24,
+    "description": "翻墙节点全部 Timeout 连不上？不要立刻怀疑机场跑路。图解连接超时的排查逻辑，手把手教你解决系统时间误差、端口阻断与 DNS 污染。",
+    "descLength": 69
+  },
+  {
+    "file": "src\\pages\\knowledge\\unicom-as9929-vs-as4837.astro",
+    "title": "联通神线 AS9929 与 AS4837 有什么区别？",
+    "titleLength": 27,
+    "description": "在翻墙圈被称为“平民法拉利”的联通神线是什么？本文解析联通 AS9929 (CUII) 与 AS4837 线路的区别，对比电信 CN2 GIA，教你如何选择高性价比翻墙机场。",
+    "descLength": 87
+  },
+  {
+    "file": "src\\pages\\knowledge\\v2ray-vmess-vs-vless-protocol.astro",
+    "title": "V2Ray 核心解析：VMess 与 VLESS 协议的优缺点对比",
+    "titleLength": 33,
+    "description": "为什么现在自建节点都不推荐用 VMess 了？本文解析 VLESS 与 VMess 协议的核心区别，说明 VLESS 配合 XTLS/Reality 是如何实现极限防封锁与低耗电量的。",
+    "descLength": 92
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-anycast-routing-in-proxies.astro",
+    "title": "什么是 Anycast 任播技术？高级机场是如何降低延迟的？",
+    "titleLength": 30,
+    "description": "翻墙节点上写的Anycast是什么意思？本文用最通俗的比喻为你解析 Anycast（任播）技术原理，对比普通单播中转，说明专线机场是如何实现智能就近接入和低游戏延迟的。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-bgp-transit-relay.astro",
+    "title": "什么是 BGP 中转？多入口 BGP 是如何拯救“移动/联通/电信”翻墙稳定性的？",
+    "titleLength": 41,
+    "description": "翻墙机场说的BGP入口是什么意思？为什么多入口BGP线路能解决国内跨网卡顿、晚高峰丢包和节点全部超时的问题？本文带你解析三网智能路由的秘密。",
+    "descLength": 70
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-cmi-routing-for-china-mobile.astro",
+    "title": "移动宽带翻墙卡？解析 CMI 线路是什么及其巨大优势",
+    "titleLength": 26,
+    "description": "移动宽带出国总是超时？什么是中国移动 CMI 线路？本文解析“广移中转香港”的低延迟宣传案例，对比 CN2 GIA，为你推荐最适合移动宽带的高性价比翻墙机场。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-cn2-gia-and-why-expensive.astro",
+    "title": "什么是 CN2 GIA？为什么电信用户晚高峰翻墙全靠它？",
+    "titleLength": 28,
+    "description": "电信宽带翻墙为什么一到晚上就卡？什么是CN2 GIA？本文剖析电信163骨干网与CN2 GT/GIA的区别，说明为什么CN2 GIA线路这么贵，教你如何鉴别真假优质电信出国线路。",
+    "descLength": 89
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-dns-leak-prevention-guide.astro",
+    "title": "DNS 泄露是什么？如何配置客户端防止运营商知道你在翻墙",
+    "titleLength": 28,
+    "description": "翻墙为什么会被运营商监控记录？解析 DNS 泄露原理、运营商 DNS 污染危害，手把手教你配置 Clash Fake-IP 与远程解析防泄露。",
+    "descLength": 71
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-jichang-vs-vpn.astro",
+    "title": "什么是翻墙机场？机场与传统VPN（如ExpressVPN）有什么区别？",
+    "titleLength": 35,
+    "description": "简单来说，传统 VPN 是为全局加密通信设计的通用隐私工具，而“机场”是专门针对 GFW 深度包检测、基于代理协议和专线优化的中国特色科学上网工具。了解它们的本质区别，选择最适合你的翻墙方案。",
+    "descLength": 96
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-node-multiplier.astro",
+    "title": "机场节点“倍率”是什么意思？为什么你的流量用得这么快？",
+    "titleLength": 27,
+    "description": "机场的 0.2倍率和 x3 倍率到底代表什么？一文带你读懂节点倍率的流量计算公式，说明流量跑得快的真相，并教你在 Clash 中过滤高倍率节点的省流技巧。",
+    "descLength": 77
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-proxy-chain-multi-hop-anonymity.astro",
+    "title": "什么是链式代理 (Proxy Chain)？利用多重跳转提升匿名性",
+    "titleLength": 33,
+    "description": "怎么隐藏真实IP防止追踪？图解链式代理 (Proxy Chain) 原理，手把手教你配置 Clash Relay 节点，实现匿名与防溯源的多重代理跳转。",
+    "descLength": 76
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-streaming-unblock.astro",
+    "title": "翻墙时常说的“流媒体解锁”是什么？为什么连了 VPN 还是看不了奈飞？",
+    "titleLength": 35,
+    "description": "很多人翻墙后发现依然看不了 Netflix、Disney+ 或 ChatGPT。这就是因为你的节点没有流媒体解锁。",
+    "descLength": 57
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-tls-fingerprinting-gfw-blocking.astro",
+    "title": "TLS 指纹识别是什么？GFW 是如何通过指纹封锁节点的？",
+    "titleLength": 29,
+    "description": "节点明明加密了为什么还是被墙？本文说明 GFW 的 TLS 指纹识别（JA3）机制，教你如何利用 uTLS 技术伪装成 Chrome 浏览器，躲避防火墙的封锁审查。",
+    "descLength": 82
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-tuic-quic-protocol.astro",
+    "title": "TUIC 协议是什么？基于 QUIC 的协议适合哪些网络环境？",
+    "titleLength": 31,
+    "description": "翻墙节点上的 TUIC 是什么意思？本文解析基于 QUIC 的 TUIC v5 协议原理，详细对比 TUIC 和 Hysteria 2 哪个更好用，帮你选择最适合自己宽带环境的翻墙协议。",
+    "descLength": 93
+  },
+  {
+    "file": "src\\pages\\knowledge\\what-is-udp-forwarding-for-gaming.astro",
+    "title": "什么是 UDP 转发？为什么打游戏必须要求节点支持 UDP？",
+    "titleLength": 30,
+    "description": "翻墙打外服游戏连不上服务器？本文为你通俗解析什么是 UDP 转发，为什么射击游戏必须使用 UDP 协议，以及如何测试并开启 Clash 节点的 UDP 支持。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-choose-monthly-over-annual-airport-plan.astro",
+    "title": "为什么建议买机场月付或季付，而不是年付？",
+    "titleLength": 20,
+    "description": "翻墙圈的“月付保平安”是什么意思？本文剖析机场打折圈钱套路与线路劣化黑幕，算一笔经济账，教你如何避开机场年付跑路的资金风险。",
+    "descLength": 62
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-hysteria-2-protocol-so-fast.astro",
+    "title": "新一代翻墙协议 Hysteria 2 为什么速度这么快？",
+    "titleLength": 28,
+    "description": "翻墙节点上的 hy2 是什么意思？本文解析基于 UDP 和 QUIC 协议的 Hysteria 2 为什么速度这么快，说明其如何通过“暴力拥塞控制算法”拯救烂线路，实现晚高峰 4K 视频加载。",
+    "descLength": 96
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-iplc-survives-sensitive-periods.astro",
+    "title": "最近梯子连不上？为什么敏感时期专线机场依然稳定不死？",
+    "titleLength": 26,
+    "description": "每年开会或国庆期间VPN全挂了怎么办？本文说明 GFW 封锁原理，解释为什么纯 IPLC/IEPL 专线机场在敏感时期能够做到物理不过墙，实现长期稳定不死的翻墙宣传案例。",
+    "descLength": 85
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-low-ping-but-slow-web-tcp-packet-loss.astro",
+    "title": "节点 Ping 延迟低但网页打开慢？解析延迟与 TCP 丢包率的关系",
+    "titleLength": 34,
+    "description": "为什么机场测速全绿，看 YouTube 却一直缓冲？说明 ICMP 测速造假与晚高峰 TCP 丢包重传的致命关系，教你识别真实网速。",
+    "descLength": 66
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-old-airports-slow-overselling-explained.astro",
+    "title": "为什么有些机场反而速度慢？解析“超售”对节点的影响",
+    "titleLength": 25,
+    "description": "老牌机场晚高峰为什么越来越卡？说明机场超卖（Overselling）背后的带宽复用率潜规则，教你如何避开大厂杀熟与万人骑节点。",
+    "descLength": 63
+  },
+  {
+    "file": "src\\pages\\knowledge\\why-openvpn-wireguard-fail-in-china.astro",
+    "title": "为什么不推荐使用 OpenVPN 和 WireGuard 进行翻墙？",
+    "titleLength": 34,
+    "description": "ExpressVPN 在中国为什么连不上？本文解析 GFW 深度包检测技术，为你说明为什么 OpenVPN 和 WireGuard 等传统 VPN 协议一连就被墙，带你避开新手翻墙最大的坑。",
+    "descLength": 95
+  },
+  {
+    "file": "src\\pages\\knowledge\\xray-vless-reality-xtls-explained.astro",
+    "title": "XTLS 与 Reality：目前最强大的抗封锁技术原理解析",
+    "titleLength": 30,
+    "description": "什么是 VLESS Reality 协议？本文解析 Xray 团队推出的 XTLS-Vision 与 Reality 核心技术，说明其如何通过“偷取真实网站证书”实现免域名建站，成为当下最强的抗封锁翻墙协议。",
+    "descLength": 104
+  },
+  {
+    "file": "src\\pages\\methodology.astro",
+    "title": "机场测评方法论与测速原则：客观、透明、可复现的评测基准 | 机场狗",
+    "titleLength": 33,
+    "description": "深入了解机场狗的完整机场测评方法论。我们坚持独立测试，所有机场节点数据均基于真实宽带环境测速，公开测试条件与网络环境，为用户提供透明、客观的科学上网服务商数据支持。",
+    "descLength": 82
+  },
+  {
+    "file": "src\\pages\\privacy.astro",
+    "title": "隐私政策 (Privacy Policy) | 机场狗",
+    "titleLength": 27,
+    "description": "了解机场狗（JiChangDog）的隐私政策。我们尊重并保护所有用户的个人隐私，不主动收集或追踪个人敏感信息。",
+    "descLength": 55
+  },
+  {
+    "file": "src\\pages\\recommend\\feimao-yun.astro",
+    "title": "便宜机场推荐 ：为什么“飞猫云”是性价比最高的平价翻墙梯子？",
+    "titleLength": 30,
+    "description": "寻找好用不跑路的便宜机场？飞猫云提供平价全IPLC专线，学生版低至7元/月，原生IP解锁Netflix与ChatGPT。坚持月付拒绝跑路，高性价比翻墙节点候选。",
+    "descLength": 80
+  },
+  {
+    "file": "src\\pages\\recommend\\firefly-streaming-ai.astro",
+    "title": "流媒体与 AI 解锁机场推荐 ：为什么 Firefly 是原生住宅 IP 的备选？",
+    "titleLength": 41,
+    "description": "寻找 ChatGPT/Netflix 双解锁节点？Firefly 机场提供纯净原生 ISP IP，绕过 Netflix 代理检测与 OpenAI 连坐封号。全链路 IPLC 专线，解决 Claude 封号痛点。",
+    "descLength": 105
+  },
+  {
+    "file": "src\\pages\\recommend\\index.astro",
+    "title": "翻墙机场推荐：为什么微风(Weifeng)是稳定好用的科学上网梯子？",
+    "titleLength": 34,
+    "description": "寻找稳定不跑路的老牌机场？微风机场全链路纯IPLC专线，对应晚高峰记录中未观察到丢包。提供ChatGPT原生IP与Netflix流媒体全解锁。",
+    "descLength": 71
+  },
+  {
+    "file": "src\\pages\\recommend\\weifeng-stability.astro",
+    "title": "靠谱翻墙机场推荐：微风(Weifeng)纯IPLC专线评测 | 稳定好用的梯子",
+    "titleLength": 39,
+    "description": "寻找不跑路的老牌稳定机场？微风机场全链路部署纯IPLC国际专线，晚高峰不卡顿，该次记录未观察到丢包。实测支持Netflix 4K加载及ChatGPT原生IP解锁。",
+    "descLength": 81
+  },
+  {
+    "file": "src\\pages\\speed-test\\dageyun\\index.astro",
+    "title": "大哥云 (Dageyun) 测评报告：采用 Trojan 协议的老牌千兆机场，晚高峰表现",
+    "titleLength": 44,
+    "description": "老牌巨头大哥云 (Dageyun) 机场。全面解密其固执采用 Trojan 协议背后的抗封锁底气，实测晚高峰 1000Mbps 千兆宽带榨干表现与 Netflix 4K 原生解锁能力。",
+    "descLength": 92
+  },
+  {
+    "file": "src\\pages\\speed-test\\edgenova\\index.astro",
+    "title": "Adgenova (边缘节点) 评测：2.5G IPLC 与分布式防封锁魔法的交织",
+    "titleLength": 41,
+    "description": "Adgenova 机场 (edgenova 边缘节点)。针对寻找“魔法上网工具”的极客与外贸团队，详细解析其分布式边缘节点抗封锁架构。",
+    "descLength": 67
+  },
+  {
+    "file": "src\\pages\\speed-test\\ermaoyun\\index.astro",
+    "title": "二猫云 (Ermaoyun) 测速：2.5Gbps 纯血 IEPL 专线究竟有多凶悍？",
+    "titleLength": 43,
+    "description": "二猫云(Ermaoyun)机场。市场上首发其全系 IEPL 专线的晚高峰抗阻断物理特性，实测 2.5Gbps 峰值带宽在 Netflix 4K 和 ChatGPT 原生解锁上的极限表现。",
+    "descLength": 93
+  },
+  {
+    "file": "src\\pages\\speed-test\\feimaoyun\\index.astro",
+    "title": "飞猫云机场评测：年付84元的优惠价格，如何做到市场上真 IPLC 专线抗压？",
+    "titleLength": 38,
+    "description": "本站近 4000 字评测 年最具争议的常见套餐“飞猫云机场” (Feimaoyun)。解密其如何以低的白菜价提供真 IPLC 专线。",
+    "descLength": 66
+  },
+  {
+    "file": "src\\pages\\speed-test\\firefly\\index.astro",
+    "title": "Firefly机场 (萤火虫) 长评：重度与外贸团队的 IPLC 专线答案",
+    "titleLength": 37,
+    "description": "近 4000 字本站评测 年优质专线机场 Firefly (萤火虫)。解密其高价的 BGP+IPLC 物理骨干网架构，实测晚高峰极限抗压 该次记录未观察到丢包与 900M+ 吞吐量。",
+    "descLength": 91
+  },
+  {
+    "file": "src\\pages\\speed-test\\flybit\\index.astro",
+    "title": "Flybit 机场测速评测：15元月付与不限时按量计费包究竟是不是智商税？",
+    "titleLength": 37,
+    "description": "常见套餐“低价产品” Flybit 机场。全面解密其高性价比中转架构的晚高峰 4K 测速表现、原生 ChatGPT/Netflix 解锁能力，以及备受追捧的“不限时不过期流量包”真实购买建议。",
+    "descLength": 96
+  },
+  {
+    "file": "src\\pages\\speed-test\\flyv\\index.astro",
+    "title": "飞V (FlyV) 测速报告：BGP 多线融合与独享原生 IP 专线的性能怪兽",
+    "titleLength": 39,
+    "description": "近 4000 字本站测速评测飞V (FlyV) 机场。市场上首发其纯物理专线 1x倍率 的晚高峰极限吞吐实测，解密高达 1.8TB 巨量带宽以及 600元独享原生 IP 在跨境电商与 8K 影音上的形成差异表现。",
+    "descLength": 106
+  },
+  {
+    "file": "src\\pages\\speed-test\\guangnian\\index.astro",
+    "title": "光年梯机场测速：IPLC线路、晚高峰表现与套餐分析",
+    "titleLength": 25,
+    "description": "光年梯 (Lightyear) 机场。市场上首发其 18元低门槛下的全线纯血 IPLC 专线晚高峰极限吞吐实测，解密云端去广告系统与 Sing-box 架构的形成差异表现。",
+    "descLength": 86
+  },
+  {
+    "file": "src\\pages\\speed-test\\guangsu\\index.astro",
+    "title": "快速云 (Guangsu) 测速：全线 IPLC 纯物理大带宽与无限设备极速风暴",
+    "titleLength": 40,
+    "description": "近 4000 字本站测速评测快速云 (Guangsu) 机场。市场上首发其 2.5Gbps 纯血 IPLC 专线晚高峰极限吞吐实测，解密不受部分并发数量的软路由挂机体验与独享商用原生 IP 形成差异表现。",
+    "descLength": 102
+  },
+  {
+    "file": "src\\pages\\speed-test\\index.astro",
+    "title": "机场测速 | 真实晚高峰测速报告与评测",
+    "titleLength": 19,
+    "description": "机场狗定期发布各大热门翻墙机场的真实晚高峰测速报告，包含延迟测试、流媒体解锁测试与速度分析，用真实数据帮您挑选稳定优质机场。",
+    "descLength": 62
+  },
+  {
+    "file": "src\\pages\\speed-test\\jilian\\index.astro",
+    "title": "极连云 (JiLianYun) 压测：专为 Clash 优化的 2.5Gbps IPLC 高性能方案",
+    "titleLength": 50,
+    "description": "近 4000 字本站测速评测极连云 (JiLianYun) 机场。市场上首发其 18元起步的 IPLC 专线晚高峰极限吞吐实测，解密无缝接驳 Clash Verge Rev 与 Meta 内核的订阅分发体验。",
+    "descLength": 104
+  },
+  {
+    "file": "src\\pages\\speed-test\\jisucloud\\index.astro",
+    "title": "极速cloud 测速报告：晚高峰 2.4Gbps 节点狂飙与原生IP全解析",
+    "titleLength": 37,
+    "description": "极速cloud测速结果如何？本站带来 年最新极速cloud (JisuCloud) 独立测速分析。深度解读其 VLESS 协议下的真实跑分、高达 2.4Gbps 的极限吞吐量、丰富的原生IP节点库，以及三网（电信、联通、移动）全天候的稳定表现。",
+    "descLength": 122
+  },
+  {
+    "file": "src\\pages\\speed-test\\jiuyun\\index.astro",
+    "title": "平价稳定机场推荐：九云机场 (Jiuyun) 评测与中转测速指南",
+    "titleLength": 32,
+    "description": "年高性价比平价梯子——九云机场（Jiuyun）深度评测。本文测试其海外中转网络架构、晚高峰抗压测速表现、原生流媒体解锁（Netflix/Disney+）及 AI 工具支持情况。",
+    "descLength": 88
+  },
+  {
+    "file": "src\\pages\\speed-test\\kexin\\index.astro",
+    "title": "可信云 (KeXin) 压测：的 15元全线 IEPL 物理专线与新手零门槛大并发核心方案",
+    "titleLength": 45,
+    "description": "近 4000 字本站测速评测可信云 (KeXin) 机场。市场上首发其大幅度的 15元 IEPL 专线晚高峰极限吞吐实测，解密无缝接驳多端全屋透明代理与 60+ 枢纽的形成差异表现。",
+    "descLength": 91
+  },
+  {
+    "file": "src\\pages\\speed-test\\kuaili\\index.astro",
+    "title": "快狸 (KuaiLi) 评测：专为 iOS 苹果小火箭定制的 2.5Gbps 全血 IEPL 极速专线",
+    "titleLength": 51,
+    "description": "近 4000 字本站测速评测快狸 (KuaiLi) 机场。市场上首发其专为 iPhone 小火箭 (Shadowrocket) 打造的 15元起步 IEPL 专线晚高峰抗压实测，说明其免拔卡加载 TikTok 与无限设备的形成差异表现。",
+    "descLength": 118
+  },
+  {
+    "file": "src\\pages\\speed-test\\kuajie\\index.astro",
+    "title": "跨界机场大逃杀测速与评测： Clash 专属规则与纯血 IPLC 专线体验全解析",
+    "titleLength": 40,
+    "description": "长达近 4000 字的跨界机场 (Kuajie) 最新详细评测。全系真 IPLC 物理专线，极罕见的不限制设备登录数特权。",
+    "descLength": 61
+  },
+  {
+    "file": "src\\pages\\speed-test\\langwang\\index.astro",
+    "title": "浪网 (Langwang) 商用压测：BGP 多线融合与 640元独立公网 IP 的外贸防封锁核心方案",
+    "titleLength": 51,
+    "description": "近 4000 字本站测速评测浪网 (Langwang) 机场。市场上首发其 BGP 多线融合调度的晚高峰抗压实测，解密其为跨境电商量身定制的 640元独立原生 IP 专线如何实现 TikTok 与 Facebook 广告的零封控运营。",
+    "descLength": 117
+  },
+  {
+    "file": "src\\pages\\speed-test\\laomao\\index.astro",
+    "title": "老猫云 (Laomao) 评测：Quantumult X 专供的 15元 IEPL “限速保稳”重点",
+    "titleLength": 50,
+    "description": "近 4000 字本站测速评测老猫云机场。市场上首发其针对 Quantumult X (圈X) 原生订阅的底层适配实录。",
+    "descLength": 59
+  },
+  {
+    "file": "src\\pages\\speed-test\\lingdong\\index.astro",
+    "title": "灵动机场 (Lingdong) 评测：Surge 5 玩家专属的 BGP 满速不限时“较少见的”托管专线",
+    "titleLength": 52,
+    "description": "灵动机场 (Lingdong) 测速资料整理，涵盖 Surge 5 适配、BGP 线路宣传和晚高峰历史记录。不限时套餐为商家当前标注，实际期限取决于持续运营及后续政策。",
+    "descLength": 84
+  },
+  {
+    "file": "src\\pages\\speed-test\\lingmao\\index.astro",
+    "title": "灵猫机场 (Civet) 测速测试：年付85元起的 V2ray / VMess 全专线到底稳不稳？",
+    "titleLength": 49,
+    "description": "年老牌 V2ray 大厂“灵猫机场”(Civet)。全域剖析其基于 VMess 协议的 IPLC 真物理专线抗压能力，本站测试晚高峰 YouTube 4K 加载性能与 ChatGPT 原生解锁。",
+    "descLength": 97
+  },
+  {
+    "file": "src\\pages\\speed-test\\muguang\\index.astro",
+    "title": "暮光机场 (Muguang) 评测：Apple TV 与 Stash 玩家的客厅 4K 影音服务",
+    "titleLength": 48,
+    "description": "近 4000 字本站测速评测暮光机场 (Muguang)。针对 Apple TV 与 iOS Stash (Clash) 玩家进行原生规则集下发实录。",
+    "descLength": 75
+  },
+  {
+    "file": "src\\pages\\speed-test\\qipao\\index.astro",
+    "title": "气泡云 (Qipao) 评测：iOS/安卓手机党的一键翻墙与 5G 极速通勤重点",
+    "titleLength": 40,
+    "description": "近 4000 字本站测速评测气泡云机场 (Qipao Cloud)。针对苹果 iOS 与安卓手机用户，说明其在 5G 与 Wi-Fi 频繁切换下的抗断连能力。",
+    "descLength": 79
+  },
+  {
+    "file": "src\\pages\\speed-test\\quanqiu\\index.astro",
+    "title": "全球云 (Quanqiu) 评测：企业级纯内网 IPLC 专线的防封锁与历史丢包记录实录",
+    "titleLength": 44,
+    "description": "近 4000 字本站测速评测全球云机场 (Quanqiu Cloud)。针对外贸团队与跨国企业，说明其真实 IPLC/IEPL 物理专线在恶劣的晚高峰抗流表现。",
+    "descLength": 80
+  },
+  {
+    "file": "src\\pages\\speed-test\\shanshui\\index.astro",
+    "title": "山水云 (Shanshui) 评测：15元中转隧道的 4K 解锁与防断流实战",
+    "titleLength": 38,
+    "description": "近 4000 字本站测速评测山水云机场 (Shanshui Cloud)。揭密其 BGP 多线隧道中转在晚高峰的网络吞吐能力。",
+    "descLength": 63
+  },
+  {
+    "file": "src\\pages\\speed-test\\shanyue\\index.astro",
+    "title": "闪跃机场 (FlashLeap) 评测：主打“傻瓜式一键配置”的纯 IPLC 专线到底好不好用？",
+    "titleLength": 48,
+    "description": "近 4000 字本站评测 年常见套餐“闪跃机场”(FlashLeap)。从小白易用性、一键导入体验到市场上真实晚高峰 IPLC 测速分析。",
+    "descLength": 69
+  },
+  {
+    "file": "src\\pages\\speed-test\\sogocloud\\index.astro",
+    "title": "Sogo云机场评测：该次记录未观察到丢包的 IEPL 专线与“防失联”物理结界",
+    "titleLength": 39,
+    "description": "Sogo云机场。专为寻找“稳定不断连梯子”的外贸与高净值极客打造。",
+    "descLength": 33
+  },
+  {
+    "file": "src\\pages\\speed-test\\sujie\\index.astro",
+    "title": "速界 (Sujie) 评测：2.5Gbps 纯净原生 IP 专线的防风控实战解析",
+    "titleLength": 40,
+    "description": "近 4000 字本站测速评测速界机场 (Sujie Cloud)。详细拆解其底层 2.5Gbps 全 IPLC 专线与双 ISP 原生住宅 IP 库的真实纯净度。",
+    "descLength": 81
+  },
+  {
+    "file": "src\\pages\\speed-test\\tiziyun\\index.astro",
+    "title": "梯子云 (Tiziyun) 评测：企业级纯内网 IEPL 专线的 未观察到丢包防封锁报告",
+    "titleLength": 44,
+    "description": "近 4000 字本站测速评测梯子云机场 (Tiziyun)。从底层路由追踪说明其真 IEPL 国际以太网专线的物理级防封锁能力。",
+    "descLength": 64
+  },
+  {
+    "file": "src\\pages\\speed-test\\u1s1\\index.astro",
+    "title": "U1S1机场评测：月均8元的 BGP 专线能否打破“便宜没好货”的魔咒？",
+    "titleLength": 36,
+    "description": "U1S1 机场 (有一说一)。专为寻找“平价/便宜梯子”的学生党与外贸新人打造。",
+    "descLength": 40
+  },
+  {
+    "file": "src\\pages\\speed-test\\wangjikuaiche\\index.astro",
+    "title": "网际快车机场评测：“商家目前标注的“不限时”流量套餐”梯子工具到底有多香？",
+    "titleLength": 37,
+    "description": "近 4000 字本站测速评测网际快车机场。专为寻找“梯子工具”的备用党与重度刷剧党打造。",
+    "descLength": 44
+  },
+  {
+    "file": "src\\pages\\speed-test\\weifeng\\index.astro",
+    "title": "便宜稳定机场推荐：微风机场 (Weifeng) 评测与市场上 IPLC 极速指南",
+    "titleLength": 40,
+    "description": "年常见套餐新兴产品微风机场（Weifeng）本站长篇评测。本站所列产品中较详细说明其全系纯血 IPLC 专线架构、罕见的“不限制设备登录数”优惠背后的技术底座。",
+    "descLength": 80
+  },
+  {
+    "file": "src\\pages\\speed-test\\weituyun\\index.astro",
+    "title": "唯兔云 (Weituyun) 评测：Vless+IPLC 电竞级低延迟专线的 未观察到丢包游戏报告",
+    "titleLength": 49,
+    "description": "近 4000 字测速评测唯兔云机场 (Weituyun)。详细解析其 Vless 轻量化协议搭配 IPLC 物理专线带来的超低首字节响应 (TTFB)。",
+    "descLength": 76
+  },
+  {
+    "file": "src\\pages\\speed-test\\wuyou\\index.astro",
+    "title": "无忧机场 (Wuyou) 长评：被市场上山寨的 BGP+IPLC 混合专线到底有多神？",
+    "titleLength": 43,
+    "description": "近 4000 字本站评测 年中端常见套餐“无忧机场”。基于第三方独立网络数据，全域分析无忧首创的 BGP+IPLC 混合架构。",
+    "descLength": 63
+  },
+  {
+    "file": "src\\pages\\speed-test\\xingdaomeng\\index.astro",
+    "title": "星岛梦 (Xingdaomeng) 评测：Clash Meta 新协议与 IEPL 专线的碰撞",
+    "titleLength": 47,
+    "description": "近 4000 字本站测速评测星岛梦机场 (Xingdaomeng Cloud)。专为 Clash Meta / Mihomo 玩家打造，解析其对 Hysteria 2 与 VLESS 协议的原生支持。",
+    "descLength": 100
+  },
+  {
+    "file": "src\\pages\\speed-test\\xsus\\index.astro",
+    "title": "XSUS 机场评测：“傻瓜式”梯子软件与晚高峰不卡顿的反差",
+    "titleLength": 29,
+    "description": "XSUS 机场。专为寻找“梯子软件/一键连接软件”的新手小白与外贸办公族打造。",
+    "descLength": 39
+  },
+  {
+    "file": "src\\pages\\speed-test\\xxyun\\index.astro",
+    "title": "XXYUN 机场测速测试：9.99元/月的 BGP 中转大带宽究竟是高性价比梯子还是智商税？",
+    "titleLength": 46,
+    "description": "近 4000 字本站详细评测 常见套餐“平价大带宽套餐” XXYUN 机场。全面解密其 9.99元超低门槛背后的 BGP 中转架构与 300M+ 带宽保障。",
+    "descLength": 78
+  },
+  {
+    "file": "src\\pages\\speed-test\\yifanyun\\index.astro",
+    "title": "一翻云 (Yifanyun) 评测：专为 Quantumult X 调教的 IEPL 跨境专线报告",
+    "titleLength": 49,
+    "description": "近 4000 字本站测速评测一翻云机场 (Yifanyun)。专注苹果 iOS 圈X (Quantumult X) 生态，说明其原生分流订阅机制与底层 IEPL 专线的 未观察到丢包结合。",
+    "descLength": 94
+  },
+  {
+    "file": "src\\pages\\speed-test\\yinxingren\\index.astro",
+    "title": "隐形人 (Yinxingren) 评测：Hiddify 新协议与 BGP 专线的防封锁碰撞",
+    "titleLength": 45,
+    "description": "近 4000 字本站测速评测隐形人机场 (Yinxingren)。专为 Hiddify / Sing-box 全平台生态打造，详细解析其对 Hysteria 2、TUIC 与 VLESS-Reality 的支持。",
+    "descLength": 106
+  },
+  {
+    "file": "src\\pages\\speed-test\\yuzhouyun\\index.astro",
+    "title": "宇宙云 (Yuzhouyun) 评测：傻瓜式一键客户端与 IPLC 专线的融合",
+    "titleLength": 39,
+    "description": "近 4000 字本站测速评测宇宙云机场 (Yuzhouyun)。打破技术壁垒，详细解析其耗资数百万自研的全平台一键傻瓜式客户端体验。",
+    "descLength": 66
+  },
+  {
+    "file": "src\\pages\\terms.astro",
+    "title": "使用条款 (Terms of Use) | 机场狗",
+    "titleLength": 25,
+    "description": "机场狗（JiChangDog）使用条款说明网站内容用途、用户责任、知识产权、第三方链接、责任限制以及条款更新方式，请在使用本站前阅读。",
+    "descLength": 67
+  }
+]
