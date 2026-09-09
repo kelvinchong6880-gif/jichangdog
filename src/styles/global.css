@@ -518,7 +518,7 @@ svg {
 .price-item small {
   font-size: 0.8rem;
   font-weight: normal;
-  color: #94a3b8;
+  color: #64748b;
   margin-left: 2px;
   white-space: nowrap;
 }
@@ -667,7 +667,7 @@ svg {
   border-top: 1px dashed #f3f4f6;
   transition: border-color 0.3s;
 }
-.need-card:nth-child(1) .need-action { color: #10b981; }
+.need-card:nth-child(1) .need-action { color: #047857; }
 .need-card:nth-child(2) .need-action { color: #3b82f6; }
 .need-card:nth-child(3) .need-action { color: #8b5cf6; }
 

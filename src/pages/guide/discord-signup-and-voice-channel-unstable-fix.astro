@@ -26,13 +26,13 @@ const description = "Discord 语音一直卡 RTC Connecting 或 No Route？解�
           </thead>
           <tbody>
             <tr>
-              <td><strong>RTC Connecting</strong><br><span style="color:#f59e0b;font-size:0.85em;">(RTC 正在连接)</span></td>
+              <td><strong>RTC Connecting</strong><br><span style="color:#b45309;font-size:0.85em;">(RTC 正在连接)</span></td>
               <td><strong>UDP 流量未被代理接管。</strong> WebRTC 语音隧道无法建立，数据包在本地网卡打转。</td>
               <td>在代理软件中全局搜索 <code>udp: true</code> 并开启，或最简单粗暴地 <strong>直接开启 TUN 模式</strong>。</td>
               <td>🌟 <strong>新手最常见错误。</strong> 系统代理只能抓取网页，抓不到 Discord 客户端深层的语音流量。</td>
             </tr>
             <tr>
-              <td><strong>No Route</strong><br><span style="color:#ef4444;font-size:0.85em;">(无路由)</span></td>
+              <td><strong>No Route</strong><br><span style="color:#b91c1c;font-size:0.85em;">(无路由)</span></td>
               <td><strong>高频语音端口被拦截。</strong> 机场节点屏蔽了 UDP，或本地路由器防火墙拦截了异常流量。</td>
               <td>暂时关闭本地杀毒软件测试；如果是机场问题，必须 <strong>更换支持 UDP 转发的专线节点</strong>。</td>
               <td>致命。很多廉价机场为了防 BT 下载，直接把服务器 UDP 关了，你再怎么设置也没用。</td>
