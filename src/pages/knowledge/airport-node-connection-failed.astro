@@ -14,13 +14,13 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
       <h2 id="step-1-time-sync">1. 第一步：检查系统时间（节点全部超时的“元凶”）</h2>
       
       <div class="troubleshoot-box">
-        <h4>🚨 症状表现</h4>
+        <h3>🚨 症状表现</h3>
         <p>在 Clash 中点击测速，所有节点都显示 <code>Timeout</code>；或者在 v2rayN 中测试延迟，全部显示 <code>-1</code>。甚至网页完全打不开，但机场官网能正常登录。</p>
         
-        <h4>🔍 故障原因</h4>
+        <h3>🔍 故障原因</h3>
         <p>所有主流的代理协议（如 VMess, Trojan, VLESS）都依赖时间戳来防止“重放攻击”。如果你的电脑或手机系统时间，与标准的服务器时间相差超过 <strong>90 秒（1.5 分钟）</strong>，服务器就会直接拒绝你的连接请求。</p>
         
-        <h4>✅ 解决办法</h4>
+        <h3>✅ 解决办法</h3>
         <p><strong>Windows 电脑：</strong>右键点击右下角的时间 -> 调整日期/时间 -> 找到“自动设置时间”并重新打开，或者点击“立即同步”。<br>
         <strong>Mac 电脑：</strong>系统设置 -> 通用 -> 日期与时间 -> 开启“自动设置日期和时间”。<br>
         校准完毕后，重启你的翻墙软件即可恢复正常。</p>
@@ -29,13 +29,13 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
       <h2 id="step-2-update-subscription">2. 第二步：订阅链接未更新（机场换了 IP 你不知道）</h2>
 
       <div class="troubleshoot-box">
-        <h4>🚨 症状表现</h4>
+        <h3>🚨 症状表现</h3>
         <p>节点全红怎么解决？或者提示 <strong>订阅链接更新失败 / 无法获取订阅</strong>，导致“昨天还能用，今天连不上”。</p>
         
-        <h4>🔍 故障原因</h4>
+        <h3>🔍 故障原因</h3>
         <p>很多由于国内 GFW（防火长城）的封锁，机场主为了保证大家能上网，会经常更换被墙封锁的节点 IP。如果你在软件里一直用的是一个月前的旧列表，那你连的自然是早就失效的“死节点”。此外，某些地区的校园网或公司内网会屏蔽机场的订阅服务器，导致你拉取不了新节点。</p>
         
-        <h4>✅ 解决办法</h4>
+        <h3>✅ 解决办法</h3>
         <p>1. 在 Clash、v2rayN 或小火箭中，找到你的机场配置，点击 <strong>“更新订阅 (Update)”</strong>。<br>
         2. 如果更新失败，请<strong>先关闭代理软件</strong>，将电脑连接到手机分享的 4G/5G 个人热点，然后再点击更新。一旦新节点刷出来，再切回原本的 Wi-Fi 即可正常使用。</p>
       </div>
@@ -43,13 +43,13 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
       <h2 id="step-3-routing-mode">3. 第三步：代理路由模式错误（为什么连上却打不开网页）</h2>
 
       <div class="troubleshoot-box">
-        <h4>🚨 症状表现</h4>
+        <h3>🚨 症状表现</h3>
         <p>测速明明有延迟（绿色数字），但 <strong>手机连上了节点但是没有网络</strong>，或者 <strong>电脑开着翻墙软件国内网站也打不开</strong>，微信也发不出去消息。</p>
         
-        <h4>🔍 故障原因</h4>
+        <h3>🔍 故障原因</h3>
         <p>这是 <strong>代理规则设置错误</strong> 导致的。翻墙软件通常有“全局 (Global)”、“规则/配置 (Rule/Config)”和“直连 (Direct)”三种模式。如果你不小心选了“直连”，那等于没翻墙；如果你选了“全局”，所有的国内流量也会绕道国外，导致你上淘宝极慢甚至打不开。</p>
         
-        <h4>✅ 解决办法</h4>
+        <h3>✅ 解决办法</h3>
         <p><strong>在 Clash 中：</strong>点击左侧的 Proxies (代理)，在最顶部的模式选择栏中，一定要选中 <strong>Rule (规则)</strong> 模式。<br>
         <strong>在 Shadowrocket (小火箭) 中：</strong>点击底部栏的首页，在“全局路由”选项中，选择 <strong>配置 (Config)</strong>，千万别选直连或全局。<br>
         这样设置后，国内网站直连，国外网站走代理，互不干扰。</p>
@@ -58,26 +58,26 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
       <h2 id="step-4-account-status">4. 第四步：检查机场套餐状态与流量是否耗尽</h2>
 
       <div class="troubleshoot-box">
-        <h4>🚨 症状表现</h4>
+        <h3>🚨 症状表现</h3>
         <p>无论怎么更新订阅，节点名称前面都多了一个前缀，比如提示“账户已欠费”或“流量已用尽”。或者直接 <strong>买的机场怎么用不了</strong>。</p>
         
-        <h4>🔍 故障原因</h4>
+        <h3>🔍 故障原因</h3>
         <p>很多新手对流量消耗没有概念，看了一整天 4K 的 Netflix 或者在后台让 Steam 自动下载了几十个 G 的游戏，导致当月流量提前耗尽。也有可能是因为记错了购买日期，套餐已经自然过期。</p>
         
-        <h4>✅ 解决办法</h4>
+        <h3>✅ 解决办法</h3>
         <p>断开翻墙软件，直接用手机浏览器（不要挂代理）登录你的机场官网，进入“用户中心/仪表盘”，查看<strong>可用流量</strong>和<strong>套餐到期时间</strong>。如果流量没了，请购买流量叠加包或提前续费下一个月的套餐，然后再回到软件里点击“更新订阅”。</p>
       </div>
 
       <h2 id="step-5-software-conflict">5. 第五步：防病毒软件或浏览器插件拦截</h2>
 
       <div class="troubleshoot-box">
-        <h4>🚨 症状表现</h4>
+        <h3>🚨 症状表现</h3>
         <p>翻墙软件一切正常，但就是只有浏览器（如 Chrome/Edge）打不开任何国外网页，报 <code>ERR_PROXY_CONNECTION_FAILED</code> 错误。</p>
         
-        <h4>🔍 故障原因</h4>
+        <h3>🔍 故障原因</h3>
         <p>极有可能是因为你安装了 360 安全卫士、火绒等杀毒软件，拦截了代理软件的系统级劫持。或者你的浏览器里安装了类似 SwitchyOmega 的代理插件，它与 Clash 的“系统代理 (System Proxy)”功能产生了严重冲突。</p>
         
-        <h4>✅ 解决办法</h4>
+        <h3>✅ 解决办法</h3>
         <p>1. 如果有浏览器代理插件（如 SwitchyOmega），请将其设为“系统代理”模式，或者直接<strong>将其停用</strong>。<br>
         2. 检查 360 或火绒等软件的安全日志，看看是否把 Clash 核心或 v2ray-core 误杀了，如果有，请将其加入白名单。<br>
         3. 重启浏览器，在 Clash 开启“系统代理”。</p>
@@ -98,10 +98,10 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
       <p>榜单中的机场提供 BGP 隧道与 IPLC 专线，即使在网络封锁最严重的时候，依然能保证节点的存活率，帮您在互联网的世界里畅通无阻。</p>
     
         <blockquote style="background: #f8fafc; border-left: 4px solid #8b5cf6; padding: 20px; border-radius: 8px; margin: 40px 0; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.05);">
-          <h4 style="margin-top: 0; color: #6d28d9; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <h3 style="margin-top: 0; color: #6d28d9; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             极客知识延展阅读
-          </h4>
+          </h3>
           <p style="margin-bottom: 10px; color: #475569;">如果您对翻墙底层的网络协议、加密学原理或者线路架构感兴趣，推荐您继续阅读我们整理的极客知识库详细解析：</p>
           <ul style="margin-bottom: 0; padding-left: 20px;">
             <li style="margin-bottom: 8px;"><a href="/knowledge/what-is-anycast-routing-in-proxies/" style="color: #7c3aed; font-weight: 600; text-decoration: none;">什么是 Anycast 任播技术？高级机场是如何降低延迟的？ ↗</a></li>
@@ -145,6 +145,7 @@ const description = "买了机场节点连不上怎么办？Clash节点全部超
     .prose h2 { font-size: 1.5rem; color: var(--blue); margin-top: 48px; margin-bottom: 20px; border-bottom: 2px solid #eff4ff; padding-bottom: 8px; }
     .prose h3 { font-size: 1.25rem; color: #1f2937; margin-top: 32px; margin-bottom: 16px; }
     .prose h4 { font-size: 1.05rem; color: #374151; margin-top: 20px; margin-bottom: 8px; font-weight: 700; }
+    .troubleshoot-box h3 { font-size: 1.05rem; color: #374151; margin-top: 20px; margin-bottom: 8px; font-weight: 700; }
     .prose p { font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
     .prose a { color: var(--blue); text-decoration: none; font-weight: 600; }
     .prose a:hover { text-decoration: underline; }
