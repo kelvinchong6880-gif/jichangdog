@@ -239,6 +239,7 @@ svg {
 .hero-image img {
   width: 100%;
   max-width: 260px;
+  height: auto;
   mix-blend-mode: multiply;
   animation: float 6s ease-in-out infinite;
 }
