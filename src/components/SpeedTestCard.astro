@@ -3,7 +3,7 @@ import type { Airport } from '../data/airports';
 
 export interface Props {
   airport: Airport;
-  headingLevel?: string;
+  headingLevel?: 'h2' | 'h3';
 }
 
 const { airport, headingLevel = 'h3' } = Astro.props;
