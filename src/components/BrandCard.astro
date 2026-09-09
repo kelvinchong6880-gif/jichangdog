@@ -3,11 +3,9 @@ import type { Airport } from '../data/airports';
 
 export interface Props {
   airport: Airport;
-  headingLevel?: 'h2' | 'h3';
 }
 
-const { airport, headingLevel = 'h3' } = Astro.props;
-const HeadingTag = headingLevel;
+const { airport } = Astro.props;
 ---
 <article class="featured-card">
   <div class="brand-card-top">
@@ -23,7 +21,7 @@ const HeadingTag = headingLevel;
     >
     <span class={airport.brandTag === '优先推荐' || airport.brandTag === '重点推荐' ? 'badge badge-primary' : 'badge'}>{airport.brandTag || '重点关注'}</span>
   </div>
-  <HeadingTag>{airport.name}</HeadingTag>
+  <h3>{airport.name}</h3>
   <p>{airport.brandDesc}</p>
   <div class="price-promo-box">
     <div class="price-item">
