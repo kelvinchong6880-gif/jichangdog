@@ -1283,7 +1283,7 @@ svg {
 .reading-action {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e40af;
+  color: var(--blue);
   display: inline-flex;
   align-items: center;
   gap: 6px;
