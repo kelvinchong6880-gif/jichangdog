@@ -437,7 +437,7 @@ svg {
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
-.eyebrow { color: #00bcd4; font-weight: 800; font-size: 0.875rem; margin-bottom: 8px; }
+.eyebrow { color: #00838f; font-weight: 800; font-size: 0.875rem; margin-bottom: 8px; }
 
 .featured-grid {
   display: grid;
@@ -546,8 +546,8 @@ svg {
   justify-content: center;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  width: 26px;
-  height: 26px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0;
   border-radius: 6px;
   cursor: pointer;
@@ -559,9 +559,9 @@ svg {
   color: #0f172a;
 }
 .copy-code-btn.copied {
-  background: #10b981;
+  background: #047857;
   color: #ffffff;
-  border-color: #10b981;
+  border-color: #047857;
 }
 
 .badge { 
@@ -964,7 +964,7 @@ svg {
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
-.footer-links-col h4 {
+.footer-heading {
   color: var(--ink);
   font-size: 1rem;
   font-weight: 800;
@@ -1039,7 +1039,7 @@ svg {
   display: flex; 
   justify-content: space-between; 
   align-items: center;
-  color: #94a3b8; 
+  color: #64748b; 
   font-size: 0.9rem; 
 }
 
