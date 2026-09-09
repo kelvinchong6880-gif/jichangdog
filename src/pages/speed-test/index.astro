@@ -19,7 +19,7 @@ const speedAirports = allAirports.filter(a => a.speedId || a.speedTitle || a.spe
     
     <div class="articles-grid">
       {speedAirports.map(airport => (
-        <SpeedTestCard airport={airport} />
+        <SpeedTestCard airport={airport} headingLevel="h2" />
       ))}
     </div>
   </section>

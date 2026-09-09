@@ -3,21 +3,23 @@ import type { Airport } from '../data/airports';
 
 export interface Props {
   airport: Airport;
+  headingLevel?: string;
 }
 
-const { airport } = Astro.props;
+const { airport, headingLevel = 'h3' } = Astro.props;
+const Element = headingLevel as keyof HTMLElementTagNameMap;
 
 // Determine colors based on tag to match previous layout broadly
 const tagColors = {
   '本站测速': { bg: '#eef2ff', color: '#4338ca' },
-  '极限测速': { bg: '#fffbeb', color: '#f59e0b' },
-  '高性价比': { bg: '#fffbeb', color: '#f59e0b' },
+  '极限测速': { bg: '#fffbeb', color: '#b45309' },
+  '高性价比': { bg: '#fffbeb', color: '#b45309' },
   '平价中转极速': { bg: '#eef2ff', color: '#4338ca' },
-  '专线': { bg: '#fef2f2', color: '#ef4444' },
+  '专线': { bg: '#fef2f2', color: '#b91c1c' },
   'Clash 适配': { bg: '#e0e7ff', color: '#4338ca' },
   '老牌 V2ray': { bg: '#fdf4ff', color: '#a21caf' },
   '极简免折腾': { bg: '#fff1f2', color: '#be123c' },
-  '低价产品': { bg: '#f0fdfa', color: '#0d9488' },
+  '低价产品': { bg: '#f0fdfa', color: '#0f766e' },
   '底价大带宽': { bg: '#eef2ff', color: '#4338ca' },
   '千兆老牌': { bg: '#fdf4ff', color: '#a21caf' },
   'IEPL 物理专线': { bg: '#e0f2fe', color: '#0284c7' },
@@ -33,7 +35,7 @@ const colors = tagColors[airport.speedTag as keyof typeof tagColors] || { bg: '#
 ---
 <a href={`/speed-test/${airport.speedId || airport.id}/`} class="article-card">
   <div class="card-tag" style={`background: ${colors.bg}; color: ${colors.color};`}>{airport.speedTag || '测速报告'}</div>
-  <h3>{airport.speedTitle || `【2026本站】${airport.name} 测速报告`}</h3>
+  <Element>{airport.speedTitle || `【2026本站】${airport.name} 测速报告`}</Element>
   <p>{airport.speedDesc}</p>
   <span class="read-more">查看测速报告 <span>→</span></span>
 </a>
